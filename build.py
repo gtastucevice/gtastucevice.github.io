@@ -219,7 +219,7 @@ EGG_ST = {"confirme": "Confirmé", "rumeur": "Rumeur", "a-tester": "À tester"}
 
 
 def egg_card(x):
-    return (f'<div class="egg"><div class="row" style="margin:0"><span class="st st-{e(x["status"])}">{EGG_ST.get(x["status"], x["status"])}</span></div>'
+    return (f'<div class="egg" id="egg-{e(x["id"])}"><div class="row" style="margin:0"><span class="st st-{e(x["status"])}">{EGG_ST.get(x["status"], x["status"])}</span></div>'
             f'<h3>{e(x["title"])}</h3><p><strong>Où :</strong> {e(x["where"])}</p><p>{e(x["how"])}</p>'
             f'<div class="row"><span></span><a class="src" href="{e(x["source"]["u"])}" target="_blank" rel="noopener">Source : {e(x["source"]["t"])}</a></div></div>')
 
@@ -252,7 +252,8 @@ h2{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:26px;margin:
 .egg{display:flex;flex-direction:column;gap:8px;background:var(--night2);border:1px solid var(--line);border-radius:16px;padding:18px}.egg h3{margin:0;font-size:17px}.egg p{margin:0;font-size:14px;color:var(--soft)}
 .egg .row{display:flex;justify-content:space-between;gap:10px;margin-top:4px}.src{font-size:13px}
 .st{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;text-transform:uppercase}.st-confirme{background:var(--teal);color:var(--night)}.st-rumeur{background:var(--orange);color:var(--night)}.st-a-tester{background:#5A3B8F;color:#fff}
-.topics{display:flex;flex-wrap:wrap;gap:10px}.topics a{min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:var(--night2);border:1px solid var(--line);color:var(--white);text-decoration:none;font-weight:700}
+.topics{display:flex;flex-wrap:wrap;gap:10px}
+.map .pin{cursor:pointer}.topics a{min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:var(--night2);border:1px solid var(--line);color:var(--white);text-decoration:none;font-weight:700}
 .box{background:var(--night2);border:1px solid var(--line);border-radius:20px;padding:26px;margin:18px 0}.box p,.box li{color:#F2ECFF}
 footer{border-top:4px solid var(--teal);background:#12062A;padding:36px 0;margin-top:56px}footer small{display:block;max-width:640px;color:var(--mute);font-size:13px;margin-top:8px}
 </style>"""
@@ -278,6 +279,7 @@ def simple_page(path, title, desc, h1, kicker, body, ld=None):
 {head_block(path, title, desc)}
 {FONTS}
 {SIMPLE_CSS}
+<style>{MAP_CSS}{MOBILE_CSS}</style>
 {ldj}
 </head>
 <body>
@@ -310,6 +312,95 @@ ABOUT_BODY = """<p class="lead">GTASTUCE VICE, c'est le fil français de GTA 6 :
 <p style="color:var(--mute);font-size:14px">Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto est une marque de Take-Two Interactive. Images : Rockstar Games, sauf mention contraire.</p></div>"""
 
 
+# ---------- Carte des secrets (schéma, positions approximatives) ----------
+ZONES = {
+    "kalaga": ("Mount Kalaga", 118, 78), "ambrosia": ("Ambrosia", 238, 112), "gellhorn": ("Port Gellhorn", 92, 196),
+    "grassrivers": ("Grassrivers", 196, 290), "vice-city": ("Vice City", 308, 318), "keys": ("Leonida Keys", 262, 420),
+    "mer": ("En mer", 352, 432),
+}
+LEONIDA_PATH = ("M60 40 L330 34 L338 70 L300 92 L292 140 L318 200 L346 262 L358 330 L344 372 L300 384 "
+                "L262 360 L226 336 L188 330 L160 300 L136 252 L104 226 L62 214 L40 170 L48 110 Z")
+KEYS = [(250, 410, 26, 9), (214, 430, 22, 8), (180, 446, 20, 7), (150, 458, 16, 6), (282, 398, 14, 6)]
+
+
+def map_svg(secrets, link_prefix=""):
+    """Carte schématique de Leonida avec un repère par secret localisé."""
+    pins, per = [], {}
+    for s in secrets:
+        z = s.get("zone")
+        if z not in ZONES:
+            continue
+        k = per.get(z, 0); per[z] = k + 1
+        _, x, y = ZONES[z]
+        x += [0, 22, -22, 12, -12][k % 5]; y += [18, 30, 30, 44, 44][k % 5]
+        pins.append(f'<a class="pin" data-id="{e(s["id"])}" href="{link_prefix}#egg-{e(s["id"])}" aria-label="{e(s["title"])}">'
+                    f'<title>{e(s["title"])}</title><circle class="halo" cx="{x}" cy="{y}" r="14"/><circle class="dot" cx="{x}" cy="{y}" r="8"/></a>')
+    LBL = {"keys": (150, 488)}
+    labels = "".join(f'<text x="{LBL.get(k, (x, y))[0]}" y="{LBL.get(k, (x, y))[1]}" text-anchor="middle">{e(n)}</text>' for k, (n, x, y) in ZONES.items())
+    keys = "".join(f'<ellipse cx="{x}" cy="{y}" rx="{rx}" ry="{ry}"/>' for x, y, rx, ry in KEYS)
+    loose = [s for s in secrets if s.get("zone") not in ZONES]
+    loose_html = ""
+    if loose:
+        loose_html = ('<p class="map-loose"><strong>Pas sur la carte</strong> (partout ou lieu inconnu) : '
+                      + ", ".join(f'<a href="{link_prefix}#egg-{e(s["id"])}">{e(s["title"])}</a>' for s in loose) + "</p>")
+    return (f'<figure class="map"><svg viewBox="0 0 400 500" role="img" aria-label="Carte simplifiée de Leonida avec les secrets">'
+            f'<defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B0D3C"/><stop offset="1" stop-color="#2A1050"/></linearGradient></defs>'
+            f'<rect width="400" height="500" rx="18" fill="url(#sea)"/>'
+            f'<g class="land"><path d="{LEONIDA_PATH}"/>{keys}</g>'
+            f'<g class="lbl">{labels}</g>{"".join(pins)}</svg>'
+            f'<figcaption>Carte simplifiée, positions approximatives. Touche un repère pour voir le secret. Rose = à trouver, turquoise = trouvé.</figcaption>'
+            f'{loose_html}</figure>')
+
+
+MAP_CSS = """
+.map{margin:0 0 20px;background:var(--night);border:1px solid var(--line);border-radius:18px;padding:14px}
+.map svg{display:block;width:100%;max-width:420px;margin:0 auto;height:auto}
+.map .land path,.map .land ellipse{fill:#3A1D6B;stroke:#FF5FA2;stroke-width:2}
+.map .lbl text{fill:#C9BFE8;font:700 13px Inter,sans-serif;letter-spacing:.5px}
+.map .pin .dot{fill:#FF3D7F;stroke:#fff;stroke-width:2}
+.map .pin .halo{fill:#FF3D7F;opacity:.25;animation:pinpulse 1.6s infinite;transform-box:fill-box;transform-origin:center}
+.map .pin.found .dot{fill:#2EE6D6}.map .pin.found .halo{fill:#2EE6D6;animation:none;opacity:.2}
+.map .pin:focus-visible .dot{stroke:#FFE45C;stroke-width:4}
+@keyframes pinpulse{50%{transform:scale(1.5);opacity:0}}
+.map figcaption{margin-top:10px;font-size:13px;color:var(--mute);text-align:center}
+.map-loose{margin:10px 0 0;font-size:14px;color:var(--soft);text-align:center}
+.egg.flash{border-color:var(--yel);box-shadow:0 0 0 3px var(--yel)}
+@media (min-width:900px){.hunt-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:22px;align-items:start}.hunt-grid .map{position:sticky;top:90px}}
+"""
+
+MOBILE_CSS = """
+@media (max-width:640px){
+ header .wrap{flex-wrap:nowrap;gap:12px;padding-top:8px;padding-bottom:8px}
+ .brand b{font-size:17px}.brand i{font-size:24px}
+ header nav{flex-wrap:nowrap;overflow-x:auto;gap:14px;font-size:14px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent)}
+ header nav::-webkit-scrollbar{display:none}
+ header nav a{white-space:nowrap}
+ header nav .btn{display:none}
+ section{padding:34px 0}
+ .une{padding-top:18px}
+ .lead{min-height:300px}.lead .txt{padding:18px}
+ .lead p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px}
+ .facts{display:flex;overflow-x:auto;gap:8px;margin-top:16px;padding-bottom:4px;scroll-snap-type:x mandatory;scrollbar-width:none}
+ .facts::-webkit-scrollbar{display:none}
+ .fact{flex:0 0 auto;padding:10px 14px;scroll-snap-align:start}.fact b{font-size:16px}.fact span{font-size:12px}
+ .chips,.topics{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+ .chips::-webkit-scrollbar,.topics::-webkit-scrollbar{display:none}
+ .chip,.topics a{flex:none}
+ .feed{grid-template-columns:1fr;gap:10px}
+ .post{display:grid;grid-template-columns:104px minmax(0,1fr);align-items:center;border-radius:14px}
+ .post img{width:104px;height:100%;min-height:92px;aspect-ratio:auto}
+ .post .b{padding:10px 12px;gap:5px}
+ .post h2,.post h3{font-size:15px}
+ .post p{display:none}
+ .eggs{gap:10px}.egg{padding:14px}.egg h3{font-size:16px}
+ .eggs.short .egg:nth-child(n+5){display:none}
+ .more-eggs{display:flex!important}
+ h1.page,h1{font-size:26px}
+}
+.more-eggs{display:none;justify-content:center;margin-top:14px}
+"""
+
+
 def build_static_pages(arts, secrets):
     home = [a for a in arts if a["cat"] != "guide"]
     guides = [a for a in arts if a["cat"] in ("guide", "astuce")]
@@ -330,6 +421,8 @@ def build_static_pages(arts, secrets):
     t = fill(t, "topics", topics_html())
     t = fill(t, "eggs", "".join(egg_card(x) for x in secrets))
     t = fill(t, "sc", f"0/{len(secrets)}")
+    t = fill(t, "map", map_svg(secrets))
+    t = fill(t, "css", MAP_CSS + MOBILE_CSS)
     t = fill(t, "ld", '<script type="application/ld+json">' + json.dumps([
         {"@context": "https://schema.org", "@type": "WebSite", "name": "GTASTUCE VICE", "alternateName": ["GTAstuce", "GTA Stuce", "GTAstuce Vice", "gtastucevice"], "url": BASE + "/", "inLanguage": "fr-FR"},
         {"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "alternateName": "GTAstuce", "url": BASE + "/", "logo": BASE + "/favicon-512.png", "email": "gtastucevice@gmail.com",
@@ -338,6 +431,7 @@ def build_static_pages(arts, secrets):
     # Liste des actus
     p = os.path.join(ROOT, "actus.html"); t = open(p, encoding="utf-8").read()
     t = fill(t, "head", head_block("actus.html", "Actus GTA 6 – GTASTUCE VICE", "Toute l'actu GTA 6 en français : news, tests, astuces, secrets et dramas, sourcés."))
+    t = fill(t, "css", MOBILE_CSS)
     t = fill(t, "actuslist", '<div class="kicker">Le fil GTA 6</div><h1 class="ptitle">Les actus</h1><div class="feed">' + "".join(post_card(a, h="h2") for a in arts) + "</div>")
     open(p, "w", encoding="utf-8").write(t)
     # Matos
@@ -347,6 +441,8 @@ def build_static_pages(arts, secrets):
     # Qui sommes-nous
     org = {"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "url": BASE, "logo": f"{BASE}/favicon-512.png", "email": "gtastucevice@gmail.com",
            "sameAs": ["https://www.tiktok.com/@gtastucevice", "https://www.instagram.com/gtastucevice/", "https://www.youtube.com/@gtastucevice"]}
+    p = os.path.join(ROOT, "matos.html"); t = open(p, encoding="utf-8").read()
+    open(p, "w", encoding="utf-8").write(fill(t, "css", MOBILE_CSS))
     open(os.path.join(ROOT, "a-propos.html"), "w", encoding="utf-8").write(
         simple_page("a-propos.html", "Qui sommes-nous – GTASTUCE VICE", "Qui est derrière GTASTUCE VICE, comment on choisit et vérifie nos infos sur GTA 6, et comment nous contacter.",
                     "Qui sommes-nous ?", "GTASTUCE VICE", ABOUT_BODY, org))
@@ -355,7 +451,7 @@ def build_static_pages(arts, secrets):
         lst = hub_articles(h, arts)
         body = f'<p class="lead">{e(h["intro"])}</p>'
         if h.get("eggs"):
-            body += '<h2>Les secrets trouvés</h2><div class="eggs">' + "".join(egg_card(x) for x in secrets) + '</div><p style="margin-top:16px"><a class="btn" href="index.html#chasse">Coche-les dans la chasse aux secrets</a></p>'
+            body += '<h2>La carte des secrets</h2>' + map_svg(secrets, "index.html") + '<h2>Les secrets trouvés</h2><div class="eggs">' + "".join(egg_card(x) for x in secrets) + '</div><p style="margin-top:16px"><a class="btn" href="index.html#chasse">Coche-les dans la chasse aux secrets</a></p>'
         body += "<h2>Nos articles et guides</h2>" + ('<div class="feed">' + "".join(post_card(a) for a in lst) + "</div>" if lst else "<p>Les premiers articles arrivent très vite.</p>")
         ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": h["title"], "description": h["desc"], "url": f"{BASE}/{h['slug']}.html", "inLanguage": "fr-FR",
               "hasPart": [{"@type": "Article", "headline": a["title"][:110], "url": f"{BASE}/actus/{a['slug']}.html"} for a in lst[:20]]}

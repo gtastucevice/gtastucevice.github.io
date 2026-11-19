@@ -55,9 +55,55 @@ h2{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:26px;margin:
 .egg{display:flex;flex-direction:column;gap:8px;background:var(--night2);border:1px solid var(--line);border-radius:16px;padding:18px}.egg h3{margin:0;font-size:17px}.egg p{margin:0;font-size:14px;color:var(--soft)}
 .egg .row{display:flex;justify-content:space-between;gap:10px;margin-top:4px}.src{font-size:13px}
 .st{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;text-transform:uppercase}.st-confirme{background:var(--teal);color:var(--night)}.st-rumeur{background:var(--orange);color:var(--night)}.st-a-tester{background:#5A3B8F;color:#fff}
-.topics{display:flex;flex-wrap:wrap;gap:10px}.topics a{min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:var(--night2);border:1px solid var(--line);color:var(--white);text-decoration:none;font-weight:700}
+.topics{display:flex;flex-wrap:wrap;gap:10px}
+.map .pin{cursor:pointer}.topics a{min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:var(--night2);border:1px solid var(--line);color:var(--white);text-decoration:none;font-weight:700}
 .box{background:var(--night2);border:1px solid var(--line);border-radius:20px;padding:26px;margin:18px 0}.box p,.box li{color:#F2ECFF}
 footer{border-top:4px solid var(--teal);background:#12062A;padding:36px 0;margin-top:56px}footer small{display:block;max-width:640px;color:var(--mute);font-size:13px;margin-top:8px}
+</style>
+<style>
+.map{margin:0 0 20px;background:var(--night);border:1px solid var(--line);border-radius:18px;padding:14px}
+.map svg{display:block;width:100%;max-width:420px;margin:0 auto;height:auto}
+.map .land path,.map .land ellipse{fill:#3A1D6B;stroke:#FF5FA2;stroke-width:2}
+.map .lbl text{fill:#C9BFE8;font:700 13px Inter,sans-serif;letter-spacing:.5px}
+.map .pin .dot{fill:#FF3D7F;stroke:#fff;stroke-width:2}
+.map .pin .halo{fill:#FF3D7F;opacity:.25;animation:pinpulse 1.6s infinite;transform-box:fill-box;transform-origin:center}
+.map .pin.found .dot{fill:#2EE6D6}.map .pin.found .halo{fill:#2EE6D6;animation:none;opacity:.2}
+.map .pin:focus-visible .dot{stroke:#FFE45C;stroke-width:4}
+@keyframes pinpulse{50%{transform:scale(1.5);opacity:0}}
+.map figcaption{margin-top:10px;font-size:13px;color:var(--mute);text-align:center}
+.map-loose{margin:10px 0 0;font-size:14px;color:var(--soft);text-align:center}
+.egg.flash{border-color:var(--yel);box-shadow:0 0 0 3px var(--yel)}
+@media (min-width:900px){.hunt-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:22px;align-items:start}.hunt-grid .map{position:sticky;top:90px}}
+
+@media (max-width:640px){
+ header .wrap{flex-wrap:nowrap;gap:12px;padding-top:8px;padding-bottom:8px}
+ .brand b{font-size:17px}.brand i{font-size:24px}
+ header nav{flex-wrap:nowrap;overflow-x:auto;gap:14px;font-size:14px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent)}
+ header nav::-webkit-scrollbar{display:none}
+ header nav a{white-space:nowrap}
+ header nav .btn{display:none}
+ section{padding:34px 0}
+ .une{padding-top:18px}
+ .lead{min-height:300px}.lead .txt{padding:18px}
+ .lead p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px}
+ .facts{display:flex;overflow-x:auto;gap:8px;margin-top:16px;padding-bottom:4px;scroll-snap-type:x mandatory;scrollbar-width:none}
+ .facts::-webkit-scrollbar{display:none}
+ .fact{flex:0 0 auto;padding:10px 14px;scroll-snap-align:start}.fact b{font-size:16px}.fact span{font-size:12px}
+ .chips,.topics{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+ .chips::-webkit-scrollbar,.topics::-webkit-scrollbar{display:none}
+ .chip,.topics a{flex:none}
+ .feed{grid-template-columns:1fr;gap:10px}
+ .post{display:grid;grid-template-columns:104px minmax(0,1fr);align-items:center;border-radius:14px}
+ .post img{width:104px;height:100%;min-height:92px;aspect-ratio:auto}
+ .post .b{padding:10px 12px;gap:5px}
+ .post h2,.post h3{font-size:15px}
+ .post p{display:none}
+ .eggs{gap:10px}.egg{padding:14px}.egg h3{font-size:16px}
+ .eggs.short .egg:nth-child(n+5){display:none}
+ .more-eggs{display:flex!important}
+ h1.page,h1{font-size:26px}
+}
+.more-eggs{display:none;justify-content:center;margin-top:14px}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Police GTA 6 : étoiles, recherche et comment semer les flics", "description": "Comment marche le système de recherche de GTA 6 et comment semer la police : étoiles, icônes, zones chaudes.", "url": "https://gtastucevice.fr/gta-6-police.html", "inLanguage": "fr-FR", "hasPart": [{"@type": "Article", "headline": "Police dans GTA 6 : comment fonctionne le système de recherche et comment semer les flics", "url": "https://gtastucevice.fr/actus/guide-police-semer-les-flics-gta-6.html"}, {"@type": "Article", "headline": "GTA 6 plante ou ta PS5 s'éteint ? Les réflexes à avoir", "url": "https://gtastucevice.fr/actus/2026-11-19-gta-6-plantages-ps5-que-faire.html"}, {"@type": "Article", "headline": "Argent au début de GTA 6 : 5 astuces pour ne pas finir fauché", "url": "https://gtastucevice.fr/actus/2026-11-19-argent-debut-gta-6.html"}, {"@type": "Article", "headline": "10 astuces pour bien démarrer GTA 6 (sans spoiler)", "url": "https://gtastucevice.fr/actus/2026-11-18-astuces-debut-de-partie-gta-6.html"}, {"@type": "Article", "headline": "GTA 6 devient le jeu le mieux noté de l'histoire", "url": "https://gtastucevice.fr/actus/2026-11-18-gta-6-jeu-le-mieux-note-de-l-histoire.html"}]}</script>
 </head>
