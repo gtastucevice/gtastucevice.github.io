@@ -30,7 +30,7 @@ from playwright.async_api import async_playwright
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONTS = os.path.join(ROOT, "outils", "fonts") + "/"
 TMP = "/tmp/gtv_video"; os.makedirs(TMP, exist_ok=True)
-SFX = os.path.join(ROOT, "outils", "sfx")
+SFX = os.environ.get("GTV_SFX", "/tmp/gtv_sfx")  # effets téléchargés depuis Drive « Musiques/Effets » (jamais dans le dépôt)
 W, H, FPS = 1080, 1920, 30
 BPM = 112; BEAT = 60 / BPM; BAR = 4 * BEAT
 NIGHT=(23,10,51); PINK=(255,61,127); PINK2=(255,95,162); YEL=(255,228,92); TEAL=(46,230,214); WHITE=(255,255,255)
@@ -148,8 +148,12 @@ def add_sfx(wav, events):
     """events : liste de (nom_fichier, t_debut_s, gain). Mixe dans wav (en place)."""
     sr, mix = wavfile.read(wav); mix = mix.astype(np.float64) / 32767
     for name, t0, g in events:
-        p = os.path.join(SFX, name)
-        if not os.path.exists(p): continue
+        base = os.path.splitext(name)[0]
+        p = next((os.path.join(SFX, base + e) for e in (".wav", ".mp3") if os.path.exists(os.path.join(SFX, base + e))), None)
+        if not p: continue
+        if p.endswith(".mp3"):
+            w = f"{TMP}/sfx_{base}.wav"
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", p, "-ar", "44100", "-ac", "2", w], check=True); p = w
         r, x = wavfile.read(p); x = x.astype(np.float64)
         x = x / (32767 if x.dtype != np.float64 or np.abs(x).max() > 1.5 else 1)
         if x.ndim == 1: x = np.stack([x, x], 1)
