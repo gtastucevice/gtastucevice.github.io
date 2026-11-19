@@ -4,8 +4,12 @@
 Usage : python3 build.py   (à lancer après chaque modification de articles.json)
 La mise en forme reprend les styles de actus.html : une seule source de style.
 """
-import html, json, os, re
+import hashlib, html, json, os, re, struct
 from datetime import datetime, timezone
+try:
+    from PIL import Image  # facultatif : sert à créer les vignettes
+except ImportError:  # pragma: no cover
+    Image = None
 
 BASE = "https://gtastucevice.fr"
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -25,32 +29,158 @@ def styles():
     return "\n".join(re.findall(r"<style>.*?</style>", src, re.S))
 
 
-HEADER = """<header>
-<div class="wrap">
-<a class="brand" href="../index.html" aria-label="GTASTUCE VICE, accueil"><b>GTASTUCE</b><i>Vice</i></a>
-<nav aria-label="Navigation principale">
-<a class="nav-search" href="../recherche.html" aria-label="Rechercher"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span>Rechercher</span></a>
-<a href="../actus.html">Actus</a>
-<a href="../index.html#guides">Guides</a>
-<a href="../index.html#chasse">Chasse aux secrets</a>
-<a href="../matos.html">Le matos</a>
-<a class="btn" href="../index.html#newsletter">Newsletter</a>
-</nav>
-</div>
-</header>"""
+# ---------- Images : dimensions + vignettes (le mobile chargeait des JPEG 1280 px pour des vignettes de 104 px) ----------
+def jpeg_size(path):
+    """(largeur, hauteur) d'un JPEG sans dépendance ; None si inconnu."""
+    try:
+        with open(path, "rb") as f:
+            if f.read(2) != b"\xff\xd8":
+                return None
+            while True:
+                m = f.read(2)
+                if len(m) < 2 or m[0] != 0xFF:
+                    return None
+                ln = struct.unpack(">H", f.read(2))[0]
+                if m[1] in (0xC0, 0xC1, 0xC2):
+                    h, w = struct.unpack(">xHH", f.read(5))
+                    return w, h
+                f.seek(ln - 2, 1)
+    except OSError:
+        return None
 
-FOOTER = """<footer>
-<div class="wrap">
-<div>
-<a class="brand" href="../index.html"><b>GTASTUCE</b><i>Vice</i></a>
-<small>Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto et les éléments associés sont des marques de Take-Two Interactive.</small>
-</div>
-<nav aria-label="Liens légaux">
-<a href="../a-propos.html">Qui sommes-nous</a>
-<a href="../index.html#newsletter">Contact</a>
-</nav>
-</div>
-</footer>"""
+
+THUMB_W = (480, 800)
+
+
+def thumbs(src):
+    """Crée (si besoin) assets/thumbs/<nom>-480.jpg et -800.jpg ; renvoie [(chemin, largeur)]."""
+    full = os.path.join(ROOT, src)
+    size = jpeg_size(full)
+    if not size or not src.endswith(".jpg"):
+        return [], size
+    out = []
+    stem = os.path.splitext(os.path.basename(src))[0]
+    for w in THUMB_W:
+        if w >= size[0]:
+            continue
+        rel = f"assets/thumbs/{stem}-{w}.jpg"
+        dst = os.path.join(ROOT, rel)
+        if Image and (not os.path.exists(dst) or os.path.getmtime(dst) < os.path.getmtime(full)):
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            im = Image.open(full).convert("RGB")
+            im.resize((w, round(size[1] * w / size[0])), Image.LANCZOS).save(dst, "JPEG", quality=78, optimize=True, progressive=True)
+        if os.path.exists(dst):
+            out.append((rel, w))
+    return out, size
+
+
+SIZES = {"post": "(max-width:640px) 104px, 360px", "mini": "120px", "lead": "(max-width:860px) 100vw, 720px",
+         "hero": "(max-width:800px) 100vw, 760px", "search": "(max-width:640px) 104px, 180px"}
+
+
+def img_html(src, prefix="", kind="post", alt="", lazy=True, priority=False, extra=""):
+    tl, size = thumbs(src)
+    attrs = [f'src="{prefix}{e(src)}"', f'alt="{e(alt)}"']
+    if tl and size:
+        attrs.append('srcset="' + ", ".join(f"{prefix}{e(r)} {w}w" for r, w in tl) + f', {prefix}{e(src)} {size[0]}w"')
+        attrs.append(f'sizes="{SIZES[kind]}"')
+    if size:
+        attrs.append(f'width="{size[0]}" height="{size[1]}"')
+    if lazy and not priority:
+        attrs.append('loading="lazy"')
+    if priority:
+        attrs.append('fetchpriority="high"')
+    attrs.append('decoding="async"')
+    return f"<img {' '.join(attrs)}{extra}>"
+
+
+# ---------- Texte d'un article (le corps peut contenir des intertitres, étapes et tableaux de commandes) ----------
+def text_of(a):
+    out = [a["title"], a["chapo"], a.get("quick", "")]
+    for b in a["body"]:
+        if isinstance(b, str):
+            out.append(b)
+        elif "h2" in b:
+            out.append(b["h2"])
+        elif "steps" in b:
+            out += [s["t"] + " " + s["d"] for s in b["steps"]]
+        elif "controls" in b:
+            out += [" ".join(r) for r in b["controls"]["rows"]]
+    return " ".join(out)
+
+
+def trim(s, n=155):
+    s = " ".join(str(s).split())
+    if len(s) <= n:
+        return s
+    cut = s[: n - 1].rsplit(" ", 1)[0].rstrip(" ,;:")
+    return cut + "…"
+
+
+def title_tag(t):
+    """Ajoute « – GTASTUCE VICE » seulement si le titre reste lisible en entier dans Google (~65 caractères)."""
+    full = f"{t} – GTASTUCE VICE"
+    return full if len(full) <= 65 else t
+
+
+# ---------- Statuts des secrets : une seule définition pour toutes les surfaces ----------
+STATUS = {
+    "confirme": ("Confirmé", "Vu en jeu et documenté (capture, vidéo ou guide précis) par au moins une source identifiée. Ça ne veut pas dire qu'on l'a testé nous-mêmes."),
+    "rumeur": ("Rumeur", "Rapporté par des joueurs ou un média, sans preuve vérifiable pour l'instant."),
+    "a-tester": ("À tester", "Décrit par une source, mais l'emplacement exact ou la façon de le déclencher reste à vérifier en jeu."),
+}
+EGG_ST = {k: v[0] for k, v in STATUS.items()}
+
+
+def status_badge(s):
+    return f'<span class="st st-{e(s)}">{e(EGG_ST.get(s, s))}</span>'
+
+
+def legend_html(open_=False):
+    rows = "".join(f"<dt>{status_badge(k)}</dt><dd>{e(d)}</dd>" for k, (_, d) in STATUS.items())
+    return (f'<details class="st-legend" data-status-legend{" open" if open_ else ""}><summary>Que veulent dire les statuts ?</summary>'
+            f'<dl>{rows}</dl><p>La mention <strong>« Testé par nous »</strong> n\'apparaît que si l\'équipe l\'a refait en jeu. '
+            'Une source citée n\'est pas un test.</p></details>')
+
+
+def tested_html(x):
+    if x.get("teste"):
+        return f'<span class="tested yes">Testé par nous le {fr_date(x["teste"])}</span>'
+    return '<span class="tested">Pas encore testé par nous</span>'
+
+
+# ---------- En-tête et pied de page : un seul modèle pour toutes les pages ----------
+SEARCH_ICO = '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>'
+
+
+def nav_html(prefix="", current=""):
+    cur = lambda h: ' aria-current="page"' if h == current else ""
+    return (f'<nav aria-label="Navigation principale">\n'
+            f'<a class="nav-search" href="{prefix}recherche.html" aria-label="Rechercher"{cur("recherche.html")}>{SEARCH_ICO}<span>Rechercher</span></a>\n'
+            f'<a href="{prefix}actus.html"{cur("actus.html")}>Actus</a>\n'
+            f'<a href="{prefix}index.html#guides">Guides</a>\n'
+            f'<a href="{prefix}index.html#chasse">Chasse<span class="nm"> aux secrets</span></a>\n'
+            f'<a href="{prefix}matos.html"{cur("matos.html")}>Le matos</a>\n'
+            f'<a class="btn" href="{prefix}index.html#newsletter">Newsletter</a>\n</nav>')
+
+
+def footer_inner(prefix=""):
+    return (f'<div class="wrap">\n<div>\n<a class="brand" href="{prefix}index.html"><b>GTASTUCE</b><i>Vice</i></a>\n'
+            '<small>Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto et les éléments associés sont des marques de Take-Two Interactive. Images : Rockstar Games (captures officielles), sauf mention contraire.</small>\n'
+            '</div>\n<nav aria-label="Liens légaux">\n'
+            f'<a href="{prefix}a-propos.html">Qui sommes-nous</a>\n<a href="{prefix}contact.html">Contact</a>\n'
+            f'<a href="{prefix}mentions-legales.html">Mentions légales</a>\n<a href="{prefix}mentions-legales.html#confidentialite">Confidentialité</a>\n'
+            '<button class="motion-toggle" type="button" aria-pressed="false">Couper les animations</button>\n'
+            '</nav>\n</div>')
+
+
+def header_html(prefix="", current=""):
+    return (f'<header>\n<div class="wrap">\n<a class="brand" href="{prefix}index.html" aria-label="GTASTUCE VICE, accueil"><b>GTASTUCE</b><i>Vice</i></a>\n'
+            f'{nav_html(prefix, current)}\n</div>\n</header>')
+
+
+def footer_html(prefix=""):
+    return f"<footer>\n{footer_inner(prefix)}\n</footer>"
 
 EXTRA_CSS = """<style>
 .related{margin-top:40px}
@@ -58,19 +188,63 @@ EXTRA_CSS = """<style>
 .c-guide{background:#B9A7FF}
 .cta{margin-top:28px;padding:20px;border-radius:16px;background:linear-gradient(135deg,#2A0F4A,#6B1E6E);border:1px solid var(--line)}
 .cta p{margin:0 0 12px;font-size:16px}
+.srcs h2{margin:0 0 8px;font-family:Inter,system-ui,sans-serif;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:2px;color:var(--teal)}
+.related .post h3{margin:0;font-size:17px;line-height:1.3}
 </style>"""
 
 
-def page(a, arts, css):
+def body_html(a):
+    """Corps d'article : paragraphes, intertitres (sommaire auto), étapes numérotées, tableau de commandes PS5/Xbox."""
+    out, toc, n = [], [], 0
+    for b in a["body"]:
+        if isinstance(b, str):
+            out.append(f"<p>{e(b)}</p>")
+        elif "h2" in b:
+            n += 1
+            sid = f"s{n}"
+            toc.append((sid, b["h2"]))
+            out.append(f'<h2 class="sec2" id="{sid}">{e(b["h2"])}</h2>')
+        elif "steps" in b:
+            out.append('<ol class="steps">' + "".join(f"<li><strong>{e(s['t'])}</strong>{e(s['d'])}</li>" for s in b["steps"]) + "</ol>")
+        elif "controls" in b:
+            c = b["controls"]
+            rows = "".join(f'<tr><th scope="row">{e(r[0])}</th><td data-label="PS5">{e(r[1])}</td><td data-label="Xbox">{e(r[2])}</td></tr>' for r in c["rows"])
+            out.append(f'<div class="ctrl-wrap"><table class="controls"><caption>{e(c["caption"])}</caption>'
+                       f'<thead><tr><th scope="col">Action</th><th scope="col">PS5</th><th scope="col">Xbox</th></tr></thead><tbody>{rows}</tbody></table></div>')
+    toc_html = ""
+    if len(toc) >= 3:
+        toc_html = ('<nav class="toc" aria-labelledby="toc-t"><h2 id="toc-t">Sommaire</h2><ol>'
+                    + "".join(f'<li><a href="#{sid}">{e(h)}</a></li>' for sid, h in toc) + "</ol></nav>")
+    return toc_html, "".join(out)
+
+
+GAMEPLAY = ("guide", "astuce", "secret")
+
+
+def page(a, arts, css, secrets_by_id):
     url = f"{BASE}/actus/{a['slug']}.html"
     img_abs = f"{BASE}/{a['img']}"
+    size = jpeg_size(os.path.join(ROOT, a["img"]))
     cat = CATS.get(a["cat"], a["cat"])
-    body = "".join(f"<p>{e(p)}</p>" for p in a["body"])
+    desc = a.get("desc") or trim(a["chapo"])
+    toc_html, body = body_html(a)
+    quick = f'<section class="quick" aria-labelledby="q-t"><h2 id="q-t">Réponse rapide</h2><p>{e(a["quick"])}</p></section>' if a.get("quick") else ""
     srcs = "".join(f'<li><a href="{e(s["u"])}" target="_blank" rel="noopener">{e(s["t"])}</a></li>' for s in a["sources"])
+    verif = ""
+    if a["cat"] in GAMEPLAY:
+        verif = (f'<p class="verif"><strong>Testé par nous en jeu :</strong> oui, le {fr_date(a["teste"])}.</p>' if a.get("teste") else
+                 '<p class="verif"><strong>Testé par nous en jeu :</strong> pas encore. Les infos viennent des sources ci-dessus ; on mettra la page à jour après vérification.</p>')
+    sbox = ""
+    ids = [i for i in a.get("secrets", []) if i in secrets_by_id]
+    if ids:
+        items = "".join(f'<li>{status_badge(secrets_by_id[i]["status"])}<a href="../index.html#egg-{e(i)}">{e(secrets_by_id[i]["title"])}</a>{tested_html(secrets_by_id[i])}</li>' for i in ids)
+        sbox = (f'<section class="statusbox" aria-labelledby="sb-t"><h2 id="sb-t">Le statut des secrets de cet article</h2><ul>{items}</ul>'
+                f'{legend_html()}</section>')
+    upd = f'<p class="updated">Mis à jour le {fr_date(a["updated"])}</p>' if a.get("updated") else ""
     rel = [x for x in arts if x["slug"] != a["slug"] and x["cat"] == a["cat"]][:3]
     rel += [x for x in arts if x["slug"] != a["slug"] and x not in rel][: 3 - len(rel)]
     rel_html = "".join(
-        f'<a class="post" href="{e(x["slug"])}.html"><img src="../{e(x["img"])}" alt="" loading="lazy"><div class="b"><div class="meta"><span class="cat c-{e(x["cat"])}">{e(CATS.get(x["cat"], x["cat"]))}</span><span>{fr_date(x["date"])}</span></div><h2>{e(x["title"])}</h2></div></a>'
+        f'<a class="post" href="{e(x["slug"])}.html">{img_html(x["img"], "../")}<div class="b"><div class="meta"><span class="cat c-{e(x["cat"])}">{e(CATS.get(x["cat"], x["cat"]))}</span><span>{fr_date(x["date"])}</span></div><h3>{e(x["title"])}</h3></div></a>'
         for x in rel)
     if a["cat"] == "secret":
         cta = '<div class="cta"><p><strong>Tu l\'as trouvé ?</strong> Coche-le dans la chasse aux secrets et monte en grade.</p><a class="btn" href="../index.html#chasse">La chasse aux secrets</a></div>'
@@ -78,59 +252,68 @@ def page(a, arts, css):
         cta = '<div class="cta"><p><strong>Une astuce GTA 6 par jour</strong>, en français et sans spoiler.</p><a class="btn" href="https://www.tiktok.com/@gtastucevice" target="_blank" rel="noopener">Suis-nous sur TikTok</a></div>'
     ld = {
         "@context": "https://schema.org",
-        "@type": "Article" if a["cat"] == "guide" else "NewsArticle",
+        "@type": "Article" if a["cat"] in ("guide", "astuce") else "NewsArticle",
         "headline": a["title"][:110],
-        "description": a["chapo"],
+        "description": desc,
         "image": [img_abs],
         "datePublished": a["date"],
         "dateModified": a.get("updated", a["date"]),
         "inLanguage": "fr-FR",
         "mainEntityOfPage": url,
-        "author": {"@type": "Organization", "name": "GTASTUCE VICE", "url": BASE},
-        "publisher": {"@type": "Organization", "name": "GTASTUCE VICE", "url": BASE},
+        "author": {"@type": "Organization", "name": "GTASTUCE VICE", "url": BASE + "/"},
+        "publisher": {"@type": "Organization", "name": "GTASTUCE VICE", "url": BASE + "/", "logo": {"@type": "ImageObject", "url": f"{BASE}/favicon-512.png"}},
     }
+    crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": BASE + "/"},
+        {"@type": "ListItem", "position": 2, "name": "Actus", "item": f"{BASE}/actus.html"},
+        {"@type": "ListItem", "position": 3, "name": a["title"], "item": url}]}
+    dims = f'<meta property="og:image:width" content="{size[0]}">\n<meta property="og:image:height" content="{size[1]}">' if size else ""
     return f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(a['title'])} – GTASTUCE VICE</title>
-<meta name="description" content="{e(a['chapo'])}">
+<title>{e(title_tag(a['title']))}</title>
+<meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{e(a['title'])}">
-<meta property="og:description" content="{e(a['chapo'])}">
+<meta property="og:description" content="{e(desc)}">
 <meta property="og:image" content="{img_abs}">
+{dims}
 <meta property="og:url" content="{url}">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="GTASTUCE VICE">
-<meta property="og:image:alt" content="{e(a['title'])}">
+<meta property="og:image:alt" content="{e(a.get('img_alt') or a['title'])}">
+<meta property="article:published_time" content="{e(a['date'])}">
 <meta name="twitter:card" content="summary_large_image">
 {ICONS}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Yellowtail&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+{FONTS}
 {css}
 {EXTRA_CSS}
-<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps([ld, crumbs], ensure_ascii=False)}</script>
 </head>
 <body>
-{HEADER}
-<main class="page"><div class="wrap">
+{header_html("../")}
+<main class="page" id="contenu"><div class="wrap">
 <article class="full">
 <a class="back" href="../actus.html">← Toutes les actus</a>
 <div class="meta"><span class="cat c-{e(a['cat'])}">{e(cat)}</span><time datetime="{e(a['date'])}">{fr_date(a['date'])}</time></div>
 <h1>{e(a['title'])}</h1>
 <p class="chapo">{e(a['chapo'])}</p>
-<img src="../{e(a['img'])}" alt="" style="margin-bottom:6px">
+{upd}
+{quick}
+{img_html(a["img"], "../", "hero", a.get("img_alt", ""), priority=True, extra=' style="margin-bottom:6px"')}
 <p style="font-size:13px;color:#8F84B8;margin:0 0 22px">{e(a.get('credit', ''))}</p>
+{toc_html}
+{sbox}
 {body}
-<div class="srcs"><h3>Sources</h3><ul>{srcs}</ul></div>
+<div class="srcs"><h2 class="h3">Sources</h2><ul>{srcs}</ul>{verif}</div>
 {cta}
 </article>
-<section class="related" aria-label="À lire aussi"><h2>À lire aussi</h2><div class="feed">{rel_html}</div></section>
+<section class="related" aria-labelledby="rel-t"><h2 id="rel-t">À lire aussi</h2><div class="feed">{rel_html}</div></section>
 </div></main>
-{FOOTER}
+{footer_html("../")}
 </body>
 </html>
 """
@@ -179,11 +362,12 @@ def fill(src, key, html_):
 
 
 def meta_html(a):
-    return f'<div class="meta"><span class="cat c-{e(a["cat"])}">{e(CATS.get(a["cat"], a["cat"]))}</span><span>{fr_date(a["date"])}</span></div>'
+    return (f'<div class="meta"><span class="cat c-{e(a["cat"])}">{e(CATS.get(a["cat"], a["cat"]))}</span>'
+            f'<time datetime="{e(a["date"])}">{fr_date(a["date"])}</time></div>')
 
 
-def post_card(a, prefix="", h="h3"):
-    return (f'<a class="post" href="{prefix}actus/{e(a["slug"])}.html"><img src="{prefix}{e(a["img"])}" alt="" loading="lazy">'
+def post_card(a, prefix="", h="h3", attrs=""):
+    return (f'<a class="post" href="{prefix}actus/{e(a["slug"])}.html"{attrs}>{img_html(a["img"], prefix)}'
             f'<div class="b">{meta_html(a)}<{h}>{e(a["title"])}</{h}><p>{e(a["chapo"])}</p></div></a>')
 
 
@@ -192,42 +376,53 @@ HUBS = [
     {"slug": "gta-6-argent", "nav": "Argent", "title": "GTA 6 argent : comment gagner de l'argent vite (sans glitch)",
      "h1": "Gagner de l'argent dans GTA 6", "desc": "Toutes nos astuces pour gagner de l'argent dans GTA 6 sans glitch : premières heures, braquages, plongées, voitures à revendre.",
      "intro": "Au début de GTA 6, l'argent est rare, c'est voulu. Ici on rassemble toutes nos astuces pour remplir ton compte proprement, sans glitch ni triche qui risquent de te faire bannir. La page se met à jour à chaque nouvel article.",
-     "kw": ["argent", "cash", "braquage", "épave", "revend", "dollars", "fauché"]},
+     "kw": ["argent", "cash", "fauché"], "pin": ["2026-11-19-argent-debut-gta-6"]},
     {"slug": "gta-6-carte", "nav": "Carte & lieux", "title": "Carte de GTA 6 : Leonida, Vice City et tous les lieux",
      "h1": "La carte de GTA 6 : Leonida et Vice City", "desc": "Les régions de Leonida, les quartiers de Vice City et les lieux à ne pas rater dans GTA 6, mis à jour en continu.",
      "intro": "Leonida, c'est la Floride version Rockstar : Vice City, les Keys, les marais, la côte oubliée, la campagne et la montagne. Retrouve ici tous nos guides et articles sur la carte et les lieux à visiter.",
-     "kw": ["carte", "région", "leonida", "keys", "grassrivers", "port gellhorn", "ambrosia", "kalaga", "washington island", "quartier"]},
+     "kw": ["carte", "leonida", "région"]},
     {"slug": "gta-6-easter-eggs", "nav": "Easter eggs", "title": "Easter eggs GTA 6 : tous les secrets trouvés",
      "h1": "Tous les easter eggs et secrets de GTA 6", "desc": "Bigfoot, l'œuf de Pâques, l'appartement de Dexter… tous les easter eggs de GTA 6 trouvés par les joueurs, avec où les trouver.",
      "intro": "Rockstar a caché des dizaines de clins d'œil dans Leonida. On liste ici ceux qui sont trouvés et relayés, avec leur statut (confirmé, rumeur, à tester) et où les chercher. Coche ceux que tu as trouvés dans la chasse aux secrets.",
-     "kw": ["easter egg", "secret", "bigfoot", "clin d'œil", "dexter"], "cats": ["secret"], "eggs": True},
+     "kw": ["easter egg", "secret"], "eggs": True},
     {"slug": "gta-6-police", "nav": "Police", "title": "Police GTA 6 : étoiles, recherche et comment semer les flics",
      "h1": "La police dans GTA 6", "desc": "Comment marche le système de recherche de GTA 6 et comment semer la police : étoiles, icônes, zones chaudes.",
      "intro": "La police de GTA 6 a de la mémoire : elle retient ta tenue, ta voiture, ton arme. Tous nos conseils pour comprendre le système de recherche et semer les flics sont ici.",
-     "kw": ["police", "flic", "étoile", "recherche"]},
+     "kw": ["police", "flics"]},
     {"slug": "gta-6-debuter", "nav": "Bien débuter", "title": "Bien débuter GTA 6 : astuces, réglages et erreurs à éviter",
      "h1": "Bien débuter sur GTA 6", "desc": "Les astuces, réglages et réflexes à avoir pour bien démarrer GTA 6 sans spoiler.",
      "intro": "Tu lances GTA 6 pour la première fois ? Réglages, premiers réflexes, erreurs à éviter, spoilers à bloquer : tout ce qu'il faut savoir pour bien démarrer, sans rien te gâcher.",
-     "kw": ["débuter", "démarrer", "réglage", "spoiler", "plant", "astuces pour"], "cats": ["astuce"]},
+     "kw": ["débuter", "démarrer", "réglages"]},
 ]
 
 
 def hub_articles(h, arts):
-    out = []
+    """Articles d'une page sujet, triés par pertinence puis par date.
+    - champ « topics » de l'article : sujets choisis à la rédaction (le premier = sujet principal) ;
+    - sans « topics » (vieux articles) : mot-clé entier dans le titre ou le chapô seulement, jamais dans le corps
+      (avant, « dollars » dans un article sur les licenciements le faisait apparaître dans « Argent »).
+    Renvoie (principaux, secondaires)."""
+    main_, side = [], []
     for a in arts:
-        txt = (a["title"] + " " + a["chapo"] + " " + " ".join(a["body"])).lower()
-        if a["cat"] in h.get("cats", []) or any(k in txt for k in h["kw"]):
-            out.append(a)
-    return out
+        if "topics" in a:
+            if a["topics"][:1] == [h["slug"]]:
+                main_.append(a)
+            elif h["slug"] in a["topics"]:
+                side.append(a)
+        else:
+            txt = (a["title"] + " " + a["chapo"]).lower()
+            if any(re.search(r"(?<!\w)" + re.escape(k) + r"(?!\w)", txt) for k in h["kw"]):
+                side.append(a)
+    pin = h.get("pin", [])
+    main_.sort(key=lambda a: pin.index(a["slug"]) if a["slug"] in pin else len(pin))  # tri stable : la date reste l'ordre secondaire
+    return main_, side
 
 
-EGG_ST = {"confirme": "Confirmé", "rumeur": "Rumeur", "a-tester": "À tester"}
-
-
-def egg_card(x):
-    return (f'<div class="egg" id="egg-{e(x["id"])}"><div class="row" style="margin:0"><span class="st st-{e(x["status"])}">{EGG_ST.get(x["status"], x["status"])}</span></div>'
+def egg_card(x, check=False, found_label="Je l'ai trouvé"):
+    btn = (f'<button class="check" type="button" data-id="{e(x["id"])}" aria-pressed="false">{found_label}</button>' if check else "<span></span>")
+    return (f'<div class="egg" id="egg-{e(x["id"])}"><div class="row" style="margin:0">{status_badge(x["status"])}{tested_html(x)}</div>'
             f'<h3>{e(x["title"])}</h3><p><strong>Où :</strong> {e(x["where"])}</p><p>{e(x["how"])}</p>'
-            f'<div class="row"><span></span><a class="src" href="{e(x["source"]["u"])}" target="_blank" rel="noopener">Source : {e(x["source"]["t"])}</a></div></div>')
+            f'<div class="row">{btn}<a class="src" href="{e(x["source"]["u"])}" target="_blank" rel="noopener">Source : {e(x["source"]["t"])}</a></div></div>')
 
 
 SIMPLE_CSS = """<style>
@@ -273,8 +468,10 @@ def topics_html(prefix=""):
     return "".join(f'<a href="{prefix}{h["slug"]}.html">{e(h["nav"])}</a>' for h in HUBS)
 
 
-def simple_page(path, title, desc, h1, kicker, body, ld=None):
+def simple_page(path, title, desc, h1, kicker, body, ld=None, topics=True):
     ldj = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ""
+    title, desc = title_tag(title), trim(desc)
+    more = f'<h2>Les autres sujets</h2>\n<div class="topics">{topics_html()}</div>' if topics else ""
     return f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -289,15 +486,14 @@ def simple_page(path, title, desc, h1, kicker, body, ld=None):
 {ldj}
 </head>
 <body>
-{HEADER.replace('../', '')}
-<main><div class="wrap">
+{header_html("", path)}
+<main id="contenu"><div class="wrap">
 <div class="kicker">{e(kicker)}</div>
 <h1>{e(h1)}</h1>
 {body}
-<h2>Les autres sujets</h2>
-<div class="topics">{topics_html()}</div>
+{more}
 </div></main>
-{FOOTER.replace('../', '')}
+{footer_html()}
 </body>
 </html>
 """
@@ -314,8 +510,35 @@ ABOUT_BODY = """<p class="lead">GTASTUCE VICE, c'est le fil français de GTA 6 :
 <li><strong>Transparence :</strong> nos articles sont rédigés avec l'aide d'outils d'intelligence artificielle, à partir des sources citées, et mis à jour dès qu'une info évolue.</li>
 </ul></div>
 <div class="box"><h2 style="margin-top:0">Nous contacter</h2>
-<p>Une info, une correction, un secret trouvé en jeu, une proposition de partenariat ? Écris-nous à <strong>gtastucevice@gmail.com</strong> ou en commentaire sur nos réseaux.</p>
+<p>Une info, une correction, un secret trouvé en jeu, une proposition de partenariat ? Écris-nous à <a href="mailto:gtastucevice@gmail.com">gtastucevice@gmail.com</a> ou en commentaire sur nos réseaux. Tous les moyens de nous joindre sont sur la <a href="contact.html">page Contact</a>.</p>
 <p style="color:var(--mute);font-size:14px">Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto est une marque de Take-Two Interactive. Images : Rockstar Games, sauf mention contraire.</p></div>"""
+
+
+CONTACT_BODY = """<p class="lead">Une info, une correction, un secret trouvé en jeu, une proposition de partenariat ? Voici comment nous joindre.</p>
+<div class="box legal"><h2 style="margin-top:0">Par email</h2>
+<p><a class="btn" href="mailto:gtastucevice@gmail.com">gtastucevice@gmail.com</a></p>
+<p>Pour une correction, indique l'adresse de la page et ce qui ne va pas. On corrige et on met la date de mise à jour sur l'article.</p></div>
+<div class="box legal"><h2 style="margin-top:0">Tu as trouvé un secret en jeu ?</h2>
+<p>Utilise le formulaire <a href="index.html#proposer">Proposer un secret</a> : on vérifie et on te crédite avec ton pseudo.</p></div>
+<div class="box legal"><h2 style="margin-top:0">Sur les réseaux</h2>
+<p><a href="https://www.tiktok.com/@gtastucevice" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/gtastucevice/" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@gtastucevice" rel="noopener">YouTube</a> : @gtastucevice</p></div>
+<div class="box legal"><h2 style="margin-top:0">La newsletter</h2>
+<p>Le Brief de Vice arrive chaque vendredi. <a href="index.html#newsletter">Inscris-toi sur l'accueil</a>.</p></div>"""
+
+LEGAL_BODY = """<div class="box legal"><h2 style="margin-top:0" id="editeur">Éditeur</h2>
+<p>GTASTUCE VICE, site édité par un particulier à titre non professionnel. Conformément à l'article 6, III, 2 de la loi n° 2004-575 du 21 juin 2004 (LCEN), l'éditeur a choisi de ne pas publier son identité ; elle est connue de l'hébergeur. Contact : <a href="mailto:gtastucevice@gmail.com">gtastucevice@gmail.com</a>.</p></div>
+<div class="box legal"><h2 style="margin-top:0" id="hebergeur">Hébergeur</h2>
+<p>GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p></div>
+<div class="box legal"><h2 style="margin-top:0" id="confidentialite">Confidentialité</h2>
+<p><strong>Newsletter :</strong> ton adresse est transmise via le service FormSubmit (formsubmit.co) à la boîte mail du projet. Elle sert uniquement à l'envoi du Brief de Vice : elle n'est ni vendue ni partagée. Tu peux te désinscrire depuis chaque email ou demander la suppression de tes données à gtastucevice@gmail.com.</p>
+<p><strong>Proposer un secret :</strong> ton pseudo et ta proposition sont transmis par FormSubmit à la boîte mail du projet, uniquement pour vérifier le secret et te créditer. Ne mets pas d'information personnelle.</p>
+<p><strong>Chasse aux secrets :</strong> ta progression est enregistrée uniquement dans ton navigateur (stockage local). Rien n'est envoyé. Le choix « Couper les animations » est enregistré de la même façon.</p>
+<p><strong>Mesure d'audience :</strong> le site utilise GoatCounter (gtastucevice.goatcounter.com) pour compter les visites de façon agrégée.</p>
+<p><strong>Polices de caractères :</strong> elles sont chargées depuis Google Fonts ; ton navigateur contacte donc les serveurs de Google à l'ouverture des pages.</p></div>
+<div class="box legal"><h2 style="margin-top:0" id="affiliation">Liens affiliés</h2>
+<p>La page <a href="matos.html">Le matos</a> contient des liens affiliés Amazon. En tant que Partenaire Amazon, GTASTUCE VICE réalise un bénéfice sur les achats remplissant les conditions requises. Ça ne change pas le prix que tu paies.</p></div>
+<div class="box legal"><h2 style="margin-top:0" id="marques">Marques et images</h2>
+<p>Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto est une marque de Take-Two Interactive. Images : Rockstar Games (captures officielles), sauf mention contraire.</p></div>"""
 
 
 # ---------- Carte des secrets (schéma, positions approximatives) ----------
@@ -400,12 +623,9 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 
 MOBILE_CSS = """
 @media (max-width:640px){
- header .wrap{flex-wrap:nowrap;gap:12px;padding-top:8px;padding-bottom:8px}
+ header .wrap{gap:4px 12px;padding-top:8px;padding-bottom:6px}
  .brand b{font-size:17px}.brand i{font-size:24px}
- header nav{flex-wrap:nowrap;overflow-x:auto;gap:14px;font-size:14px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent)}
- header nav::-webkit-scrollbar{display:none}
  header nav a{white-space:nowrap}
- header nav .btn{display:none}
  section{padding:34px 0}
  .une{padding-top:18px}
  a.lead{min-height:300px}a.lead .txt{padding:18px}
@@ -434,11 +654,13 @@ MOBILE_CSS = """
 SEARCH_JS = r"""<script>
 const HUBS=__HUBS__;
 const CATS={actu:'Actu',test:'Tests',astuce:'Astuces',secret:'Secrets',drama:'Drama',guide:'Guides'};
-const ST={confirme:'Confirmé',rumeur:'Rumeur','a-tester':'À tester'};
+const ST=__ST__;
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 let ARTS=[],EGGS=[];
 const q=document.getElementById('q'),out=document.getElementById('sres'),cnt=document.getElementById('scount');
+const flat=a=>(a.body||[]).map(b=>typeof b==='string'?b:b.h2||(b.steps||[]).map(s=>s.t+' '+s.d).join(' ')||((b.controls||{}).rows||[]).map(r=>r.join(' ')).join(' ')).join(' ')+' '+(a.quick||'');
+const thumb=src=>/^assets\/[^/]+\.jpg$/.test(src)?src.replace(/^assets\/(.+)\.jpg$/,'assets/thumbs/$1-480.jpg'):src;
 function score(words,fields){let t=0;for(const w of words){let hit=false;fields.forEach(([txt,wt])=>{if(norm(txt).includes(w)){t+=wt;hit=true}});if(!hit)return 0}return t}
 function hl(s,words){let h=esc(s);words.forEach(w=>{if(w.length<2)return;const n=norm(h);let i=n.indexOf(w);if(i>=0)h=h.slice(0,i)+'<mark>'+h.slice(i,i+w.length)+'</mark>'+h.slice(i+w.length)});return h}
 function run(){
@@ -447,8 +669,8 @@ function run(){
  if(!words.length){out.innerHTML='';cnt.textContent='';return}
  const r=[];
  HUBS.forEach(h=>{const s=score(words,[[h.nav,6],[h.title,3],[h.desc,1]]);if(s)r.push([s+5,`<a class="egglink" href="${h.slug}.html"><span class="cat c-guide">Sujet</span> <strong>${hl(h.title,words)}</strong><small>${esc(h.desc)}</small></a>`])});
- ARTS.forEach(a=>{const s=score(words,[[a.title,6],[a.chapo,3],[(a.body||[]).join(' '),1]]);if(s)r.push([s,`<a class="post" href="actus/${esc(a.slug)}.html"><img src="${esc(a.img)}" alt="" loading="lazy"><div class="b"><div class="meta"><span class="cat c-${esc(a.cat)}">${CATS[a.cat]||esc(a.cat)}</span></div><h3>${hl(a.title,words)}</h3><p>${esc(a.chapo)}</p></div></a>`])});
- EGGS.forEach(e=>{const s=score(words,[[e.title,6],[e.where,3],[e.how,2]]);if(s)r.push([s,`<a class="egglink" href="index.html#egg-${esc(e.id)}"><span class="cat c-secret">Secret · ${ST[e.status]||''}</span> <strong>${hl(e.title,words)}</strong><small>Où : ${esc(e.where)}</small></a>`])});
+ ARTS.forEach(a=>{const s=score(words,[[a.title,6],[a.chapo,3],[flat(a),1]]);if(s)r.push([s,`<a class="post" href="actus/${esc(a.slug)}.html"><img src="${esc(thumb(a.img))}" alt="" loading="lazy" width="480" height="270"><div class="b"><div class="meta"><span class="cat c-${esc(a.cat)}">${CATS[a.cat]||esc(a.cat)}</span></div><h3>${hl(a.title,words)}</h3><p>${esc(a.chapo)}</p></div></a>`])});
+ EGGS.forEach(e=>{const s=score(words,[[e.title,6],[e.where,3],[e.how,2]]);if(s)r.push([s,`<a class="egglink" href="index.html#egg-${esc(e.id)}"><span class="cat c-secret">Secret</span> <span class="st st-${esc(e.status)}">${ST[e.status]||''}</span> <strong>${hl(e.title,words)}</strong><small>Où : ${esc(e.where)}</small></a>`])});
  r.sort((a,b)=>b[0]-a[0]);
  cnt.textContent=r.length?r.length+' résultat'+(r.length>1?'s':''):'';
  out.innerHTML=r.length?r.map(x=>x[1]).join(''):'<p>Rien trouvé pour « '+esc(v)+' ». Essaie un autre mot, ou demande-nous en commentaire sur <a href="https://www.tiktok.com/@gtastucevice" target="_blank" rel="noopener">TikTok</a> : on en fera peut-être un guide.</p>';
@@ -464,114 +686,200 @@ SEARCH_BODY = """<form class="homesearch" role="search" onsubmit="return false">
 <div class="sres feed" id="sres"></div>"""
 
 
+def chips_html(cats, label, current="all"):
+    return (f'<div class="chips" role="group" aria-label="{e(label)}">'
+            + "".join(f'<button class="chip" type="button" data-c="{c}" aria-pressed="{str(c == current).lower()}">{"Tout" if c == "all" else e(CATS[c])}</button>' for c in cats)
+            + "</div>")
+
+
+def shared_chrome(t, prefix="", current=""):
+    """Remplace la navigation et le pied de page d'une page écrite à la main par les modèles communs."""
+    t = fill(t, "nav", nav_html(prefix, current))
+    t = fill(t, "footer", footer_inner(prefix))
+    return t
+
+
 def build_static_pages(arts, secrets):
     home = [a for a in arts if a["cat"] != "guide"]
     guides = [a for a in arts if a["cat"] in ("guide", "astuce")]
-    # Accueil
+    # ---------- Accueil (rendu complet au build : plus de second rendu en JavaScript) ----------
     p = os.path.join(ROOT, "index.html"); t = open(p, encoding="utf-8").read()
     t = fill(t, "head", head_block("", "GTAstuce Vice – Astuces, actus et secrets GTA 6 en français",
                                    "GTASTUCE VICE (GTAstuce) : astuces GTA 6, actus, guides, easter eggs et secrets de Leonida, en français, sourcés et sans spoiler."))
-    t = re.sub(r"<title>.*?</title>", "<title>GTAstuce Vice – Astuces, actus et secrets GTA 6 en français</title>", t, count=1)
-    t = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="GTASTUCE VICE (GTAstuce) : astuces GTA 6, actus, guides, easter eggs et secrets de Leonida, en français, sourcés et sans spoiler.">', t, count=1)
+    t = shared_chrome(t)
     if home:
         L = home[0]
-        t = fill(t, "lead", f'<a class="lead" href="actus/{e(L["slug"])}.html"><img src="{e(L["img"])}" alt=""><span class="ov"></span><div class="txt">{meta_html(L)}<h2>{e(L["title"])}</h2><p>{e(L["chapo"])}</p></div></a>')
-        t = fill(t, "side", "".join(f'<a class="mini" href="actus/{e(a["slug"])}.html"><img src="{e(a["img"])}" alt="" loading="lazy"><div>{meta_html(a)}<h3>{e(a["title"])}</h3></div></a>' for a in home[1:5]))
+        t = fill(t, "lead", f'<a class="lead" href="actus/{e(L["slug"])}.html">{img_html(L["img"], "", "lead", priority=True)}<span class="ov"></span><div class="txt">{meta_html(L)}<h2>{e(L["title"])}</h2><p>{e(L["chapo"])}</p></div></a>')
+        t = fill(t, "side", "".join(f'<a class="mini" href="actus/{e(a["slug"])}.html">{img_html(a["img"], "", "mini")}<div>{meta_html(a)}<h3>{e(a["title"])}</h3></div></a>' for a in home[1:5]))
         tk = "".join(f'<a href="actus/{e(a["slug"])}.html">{e(a["title"])}</a>' for a in home[:8])
-        t = fill(t, "ticker", tk + tk)
-        t = fill(t, "feed", "".join(post_card(a) for a in home[5:14]))
+        dup = "".join(f'<a href="actus/{e(a["slug"])}.html" tabindex="-1">{e(a["title"])}</a>' for a in home[:8])
+        t = fill(t, "ticker", tk + f'<span aria-hidden="true" style="display:contents">{dup}</span>')
+        # Le fil : tous les articles sont dans la page ; le filtre ne fait qu'afficher/masquer (9 max)
+        cards = []
+        for i, a in enumerate(home):
+            vis = 5 <= i < 14
+            cards.append(post_card(a, attrs=f' data-cat="{e(a["cat"])}"' + (' data-top="1"' if i < 5 else "") + ("" if vis else " hidden")))
+        t = fill(t, "feed", "".join(cards))
+        cats = ["all"] + [c for c in CATS if c != "guide" and any(a["cat"] == c for a in home)]
+        t = fill(t, "chips", chips_html(cats, "Filtrer les actus"))
     t = fill(t, "guides", "".join(post_card(a) for a in guides[:6]))
     t = fill(t, "topics", topics_html())
-    t = fill(t, "eggs", "".join(egg_card(x) for x in secrets))
+    t = fill(t, "legend", legend_html())
+    t = fill(t, "eggs", "".join(egg_card(x, check=True) for x in secrets))
     t = fill(t, "sc", f"0/{len(secrets)}")
+    t = fill(t, "nbeggs", f"Voir les {len(secrets)} secrets")
     t = fill(t, "map", map_svg(secrets))
     t = fill(t, "css", MAP_CSS + SEARCH_CSS + MOBILE_CSS)
     t = fill(t, "ld", '<script type="application/ld+json">' + json.dumps([
-        {"@context": "https://schema.org", "@type": "WebSite", "name": "GTASTUCE VICE", "alternateName": ["GTAstuce", "GTA Stuce", "GTAstuce Vice", "gtastucevice"], "url": BASE + "/", "inLanguage": "fr-FR"},
+        {"@context": "https://schema.org", "@type": "WebSite", "name": "GTASTUCE VICE", "alternateName": ["GTAstuce", "GTA Stuce", "GTAstuce Vice", "gtastucevice"], "url": BASE + "/", "inLanguage": "fr-FR",
+         "potentialAction": {"@type": "SearchAction", "target": BASE + "/recherche.html?q={search_term_string}", "query-input": "required name=search_term_string"}},
         {"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "alternateName": "GTAstuce", "url": BASE + "/", "logo": BASE + "/favicon-512.png", "email": "gtastucevice@gmail.com",
          "sameAs": ["https://www.tiktok.com/@gtastucevice", "https://www.instagram.com/gtastucevice/", "https://www.youtube.com/@gtastucevice"]}], ensure_ascii=False) + "</script>")
     open(p, "w", encoding="utf-8").write(t)
-    # Liste des actus
+    # ---------- Liste des actus (statique + filtre) ----------
     p = os.path.join(ROOT, "actus.html"); t = open(p, encoding="utf-8").read()
     t = fill(t, "head", head_block("actus.html", "Actus GTA 6 – GTASTUCE VICE", "Toute l'actu GTA 6 en français : news, tests, astuces, secrets et dramas, sourcés."))
+    t = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Toute l\'actu GTA 6 en français : news, tests, astuces, secrets et dramas, sourcés.">', t, count=1)
+    t = shared_chrome(t, "", "actus.html")
     t = fill(t, "css", SEARCH_CSS + MOBILE_CSS)
-    t = fill(t, "actuslist", '<div class="kicker">Le fil GTA 6</div><h1 class="ptitle">Les actus</h1><div class="feed">' + "".join(post_card(a, h="h2") for a in arts) + "</div>")
+    cats = ["all"] + [c for c in CATS if any(a["cat"] == c for a in arts)]
+    t = fill(t, "actuslist", '<div class="kicker">Le fil GTA 6</div><h1 class="ptitle">Les actus</h1>'
+             '<p class="plead">News, tests, astuces, guides, secrets et dramas de GTA 6. Chaque info est sourcée : si c\'est une rumeur ou à tester en jeu, on te le dit.</p>'
+             + chips_html(cats, "Filtrer par catégorie") + '<p class="scount" id="fcount" role="status" aria-live="polite"></p>'
+             '<div class="feed">' + "".join(post_card(a, h="h2", attrs=f' data-cat="{e(a["cat"])}"') for a in arts) + "</div>"
+             '<p class="note">Images : Rockstar Games (captures officielles), sauf mention contraire. Site de fans non officiel, non affilié à Rockstar Games ni à Take-Two.</p>')
     open(p, "w", encoding="utf-8").write(t)
-    # Matos
+    # ---------- Matos ----------
     p = os.path.join(ROOT, "matos.html"); t = open(p, encoding="utf-8").read()
-    t = fill(t, "head", head_block("matos.html", "Le matos pour GTA 6 : SSD, casque, manette – GTASTUCE VICE", "Le matos utile pour jouer à GTA 6 sur PS5 et Xbox et les critères à vérifier avant d'acheter."))
+    t = fill(t, "head", head_block("matos.html", "Le matos pour GTA 6 : SSD, casque, manette", "Le matos utile pour jouer à GTA 6 sur PS5 et Xbox et les critères à vérifier avant d'acheter."))
+    t = re.sub(r"<title>.*?</title>", "<title>Le matos pour GTA 6 : SSD, casque, manette – GTASTUCE VICE</title>", t, count=1)
+    t = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Le matos utile pour jouer à GTA 6 sur PS5 et Xbox : SSD, casque audio 3D, manette, charge. Les critères à vérifier avant d\'acheter.">', t, count=1)
+    t = shared_chrome(t, "", "matos.html")
+    t = fill(t, "css", SEARCH_CSS + MOBILE_CSS)
     open(p, "w", encoding="utf-8").write(t)
-    # Qui sommes-nous
-    org = {"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "url": BASE, "logo": f"{BASE}/favicon-512.png", "email": "gtastucevice@gmail.com",
+    # ---------- Pages simples ----------
+    org = {"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "url": BASE + "/", "logo": f"{BASE}/favicon-512.png", "email": "gtastucevice@gmail.com",
            "sameAs": ["https://www.tiktok.com/@gtastucevice", "https://www.instagram.com/gtastucevice/", "https://www.youtube.com/@gtastucevice"]}
-    p = os.path.join(ROOT, "matos.html"); t = open(p, encoding="utf-8").read()
-    open(p, "w", encoding="utf-8").write(fill(t, "css", SEARCH_CSS + MOBILE_CSS))
     open(os.path.join(ROOT, "a-propos.html"), "w", encoding="utf-8").write(
-        simple_page("a-propos.html", "Qui sommes-nous – GTASTUCE VICE", "Qui est derrière GTASTUCE VICE, comment on choisit et vérifie nos infos sur GTA 6, et comment nous contacter.",
+        simple_page("a-propos.html", "Qui sommes-nous", "Qui est derrière GTASTUCE VICE, comment on choisit et vérifie nos infos sur GTA 6, et comment nous contacter.",
                     "Qui sommes-nous ?", "GTASTUCE VICE", ABOUT_BODY, org))
-    # Recherche
+    open(os.path.join(ROOT, "contact.html"), "w", encoding="utf-8").write(
+        simple_page("contact.html", "Contact", "Contacter GTASTUCE VICE : email, correction d'un article, secret trouvé en jeu, réseaux sociaux.",
+                    "Nous contacter", "GTASTUCE VICE", CONTACT_BODY, {"@context": "https://schema.org", "@type": "ContactPage", "url": f"{BASE}/contact.html", "about": org}, topics=False))
+    open(os.path.join(ROOT, "mentions-legales.html"), "w", encoding="utf-8").write(
+        simple_page("mentions-legales.html", "Mentions légales et confidentialité", "Mentions légales, hébergeur, données personnelles, mesure d'audience et liens affiliés du site GTASTUCE VICE.",
+                    "Mentions légales et confidentialité", "GTASTUCE VICE", LEGAL_BODY, topics=False))
+    # ---------- Recherche ----------
     hubs_js = json.dumps([{k: h[k] for k in ("slug", "nav", "title", "desc")} for h in HUBS], ensure_ascii=False)
-    sp = simple_page("recherche.html", "Rechercher – GTASTUCE VICE", "Cherche une astuce, un guide ou un secret de GTA 6 sur GTASTUCE VICE.",
-                     "Rechercher", "GTASTUCE VICE", SEARCH_BODY.replace("__ICON__", '<svg class="ico hs-ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>'))
-    sp = sp.replace("</body>", SEARCH_JS.replace("__HUBS__", hubs_js) + "\n</body>")
+    sp = simple_page("recherche.html", "Rechercher", "Cherche une astuce, un guide ou un secret de GTA 6 sur GTASTUCE VICE.",
+                     "Rechercher", "GTASTUCE VICE", SEARCH_BODY.replace("__ICON__", SEARCH_ICO.replace('class="ico"', 'class="ico hs-ico"')) + legend_html())
+    sp = sp.replace("</body>", SEARCH_JS.replace("__HUBS__", hubs_js).replace("__ST__", json.dumps(EGG_ST, ensure_ascii=False)) + "\n</body>")
     sp = sp.replace('<meta name="robots" content="max-image-preview:large">', '<meta name="robots" content="noindex,follow">')
     open(os.path.join(ROOT, "recherche.html"), "w", encoding="utf-8").write(sp)
-    # Pages sujets
+    # ---------- Pages sujets ----------
+    hub_dates = {}
     for h in HUBS:
-        lst = hub_articles(h, arts)
+        main_, side = hub_articles(h, arts)
+        lst = main_ + side
+        hub_dates[h["slug"]] = max([a.get("updated", a["date"]) for a in lst], default="")[:10]
         body = f'<p class="lead">{e(h["intro"])}</p>'
         if h.get("eggs"):
-            body += '<h2>La carte des secrets</h2>' + map_svg(secrets, "index.html") + '<h2>Les secrets trouvés</h2><div class="eggs">' + "".join(egg_card(x) for x in secrets) + '</div><p style="margin-top:16px"><a class="btn" href="index.html#chasse">Coche-les dans la chasse aux secrets</a></p>'
-        body += "<h2>Nos articles et guides</h2>" + ('<div class="feed">' + "".join(post_card(a) for a in lst) + "</div>" if lst else "<p>Les premiers articles arrivent très vite.</p>")
+            body += ('<h2>La carte des secrets</h2>' + map_svg(secrets, "index.html") + '<h2>Les secrets trouvés</h2>' + legend_html()
+                     + '<div class="eggs">' + "".join(egg_card(x) for x in secrets) + '</div><p style="margin-top:16px"><a class="btn" href="index.html#chasse">Coche-les dans la chasse aux secrets</a></p>')
+        if main_:
+            body += "<h2>L'essentiel</h2><div class=\"feed\">" + "".join(post_card(a) for a in main_) + "</div>"
+        if side:
+            body += f"<h2>{'Ça en parle aussi' if main_ else 'Nos articles et guides'}</h2><div class=\"feed\">" + "".join(post_card(a) for a in side) + "</div>"
+        if not lst:
+            body += "<p>Les premiers articles arrivent très vite.</p>"
         ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": h["title"], "description": h["desc"], "url": f"{BASE}/{h['slug']}.html", "inLanguage": "fr-FR",
               "hasPart": [{"@type": "Article", "headline": a["title"][:110], "url": f"{BASE}/actus/{a['slug']}.html"} for a in lst[:20]]}
         open(os.path.join(ROOT, h["slug"] + ".html"), "w", encoding="utf-8").write(
-            simple_page(h["slug"] + ".html", h["title"] + " – GTASTUCE VICE", h["desc"], h["h1"], "Le sujet", body, ld))
+            simple_page(h["slug"] + ".html", h["title"], h["desc"], h["h1"], "Le sujet", body, ld))
+    return hub_dates
 
 
-MOTION = '<link rel="stylesheet" href="/assets/motion.css">'
-MOTION_JS = '<script src="/assets/motion.js" defer></script>'
+# ---------- Ressources communes injectées dans toutes les pages ----------
+HEAD_ASSETS = ('<link rel="stylesheet" href="/assets/motion.css">\n<link rel="stylesheet" href="/assets/base.css">\n'
+               "<script>try{if(localStorage.getItem('gtv_motion')==='off')document.documentElement.classList.add('no-motion')}catch(e){}</script>\n"
+               '<script src="/assets/motion.js" defer></script>\n<script src="/assets/site.js" defer></script>')
 
 
-def inject_motion():
-    """Ajoute le motion design (assets/motion.css + motion.js) à toutes les pages HTML."""
+def all_pages():
     files = [os.path.join(ROOT, f) for f in os.listdir(ROOT) if f.endswith(".html")]
-    files += [os.path.join(ROOT, "actus", f) for f in os.listdir(os.path.join(ROOT, "actus")) if f.endswith(".html")]
-    for f in files:
+    return files + [os.path.join(ROOT, "actus", f) for f in os.listdir(os.path.join(ROOT, "actus")) if f.endswith(".html")]
+
+
+def inject_assets():
+    """Motion design + base.css + site.js + lien d'évitement, sur toutes les pages (idempotent)."""
+    for f in all_pages():
         t = open(f, encoding="utf-8").read()
-        if "/assets/motion.css" in t:
+        o = t
+        t = re.sub(r'<link rel="stylesheet" href="/assets/motion\.css">\n(?:<link rel="stylesheet" href="/assets/base\.css">\n<script>try\{.*?</script>\n)?<script src="/assets/motion\.js" defer></script>\n(?:<script src="/assets/site\.js" defer></script>\n)?', "", t, flags=re.S)
+        t = t.replace("</head>", HEAD_ASSETS + "\n</head>", 1)
+        if 'class="skip"' not in t:
+            t = re.sub(r"<body>\n?", '<body>\n<a class="skip" href="#contenu">Aller au contenu</a>\n', t, count=1)
+        if t != o:
+            open(f, "w", encoding="utf-8").write(t)
+
+
+def lastmods(paths, fixed):
+    """Date de dernière modification réelle (empreinte du contenu), au lieu de « aujourd'hui » à chaque build."""
+    store_p = os.path.join(ROOT, "lastmod.json")
+    store = json.load(open(store_p)) if os.path.exists(store_p) else {}
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    out = {}
+    for path in paths:
+        if fixed.get(path):
+            out[path] = fixed[path]
             continue
-        t = t.replace("</head>", MOTION + "\n" + MOTION_JS + "\n</head>", 1)
-        open(f, "w", encoding="utf-8").write(t)
+        txt = open(os.path.join(ROOT, path), encoding="utf-8").read()
+        h = hashlib.sha1(txt.encode()).hexdigest()
+        if store.get(path, [None])[0] != h:
+            store[path] = [h, today]
+        out[path] = store[path][1]
+    json.dump(store, open(store_p, "w"), indent=0, sort_keys=True)
+    return out
 
 
 def main():
     arts = json.load(open(os.path.join(ROOT, "articles.json"), encoding="utf-8"))
     arts.sort(key=lambda a: a["date"], reverse=True)
     secrets = json.load(open(os.path.join(ROOT, "secrets.json"), encoding="utf-8"))
-    build_static_pages(arts, secrets)
+    sec_ids = {s["id"] for s in secrets}
+    hub_slugs = {h["slug"] for h in HUBS}
+    for a in arts:  # garde-fous de rédaction
+        assert re.fullmatch(r"[a-z0-9-]+", a["slug"]), a["slug"]
+        assert os.path.exists(os.path.join(ROOT, a["img"])), a["img"]
+        assert set(a.get("topics", [])) <= hub_slugs, (a["slug"], a.get("topics"))
+        assert set(a.get("secrets", [])) <= sec_ids, (a["slug"], a.get("secrets"))
+        if "topics" not in a:
+            print(f"⚠ {a['slug']} : pas de champ topics (classement par mots-clés du titre)")
+    for s in secrets:
+        assert s["status"] in STATUS, (s["id"], s["status"])
+    hub_dates = build_static_pages(arts, secrets)
     css = styles()
     out = os.path.join(ROOT, "actus")
     os.makedirs(out, exist_ok=True)
     keep = set()
+    by_id = {s["id"]: s for s in secrets}
     for a in arts:
-        assert re.fullmatch(r"[a-z0-9-]+", a["slug"]), a["slug"]
-        assert os.path.exists(os.path.join(ROOT, a["img"])), a["img"]
         name = a["slug"] + ".html"
         keep.add(name)
-        open(os.path.join(out, name), "w", encoding="utf-8").write(page(a, arts, css))
+        open(os.path.join(out, name), "w", encoding="utf-8").write(page(a, arts, css, by_id))
     for f in os.listdir(out):
         if f.endswith(".html") and f not in keep:
             os.remove(os.path.join(out, f))
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    urls = [(f"{BASE}/", now), (f"{BASE}/actus.html", now), (f"{BASE}/matos.html", now)]
-    urls += [(f"{BASE}/{h['slug']}.html", now) for h in HUBS] + [(f"{BASE}/a-propos.html", now)]
+    inject_assets()
+    newest = max(a.get("updated", a["date"]) for a in arts)[:10]
+    static = ["index.html", "actus.html", "matos.html"] + [h["slug"] + ".html" for h in HUBS] + ["a-propos.html", "contact.html", "mentions-legales.html"]
+    lm = lastmods(static, {"index.html": newest, "actus.html": newest, **{h["slug"] + ".html": hub_dates.get(h["slug"]) for h in HUBS}})
+    urls = [(f"{BASE}/" if p == "index.html" else f"{BASE}/{p}", lm[p]) for p in static]
     urls += [(f"{BASE}/actus/{a['slug']}.html", a.get("updated", a["date"])[:10]) for a in arts]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     sm += "".join(f"<url><loc>{u}</loc><lastmod>{d}</lastmod></url>\n" for u, d in urls) + "</urlset>\n"
     open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(sm)
     open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
-    inject_motion()
     print(f"{len(arts)} pages générées dans actus/, sitemap.xml à jour")
 
 

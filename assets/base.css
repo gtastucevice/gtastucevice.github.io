@@ -1,0 +1,101 @@
+/* GTASTUCE VICE – règles communes à toutes les pages (injecté par build.py).
+   Focus clavier, lien d'évitement, navigation mobile, statuts, gabarit des guides. */
+
+/* Focus clavier visible partout (le style par défaut disparaissait sur fond sombre) */
+:focus-visible{outline:3px solid var(--yel,#FFE45C);outline-offset:3px;border-radius:4px}
+.post:focus-visible,.mini:focus-visible,.lead:focus-visible{outline-offset:2px;border-radius:16px}
+.homesearch input:focus-visible{outline:none}
+.homesearch:focus-within{outline:3px solid var(--yel,#FFE45C);outline-offset:2px}
+/* L'en-tête collant ne doit pas masquer l'élément qui reçoit le focus ou l'ancre visée */
+html{scroll-padding-top:110px}
+
+/* Lien d'évitement */
+.skip{position:fixed;left:12px;top:-60px;z-index:100;padding:10px 16px;border-radius:10px;background:var(--yel,#FFE45C);color:#170A33;font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+
+/* Navigation : sur mobile, deux lignes au lieu d'un bandeau qui défile et cache des liens */
+nav .nm{display:inline}
+@media (max-width:640px){
+ header .wrap{flex-wrap:wrap!important;row-gap:4px!important}
+ header nav{flex:1 1 100%;flex-wrap:nowrap!important;overflow:visible!important;-webkit-mask-image:none!important;mask-image:none!important;justify-content:space-between;gap:6px!important;font-size:14px}
+ header nav a{padding:8px 2px;min-height:40px;display:inline-flex;align-items:center}
+ header nav .nm{display:none}
+ header nav .btn{display:none!important}
+}
+
+/* Statuts des secrets : une seule définition, affichée partout où un statut apparaît */
+.st-legend{margin:12px 0 18px;padding:14px 16px;border:1px solid var(--line,#3A2366);border-radius:14px;background:rgba(23,10,51,.6);font-size:14px;color:var(--soft,#C9BFE8)}
+.st-legend summary{cursor:pointer;font-weight:700;color:#fff}
+.st-legend dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 12px;margin:10px 0 0;align-items:start}
+.st-legend dt{margin:0}.st-legend dd{margin:0}
+.st-legend p{margin:10px 0 0}
+.tested{font-size:12px;color:var(--mute,#A99BD6)}
+.tested.yes{color:var(--teal,#2EE6D6);font-weight:700}
+.statusbox{margin:22px 0;padding:16px 18px;border:1px solid var(--line,#3A2366);border-left:4px solid var(--yel,#FFE45C);border-radius:14px;background:var(--night2,#221042)}
+.statusbox h2{font-family:Inter,system-ui,sans-serif!important;font-weight:700!important;font-size:17px!important;margin:0 0 10px!important}
+.statusbox ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.statusbox li{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+
+/* Gabarit des guides */
+.quick{margin:18px 0 22px;padding:18px 20px;border-radius:16px;background:linear-gradient(135deg,rgba(46,230,214,.14),rgba(255,61,127,.12));border:1px solid var(--teal,#2EE6D6)}
+.quick h2{font-family:Inter,system-ui,sans-serif!important;font-weight:700!important;font-size:13px!important;letter-spacing:2px;text-transform:uppercase;color:var(--teal,#2EE6D6);margin:0 0 6px!important}
+.quick p{margin:0;font-size:17px;color:#fff}
+.toc{margin:0 0 26px;padding:14px 18px;border:1px solid var(--line,#3A2366);border-radius:14px;background:var(--night2,#221042)}
+.toc h2{font-family:Inter,system-ui,sans-serif!important;font-weight:700!important;font-size:15px!important;margin:0 0 8px!important}
+.toc ol{margin:0;padding-left:20px;display:grid;gap:4px}
+.toc a{color:var(--teal,#2EE6D6)}
+article.full h2.sec2{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(21px,2.6vw,26px);line-height:1.15;margin:34px 0 12px}
+ol.steps{counter-reset:st;list-style:none;margin:0 0 18px;padding:0;display:grid;gap:12px}
+ol.steps li{counter-increment:st;position:relative;padding:14px 16px 14px 58px;border-radius:14px;background:var(--night2,#221042);border:1px solid var(--line,#3A2366)}
+ol.steps li::before{content:counter(st);position:absolute;left:14px;top:12px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--pink,#FF3D7F);color:#170A33;font-family:'Archivo Black',sans-serif;font-size:15px}
+ol.steps li strong{display:block;margin-bottom:2px}
+.ctrl-wrap{overflow-x:auto;margin:0 0 18px}
+table.controls{width:100%;border-collapse:collapse;font-size:15px;min-width:420px}
+table.controls caption{text-align:left;font-weight:700;margin-bottom:8px;color:var(--soft,#C9BFE8)}
+table.controls th,table.controls td{padding:10px 12px;border-bottom:1px solid var(--line,#3A2366);text-align:left;vertical-align:top}
+table.controls thead th{color:var(--teal,#2EE6D6);font-size:13px;text-transform:uppercase;letter-spacing:1px}
+table.controls kbd{display:inline-block;padding:1px 7px;border-radius:6px;border:1px solid var(--line,#3A2366);background:#170A33;font:700 13px Inter,system-ui,sans-serif}
+.verif{margin:6px 0 0;font-size:14px;color:var(--soft,#C9BFE8)}
+.updated{font-size:12px;color:var(--mute,#A99BD6)}
+
+/* Bandeau défilant : bouton pause (le défilement continu dépassait 5 s sans contrôle) */
+.ticker .tk-toggle{flex:none;min-width:44px;min-height:36px;margin:0 6px;border:0;border-radius:8px;background:var(--night,#170A33);color:#fff;font:700 13px Inter,system-ui,sans-serif;cursor:pointer}
+.ticker.paused .track{animation-play-state:paused!important}
+.ticker:focus-within .track{animation-play-state:paused}
+
+/* Interrupteur « couper les animations » (mémorisé sur l'appareil) */
+.motion-toggle{background:none;border:0;padding:8px 0;color:var(--teal,#2EE6D6);font:inherit;font-size:14px;cursor:pointer;text-decoration:underline}
+html.no-motion *,html.no-motion *::before,html.no-motion *::after{animation:none!important;transition:none!important}
+html.no-motion .rv{opacity:1!important;transform:none!important}
+
+/* Champs en erreur */
+[aria-invalid="true"]{border-color:var(--yel,#FFE45C)!important}
+
+/* Pages simples (contact, mentions) */
+.legal h2{font-size:22px!important}
+.legal p,.legal li{color:#F2ECFF;max-width:760px}
+
+/* Pied de page commun */
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+footer nav{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center}
+footer nav a{font-size:14px;color:var(--teal,#2EE6D6);padding:8px 0}
+@media (max-width:640px){footer nav{flex-direction:column;align-items:flex-start;gap:2px}}
+nav a[aria-current="page"]{color:var(--teal,#2EE6D6)}
+
+/* Les attributs width/height réservent la place de l'image sans imposer sa hauteur (spécificité nulle) */
+:where(img[width][height]){height:auto}
+/* Un élément qui reçoit le focus clavier est visible immédiatement, sans attendre l'animation d'apparition */
+.mo .rv:focus,.mo .rv:focus-within{opacity:1!important;transform:none!important;transition:none!important}
+
+/* Badges de statut : même rendu sur toutes les pages (les articles n'avaient pas ces styles) */
+.st{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
+.st-confirme{background:var(--teal,#2EE6D6);color:#170A33}.st-rumeur{background:var(--orange,#FF9A3D);color:#170A33}.st-a-tester{background:#5A3B8F;color:#fff}
+.egg .row .tested{margin-left:auto}
+/* Tableau de commandes : sur mobile, une carte par action au lieu d'un tableau qui déborde */
+@media (max-width:640px){
+ table.controls{min-width:0}
+ table.controls thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+ table.controls tr{display:block;padding:10px 0;border-bottom:1px solid var(--line,#3A2366)}
+ table.controls th,table.controls td{display:block;border:0;padding:3px 0}
+ table.controls td::before{content:attr(data-label) " : ";font-weight:700;color:var(--teal,#2EE6D6)}
+}

@@ -19,7 +19,7 @@
     une.insertAdjacentHTML('afterbegin', svg);
   }
 
-  if (reduce) return;
+  if (reduce || document.documentElement.classList.contains('no-motion')) return;
   document.documentElement.classList.add('mo');
 
   /* Parallaxe douce sur le soleil et les palmiers */
@@ -51,6 +51,8 @@
     });
   };
   prep(document);
+  /* Un élément qui reçoit le focus clavier s'affiche tout de suite (il restait invisible pendant l'animation) */
+  document.addEventListener('focusin', function (ev) { var el = ev.target.closest && ev.target.closest('.rv'); if (el) el.classList.add('in'); });
   /* Ce qui est rendu plus tard (filtres, chasse aux secrets) s'affiche directement, sans rejouer l'animation */
   var ready = false; setTimeout(function () { ready = true; }, 1500);
   new MutationObserver(function (ms) {

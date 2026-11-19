@@ -8,15 +8,106 @@
   "img": "assets/rs_keys_bateaux_fete.jpg",
   "body": [
    "Bonne nouvelle pour les amateurs de calme entre deux braquages : la pêche de GTA 6 ne demande ni déblocage ni licence. Selon le guide d'Output Lag, vérifié sur des vidéos du jour de sortie, tu peux lancer ta ligne dès que le jeu te laisse te balader librement.",
-   "Où trouver la canne à pêche ? Inutile d'aller l'acheter. Va au bout de la jetée derrière la maison de Jason à Key Lento : une canne y est posée. Le bateau de Jason, amarré au même endroit, en contient d'autres, et tu en croiseras aussi sur certains quais et bateaux de Leonida. Pour l'équiper, maintiens L1 (LB sur Xbox), place le stick droit sur l'emplacement d'équipement (celui des jumelles), puis appuie sur R2 (RT) pour faire défiler jusqu'à la canne.",
-   "Les leurres. Tu démarres avec un petit leurre d'eau salée et un petit leurre d'eau douce. Le premier sert sur la côte et les quais, le second dans les lacs et rivières. Les leurres moyens et gros s'achètent chez Chuck's Tackle & Shot, l'Ammu-Nation de Key Lento (côté gauche du magasin). Tu changes de leurre via l'indication en bas à droite de l'écran. Rumeur relayée par le même guide : un magazine « Off the Hook » rangé dans l'abri à outils sous la maison de Jason ajouterait un spot à grands barracudas sur ta carte. À tester en jeu.",
-   "Les commandes sur PS5 (Xbox entre parenthèses). Maintiens L2 (LT) pour tenir la canne, maintiens R2 (RT) pour armer et relâche pour lancer : plus tu tiens, plus tu lances loin. Tourne le stick droit lentement pour animer le leurre, car mouliner trop vite le fait passer devant le poisson sans qu'il morde. Quand la manette vibre fort et que l'indication « Ferrer » devient blanche, appuie sur R2 (RT). Une petite vibration, c'est juste un poisson qui grignote : attends.",
-   "Pendant le combat, oriente le stick gauche dans le sens inverse de la traction du fil, puis mouline vite au stick droit quand le poisson fatigue. Rond (B) relance ton lancer, et tu peux couper la ligne pour abandonner une prise. Astuce pratique : L3 + R3 active la Concentration, qui fait apparaître des taches claires là où se trouvent les poissons.",
+   {
+    "h2": "Où trouver et équiper la canne"
+   },
+   "Inutile d'aller l'acheter. Va au bout de la jetée derrière la maison de Jason à Key Lento : une canne y est posée. Le bateau de Jason, amarré au même endroit, en contient d'autres, et tu en croiseras aussi sur certains quais et bateaux de Leonida. Pour l'équiper, maintiens L1 (LB sur Xbox), place le stick droit sur l'emplacement d'équipement (celui des jumelles), puis appuie sur R2 (RT) pour faire défiler jusqu'à la canne.",
+   {
+    "h2": "Les leurres"
+   },
+   "Tu démarres avec un petit leurre d'eau salée et un petit leurre d'eau douce. Le premier sert sur la côte et les quais, le second dans les lacs et rivières. Les leurres moyens et gros s'achètent chez Chuck's Tackle & Shot, l'Ammu-Nation de Key Lento (côté gauche du magasin). Tu changes de leurre via l'indication en bas à droite de l'écran. Rumeur relayée par le même guide : un magazine « Off the Hook » rangé dans l'abri à outils sous la maison de Jason ajouterait un spot à grands barracudas sur ta carte. À tester en jeu.",
+   {
+    "h2": "Les commandes PS5 et Xbox"
+   },
+   {
+    "controls": {
+     "caption": "Commandes de la pêche (d'après le guide d'Output Lag)",
+     "rows": [
+      [
+       "Équiper la canne",
+       "Maintenir L1, stick droit sur l'emplacement des jumelles, puis R2 pour faire défiler",
+       "Maintenir LB, stick droit sur l'emplacement des jumelles, puis RT pour faire défiler"
+      ],
+      [
+       "Tenir la canne",
+       "Maintenir L2",
+       "Maintenir LT"
+      ],
+      [
+       "Armer puis lancer",
+       "Maintenir R2, relâcher",
+       "Maintenir RT, relâcher"
+      ],
+      [
+       "Animer le leurre",
+       "Stick droit, lentement",
+       "Stick droit, lentement"
+      ],
+      [
+       "Ferrer (grosse vibration, « Ferrer » en blanc)",
+       "R2",
+       "RT"
+      ],
+      [
+       "Combattre le poisson",
+       "Stick gauche à l'opposé de la traction, puis mouliner vite au stick droit",
+       "Stick gauche à l'opposé de la traction, puis mouliner vite au stick droit"
+      ],
+      [
+       "Relancer",
+       "Rond",
+       "B"
+      ],
+      [
+       "Concentration (voir les poissons)",
+       "L3 + R3",
+       "Non précisé par la source"
+      ]
+     ]
+    }
+   },
+   "Plus tu maintiens R2 (RT), plus tu lances loin. Tourne le stick droit lentement : mouliner trop vite fait passer le leurre devant le poisson sans qu'il morde. Une petite vibration, c'est juste un poisson qui grignote : attends la grosse. Tu peux aussi couper la ligne pour abandonner une prise.",
    "Tu galères à tourner le stick ? Dans Paramètres > Jouabilité > Pêche, tu peux remplacer le moulinet au stick par un bouton maintenu ou des pressions répétées. Le guide d'Output Lag recommande l'option « pressions » si tu perds trop de poissons.",
-   "Les meilleurs spots pour débuter : le ponton de Jason (des poissons nagent juste à côté, même la nuit), la pleine mer en bateau (plus tu t'éloignes de la côte, plus les prises sont nombreuses et grosses), les cercles violets que Cal t'ajoute sur la carte par SMS, et n'importe quel quai où la Concentration te montre des poissons.",
-   "Ce qu'il faut savoir avant de t'y mettre : en free roam, les poissons ne se vendent pas. Tu ne peux que les relâcher. La pêche ne sert donc pas à gagner de l'argent (pour ça, regarde plutôt du côté de la chasse). En revanche, chaque prise remplit ta jauge de Concentration de 10 %, sans limite par jour, et tes records sont enregistrés dans le menu pause, onglet Progression > Animaux > Pêche.",
-   "Le trophée « Baited My Tackle ». Après une mission du chapitre 1, Cal t'envoie la photo d'un poisson-perroquet. Mets le spot du Stoplight Parrotfish (cercle violet sur l'eau) en destination, va-y en bateau et pêche avec le petit leurre d'eau salée de départ. Il faut un poisson-perroquet de plus de 2 livres (environ 900 g) : relâche les plus petits, puis appuie sur « Prendre une photo pour Cal » quand tu en tiens un assez gros. Le trophée tombe aussitôt, et la pêche compte aussi pour le trophée « Master of None », qui demande de pratiquer neuf types d'activités.",
-   "Nos conseils pour ne plus rien rater : garde L2 enfoncé pendant toute la prise, lance un peu au-delà du banc et ramène le leurre à travers, et ne ferre jamais avant la grosse vibration. Le jeu vient de sortir : on complétera ce guide dès que la liste complète des espèces sera connue."
+   {
+    "h2": "Les meilleurs spots pour débuter"
+   },
+   "Le ponton de Jason (des poissons nagent juste à côté, même la nuit), la pleine mer en bateau (plus tu t'éloignes de la côte, plus les prises sont nombreuses et grosses), les cercles violets que Cal t'ajoute sur la carte par SMS, et n'importe quel quai où la Concentration te montre des poissons.",
+   {
+    "h2": "Ce qu'il faut savoir avant de t'y mettre"
+   },
+   "En free roam, les poissons ne se vendent pas. Tu ne peux que les relâcher. La pêche ne sert donc pas à gagner de l'argent (pour ça, regarde plutôt du côté de la chasse). En revanche, chaque prise remplit ta jauge de Concentration de 10 %, sans limite par jour, et tes records sont enregistrés dans le menu pause, onglet Progression > Animaux > Pêche.",
+   {
+    "h2": "Le trophée « Baited My Tackle »"
+   },
+   {
+    "steps": [
+     {
+      "t": "Attends le message de Cal",
+      "d": "Après une mission du chapitre 1, Cal t'envoie la photo d'un poisson-perroquet."
+     },
+     {
+      "t": "Va au spot en bateau",
+      "d": "Mets le spot du Stoplight Parrotfish (cercle violet sur l'eau) en destination."
+     },
+     {
+      "t": "Pêche avec le leurre de départ",
+      "d": "Utilise le petit leurre d'eau salée que tu as dès le début."
+     },
+     {
+      "t": "Garde un poisson de plus de 2 livres",
+      "d": "Relâche les poissons-perroquets de moins de 2 livres (environ 900 g)."
+     },
+     {
+      "t": "Prends la photo",
+      "d": "Quand tu en tiens un assez gros, appuie sur « Prendre une photo pour Cal » : le trophée tombe aussitôt."
+     }
+    ]
+   },
+   "La pêche compte aussi pour le trophée « Master of None », qui demande de pratiquer neuf types d'activités.",
+   {
+    "h2": "Nos conseils"
+   },
+   "Garde L2 enfoncé pendant toute la prise, lance un peu au-delà du banc et ramène le leurre à travers, et ne ferre jamais avant la grosse vibration. Le jeu vient de sortir : on complétera ce guide dès que la liste complète des espèces sera connue."
   ],
   "sources": [
    {
@@ -24,7 +115,11 @@
     "u": "https://outputlag.com/guides/gta-6-fishing-guide/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-carte"
+  ],
+  "quick": "Canne gratuite au bout de la jetée derrière la maison de Jason, à Key Lento. Maintiens L2 (LT) pour tenir la canne, R2 (RT) pour armer et lancer, puis R2 (RT) pour ferrer à la grosse vibration. En free roam, les poissons ne se vendent pas."
  },
  {
   "slug": "2026-11-19-gta-6-plus-de-prostituees-romance-jason-lucia",
@@ -48,7 +143,8 @@
     "u": "https://www.dexerto.com/gta/gta-6-drops-longtime-hookup-options-and-prostitution-to-focus-on-jason-and-lucias-romance-3429539/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": []
  },
  {
   "slug": "2026-11-19-developpeur-rockstar-peur-licenciements-gta-6",
@@ -71,7 +167,8 @@
     "u": "https://www.dexerto.com/gta/gta-6-devs-worried-about-layoffs-despite-making-biggest-game-of-all-time-3429760/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": []
  },
  {
   "slug": "2026-11-19-retourner-voiture-s-asseoir-gta-6",
@@ -82,10 +179,54 @@
   "img": "assets/rs_vicecity_rue_fresques.jpg",
   "body": [
    "GTA 6 ne t'explique pas tout, et deux gestes bien pratiques passent facilement sous le radar. Selon Kotaku, qui les a découverts un peu par hasard, ni l'un ni l'autre n'apparaît clairement dans les tutos du jeu.",
-   "Premier geste : remettre une voiture à l'endroit. Dans les anciens GTA, une caisse sur le toit finissait en flammes. Ici, tu peux la sauver. Place-toi sur le côté du véhicule retourné avec Jason ou Lucia, clique sur le stick gauche : ton perso se met à pousser contre la carrosserie. Maintiens ensuite Carré sur PS5 ou X sur Xbox pour la faire basculer sur ses roues.",
+   {
+    "controls": {
+     "caption": "Les deux commandes (d'après Kotaku)",
+     "rows": [
+      [
+       "Pousser contre la carrosserie (sur le côté du véhicule)",
+       "Clic sur le stick gauche",
+       "Clic sur le stick gauche"
+      ],
+      [
+       "Remettre la voiture sur ses roues",
+       "Maintenir Carré",
+       "Maintenir X"
+      ],
+      [
+       "S'asseoir, s'appuyer ou s'adosser (à pied)",
+       "Maintenir Rond",
+       "Maintenir B"
+      ]
+     ]
+    }
+   },
+   {
+    "h2": "Remettre une voiture à l'endroit"
+   },
+   "Dans les anciens GTA, une caisse sur le toit finissait en flammes. Ici, tu peux la sauver.",
+   {
+    "steps": [
+     {
+      "t": "Place-toi sur le côté",
+      "d": "Avec Jason ou Lucia, mets-toi sur le côté du véhicule retourné."
+     },
+     {
+      "t": "Clique sur le stick gauche",
+      "d": "Ton perso se met à pousser contre la carrosserie."
+     },
+     {
+      "t": "Maintiens Carré (PS5) ou X (Xbox)",
+      "d": "La voiture bascule sur ses roues."
+     }
+    ]
+   },
    "Attention, ça ne marche pas à tous les coups. Si le véhicule est trop lourd, si ton perso est à court d'endurance ou si tu es sur une pente raide, la manœuvre peut échouer. Le même geste sert aussi à pousser une voiture, un bateau ou un jet-ski, pratique pour remettre une embarcation à l'eau.",
    "Pourquoi c'est utile ? En pleine fuite, quand la police t'empêche d'utiliser l'appli de dépannage pour récupérer un véhicule, savoir redresser ta voiture de fuite peut te sauver la mise.",
-   "Deuxième geste : te poser. À pied, maintiens Rond sur PS5 ou B sur Xbox. Sur l'herbe ou le sable, ton perso s'assoit. Sur un autre sol, il se met en appui sur une jambe. Et près d'un mur, il s'adosse. Rien de vital, mais parfait pour les photos ou pour profiter d'un coucher de soleil sur la plage.",
+   {
+    "h2": "T'asseoir"
+   },
+   "À pied, maintiens Rond sur PS5 ou B sur Xbox. Sur l'herbe ou le sable, ton perso s'assoit. Sur un autre sol, il se met en appui sur une jambe. Et près d'un mur, il s'adosse. Rien de vital, mais parfait pour les photos ou pour profiter d'un coucher de soleil sur la plage.",
    "Petit piège : beaucoup de joueurs maintiennent le bouton d'accroupissement en pensant se mettre à plat ventre, et se retrouvent assis par terre. Ce n'est pas un bug, c'est cette fonction-là."
   ],
   "sources": [
@@ -94,7 +235,11 @@
     "u": "https://kotaku.com/two-cool-hidden-features-gta-6-doesnt-explain-flipping-and-sitting-2000757835"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-debuter"
+  ],
+  "quick": "Voiture sur le toit : place-toi sur le côté, clique sur le stick gauche, puis maintiens Carré (PS5) ou X (Xbox). Pour t'asseoir : maintiens Rond (PS5) ou B (Xbox)."
  },
  {
   "slug": "2026-11-19-gta-6-pas-de-flechettes-ni-bowling",
@@ -120,7 +265,8 @@
     "u": "https://kotaku.com/live-updates-on-gta-6-the-biggest-launch-in-gaming-history-2000758030"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": []
  },
  {
   "slug": "2026-11-19-gta-6-censure-japon",
@@ -146,7 +292,8 @@
     "u": "https://kotaku.com/live-updates-on-gta-6-the-biggest-launch-in-gaming-history-2000758030"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": []
  },
  {
   "slug": "guide-liste-de-randy-voitures-gta-6",
@@ -176,7 +323,11 @@
     "u": "https://www.pushsquare.com/guides/gta-6-randys-wish-list-vehicle-locations"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-argent",
+   "gta-6-carte"
+  ]
  },
  {
   "slug": "2026-11-19-gta-6-60-fps-rockstar-repond",
@@ -203,7 +354,8 @@
     "u": "https://www.engadget.com/2320281/why-gta-6-no-60-fps-performance-mode/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": []
  },
  {
   "slug": "2026-11-19-voiture-paul-walker-fast-and-furious-gta-6",
@@ -230,7 +382,14 @@
     "u": "https://www.hotcars.com/fast-furious-car-hiding-gta-6-garage/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-easter-eggs",
+   "gta-6-carte"
+  ],
+  "secrets": [
+   "eclipse-paul-walker"
+  ]
  },
  {
   "slug": "2026-11-19-jouer-gta-6-xbox-one-cloud",
@@ -257,7 +416,10 @@
     "u": "https://www.windowscentral.com/gaming/xbox/grand-theft-auto-6-will-be-playable-on-xbox-cloud-gaming-but-there-are-a-few-catches"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-debuter"
+  ]
  },
  {
   "slug": "guide-carte-leonida-6-regions",
@@ -298,7 +460,10 @@
     "u": "https://beebom.com/gta-6-map/amp/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-carte"
+  ]
  },
  {
   "slug": "guide-police-semer-les-flics-gta-6",
@@ -309,12 +474,34 @@
   "img": "assets/rs_police_pont.jpg",
   "body": [
    "Grosse nouveauté : la police de GTA 6 a de la mémoire. Selon GTABase, les flics retiennent tes crimes et ton apparence, là où les anciens GTA oubliaient tout dès que les étoiles disparaissaient.",
+   {
+    "h2": "Les étoiles et les icônes rouges"
+   },
    "Les étoiles : le niveau de recherche monte jusqu'à six étoiles, comme dans GTA 4, contre cinq dans GTA 5. Plus il y a d'étoiles, plus les moyens déployés sont lourds (hélicos, chiens, barrages).",
    "Les icônes rouges sous les étoiles : elles montrent ce que la police sait de toi. D'après GTABase, ça peut être ta tenue, ton véhicule, ton arme, une image de vidéosurveillance, ou le fait que Jason et Lucia sont ensemble.",
-   "1. Casse la description. Change de tenue (garde-en dans le coffre), abandonne la voiture repérée, change d'arme : chaque icône effacée rend la recherche plus difficile.",
-   "2. Sépare Jason et Lucia. Selon GTABase, la police sait qu'ils sont ensemble : les séparer brouille les pistes et fait baisser le niveau d'une étoile.",
-   "3. Évite les zones chaudes. Après une fuite, les flics continuent de quadriller le coin où ils t'ont perdu. Ne repasse pas par là tout de suite.",
-   "4. Pour une seule étoile, parle. D'après les premiers guides, discuter avec le policier peut suffire à t'en débarrasser.",
+   {
+    "h2": "Comment semer la police"
+   },
+   {
+    "steps": [
+     {
+      "t": "Casse la description",
+      "d": "Change de tenue (garde-en dans le coffre), abandonne la voiture repérée, change d'arme : chaque icône effacée rend la recherche plus difficile."
+     },
+     {
+      "t": "Sépare Jason et Lucia",
+      "d": "Selon GTABase, la police sait qu'ils sont ensemble : les séparer brouille les pistes et fait baisser le niveau d'une étoile."
+     },
+     {
+      "t": "Évite les zones chaudes",
+      "d": "Après une fuite, les flics continuent de quadriller le coin où ils t'ont perdu. Ne repasse pas par là tout de suite."
+     },
+     {
+      "t": "Pour une seule étoile, parle",
+      "d": "D'après les premiers guides, discuter avec le policier peut suffire à t'en débarrasser."
+     }
+    ]
+   },
    "Les détails exacts de chaque niveau d'étoiles ne sont pas encore tous documentés : on complète ce guide au fur et à mesure qu'on teste en jeu."
   ],
   "sources": [
@@ -331,7 +518,11 @@
     "u": "https://kotaku.com/32-spoiler-free-tips-as-you-hop-into-grand-theft-auto-6-2000758016"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-police"
+  ],
+  "quick": "Le niveau de recherche monte jusqu'à six étoiles et les icônes rouges montrent ce que la police sait de toi. Pour la semer : change de description, sépare Jason et Lucia, évite les zones chaudes et, pour une seule étoile, parle au policier."
  },
  {
   "slug": "guide-reglages-ps5-gta-6",
@@ -342,11 +533,36 @@
   "img": "assets/rs_vicecity_skyline_nuit.jpg",
   "body": [
    "À savoir d'abord : GTA 6 vise 30 images par seconde sur toutes les consoles, et aucun réglage de la PS5 ne changera ça. Les réglages ci-dessous améliorent l'image, le son et le confort, pas la fluidité.",
-   "1. Active le HDR. Paramètres, puis Écran et vidéo, puis Sortie vidéo, puis HDR : choisis « Activé si pris en charge ». Si l'image te paraît trop sombre, refais le calibrage HDR.",
-   "2. Mets ta télé en mode Jeu, et coupe les traitements d'image de la télé (lissage de mouvement, etc.) qui ajoutent du retard.",
-   "3. Le son 3D. Selon TechNerdiness, tous les sons de GTA 6 sont compatibles avec l'audio 3D Tempest de la PS5 : avec un casque, tu entends d'où viennent les sirènes et les tirs. Active l'audio 3D dans les réglages son.",
-   "4. La manette. Les réglages de vibrations et gâchettes adaptatives sont dans le menu d'accessibilité du jeu. Baisser les vibrations fait aussi durer la batterie plus longtemps pendant les longues sessions.",
-   "5. Les mises à jour en mode repos. Active les téléchargements en mode repos pour que les patchs s'installent pendant que tu ne joues pas.",
+   {
+    "h2": "Les 5 réglages"
+   },
+   {
+    "steps": [
+     {
+      "t": "Active le HDR",
+      "d": "Paramètres, puis Écran et vidéo, puis Sortie vidéo, puis HDR : choisis « Activé si pris en charge ». Si l'image te paraît trop sombre, refais le calibrage HDR."
+     },
+     {
+      "t": "Mets ta télé en mode Jeu, et coupe les traitements d'image de la télé (lissage de mouvement, etc.) qui ajoutent du retard.",
+      "d": ""
+     },
+     {
+      "t": "Le son 3D",
+      "d": "Selon TechNerdiness, tous les sons de GTA 6 sont compatibles avec l'audio 3D Tempest de la PS5 : avec un casque, tu entends d'où viennent les sirènes et les tirs. Active l'audio 3D dans les réglages son."
+     },
+     {
+      "t": "La manette",
+      "d": "Les réglages de vibrations et gâchettes adaptatives sont dans le menu d'accessibilité du jeu. Baisser les vibrations fait aussi durer la batterie plus longtemps pendant les longues sessions."
+     },
+     {
+      "t": "Les mises à jour en mode repos",
+      "d": "Active les téléchargements en mode repos pour que les patchs s'installent pendant que tu ne joues pas."
+     }
+    ]
+   },
+   {
+    "h2": "Sur PS5 Pro"
+   },
    "Sur PS5 Pro, le jeu propose une image plus nette et des ombres en ray tracing. Et si ta console chauffe ou s'éteint, lis notre article sur les plantages."
   ],
   "sources": [
@@ -363,7 +579,11 @@
     "u": "https://skycoach.gg/blog/gta-6/articles/gta-6-best-settings"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-debuter"
+  ],
+  "quick": "Aucun réglage ne fait dépasser 30 images par seconde. Ce qui aide : le HDR, le mode Jeu de la télé, l'audio 3D avec un casque, les réglages de manette du jeu et les mises à jour en mode repos."
  },
  {
   "slug": "guide-eviter-spoilers-gta-6",
@@ -394,7 +614,10 @@
     "u": "https://androidphoria.com/tutoriales/evitar-spoilers-de-gta-6-en-internet-y-redes-sociales"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-debuter"
+  ]
  },
  {
   "slug": "2026-11-19-streamer-fini-gta-6-en-7-heures",
@@ -419,7 +642,8 @@
     "u": "https://www.clubic.com/actualite-639871-ca-y-est-ils-ont-joue-a-gta-6-et-le-jeu-a-tout-d-un-opus-juste-exceptionnel.html"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": []
  },
  {
   "slug": "2026-11-19-bigfoot-chien-jet-ski-secrets-gta-6",
@@ -453,7 +677,16 @@
     "u": "https://outputlag.com/guides/gta-6-easter-eggs/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-easter-eggs"
+  ],
+  "secrets": [
+   "bigfoot",
+   "crabe-geant",
+   "chien-jetski",
+   "oeuf-antenne"
+  ]
  },
  {
   "slug": "2026-11-19-appartement-dexter-gta-6",
@@ -478,7 +711,14 @@
     "u": "https://vgtimes.com/gaming-news/175097-gta-6-players-discover-dexter-easter-egg-as-rockstar-recreates-iconic-miami-apartment-building.html"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-easter-eggs",
+   "gta-6-carte"
+  ],
+  "secrets": [
+   "dexter"
+  ]
  },
  {
   "slug": "2026-11-19-argent-debut-gta-6",
@@ -518,7 +758,11 @@
     "u": "https://www.iggm.com/news/gta-6-economy-breakdown-cash-earning-robbery-tips"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-argent",
+   "gta-6-debuter"
+  ]
  },
  {
   "slug": "2026-11-19-gta-6-plantages-ps5-que-faire",
@@ -548,7 +792,10 @@
     "u": "https://kotaku.com/ps5-gets-last-minute-software-update-thats-required-to-play-gta-6-2000757868"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-debuter"
+  ]
  },
  {
   "slug": "2026-11-19-gta-6-ventes-record",
@@ -573,7 +820,8 @@
     "u": "https://fr.benzinga.com/news/france/general/gta-6-approche-de-son-lancement-avec-1-milliard-de-dollars-de-precommandes-estimees-les-parieurs-voient-97-de-chances-de-ventes-record-des-le-premier-jour/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": []
  },
  {
   "slug": "2026-11-18-gta-6-jeu-le-mieux-note-de-l-histoire",
@@ -602,7 +850,8 @@
     "u": "https://www.macobserver.com/news/gta-6-review-scores-roundup-every-rating-as-metacritic-hits-99/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": []
  },
  {
   "slug": "2026-11-18-psn-sature-avant-gta-6",
@@ -627,7 +876,8 @@
     "u": "https://www.hollywoodreporter.com/business/digital/gta-6-playstation-crash-outage-1236758425/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": []
  },
  {
   "slug": "2026-11-18-astuce-nouvelle-zelande-gta-6",
@@ -651,7 +901,8 @@
     "u": "https://www.jeuxvideo.com/news/2114797/gta-6-a-quelle-heure-pourra-t-on-lancer-le-jeu-depuis-la-france-rockstar-reagit.htm"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": []
  },
  {
   "slug": "2026-11-18-gta-6-heure-de-sortie-france",
@@ -680,7 +931,10 @@
     "u": "https://www.ggrecon.com/articles/gta-6-single-player-no-online-at-launch/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-debuter"
+  ]
  },
  {
   "slug": "2026-11-18-premiers-secrets-gta-6",
@@ -709,7 +963,14 @@
     "u": "https://leonidacrime.com/wiki/characters/tommy-vercetti/"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-easter-eggs"
+  ],
+  "secrets": [
+   "oeuf-antenne",
+   "maison-belville"
+  ]
  },
  {
   "slug": "2026-11-18-astuces-debut-de-partie-gta-6",
@@ -737,6 +998,11 @@
     "u": "https://kotaku.com/32-spoiler-free-tips-as-you-hop-into-grand-theft-auto-6-2000758016"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-argent",
+   "gta-6-police"
+  ]
  }
 ]

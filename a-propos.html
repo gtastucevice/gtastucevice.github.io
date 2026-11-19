@@ -99,12 +99,9 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 @media (max-width:640px){.nav-search span{display:none}.homesearch .btn{display:none}.homesearch{margin-bottom:14px}}
 
 @media (max-width:640px){
- header .wrap{flex-wrap:nowrap;gap:12px;padding-top:8px;padding-bottom:8px}
+ header .wrap{gap:4px 12px;padding-top:8px;padding-bottom:6px}
  .brand b{font-size:17px}.brand i{font-size:24px}
- header nav{flex-wrap:nowrap;overflow-x:auto;gap:14px;font-size:14px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent)}
- header nav::-webkit-scrollbar{display:none}
  header nav a{white-space:nowrap}
- header nav .btn{display:none}
  section{padding:34px 0}
  .une{padding-top:18px}
  a.lead{min-height:300px}a.lead .txt{padding:18px}
@@ -128,11 +125,15 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 }
 .more-eggs{display:none;justify-content:center;margin-top:14px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "url": "https://gtastucevice.fr", "logo": "https://gtastucevice.fr/favicon-512.png", "email": "gtastucevice@gmail.com", "sameAs": ["https://www.tiktok.com/@gtastucevice", "https://www.instagram.com/gtastucevice/", "https://www.youtube.com/@gtastucevice"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "url": "https://gtastucevice.fr/", "logo": "https://gtastucevice.fr/favicon-512.png", "email": "gtastucevice@gmail.com", "sameAs": ["https://www.tiktok.com/@gtastucevice", "https://www.instagram.com/gtastucevice/", "https://www.youtube.com/@gtastucevice"]}</script>
 <link rel="stylesheet" href="/assets/motion.css">
+<link rel="stylesheet" href="/assets/base.css">
+<script>try{if(localStorage.getItem('gtv_motion')==='off')document.documentElement.classList.add('no-motion')}catch(e){}</script>
 <script src="/assets/motion.js" defer></script>
+<script src="/assets/site.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header>
 <div class="wrap">
 <a class="brand" href="index.html" aria-label="GTASTUCE VICE, accueil"><b>GTASTUCE</b><i>Vice</i></a>
@@ -140,13 +141,13 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 <a class="nav-search" href="recherche.html" aria-label="Rechercher"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span>Rechercher</span></a>
 <a href="actus.html">Actus</a>
 <a href="index.html#guides">Guides</a>
-<a href="index.html#chasse">Chasse aux secrets</a>
+<a href="index.html#chasse">Chasse<span class="nm"> aux secrets</span></a>
 <a href="matos.html">Le matos</a>
 <a class="btn" href="index.html#newsletter">Newsletter</a>
 </nav>
 </div>
 </header>
-<main><div class="wrap">
+<main id="contenu"><div class="wrap">
 <div class="kicker">GTASTUCE VICE</div>
 <h1>Qui sommes-nous ?</h1>
 <p class="lead">GTASTUCE VICE, c'est le fil français de GTA 6 : l'actu, les astuces, les guides et les secrets de Leonida, expliqués simplement, en français et sans spoiler.</p>
@@ -160,7 +161,7 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 <li><strong>Transparence :</strong> nos articles sont rédigés avec l'aide d'outils d'intelligence artificielle, à partir des sources citées, et mis à jour dès qu'une info évolue.</li>
 </ul></div>
 <div class="box"><h2 style="margin-top:0">Nous contacter</h2>
-<p>Une info, une correction, un secret trouvé en jeu, une proposition de partenariat ? Écris-nous à <strong>gtastucevice@gmail.com</strong> ou en commentaire sur nos réseaux.</p>
+<p>Une info, une correction, un secret trouvé en jeu, une proposition de partenariat ? Écris-nous à <a href="mailto:gtastucevice@gmail.com">gtastucevice@gmail.com</a> ou en commentaire sur nos réseaux. Tous les moyens de nous joindre sont sur la <a href="contact.html">page Contact</a>.</p>
 <p style="color:var(--mute);font-size:14px">Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto est une marque de Take-Two Interactive. Images : Rockstar Games, sauf mention contraire.</p></div>
 <h2>Les autres sujets</h2>
 <div class="topics"><a href="gta-6-argent.html">Argent</a><a href="gta-6-carte.html">Carte &amp; lieux</a><a href="gta-6-easter-eggs.html">Easter eggs</a><a href="gta-6-police.html">Police</a><a href="gta-6-debuter.html">Bien débuter</a></div>
@@ -169,11 +170,14 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 <div class="wrap">
 <div>
 <a class="brand" href="index.html"><b>GTASTUCE</b><i>Vice</i></a>
-<small>Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto et les éléments associés sont des marques de Take-Two Interactive.</small>
+<small>Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto et les éléments associés sont des marques de Take-Two Interactive. Images : Rockstar Games (captures officielles), sauf mention contraire.</small>
 </div>
 <nav aria-label="Liens légaux">
 <a href="a-propos.html">Qui sommes-nous</a>
-<a href="index.html#newsletter">Contact</a>
+<a href="contact.html">Contact</a>
+<a href="mentions-legales.html">Mentions légales</a>
+<a href="mentions-legales.html#confidentialite">Confidentialité</a>
+<button class="motion-toggle" type="button" aria-pressed="false">Couper les animations</button>
 </nav>
 </div>
 </footer>
