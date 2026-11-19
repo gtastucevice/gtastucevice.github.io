@@ -141,7 +141,8 @@ ICONS = """<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#170A33">
-<meta name="robots" content="max-image-preview:large">"""
+<meta name="robots" content="max-image-preview:large">
+<script data-goatcounter="https://gtastucevice.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>"""
 
 SHARE_IMG = f"{BASE}/assets/partage.jpg"
 
