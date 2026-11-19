@@ -30,10 +30,11 @@ nav a:hover{color:var(--teal)}
 nav .btn{min-height:38px;padding:0 16px;border-radius:999px;font-size:14px}
 /* Ticker */
 .ticker{display:flex;align-items:center;gap:0;background:var(--pink);color:var(--night);font-weight:700;font-size:14px;overflow:hidden;white-space:nowrap}
-.ticker .live{flex:none;display:flex;align-items:center;gap:8px;padding:9px 14px;background:var(--night);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;letter-spacing:1px}
+.ticker .rail{flex:1;min-width:0;overflow:hidden}
+.ticker .live{position:relative;z-index:1;flex:none;display:flex;align-items:center;gap:8px;padding:9px 14px;background:var(--night);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;letter-spacing:1px}
 .ticker .live::before{content:"";width:9px;height:9px;border-radius:50%;background:#FF4D4D;animation:pulse 1.4s infinite}
 @keyframes pulse{50%{opacity:.25}}
-.ticker .track{display:flex;gap:40px;padding-left:24px;animation:scroll 60s linear infinite}
+.ticker .track{display:flex;width:max-content;gap:40px;padding-left:24px;animation:scroll 60s linear infinite}
 .ticker:hover .track{animation-play-state:paused}
 .ticker a{color:var(--night);text-decoration:none}.ticker a:hover{text-decoration:underline}
 .ticker a::before{content:"● ";opacity:.5}
@@ -144,7 +145,7 @@ dialog p{color:var(--soft);font-size:14px}
 </div>
 <div class="ticker" aria-label="Dernières infos">
 <span class="live">EN DIRECT</span>
-<div class="track" id="ticker"><a href="actus.html">Chargement des dernières infos…</a></div>
+<div class="rail"><div class="track" id="ticker"><a href="actus.html">Chargement des dernières infos…</a></div></div>
 </div>
 </header>
 
