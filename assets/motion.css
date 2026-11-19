@@ -1,0 +1,101 @@
+/* GTASTUCE VICE – motion design (néon années 80). Chargé sur toutes les pages.
+   Tout est désactivé si le visiteur a demandé « réduire les animations ». */
+
+/* 1. Logo néon : allumage au chargement + grésillement de temps en temps */
+.brand i{animation:neon-on 1.6s ease-out .2s both,neon-buzz 9s linear 3s infinite}
+.brand b{animation:logo-in .7s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes logo-in{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+@keyframes neon-on{
+ 0%{opacity:.1;text-shadow:none}
+ 12%{opacity:1;text-shadow:0 0 10px var(--pink),0 0 22px var(--pink)}
+ 18%{opacity:.2;text-shadow:none}
+ 26%{opacity:1;text-shadow:0 0 10px var(--pink),0 0 22px var(--pink)}
+ 32%{opacity:.35;text-shadow:none}
+ 100%{opacity:1;text-shadow:0 0 10px var(--pink),0 0 24px rgba(255,61,127,.6)}}
+@keyframes neon-buzz{
+ 0%,93%,100%{opacity:1}
+ 94%{opacity:.35}95%{opacity:1}96.5%{opacity:.5}97%{opacity:1}}
+
+/* Titres « jaunes » de l'accueil : lueur qui respire */
+h1.page span{animation:glow-breath 4s ease-in-out infinite}
+@keyframes glow-breath{50%{text-shadow:3px 3px 0 var(--pink),0 0 18px rgba(255,228,92,.55)}}
+
+/* 2. Coucher de soleil animé derrière la une (accueil) */
+.une{position:relative;overflow:hidden;isolation:isolate}
+.une>.wrap{position:relative;z-index:1}
+.une::before,.une::after{content:"";position:absolute;left:0;right:0;pointer-events:none;z-index:0}
+/* soleil rayé */
+.une::before{top:-60px;height:420px;
+ background:
+  radial-gradient(circle at 78% calc(62% + var(--sy,0px)*.25),#FFE45C 0,#FF9A3D 70px,#FF3D7F 130px,rgba(255,61,127,0) 131px),
+  radial-gradient(ellipse at 78% 70%,rgba(255,61,127,.35),rgba(23,10,51,0) 60%);
+ -webkit-mask:repeating-linear-gradient(180deg,#000 0 14px,transparent 14px 18px);
+         mask:repeating-linear-gradient(180deg,#000 0 14px,transparent 14px 18px);
+ opacity:.32;transform:translateY(calc(var(--sy,0px)*.35))}
+/* grille rétro qui défile */
+.une::after{top:250px;height:340px;opacity:.22;
+ background:
+  linear-gradient(180deg,var(--night) 0,rgba(23,10,51,0) 30%),
+  repeating-linear-gradient(90deg,rgba(255,95,162,.9) 0 1px,transparent 1px 64px),
+  repeating-linear-gradient(180deg,rgba(255,95,162,.9) 0 1px,transparent 1px 32px);
+ transform:perspective(300px) rotateX(58deg);transform-origin:top;
+ animation:grid-run 2.4s linear infinite}
+@keyframes grid-run{to{background-position:0 0,0 0,0 32px}}
+/* palmiers en silhouette */
+.une .palms{position:absolute;right:0;top:20px;width:min(46vw,520px);height:360px;z-index:0;pointer-events:none;opacity:.22;
+ transform:translateY(calc(var(--sy,0px)*.15))}
+
+/* 3. Apparition au défilement (ajoutée par motion.js) */
+.mo .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.mo .rv.in{opacity:1;transform:none}
+h2.sec{position:relative}
+.mo h2.sec.rv::after{content:"";position:absolute;left:0;bottom:-8px;height:3px;width:0;border-radius:2px;
+ background:linear-gradient(90deg,var(--pink),var(--yel));box-shadow:0 0 10px var(--pink);transition:width .9s cubic-bezier(.2,.8,.2,1) .25s}
+.mo h2.sec.rv.in::after{width:64px}
+
+/* 4. Cartes : halo néon et zoom de l'image au survol */
+.post,.mini,.lead,.fact,.egg{transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .2s,box-shadow .25s,background .2s}
+.post img,.mini img{transition:transform .5s cubic-bezier(.2,.8,.2,1),filter .3s}
+.post{overflow:hidden}
+.post:hover{transform:translateY(-5px);box-shadow:0 10px 30px -10px rgba(255,61,127,.7),0 0 0 1px var(--pink2)}
+.post:hover img{transform:scale(1.06);filter:saturate(1.2)}
+.mini:hover{box-shadow:0 6px 22px -10px rgba(255,61,127,.8)}
+.mini:hover img{transform:scale(1.06)}
+.lead:hover{box-shadow:0 14px 40px -14px rgba(255,61,127,.8)}
+.fact:hover{transform:translateY(-3px);border-color:var(--yel);box-shadow:0 8px 22px -12px rgba(255,228,92,.7)}
+
+/* Boutons : reflet néon qui balaie */
+.btn{position:relative;overflow:hidden;transition:background .2s,transform .15s,box-shadow .2s}
+.btn::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;transform:skewX(-20deg);
+ background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transition:left .55s ease}
+.btn:hover::after{left:120%}
+.btn:hover{box-shadow:0 0 18px rgba(255,61,127,.6)}
+.btn:active{transform:scale(.97)}
+
+/* Menu : soulignement néon */
+nav a:not(.btn){position:relative}
+nav a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;border-radius:2px;background:var(--teal);
+ box-shadow:0 0 8px var(--teal);transform:scaleX(0);transition:transform .25s}
+nav a:not(.btn):hover::after{transform:scaleX(1)}
+
+/* 5. Chasse aux secrets : barre lumineuse + « tampon » quand on coche */
+.score .bar i{box-shadow:0 0 12px rgba(255,228,92,.7);transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.score .big.bump{animation:bump .5s cubic-bezier(.2,.9,.3,1.4)}
+@keyframes bump{40%{transform:scale(1.25);color:var(--teal)}}
+.egg.stamp{animation:stamp .55s cubic-bezier(.2,.9,.3,1.3)}
+.egg.stamp .check{animation:check-pop .55s cubic-bezier(.2,.9,.3,1.6)}
+@keyframes stamp{0%{transform:scale(1)}35%{transform:scale(1.04);box-shadow:0 0 0 3px var(--teal),0 0 30px rgba(46,230,214,.6)}100%{transform:scale(1)}}
+@keyframes check-pop{0%{transform:scale(.7)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.egg.flash{box-shadow:0 0 0 3px var(--yel),0 0 26px rgba(255,228,92,.6)}
+.map .pin .dot{transition:transform .2s;transform-box:fill-box;transform-origin:center}
+.map .pin:hover .dot{transform:scale(1.35)}
+
+/* Newsletter : le titre script grésille comme une enseigne */
+.nl .script{animation:neon-on 1.4s ease-out both,neon-buzz 7s linear 2s infinite}
+
+/* Accessibilité : on coupe tout si demandé */
+@media (prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation:none!important;transition:none!important}
+ .mo .rv{opacity:1;transform:none}
+ .une::before,.une .palms{transform:none}
+}

@@ -529,6 +529,22 @@ def build_static_pages(arts, secrets):
             simple_page(h["slug"] + ".html", h["title"] + " – GTASTUCE VICE", h["desc"], h["h1"], "Le sujet", body, ld))
 
 
+MOTION = '<link rel="stylesheet" href="/assets/motion.css">'
+MOTION_JS = '<script src="/assets/motion.js" defer></script>'
+
+
+def inject_motion():
+    """Ajoute le motion design (assets/motion.css + motion.js) à toutes les pages HTML."""
+    files = [os.path.join(ROOT, f) for f in os.listdir(ROOT) if f.endswith(".html")]
+    files += [os.path.join(ROOT, "actus", f) for f in os.listdir(os.path.join(ROOT, "actus")) if f.endswith(".html")]
+    for f in files:
+        t = open(f, encoding="utf-8").read()
+        if "/assets/motion.css" in t:
+            continue
+        t = t.replace("</head>", MOTION + "\n" + MOTION_JS + "\n</head>", 1)
+        open(f, "w", encoding="utf-8").write(t)
+
+
 def main():
     arts = json.load(open(os.path.join(ROOT, "articles.json"), encoding="utf-8"))
     arts.sort(key=lambda a: a["date"], reverse=True)
@@ -555,6 +571,7 @@ def main():
     sm += "".join(f"<url><loc>{u}</loc><lastmod>{d}</lastmod></url>\n" for u, d in urls) + "</urlset>\n"
     open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(sm)
     open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
+    inject_motion()
     print(f"{len(arts)} pages générées dans actus/, sitemap.xml à jour")
 
 
