@@ -27,6 +27,7 @@ from playwright.async_api import async_playwright
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONTS = os.path.join(ROOT, "outils", "fonts") + "/"
 TMP = "/tmp/gtv_video"; os.makedirs(TMP, exist_ok=True)
+SFX = os.path.join(ROOT, "outils", "sfx")
 W, H, FPS = 1080, 1920, 30
 BPM = 112; BEAT = 60 / BPM; BAR = 4 * BEAT
 NIGHT=(23,10,51); PINK=(255,61,127); PINK2=(255,95,162); YEL=(255,228,92); TEAL=(46,230,214); WHITE=(255,255,255)
@@ -122,6 +123,22 @@ def music(path, dur, seed):
                     n = int(.06*SR); add(hp(rng.standard_normal(n), 7000)*np.exp(-np.arange(n)/SR*60), tb+h*BEAT/2, .2, .12)
     mix = mix/np.max(np.abs(mix))*.9
     wavfile.write(path, SR, (mix*32767).astype(np.int16))
+
+# ---------- effets sonores (outils/sfx, libres de droits) ----------
+def add_sfx(wav, events):
+    """events : liste de (nom_fichier, t_debut_s, gain). Mixe dans wav (en place)."""
+    sr, mix = wavfile.read(wav); mix = mix.astype(np.float64) / 32767
+    for name, t0, g in events:
+        p = os.path.join(SFX, name)
+        if not os.path.exists(p): continue
+        r, x = wavfile.read(p); x = x.astype(np.float64)
+        x = x / (32767 if x.dtype != np.float64 or np.abs(x).max() > 1.5 else 1)
+        if x.ndim == 1: x = np.stack([x, x], 1)
+        i = int(t0 * sr)
+        if i < 0: x = x[-i:]; i = 0
+        j = min(len(mix), i + len(x)); mix[i:j] += x[:j - i] * g
+    mix = mix / max(1.0, np.abs(mix).max() / 0.95)
+    wavfile.write(wav, sr, (mix * 32767).astype(np.int16))
 
 # ---------- rendu ----------
 def synth_bg():
@@ -220,6 +237,14 @@ def render(spec, caps, out_mp4):
     segs.append((ot.get("bars", 2.5)*BAR, f_out))
     total = sum(s for s, _ in segs)
     wav = f"{TMP}/music.wav"; music(wav, total, int(hashlib.md5(spec["slug"].encode()).hexdigest(), 16))
+    cuts, t = [], 0.0
+    for dur, _ in segs: cuts.append(t); t += dur
+    ev = [("riser.wav", cuts[1] - 2.1, 0.55)]                       # montée vers la fin de l'accroche
+    ev += [("swoosh1.wav", c - 0.12, 0.8) for c in cuts[1:-1]]       # swoosh à chaque changement de plan
+    ev += [("swoosh2.wav", cuts[-1] - 0.25, 0.6)]                    # gros swoosh avant la fin
+    for (dur, _), c, sh in zip(segs[1:-1], cuts[1:-1], spec["shots"]):
+        if "search" in sh: ev.append(("typewriter.wav", c + 0.2, 0.35))  # frappe pendant la recherche
+    add_sfx(wav, ev)
     ff = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
         "-i", wav, "-map", "0:v", "-map", "1:a", "-t", f"{total:.3f}", "-af", f"afade=t=out:st={total-1.2:.3f}:d=1.2",
         "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out_mp4], stdin=subprocess.PIPE)
