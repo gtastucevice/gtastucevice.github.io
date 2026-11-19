@@ -315,8 +315,10 @@ def build_static_pages(arts, secrets):
     guides = [a for a in arts if a["cat"] in ("guide", "astuce")]
     # Accueil
     p = os.path.join(ROOT, "index.html"); t = open(p, encoding="utf-8").read()
-    t = fill(t, "head", head_block("", "GTASTUCE VICE – Actus, astuces et secrets GTA 6",
-                                   "Toute l'actu GTA 6 en français, en direct : news, astuces, easter eggs et dramas, sourcés. Et la chasse aux secrets de Leonida."))
+    t = fill(t, "head", head_block("", "GTAstuce Vice – Astuces, actus et secrets GTA 6 en français",
+                                   "GTASTUCE VICE (GTAstuce) : astuces GTA 6, actus, guides, easter eggs et secrets de Leonida, en français, sourcés et sans spoiler."))
+    t = re.sub(r"<title>.*?</title>", "<title>GTAstuce Vice – Astuces, actus et secrets GTA 6 en français</title>", t, count=1)
+    t = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="GTASTUCE VICE (GTAstuce) : astuces GTA 6, actus, guides, easter eggs et secrets de Leonida, en français, sourcés et sans spoiler.">', t, count=1)
     if home:
         L = home[0]
         t = fill(t, "lead", f'<a class="lead" href="actus/{e(L["slug"])}.html"><img src="{e(L["img"])}" alt=""><span class="ov"></span><div class="txt">{meta_html(L)}<h2>{e(L["title"])}</h2><p>{e(L["chapo"])}</p></div></a>')
@@ -327,6 +329,11 @@ def build_static_pages(arts, secrets):
     t = fill(t, "guides", "".join(post_card(a) for a in guides[:6]))
     t = fill(t, "topics", topics_html())
     t = fill(t, "eggs", "".join(egg_card(x) for x in secrets))
+    t = fill(t, "sc", f"0/{len(secrets)}")
+    t = fill(t, "ld", '<script type="application/ld+json">' + json.dumps([
+        {"@context": "https://schema.org", "@type": "WebSite", "name": "GTASTUCE VICE", "alternateName": ["GTAstuce", "GTA Stuce", "GTAstuce Vice", "gtastucevice"], "url": BASE + "/", "inLanguage": "fr-FR"},
+        {"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "alternateName": "GTAstuce", "url": BASE + "/", "logo": BASE + "/favicon-512.png", "email": "gtastucevice@gmail.com",
+         "sameAs": ["https://www.tiktok.com/@gtastucevice", "https://www.instagram.com/gtastucevice/", "https://www.youtube.com/@gtastucevice"]}], ensure_ascii=False) + "</script>")
     open(p, "w", encoding="utf-8").write(t)
     # Liste des actus
     p = os.path.join(ROOT, "actus.html"); t = open(p, encoding="utf-8").read()
