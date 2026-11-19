@@ -16,3 +16,6 @@ Chaque secret de `secrets.json` peut avoir un champ `zone` pour apparaître sur 
 `vice-city`, `grassrivers`, `keys`, `mer`, `kalaga`, `ambrosia`, `gellhorn`.
 Laisser `zone` vide si le secret est « partout » ou si le lieu est inconnu : il est alors listé sous la carte.
 `build.py` dessine la carte (accueil + page easter eggs), rien d'autre à faire.
+
+## Vidéo du jour (outils/video_site.py)
+`python3 outils/video_site.py spec.json` fabrique une vidéo verticale (accroche sur une image Rockstar, pages du site filmées dans un téléphone, fin « gtastucevice.fr / lien en bio ») avec une musique synthwave générée (libre de droits). Le format du spec est décrit en tête du script. Sortie : `assets/videos/<slug>.mp4` et `.jpg`, à pousser pour que Metricool puisse la récupérer. Historique des sujets : `assets/videos/historique.json`.
