@@ -14,8 +14,12 @@ Exemple de spec :
    {"search": "bigfoot", "caption": [["TOUT EST", "w"], ["SUR LE SITE", "y"]], "bars": 1.5}
  ],
  "outro": {"line": "Abonne-toi : une astuce GTA 6 par jour"},
- "music": "/chemin/vers/une-musique.mp3"
+ "music": "/chemin/vers/une-musique.mp3",
+ "voice": ["/tmp/v0.wav", "/tmp/v1.wav", "...un wav par plan : accroche, chaque plan, fin"],
+ "voice_text": ["texte lu dans v0", "texte lu dans v1", "..."]
 }
+"voice"/"voice_text" (facultatifs) : voix off générée avec Speko (voix Étienne) ; les plans s'allongent pour la laisser finir
+et des sous-titres synchronisés s'affichent (mot dit en jaune).
 "music" (facultatif) : une musique libre de droits (dossier Drive « GTASTUCE VICE / Musiques »).
 Sans "music", une piste synthwave est générée.
 "from"/"to" : nombre de pixels CSS, ou sélecteur CSS (to = nombre = décalage depuis from).
@@ -194,7 +198,7 @@ def render(spec, caps, out_mp4):
         g = Image.new("RGBA", (W, H), (0,0,0,0)); ImageDraw.Draw(g).text((x+w1+20*sc, y-int(28*sc)), "Vice", font=f2, fill=PINK)
         g = g.filter(ImageFilter.GaussianBlur(10)); im.paste(g, (0,0), g)
         d.text((x+w1+20*sc, y-int(28*sc)), "Vice", font=f2, fill=PINK2)
-    pulse = lambda ta: 1+0.05*math.exp(-((ta/BEAT) % 1)*8)
+    pulse = lambda ta: 1.0  # plus de « pulse » (jugé kitsch)
     def caption(im, lines, ta, tl, top=95, base=104):
         d = ImageDraw.Draw(im); y = top; s = pulse(ta); a = min(1, tl*6)
         for txt, c in lines:
@@ -258,6 +262,18 @@ def render(spec, caps, out_mp4):
         d.rounded_rectangle([(W-w)/2-34, 915, (W+w)/2+34, 1010], radius=46, fill=NIGHT); d.text(((W-w)/2, 932), s, font=f3, fill=WHITE)
         return im
     segs.append((ot.get("bars", 2.5)*BAR, f_out))
+    # voix off (facultative) : un wav par plan (accroche, chaque plan, fin) + son texte pour les sous-titres
+    vf = spec.get("voice") or []; vt = spec.get("voice_text") or []
+    def vdur(path):
+        try: return float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path], capture_output=True, text=True).stdout)
+        except Exception: return 0.0
+    VD = [vdur(vf[i]) if i < len(vf) and vf[i] and os.path.exists(vf[i]) else 0.0 for i in range(len(segs))]
+    segs = [(max(d, VD[i] + 0.6) if VD[i] else d, fn) for i, (d, fn) in enumerate(segs)]
+    CH = [None] * len(segs)
+    if vt:
+        import importlib.util as _iu
+        _sp = _iu.spec_from_file_location("vtop", os.path.join(ROOT, "outils", "video_top.py")); vtop = _iu.module_from_spec(_sp); _sp.loader.exec_module(vtop)
+        CH = [vtop.chunks_of(vtop.word_times(vt[i], 0.18, max(0.5, VD[i] - 0.15))) if i < len(vt) and vt[i] and VD[i] else None for i in range(len(segs))]
     total = sum(s for s, _ in segs)
     wav = f"{TMP}/music.wav"
     if spec.get("music") and os.path.exists(spec["music"]):
@@ -272,17 +288,28 @@ def render(spec, caps, out_mp4):
     for (dur, _), c, sh in zip(segs[1:-1], cuts[1:-1], spec["shots"]):
         if "search" in sh: ev.append(("typewriter.wav", c + 0.2, 0.35))  # frappe pendant la recherche
     add_sfx(wav, ev)
+    if any(VD):
+        sr, mix = wavfile.read(wav); mix = mix.astype(np.float64) / 32767 * 0.42
+        for i, c in enumerate(cuts):
+            if not VD[i]: continue
+            tmpw = f"{TMP}/voice.wav"
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", vf[i], "-ar", str(sr), "-ac", "2", "-af", "highpass=f=70,acompressor=threshold=-18dB:ratio=3", tmpw], check=True)
+            _, v = wavfile.read(tmpw); v = v.astype(np.float64) / 32767; v = v / max(1e-6, np.abs(v).max()) * 0.9
+            a = int((c + 0.18) * sr); b = min(len(mix), a + len(v)); mix[a:b] += v[: b - a]
+        mix = mix / max(1.0, np.abs(mix).max() / 0.97); wavfile.write(wav, sr, (mix * 32767).astype(np.int16))
     ff = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
         "-i", wav, "-map", "0:v", "-map", "1:a", "-t", f"{total:.3f}", "-af", f"afade=t=out:st={total-1.2:.3f}:d=1.2",
         "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out_mp4], stdin=subprocess.PIPE)
-    t0 = 0.0
-    for dur, fn in segs:
+    t0 = 0.0; last = None; XF = 9
+    for si, (dur, fn) in enumerate(segs):
         n = round((t0+dur)*FPS)-round(t0*FPS)
         for k in range(n):
             fr = fn(k/max(1, n-1), (round(t0*FPS)+k)/FPS)
-            if k < 3: fr = Image.blend(fr, Image.new("RGB", (W, H), WHITE), 0.35*(1-k/3))
+            if CH[si]:
+                im = fr.convert("RGBA"); vtop.draw_caption(im, CH[si], k / FPS, y=1470); fr = im.convert("RGB")
+            if last is not None and k < XF: fr = Image.blend(last, fr, 1 - (1 - (k + 1) / XF) ** 3)   # fondu enchaîné
             ff.stdin.write(fr.tobytes())
-        t0 += dur
+        last = fr; t0 += dur
     ff.stdin.close(); ff.wait()
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "0.9", "-i", out_mp4, "-frames:v", "1", "-q:v", "3", out_mp4[:-4]+".jpg"])
     return total
