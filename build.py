@@ -7,7 +7,7 @@ La mise en forme reprend les styles de actus.html : une seule source de style.
 import html, json, os, re
 from datetime import datetime, timezone
 
-BASE = "https://gtastucevice.github.io"   # à changer le jour où le domaine gtastucevice.fr est branché
+BASE = "https://gtastucevice.fr"
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CATS = {"actu": "Actu", "test": "Tests", "astuce": "Astuces", "secret": "Secrets", "drama": "Drama", "guide": "Guides"}
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
