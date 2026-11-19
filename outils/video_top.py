@@ -14,12 +14,13 @@ W, H, FPS, BAR, BEAT = vs.W, vs.H, vs.FPS, vs.BAR, vs.BEAT
 NIGHT, PINK, PINK2, YEL, WHITE = vs.NIGHT, vs.PINK, vs.PINK2, vs.YEL, vs.WHITE
 fnt = vs.fnt; ease = vs.ease
 
-def cover(img, t, zoom=0.10, pan=40):
-    w, h = img.size; s = 1 + zoom * (1 - t)
+def cover(img, t, zoom=0.08, pan=30):
+    """Zoom lent et régulier (style cinéma), t peut dépasser 1 pendant les fondus."""
+    w, h = img.size; s = 1 + zoom * min(1.15, max(0, t))
     ch = h; cw = int(ch * W / H)
     if cw > w: cw = w; ch = int(cw * H / W)
     cw2, ch2 = int(cw / s), int(ch / s); x = (w - cw2) // 2 + int(pan * (t - 0.5)); y = (h - ch2) // 2
-    x = max(0, min(w - cw2, x)); return img.crop((x, y, x + cw2, y + ch2)).resize((W, H), Image.LANCZOS)
+    x = max(0, min(w - cw2, x)); return img.crop((x, y, x + cw2, y + ch2)).resize((W, H), Image.BICUBIC)
 
 def wrap(d, txt, f, maxw):
     words, lines, cur = txt.split(), [], ""
@@ -30,62 +31,93 @@ def wrap(d, txt, f, maxw):
     if cur: lines.append(cur)
     return lines
 
+def ease_out(x): x = max(0.0, min(1.0, x)); return 1 - (1 - x) ** 3
+
 GRAD = Image.new("RGBA", (W, H), (0, 0, 0, 0)); _g = ImageDraw.Draw(GRAD)
 for y in range(H):
     a = 0
-    if y < 420: a = int(170 * (1 - y / 420))
-    if y > 980: a = max(a, int(235 * min(1, (y - 980) / 520)))
-    _g.line([(0, y), (W, y)], fill=(23, 10, 51, a))
+    if y < 380: a = int(140 * (1 - y / 380) ** 1.5)
+    if y > 900: a = max(a, int(230 * min(1, (y - 900) / 620) ** 1.2))
+    _g.line([(0, y), (W, y)], fill=(12, 6, 26, a))
 
-def frame_item(img, n, it, t, ta):
-    im = cover(img, t).convert("RGBA"); im.alpha_composite(GRAD); d = ImageDraw.Draw(im)
-    pop = min(1, t * 6); pul = 1 + 0.05 * math.exp(-((ta / BEAT) % 1) * 8)
-    f = fnt("ArchivoBlack.ttf", int(230 * (0.6 + 0.4 * pop) * pul)); s = f"#{n}"
-    d.text((70 + 9, 120 + 9), s, font=f, fill=PINK); d.text((70, 120), s, font=f, fill=YEL)
-    if it.get("tag"):
-        tf = fnt("ArchivoBlack.ttf", 46); tw = d.textlength(it["tag"], font=tf)
-        d.rounded_rectangle([W - tw - 130, 170, W - 70, 250], radius=40, fill=PINK); d.text((W - tw - 100, 182), it["tag"], font=tf, fill=NIGHT)
-    tf = fnt("ArchivoBlack.ttf", 92); lines = wrap(d, it["title"].upper(), tf, 940)
-    while len(lines) > 3: tf = fnt("ArchivoBlack.ttf", tf.size - 8); lines = wrap(d, it["title"].upper(), tf, 940)
-    bf = fnt("Inter.ttf", 50); blines = wrap(d, it["text"], bf, 940)[:3]
-    y = H - 140 - len(blines) * 64 - 30 - len(lines) * int(tf.size * 1.08)
-    for ln in lines:
-        d.text((70 + 6, y + 6), ln, font=tf, fill=PINK); d.text((70, y), ln, font=tf, fill=WHITE); y += int(tf.size * 1.08)
-    y += 30
-    for ln in blines: d.text((70, y), ln, font=bf, fill=(240, 232, 255)); y += 64
-    d.text((70, H - 70), "Image : Rockstar Games", font=fnt("Inter.ttf", 30), fill=(220, 210, 240))
-    return im.convert("RGB")
+def text_layer(draw_fn, alpha, dy):
+    """Dessine sur un calque transparent puis l'applique avec une opacité et un décalage vertical."""
+    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); draw_fn(ImageDraw.Draw(lay))
+    if dy: lay = lay.transform(lay.size, Image.AFFINE, (1, 0, 0, 0, 1, -dy))
+    if alpha < 1: lay.putalpha(lay.getchannel("A").point(lambda v: int(v * alpha)))
+    return lay
+
+def shadow_text(d, xy, txt, f, fill):
+    x, y = xy
+    d.text((x + 3, y + 4), txt, font=f, fill=(0, 0, 0, 150)); d.text((x, y), txt, font=f, fill=fill)
+
+def frame_item(img, n, it, t, sec, dur):
+    """sec = secondes écoulées dans le plan (pour des animations à vitesse fixe)."""
+    im = cover(img, t).convert("RGBA"); im.alpha_composite(GRAD)
+    # numéro : glisse depuis la gauche
+    a1 = ease_out(sec / 0.45)
+    nf = fnt("ArchivoBlack.ttf", 190)
+    def dnum(d):
+        shadow_text(d, (70, 110), f"#{n}", nf, YEL + (255,))
+        if it.get("tag"):
+            tf = fnt("ArchivoBlack.ttf", 40); tw = d.textlength(it["tag"], font=tf)
+            d.rounded_rectangle([W - tw - 120, 160, W - 70, 228], radius=34, fill=PINK + (235,)); d.text((W - tw - 95, 171), it["tag"], font=tf, fill=NIGHT)
+    lay = text_layer(dnum, a1, 0); lay = lay.transform(lay.size, Image.AFFINE, (1, 0, int(-60 * (1 - a1)), 0, 1, 0)); im.alpha_composite(lay)
+    # titre puis texte : montent en fondu, l'un après l'autre
+    d0 = ImageDraw.Draw(im)
+    tf = fnt("ArchivoBlack.ttf", 86); lines = wrap(d0, it["title"].upper(), tf, 940)
+    while len(lines) > 3: tf = fnt("ArchivoBlack.ttf", tf.size - 6); lines = wrap(d0, it["title"].upper(), tf, 940)
+    bf = fnt("Inter.ttf", 48); blines = wrap(d0, it["text"], bf, 940)[:3]
+    ytop = H - 150 - len(blines) * 62 - 28 - len(lines) * int(tf.size * 1.1)
+    a2 = ease_out((sec - 0.15) / 0.5); a3 = ease_out((sec - 0.45) / 0.5)
+    def dtitle(d):
+        y = ytop
+        for ln in lines: shadow_text(d, (70, y), ln, tf, WHITE + (255,)); y += int(tf.size * 1.1)
+    def dbody(d):
+        y = ytop + len(lines) * int(tf.size * 1.1) + 28
+        d.rectangle([70, y - 14, 150, y - 8], fill=PINK + (255,))
+        for ln in blines: d.text((70, y + 6), ln, font=bf, fill=(236, 230, 250, 255)); y += 62
+    im.alpha_composite(text_layer(dtitle, a2, int(36 * (1 - a2))))
+    im.alpha_composite(text_layer(dbody, a3, int(28 * (1 - a3))))
+    # fondu de sortie des textes juste avant la coupe
+    out = ease_out((sec - (dur - 0.3)) / 0.3)
+    ImageDraw.Draw(im).text((70, H - 70), "Image : Rockstar Games", font=fnt("Inter.ttf", 28), fill=(210, 200, 230, 255))
+    return im.convert("RGB"), out
 
 def main():
     spec = json.load(open(sys.argv[1], encoding="utf-8"))
     P = lambda p: p if os.path.isabs(p) else os.path.join(ROOT, p)
     BG = vs.synth_bg(); segs = []
     hk = spec["hook"]; himg = Image.open(P(hk["image"])).convert("RGB")
-    def f_hook(t, ta):
-        im = ImageEnhance.Brightness(cover(himg, t, 0.12, 60)).enhance(0.5); d = ImageDraw.Draw(im); y = 620
-        pul = 1 + 0.05 * math.exp(-((ta / BEAT) % 1) * 8)
-        for txt, c in hk["lines"]:
-            size = 132
-            while size > 50 and d.textlength(txt, font=fnt("ArchivoBlack.ttf", size)) > 980: size -= 4
-            fz = fnt("ArchivoBlack.ttf", int(size * pul * (0.7 + 0.3 * min(1, t * 4)))); w = d.textlength(txt, font=fz)
-            d.text(((W - w) / 2 + 7, y + 7), txt, font=fz, fill=PINK); d.text(((W - w) / 2, y), txt, font=fz, fill=vs.COL.get(c, WHITE)); y += int(size * 1.12)
-        d.text((40, H - 70), "Image : Rockstar Games", font=fnt("Inter.ttf", 30), fill=(220, 210, 240)); return im
+    def f_hook(t, ta, sec, dur):
+        im = ImageEnhance.Brightness(cover(himg, t, 0.10, 40)).enhance(0.55).convert("RGBA")
+        d0 = ImageDraw.Draw(im); y = 640
+        for k, (txt, c) in enumerate(hk["lines"]):
+            size = 124
+            while size > 50 and d0.textlength(txt, font=fnt("ArchivoBlack.ttf", size)) > 960: size -= 4
+            fz = fnt("ArchivoBlack.ttf", size); w = d0.textlength(txt, font=fz); a = ease_out((sec - 0.12 * k) / 0.45)
+            im.alpha_composite(text_layer(lambda d, txt=txt, fz=fz, w=w, y=y, c=c: shadow_text(d, ((W - w) / 2, y), txt, fz, vs.COL.get(c, WHITE) + (255,)), a, int(30 * (1 - a))))
+            y += int(size * 1.12)
+        ImageDraw.Draw(im).text((40, H - 70), "Image : Rockstar Games", font=fnt("Inter.ttf", 28), fill=(210, 200, 230, 255))
+        return im.convert("RGB"), 0
     segs.append((hk.get("bars", 1.5) * BAR, f_hook))
     items = spec["items"]; N = len(items); bpi = spec.get("bars_per_item", 2.5)
     for i, it in enumerate(items):
         img = Image.open(P(it["image"])).convert("RGB"); n = N - i
-        segs.append((bpi * BAR, lambda t, ta, img=img, n=n, it=it: frame_item(img, n, it, t, ta)))
+        segs.append((bpi * BAR, lambda t, ta, sec, dur, img=img, n=n, it=it: frame_item(img, n, it, t, sec, dur)))
     ot = spec.get("outro", {})
-    def f_out(t, ta):
-        im = BG.copy(); d = ImageDraw.Draw(im); pul = 1 + 0.05 * math.exp(-((ta / BEAT) % 1) * 8)
-        f1 = fnt("ArchivoBlack.ttf", 78); w1 = d.textlength("GTASTUCE", font=f1)
-        d.text(((W - w1) / 2 + 5, 255), "GTASTUCE", font=f1, fill=PINK); d.text(((W - w1) / 2, 250), "GTASTUCE", font=f1, fill=WHITE)
-        f = fnt("ArchivoBlack.ttf", int(100 * pul)); s = "gtastucevice.fr"; w = d.textlength(s, font=f)
-        d.text(((W - w) / 2 + 7, 437), s, font=f, fill=PINK); d.text(((W - w) / 2, 430), s, font=f, fill=YEL)
-        for k, s in enumerate([ot.get("line", "La carte de tous les secrets est sur le site"), ot.get("cta", "Abonne-toi pour la suite 🔔".replace(" 🔔", ""))]):
-            f3 = fnt("Inter.ttf", 52); w = d.textlength(s, font=f3); yy = 620 + k * 120
-            d.rounded_rectangle([(W - w) / 2 - 34, yy, (W + w) / 2 + 34, yy + 96], radius=48, fill=PINK if k else NIGHT); d.text(((W - w) / 2, yy + 18), s, font=f3, fill=NIGHT if k else WHITE)
-        return im
+    def f_out(t, ta, sec, dur):
+        im = BG.copy().convert("RGBA")
+        def dlogo(d):
+            f1 = fnt("ArchivoBlack.ttf", 74); w1 = d.textlength("GTASTUCE VICE", font=f1); shadow_text(d, ((W - w1) / 2, 270), "GTASTUCE VICE", f1, WHITE + (255,))
+            f = fnt("ArchivoBlack.ttf", 96); s_ = "gtastucevice.fr"; w = d.textlength(s_, font=f); shadow_text(d, ((W - w) / 2, 420), s_, f, YEL + (255,))
+        def dcta(d):
+            for k, s_ in enumerate([ot.get("line", "La carte de tous les secrets est sur le site"), ot.get("cta", "Abonne-toi pour la suite")]):
+                f3 = fnt("Inter.ttf", 50); w = d.textlength(s_, font=f3); yy = 620 + k * 120
+                d.rounded_rectangle([(W - w) / 2 - 34, yy, (W + w) / 2 + 34, yy + 94], radius=47, fill=(PINK if k else NIGHT) + (255,)); d.text(((W - w) / 2, yy + 18), s_, font=f3, fill=(NIGHT if k else WHITE) + (255,))
+        a = ease_out(sec / 0.5); b2 = ease_out((sec - 0.35) / 0.5)
+        im.alpha_composite(text_layer(dlogo, a, int(30 * (1 - a)))); im.alpha_composite(text_layer(dcta, b2, int(30 * (1 - b2))))
+        return im.convert("RGB"), 0
     segs.append((ot.get("bars", 2.5) * BAR, f_out))
     total = sum(s for s, _ in segs); wav = f"{vs.TMP}/music.wav"
     if spec.get("music") and os.path.exists(spec["music"]): vs.music_file(spec["music"], wav, total)
@@ -112,14 +144,18 @@ def main():
     ff = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-i", wav,
         "-map", "0:v", "-map", "1:a", "-t", f"{total:.3f}", "-af", f"afade=t=out:st={total-1.2:.3f}:d=1.2", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
         "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out], stdin=subprocess.PIPE)
-    t0 = 0.0
-    for dur, fn in segs:
+    XF = 9  # fondu enchaîné de 0,3 s entre deux plans
+    t0 = 0.0; prev = None
+    for idx, (dur, fn) in enumerate(segs):
         n = round((t0 + dur) * FPS) - round(t0 * FPS)
         for k in range(n):
-            fr = fn(k / max(1, n - 1), (round(t0 * FPS) + k) / FPS)
-            if k < 3: fr = Image.blend(fr, Image.new("RGB", (W, H), WHITE), 0.35 * (1 - k / 3))
+            fr, _ = fn(k / max(1, n - 1), (round(t0 * FPS) + k) / FPS, k / FPS, dur)
+            if prev is not None and k < XF:
+                pdur, pfn, pn = prev
+                pf, _ = pfn(1 + (k + 1) / max(1, pn - 1), 0, pdur + (k + 1) / FPS, 10**6)
+                fr = Image.blend(pf, fr, ease_out((k + 1) / XF))
             ff.stdin.write(fr.tobytes())
-        t0 += dur
+        prev = (dur, fn, n); t0 += dur
     ff.stdin.close(); ff.wait()
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "0.9", "-i", out, "-frames:v", "1", "-q:v", "3", out[:-4] + ".jpg"])
     print(f"OK {out} ({total:.1f} s)")
