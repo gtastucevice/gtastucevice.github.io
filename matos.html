@@ -48,7 +48,9 @@ h1{margin:6px 0 12px;font-family:'Archivo Black',sans-serif;font-weight:400;font
 h1 span{color:var(--yel);text-shadow:3px 3px 0 var(--pink)}
 .lead{color:var(--soft);font-size:18px;max-width:720px;margin:0 0 10px}
 .disc{font-size:13px;color:var(--mute);border-left:3px solid var(--pink);padding-left:12px;margin:18px 0 32px}
-.item{background:var(--night2);border:1px solid var(--line);border-radius:20px;padding:26px;margin-bottom:20px}
+.item{background:var(--night2);border:1px solid var(--line);border-radius:20px;padding:26px;margin-bottom:20px;display:grid;grid-template-columns:320px minmax(0,1fr);gap:26px;align-items:start}
+.item .ill{width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
+@media (max-width:760px){.item{grid-template-columns:1fr;gap:16px;padding:18px}}
 .item h2{margin:0 0 6px;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:24px;line-height:1.15}
 .item .why{margin:0 0 14px;color:#F2ECFF}
 .item ul{margin:0 0 18px;padding-left:20px;color:var(--soft)}
@@ -60,7 +62,7 @@ h1 span{color:var(--yel);text-shadow:3px 3px 0 var(--pink)}
 footer{border-top:4px solid var(--teal);background:#12062A;padding:36px 0;margin-top:56px}
 footer small{display:block;max-width:640px;color:var(--mute);font-size:13px;margin-top:8px}
 main{padding:36px 0 0}
-<!--S:css-->
+/*S:css*/
 .nav-search{display:inline-flex;align-items:center;gap:6px}
 .nav-search .ico{flex:none}
 .homesearch{display:flex;align-items:center;gap:8px;margin:0 0 18px;background:var(--night2);border:2px solid var(--line);border-radius:14px;padding:6px 6px 6px 14px;max-width:720px}
@@ -92,8 +94,8 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
  header nav .btn{display:none}
  section{padding:34px 0}
  .une{padding-top:18px}
- .lead{min-height:300px}.lead .txt{padding:18px}
- .lead p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px}
+ a.lead{min-height:300px}a.lead .txt{padding:18px}
+ a.lead p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px}
  .facts{display:flex;overflow-x:auto;gap:8px;margin-top:16px;padding-bottom:4px;scroll-snap-type:x mandatory;scrollbar-width:none}
  .facts::-webkit-scrollbar{display:none}
  .fact{flex:0 0 auto;padding:10px 14px;scroll-snap-align:start}.fact b{font-size:16px}.fact span{font-size:12px}
@@ -112,7 +114,7 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
  h1.page,h1{font-size:26px}
 }
 .more-eggs{display:none;justify-content:center;margin-top:14px}
-<!--E:css-->
+/*E:css*/
 </style>
 </head>
 <body>
@@ -137,6 +139,8 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 <p class="disc">Transparence : certains liens de cette page sont des liens affiliés. Si tu achètes après avoir cliqué, GTASTUCE VICE touche une petite commission, sans que ça te coûte plus cher. C'est ce qui nous permet de rester gratuits. On ne recommande que des critères qu'on vérifierait pour nous-mêmes.</p>
 
 <section class="item" id="ssd">
+<img class="ill" src="assets/matos_ssd.svg" alt="Illustration : un SSD M.2 avec dissipateur" width="640" height="360" loading="lazy">
+<div class="itxt">
 <span class="tag">Priorité n°1</span>
 <h2>Un SSD M.2 pour la PS5</h2>
 <p class="why">Avec un jeu aussi lourd, la mémoire interne de la PS5 sature vite. Un SSD M.2 se glisse dans le port d'extension de la console et se joue aussi vite que le stockage d'origine.</p>
@@ -151,9 +155,12 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 <a class="btn aff" href="https://www.amazon.fr/s?k=ssd+m.2+nvme+pcie+4.0+dissipateur+ps5+1to" target="_blank" rel="sponsored noopener">Voir les SSD compatibles PS5</a>
 <a class="ghost" href="https://www.playstation.com/fr-fr/support/hardware/ps5-install-m2-ssd/" target="_blank" rel="noopener">La page officielle de Sony</a>
 </div>
+</div>
 </section>
 
 <section class="item" id="casque">
+<img class="ill" src="assets/matos_casque.svg" alt="Illustration : un casque audio" width="640" height="360" loading="lazy">
+<div class="itxt">
 <span class="tag">Immersion</span>
 <h2>Un casque pour l'audio 3D</h2>
 <p class="why">Sur PS5, GTA 6 profite de l'audio 3D : avec un casque, tu entends d'où viennent les sirènes, les tirs et les moteurs. Pour semer la police, ça change tout.</p>
@@ -163,9 +170,12 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 <li>Un micro correct si tu joues avec tes potes.</li>
 </ul>
 <div class="links"><a class="btn aff" href="https://www.amazon.fr/s?k=casque+gaming+ps5+sans+fil" target="_blank" rel="sponsored noopener">Voir les casques compatibles PS5</a></div>
+</div>
 </section>
 
 <section class="item" id="manette">
+<img class="ill" src="assets/matos_manette.svg" alt="Illustration : une manette et sa station de charge" width="640" height="360" loading="lazy">
+<div class="itxt">
 <span class="tag">Confort</span>
 <h2>Une deuxième manette et de quoi la charger</h2>
 <p class="why">Les longues sessions vident la batterie de la DualSense. Une deuxième manette chargée, c'est zéro pause forcée.</p>
@@ -178,13 +188,17 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 <a class="btn aff" href="https://www.amazon.fr/s?k=manette+dualsense+ps5" target="_blank" rel="sponsored noopener">Voir les manettes</a>
 <a class="ghost aff" href="https://www.amazon.fr/s?k=station+de+charge+dualsense" target="_blank" rel="sponsored noopener">Voir les stations de charge</a>
 </div>
+</div>
 </section>
 
 <section class="item" id="xbox">
+<img class="ill" src="assets/matos_xbox.svg" alt="Illustration : une carte d'extension de stockage" width="640" height="360" loading="lazy">
+<div class="itxt">
 <span class="tag">Sur Xbox</span>
 <h2>Une carte d'extension pour Xbox Series</h2>
 <p class="why">Sur Xbox Series X|S, l'équivalent du SSD, c'est la carte d'extension de stockage, qui se branche à l'arrière de la console. Prends un modèle officiellement compatible Xbox Series.</p>
 <div class="links"><a class="btn aff" href="https://www.amazon.fr/s?k=carte+extension+stockage+xbox+series+1to" target="_blank" rel="sponsored noopener">Voir les cartes d'extension</a></div>
+</div>
 </section>
 
 <p style="color:var(--soft)">Pas sûr de ce qu'il te faut ? Lis aussi notre guide <a href="actus/guide-reglages-ps5-gta-6.html">des réglages PS5 pour GTA 6</a>.</p>

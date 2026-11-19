@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Illustration : un casque audio"><defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#170A33"/><stop offset=".65" stop-color="#3A0F55"/><stop offset="1" stop-color="#6B1E6E"/></linearGradient>
+<linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE45C"/><stop offset=".55" stop-color="#FF9A3D"/><stop offset="1" stop-color="#FF3D7F"/></linearGradient>
+<linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A2B86"/><stop offset="1" stop-color="#241046"/></linearGradient>
+<filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="sunclip"><rect x="0" y="0" width="640" height="232"/></clipPath>
+</defs>
+<rect width="640" height="360" fill="url(#sky)"/>
+<g clip-path="url(#sunclip)"><circle cx="320" cy="250" r="118" fill="url(#sun)" opacity=".9"/>
+<g fill="#3A0F55"><rect x="190" y="196" width="260" height="6"/><rect x="190" y="212" width="260" height="8"/><rect x="190" y="226" width="260" height="10"/></g></g>
+<rect y="232" width="640" height="128" fill="#1E0B3D"/>
+<g stroke="#FF5FA2" stroke-opacity=".55" stroke-width="1.5"><line x1="0" y1="232" x2="640" y2="232"/><line x1="0" y1="250" x2="640" y2="250"/><line x1="0" y1="274" x2="640" y2="274"/><line x1="0" y1="306" x2="640" y2="306"/><line x1="0" y1="348" x2="640" y2="348"/>
+<line x1="320" y1="232" x2="320" y2="360"/><line x1="280" y1="232" x2="200" y2="360"/><line x1="360" y1="232" x2="440" y2="360"/><line x1="240" y1="232" x2="60" y2="360"/><line x1="400" y1="232" x2="580" y2="360"/><line x1="200" y1="232" x2="-80" y2="360"/><line x1="440" y1="232" x2="720" y2="360"/></g><g transform="translate(320 170)">
+<path d="M-120 40 C-120 -110 120 -110 120 40" fill="none" stroke="#2EE6D6" stroke-width="16" stroke-linecap="round" filter="url(#glow)"/>
+<path d="M-120 40 C-120 -110 120 -110 120 40" fill="none" stroke="#170A33" stroke-width="5" stroke-linecap="round"/>
+<rect x="-160" y="10" width="72" height="110" rx="32" fill="url(#metal)" stroke="#FF5FA2" stroke-width="4" filter="url(#glow)"/>
+<rect x="88" y="10" width="72" height="110" rx="32" fill="url(#metal)" stroke="#FF5FA2" stroke-width="4" filter="url(#glow)"/>
+<path d="M-140 70 q0 -25 18 -30" stroke="#2EE6D6" stroke-width="5" fill="none"/>
+<g fill="none" stroke="#FFE45C" stroke-width="5" stroke-linecap="round" opacity=".9">
+<path d="M-185 40 q-22 25 0 50"/><path d="M-205 25 q-36 40 0 80"/><path d="M185 40 q22 25 0 50"/><path d="M205 25 q36 40 0 80"/></g></g></svg>

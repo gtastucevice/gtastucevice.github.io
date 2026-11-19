@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Illustration : une manette et sa station de charge"><defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#170A33"/><stop offset=".65" stop-color="#3A0F55"/><stop offset="1" stop-color="#6B1E6E"/></linearGradient>
+<linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE45C"/><stop offset=".55" stop-color="#FF9A3D"/><stop offset="1" stop-color="#FF3D7F"/></linearGradient>
+<linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A2B86"/><stop offset="1" stop-color="#241046"/></linearGradient>
+<filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="sunclip"><rect x="0" y="0" width="640" height="232"/></clipPath>
+</defs>
+<rect width="640" height="360" fill="url(#sky)"/>
+<g clip-path="url(#sunclip)"><circle cx="320" cy="250" r="118" fill="url(#sun)" opacity=".9"/>
+<g fill="#3A0F55"><rect x="190" y="196" width="260" height="6"/><rect x="190" y="212" width="260" height="8"/><rect x="190" y="226" width="260" height="10"/></g></g>
+<rect y="232" width="640" height="128" fill="#1E0B3D"/>
+<g stroke="#FF5FA2" stroke-opacity=".55" stroke-width="1.5"><line x1="0" y1="232" x2="640" y2="232"/><line x1="0" y1="250" x2="640" y2="250"/><line x1="0" y1="274" x2="640" y2="274"/><line x1="0" y1="306" x2="640" y2="306"/><line x1="0" y1="348" x2="640" y2="348"/>
+<line x1="320" y1="232" x2="320" y2="360"/><line x1="280" y1="232" x2="200" y2="360"/><line x1="360" y1="232" x2="440" y2="360"/><line x1="240" y1="232" x2="60" y2="360"/><line x1="400" y1="232" x2="580" y2="360"/><line x1="200" y1="232" x2="-80" y2="360"/><line x1="440" y1="232" x2="720" y2="360"/></g><g transform="translate(320 200)">
+<rect x="-150" y="70" width="300" height="34" rx="14" fill="url(#metal)" stroke="#2EE6D6" stroke-width="3" filter="url(#glow)"/>
+<circle cx="-110" cy="87" r="5" fill="#2EE6D6"/><circle cx="110" cy="87" r="5" fill="#2EE6D6"/>
+<path d="M-150 -40 C-190 -40 -215 60 -185 78 C-160 92 -130 50 -100 40 L100 40 C130 50 160 92 185 78 C215 60 190 -40 150 -40 Z" fill="url(#metal)" stroke="#FF5FA2" stroke-width="4" filter="url(#glow)"/>
+<circle cx="-62" cy="12" r="20" fill="#170A33" stroke="#2EE6D6" stroke-width="3"/><circle cx="62" cy="12" r="20" fill="#170A33" stroke="#2EE6D6" stroke-width="3"/>
+<g fill="#FFE45C"><rect x="-140" y="-18" width="12" height="36" rx="3"/><rect x="-152" y="-6" width="36" height="12" rx="3"/></g>
+<g fill="#170A33" stroke="#FFE45C" stroke-width="3"><circle cx="130" cy="-20" r="8"/><circle cx="130" cy="12" r="8"/><circle cx="114" cy="-4" r="8"/><circle cx="146" cy="-4" r="8"/></g>
+<rect x="-30" y="-30" width="60" height="26" rx="8" fill="#170A33" stroke="#FF5FA2" stroke-width="2"/>
+<path d="M232 -40 l-18 34 h16 l-12 34" stroke="#FFE45C" stroke-width="6" fill="none" stroke-linejoin="round" stroke-linecap="round" filter="url(#glow)"/></g></svg>

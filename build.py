@@ -168,6 +168,10 @@ def head_block(path, title, desc, image=None, kind="website"):
 
 def fill(src, key, html_):
     """Remplace le contenu entre <!--S:key--> et <!--E:key-->."""
+    if key == "css":  # dans un <style>, les repères doivent être des commentaires CSS
+        pat = re.compile(r"/\*S:css\*/.*?/\*E:css\*/", re.S)
+        assert pat.search(src), key
+        return pat.sub(lambda m: f"/*S:css*/{html_}/*E:css*/", src)
     pat = re.compile(r"<!--S:%s-->.*?<!--E:%s-->" % (key, key), re.S)
     assert pat.search(src), key
     return pat.sub(lambda m: f"<!--S:{key}-->{html_}<!--E:{key}-->", src)
@@ -403,8 +407,8 @@ MOBILE_CSS = """
  header nav .btn{display:none}
  section{padding:34px 0}
  .une{padding-top:18px}
- .lead{min-height:300px}.lead .txt{padding:18px}
- .lead p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px}
+ a.lead{min-height:300px}a.lead .txt{padding:18px}
+ a.lead p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px}
  .facts{display:flex;overflow-x:auto;gap:8px;margin-top:16px;padding-bottom:4px;scroll-snap-type:x mandatory;scrollbar-width:none}
  .facts::-webkit-scrollbar{display:none}
  .fact{flex:0 0 auto;padding:10px 14px;scroll-snap-align:start}.fact b{font-size:16px}.fact span{font-size:12px}
