@@ -129,7 +129,7 @@ dialog p,dialog li{color:var(--soft);font-size:14px}
 .post p{margin:0;color:var(--soft);font-size:15px}
 .meta{display:flex;gap:10px;align-items:center;font-size:13px;color:#A99BD6}
 .cat{color:var(--night);font-size:12px;font-weight:700;padding:3px 9px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
-.c-actu{background:var(--teal)}.c-test{background:var(--yel)}.c-astuce{background:var(--orange)}.c-secret{background:var(--pink2)}.c-drama{background:#FF4D4D;color:#fff}
+.c-guide{background:#B9A7FF}.c-actu{background:var(--teal)}.c-test{background:var(--yel)}.c-astuce{background:var(--orange)}.c-secret{background:var(--pink2)}.c-drama{background:#FF4D4D;color:#fff}
 .post.hl{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);width:100%}
 .post.hl img{aspect-ratio:auto;height:100%;min-height:280px}
 .post.hl h2{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.1}
@@ -153,21 +153,19 @@ article.full p{font-size:17px;line-height:1.7;margin:0 0 18px}
 <a class="brand" href="index.html" aria-label="GTASTUCE VICE, accueil"><b>GTASTUCE</b><i>Vice</i></a>
 <nav aria-label="Navigation principale">
 <a href="actus.html">Actus</a>
-<a href="index.html#guides">Tutos</a>
-<a href="index.html#guides">Astuces</a>
-<a href="index.html#guides">Easter eggs</a>
-<a href="index.html#outils">Carte &amp; checklist</a>
+<a href="index.html#guides">Guides</a>
+<a href="index.html#chasse">Chasse aux secrets</a>
 <a class="btn" href="index.html#newsletter">Newsletter</a>
 </nav>
 </div>
 </header>
 <main class="page"><div class="wrap" id="app"><p>Chargement…</p></div></main>
 <script>
-const CATS={actu:'Actu',test:'Tests',astuce:'Astuces',secret:'Secrets',drama:'Drama'};
+const CATS={actu:'Actu',test:'Tests',astuce:'Astuces',secret:'Secrets',drama:'Drama',guide:'Guides'};
 const app=document.getElementById('app');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt=d=>new Date(d).toLocaleString('fr-FR',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'});
-let ART=[],cat='all';
+let ART=[],cat=new URLSearchParams(location.search).get('c')||'all';
 function card(a,lead){return `<a class="post${lead?' hl':''}" href="?a=${encodeURIComponent(a.slug)}"><img src="${esc(a.img)}" alt="" loading="lazy"><div class="b"><div class="meta"><span class="cat c-${a.cat}">${CATS[a.cat]||a.cat}</span><span>${fmt(a.date)}</span></div><h2>${esc(a.title)}</h2><p>${esc(a.chapo)}</p></div></a>`}
 function list(){
  document.title='Actus GTA 6 – GTASTUCE VICE';

@@ -3,118 +3,131 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTASTUCE VICE – Astuces, tutos et secrets GTA 6</title>
-<meta name="description" content="Le guide français de GTA 6 : astuces, tutos, easter eggs et collectibles de Vice City et Leonida, testés en jeu.">
+<title>GTASTUCE VICE – Actus, astuces et secrets GTA 6</title>
+<meta name="description" content="Toute l'actu GTA 6 en français, en direct : news, astuces, easter eggs et dramas, sourcés. Et la chasse aux secrets de Leonida.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Yellowtail&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--night:#170A33;--night2:#221042;--line:#3A2366;--pink:#FF3D7F;--pink2:#FF5FA2;--teal:#2EE6D6;--yel:#FFE45C;--orange:#FF9A3D;--soft:#C9BFE8;--white:#fff}
+:root{--night:#170A33;--night2:#221042;--night3:#2A1450;--line:#3A2366;--pink:#FF3D7F;--pink2:#FF5FA2;--teal:#2EE6D6;--yel:#FFE45C;--orange:#FF9A3D;--soft:#C9BFE8;--mute:#A99BD6;--white:#fff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--night);color:var(--white);font-family:Inter,system-ui,sans-serif;line-height:1.5}
 a{color:var(--teal)}a:hover{color:var(--white)}
-.wrap{max-width:1200px;margin:0 auto;padding:0 5%}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .brand{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--white)}
 .brand b{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:22px;text-shadow:2px 2px 0 var(--pink)}
 .brand i{font-family:Yellowtail,cursive;font-style:normal;font-size:32px;color:var(--pink2);text-shadow:0 0 10px var(--pink)}
-header{position:sticky;top:0;z-index:10;background:rgba(23,10,51,.92);backdrop-filter:blur(8px);border-bottom:1px solid #2E1A57}
-header .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;padding-top:14px;padding-bottom:14px}
-nav{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center;font-weight:700;font-size:15px}
+header{position:sticky;top:0;z-index:10;background:rgba(23,10,51,.94);backdrop-filter:blur(8px);border-bottom:1px solid #2E1A57}
+header .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;font-weight:700;font-size:15px}
 nav a{color:var(--white);text-decoration:none;padding:8px 0}
 nav a:hover{color:var(--teal)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;border:none;background:var(--pink);color:var(--night);font-family:'Archivo Black',sans-serif;font-size:16px;text-decoration:none;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:12px;border:none;background:var(--pink);color:var(--night);font-family:'Archivo Black',sans-serif;font-size:15px;text-decoration:none;cursor:pointer}
 .btn:hover{background:var(--pink2);color:var(--night)}
-nav .btn{min-height:40px;padding:0 16px;border-radius:999px;font-size:14px}
-.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#170A33 0%,#2A0F4A 40%,#6B1E6E 62%,#C23B76 82%,#FF8A5B 100%);padding:88px 0 300px}
-.hero .sun{position:absolute;left:50%;bottom:36px;width:min(360px,64vw);height:min(360px,64vw);transform:translateX(-50%)}
-.hero .palm{position:absolute;bottom:0}
-.hero .palm.l{left:-30px;width:clamp(140px,18vw,240px)}
-.hero .palm.r{right:-30px;width:clamp(110px,14vw,190px);transform:scaleX(-1)}
-.hero .sea{position:absolute;left:0;right:0;bottom:0;height:40px;background:#1E0B3D;border-top:4px solid var(--teal)}
-.hero-in{position:relative;max-width:860px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
-.kicker{font-size:13px;font-weight:700;letter-spacing:4px;color:var(--teal);text-transform:uppercase}
-h1{margin:0;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(38px,6.2vw,80px);line-height:1;letter-spacing:-1.5px;text-shadow:4px 4px 0 var(--night)}
-h1 span{color:var(--yel);text-shadow:4px 4px 0 var(--pink)}
-.lead{margin:0;font-size:19px;color:#F2ECFF;max-width:620px;text-shadow:0 2px 8px #170A33}
-.search{display:flex;flex-wrap:wrap;gap:8px;width:100%;max-width:580px}
-.search input{flex:1 1 260px;min-width:0;height:52px;border-radius:12px;border:2px solid var(--pink2);background:var(--night);color:var(--white);padding:0 16px;font:16px Inter,sans-serif}
-.search input::placeholder{color:#A99BD6}
-.badge{display:inline-flex;gap:8px;align-items:center;background:rgba(23,10,51,.7);border:1px solid #5A3B8F;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}
-.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal)}
-section{padding:72px 0}
-h2{margin:0;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(28px,3.6vw,38px);line-height:1.1}
-.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:28px}
+nav .btn{min-height:38px;padding:0 16px;border-radius:999px;font-size:14px}
+/* Ticker */
+.ticker{display:flex;align-items:center;gap:0;background:var(--pink);color:var(--night);font-weight:700;font-size:14px;overflow:hidden;white-space:nowrap}
+.ticker .live{flex:none;display:flex;align-items:center;gap:8px;padding:9px 14px;background:var(--night);color:var(--white);font-family:'Archivo Black',sans-serif;font-size:13px;letter-spacing:1px}
+.ticker .live::before{content:"";width:9px;height:9px;border-radius:50%;background:#FF4D4D;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.ticker .track{display:flex;gap:40px;padding-left:24px;animation:scroll 60s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+.ticker a{color:var(--night);text-decoration:none}.ticker a:hover{text-decoration:underline}
+.ticker a::before{content:"● ";opacity:.5}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker .track{animation:none;overflow-x:auto}.ticker .live::before{animation:none}}
+/* Une */
+.une{padding:28px 0 8px}
+.kicker{font-size:12px;font-weight:700;letter-spacing:3px;color:var(--teal);text-transform:uppercase}
+h1.page{margin:4px 0 18px;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.05}
+h1.page span{color:var(--yel);text-shadow:3px 3px 0 var(--pink)}
+.une-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px}
+.lead{position:relative;display:block;border-radius:20px;overflow:hidden;min-height:420px;color:var(--white);text-decoration:none;border:1px solid var(--line);background:var(--night2)}
+.lead img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.lead:hover img{transform:scale(1.03)}
+.lead .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,10,51,0) 25%,rgba(23,10,51,.92) 78%)}
+.lead .txt{position:absolute;left:0;right:0;bottom:0;padding:26px;display:flex;flex-direction:column;gap:10px}
+.lead h2{margin:0;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,2.8vw,36px);line-height:1.08;text-shadow:3px 3px 0 var(--night)}
+.lead p{margin:0;color:#F2ECFF;font-size:16px;max-width:640px}
+.side{display:flex;flex-direction:column;gap:12px}
+.mini{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;align-items:center;padding:10px;border-radius:16px;background:var(--night2);border:1px solid var(--line);color:var(--white);text-decoration:none;transition:border-color .15s,transform .15s}
+.mini:hover{border-color:var(--pink2);transform:translateX(3px);color:var(--white)}
+.mini img{width:120px;height:80px;object-fit:cover;border-radius:10px}
+.mini h3{margin:4px 0 0;font-size:15px;line-height:1.3}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mute)}
+.cat{color:var(--night);font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
+.c-guide{background:#B9A7FF}.c-actu{background:var(--teal)}.c-test{background:var(--yel)}.c-astuce{background:var(--orange)}.c-secret{background:var(--pink2)}.c-drama{background:#FF4D4D;color:#fff}
+.new{background:var(--yel);color:var(--night);font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px}
+/* Facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:26px 0 0}
+.fact{background:var(--night2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.fact b{display:block;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:20px;line-height:1.1;color:var(--yel)}
+.fact span{font-size:13px;color:var(--soft)}
+section{padding:56px 0}
+h2.sec{margin:0;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3.2vw,36px);line-height:1.1}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px;margin-bottom:22px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--night2);color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}
+.chip{min-height:38px;padding:0 15px;border-radius:999px;border:1px solid var(--line);background:var(--night2);color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--white);color:var(--night);border-color:var(--white)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
-.card{display:flex;flex-direction:column;background:var(--night2);border:1px solid var(--line);border-radius:16px;overflow:hidden;color:var(--white);text-decoration:none;transition:transform .15s,border-color .15s}
-.card:hover{transform:translateY(-3px);border-color:var(--pink2);color:var(--white)}
-.thumb{position:relative;height:150px;background:linear-gradient(180deg,#2A0F4A,#6B1E6E 70%,#C23B76);display:flex;align-items:flex-end;padding:14px;font-family:'Archivo Black',sans-serif;font-size:20px;line-height:1.05;text-shadow:2px 2px 0 var(--night)}
-.thumb .soon{position:absolute;top:12px;right:12px;background:var(--night);color:var(--soft);font:700 11px Inter,sans-serif;letter-spacing:1px;padding:4px 8px;border-radius:6px;text-shadow:none}
-.card .body{padding:18px;display:flex;flex-direction:column;gap:8px}
-.tag{align-self:flex-start;color:var(--night);font-size:12px;font-weight:700;padding:3px 9px;border-radius:6px}
-.t-tuto{background:var(--pink)}.t-astuce{background:var(--teal)}.t-secret{background:var(--yel)}.t-top{background:var(--orange)}
-.card h3{margin:0;font-size:17px;line-height:1.3}
-.card p{margin:0;font-size:14px;color:var(--soft)}
-.empty{display:none;padding:24px;border:1px dashed var(--line);border-radius:16px;color:var(--soft);text-align:center}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:28px}
-.step{background:var(--night2);border:1px solid var(--line);border-radius:16px;padding:24px}
-.step .n{font-family:'Archivo Black',sans-serif;font-size:44px;line-height:1;color:var(--yel);text-shadow:3px 3px 0 var(--pink)}
-.step h3{margin:12px 0 6px;font-size:18px}
-.step p{margin:0;color:var(--soft);font-size:15px}
-.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.panel{background:var(--night2);border:1px solid var(--line);border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:14px}
-.panel p{margin:0;color:var(--soft)}
-.panel .mock{margin-top:8px;border-radius:14px;border:1px solid #5A3B8F;background:var(--night);padding:16px;display:flex;flex-direction:column;gap:10px}
-.row{display:flex;gap:10px;align-items:center;font-size:14px}
-.row .box{width:20px;height:20px;border-radius:6px;border:2px solid var(--teal);flex:none}
-.row.done .box{background:var(--teal)}
-.row.done span{text-decoration:line-through;color:#8F84B8}
-.bar{height:8px;border-radius:4px;background:#2E1A57;overflow:hidden}.bar i{display:block;height:100%;width:34%;background:var(--pink)}
-.map{position:relative;height:180px;border-radius:14px;background:radial-gradient(circle at 30% 60%,#2EE6D633 0 18%,transparent 19%),radial-gradient(circle at 62% 40%,#2EE6D633 0 24%,transparent 25%),var(--night);border:1px solid #5A3B8F;overflow:hidden}
-.pin{position:absolute;width:14px;height:14px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--pink);box-shadow:0 0 10px var(--pink)}
-.nl{position:relative;overflow:hidden;background:linear-gradient(180deg,#2A0F4A 0%,#6B1E6E 60%,#C23B76 100%)}
-.nl-in{max-width:640px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
-.script{font-family:Yellowtail,cursive;font-size:52px;line-height:1;color:var(--pink2);text-shadow:0 0 12px var(--pink)}
-.nl form{display:flex;flex-direction:column;gap:12px;width:100%;margin-top:6px}
+/* Fil */
+.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.post{display:flex;flex-direction:column;background:var(--night2);border:1px solid var(--line);border-radius:16px;overflow:hidden;color:var(--white);text-decoration:none;transition:transform .15s,border-color .15s}
+.post:hover{transform:translateY(-3px);border-color:var(--pink2);color:var(--white)}
+.post img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.post .b{padding:16px;display:flex;flex-direction:column;gap:8px}
+.post h3{margin:0;font-size:17px;line-height:1.3}
+.post p{margin:0;color:var(--soft);font-size:14px}
+.more{display:flex;justify-content:center;margin-top:24px}
+/* Chasse */
+.hunt{background:linear-gradient(180deg,#1E0B3D 0%,#2A0F4A 100%);border-top:4px solid var(--teal)}
+.score{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--night);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:20px}
+.score .big{font-family:'Archivo Black',sans-serif;font-size:34px;line-height:1;color:var(--yel);text-shadow:3px 3px 0 var(--pink)}
+.score .bar{flex:1 1 200px;height:12px;border-radius:6px;background:#2E1A57;overflow:hidden}
+.score .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--yel));transition:width .4s}
+.score .rank{font-weight:700;color:var(--teal)}
+.eggs{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.egg{display:flex;flex-direction:column;gap:8px;background:var(--night2);border:1px solid var(--line);border-radius:16px;padding:18px;transition:border-color .2s,background .2s}
+.egg.found{border-color:var(--teal);background:#1C2A4A}
+.egg h3{margin:0;font-size:17px;line-height:1.3}
+.egg p{margin:0;font-size:14px;color:var(--soft)}
+.egg .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:4px}
+.st{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;text-transform:uppercase}
+.st-confirme{background:var(--teal);color:var(--night)}.st-rumeur{background:var(--orange);color:var(--night)}.st-a-tester{background:#5A3B8F;color:#fff}
+.check{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;border:2px solid var(--teal);background:transparent;color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}
+.egg.found .check{background:var(--teal);color:var(--night)}
+.src{font-size:13px}
+.hint{margin-top:18px;color:var(--soft);font-size:14px}
+/* Video + newsletter */
+.duo{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:28px;align-items:center}
+.duo video{width:100%;aspect-ratio:9/16;border-radius:20px;border:2px solid var(--pink2);background:#000}
+.nl{background:linear-gradient(180deg,#2A0F4A 0%,#6B1E6E 60%,#C23B76 100%)}
+.nl-in{max-width:640px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.script{font-family:Yellowtail,cursive;font-size:48px;line-height:1;color:var(--pink2);text-shadow:0 0 12px var(--pink)}
+.nl form{display:flex;flex-direction:column;gap:12px;width:100%}
 .nl .line{display:flex;flex-wrap:wrap;gap:8px}
-.nl input[type=email]{flex:1 1 240px;min-width:0;height:52px;border-radius:12px;border:2px solid var(--white);background:var(--night);color:var(--white);padding:0 16px;font:16px Inter,sans-serif}
+.nl input[type=email]{flex:1 1 240px;min-width:0;height:50px;border-radius:12px;border:2px solid var(--white);background:var(--night);color:var(--white);padding:0 16px;font:16px Inter,sans-serif}
 .nl .btn{background:var(--yel)}
 .consent{display:flex;gap:10px;align-items:flex-start;text-align:left;font-size:13px;color:#F2ECFF}
 .consent input{margin-top:3px;width:18px;height:18px;flex:none;accent-color:var(--teal)}
 .msg{min-height:22px;font-weight:700;font-size:14px}
-.socials{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+.socials{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
 .socials a{min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--night2);color:var(--white);text-decoration:none;font-weight:700}
-.socials a:hover{border-color:var(--teal)}
-footer{border-top:4px solid var(--teal);background:#12062A;padding:40px 0}
+footer{border-top:4px solid var(--teal);background:#12062A;padding:36px 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
-footer small{display:block;max-width:560px;color:#A99BD6;font-size:13px;margin-top:8px}
+footer small{display:block;max-width:560px;color:var(--mute);font-size:13px;margin-top:8px}
 footer nav a{font-size:14px;color:var(--teal)}
 dialog{max-width:640px;width:calc(100% - 32px);border:1px solid var(--line);border-radius:20px;background:var(--night2);color:var(--white);padding:28px}
 dialog::backdrop{background:rgba(10,4,24,.75)}
-dialog h2{font-size:26px;margin-bottom:12px}
-dialog p,dialog li{color:var(--soft);font-size:14px}
+dialog h2{font-size:24px;margin:0 0 12px}
+dialog p{color:var(--soft);font-size:14px}
 .close{float:right;min-width:44px;min-height:44px;border-radius:12px;border:1px solid var(--line);background:var(--night);color:var(--white);font-size:20px;cursor:pointer}
-@media (max-width:640px){.hero{padding:56px 0 230px}nav{gap:4px 14px;font-size:14px}}
-.news-launch{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:32px;align-items:center;margin-bottom:48px}
-.news-launch video{width:100%;aspect-ratio:9/16;border-radius:20px;border:2px solid var(--pink2);background:#000;box-shadow:0 0 30px #FF3D7F55}
-.news-launch .txt{display:flex;flex-direction:column;gap:14px}
-.news-launch p{margin:0;color:var(--soft);font-size:17px}
-.pills{display:flex;flex-wrap:wrap;gap:10px}
-.pills a{min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:var(--night2);border:1px solid var(--line);color:var(--white);text-decoration:none;font-weight:700}
-.pills a:hover{border-color:var(--teal)}
-.infos{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px;margin-top:24px}
-.info{background:var(--night2);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.info img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;flex:none}
-.info .body{padding:18px;display:flex;flex-direction:column;gap:8px}
-.info .n{font-family:'Archivo Black',sans-serif;font-size:32px;line-height:1;color:var(--yel);text-shadow:3px 3px 0 var(--pink)}
-.info h3{margin:0;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:19px;line-height:1.15}
-.info p{margin:0;color:var(--soft);font-size:15px}
-.ai-note{margin-top:16px;color:#8F84B8;font-size:13px}
-@media (max-width:720px){.news-launch{grid-template-columns:1fr}.news-launch video{max-width:300px;margin:0 auto}}
+.skel{background:linear-gradient(90deg,var(--night2),var(--night3),var(--night2));background-size:200% 100%;animation:sk 1.2s infinite;border-radius:16px}
+@keyframes sk{to{background-position:-200% 0}}
+@media (max-width:860px){.une-grid{grid-template-columns:1fr}.lead{min-height:340px}.duo{grid-template-columns:1fr}.duo video{max-width:280px;margin:0 auto}}
+@media (max-width:520px){nav{font-size:14px;gap:2px 12px}.mini{grid-template-columns:96px minmax(0,1fr)}.mini img{width:96px;height:68px}}
 </style>
 </head>
 <body>
@@ -122,122 +135,91 @@ dialog p,dialog li{color:var(--soft);font-size:14px}
 <div class="wrap">
 <a class="brand" href="#top" aria-label="GTASTUCE VICE, accueil"><b>GTASTUCE</b><i>Vice</i></a>
 <nav aria-label="Navigation principale">
-<a href="actus.html">Actus</a>
-<a href="#nouveautes">Nouveautés</a>
-<a href="#guides" data-filter="tuto">Tutos</a>
-<a href="#guides" data-filter="astuce">Astuces</a>
-<a href="#guides" data-filter="secret">Easter eggs</a>
-<a href="#outils">Carte &amp; checklist</a>
+<a href="#fil">Actus</a>
+<a href="#guides">Guides</a>
+<a href="#chasse">Chasse aux secrets</a>
+<a href="actus.html?c=drama">Dramas</a>
 <a class="btn" href="#newsletter">Newsletter</a>
 </nav>
+</div>
+<div class="ticker" aria-label="Dernières infos">
+<span class="live">EN DIRECT</span>
+<div class="track" id="ticker"><a href="actus.html">Chargement des dernières infos…</a></div>
 </div>
 </header>
 
 <main id="top">
-<section class="hero" aria-labelledby="titre">
-<svg class="sun" viewBox="0 0 400 400" aria-hidden="true"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE45C"/><stop offset=".55" stop-color="#FF9A3D"/><stop offset="1" stop-color="#FF3D7F"/></linearGradient><mask id="sm"><rect width="400" height="400" fill="#000"/><circle cx="200" cy="200" r="200" fill="#fff"/><rect y="230" width="400" height="8"/><rect y="262" width="400" height="12"/><rect y="300" width="400" height="16"/><rect y="342" width="400" height="20"/></mask></defs><rect width="400" height="400" fill="url(#sg)" mask="url(#sm)" opacity=".9"/></svg>
-<div class="sea" aria-hidden="true"></div>
-<svg class="palm l" viewBox="0 0 200 400" aria-hidden="true"><g fill="#12062A"><path d="M118 400C112 300 70 210 92 118L104 120C86 210 128 300 134 400Z"/><path d="M98 118Q55 80 0 104Q55 94 98 126Z"/><path d="M98 118Q145 82 200 100Q145 96 100 126Z"/><path d="M98 118Q68 56 22 40Q74 72 98 124Z"/><path d="M98 118Q128 54 176 42Q124 74 100 124Z"/><path d="M98 118Q94 64 104 10Q110 66 102 120Z"/><path d="M98 120Q46 130 12 186Q56 144 98 128Z"/><path d="M100 120Q154 132 186 184Q144 144 100 128Z"/></g></svg>
-<svg class="palm r" viewBox="0 0 200 400" aria-hidden="true"><g fill="#12062A"><path d="M118 400C112 300 70 210 92 118L104 120C86 210 128 300 134 400Z"/><path d="M98 118Q55 80 0 104Q55 94 98 126Z"/><path d="M98 118Q145 82 200 100Q145 96 100 126Z"/><path d="M98 118Q68 56 22 40Q74 72 98 124Z"/><path d="M98 118Q128 54 176 42Q124 74 100 124Z"/><path d="M98 118Q94 64 104 10Q110 66 102 120Z"/><path d="M98 120Q46 130 12 186Q56 144 98 128Z"/><path d="M100 120Q154 132 186 184Q144 144 100 128Z"/></g></svg>
+<section class="une" aria-labelledby="t-une" style="padding-bottom:0">
 <div class="wrap">
-<div class="hero-in">
-<span class="badge">Sortie le 19 novembre 2026 sur PS5 et Xbox Series X|S</span>
-<div class="kicker">Le guide français de GTA 6</div>
-<h1 id="titre">Tout ce que les autres ne t'ont pas <span>montré</span>.</h1>
-<p class="lead">Astuces, tutos, easter eggs et collectibles de Vice City et Leonida. Sourcés, expliqués sans blabla.</p>
-<form class="search" role="search" id="search-form">
-<label class="sr" for="q">Rechercher une astuce</label>
-<input id="q" type="search" placeholder="Ex. : voiture rare, argent, police…" autocomplete="off">
-<button class="btn" type="submit">Chercher</button>
-</form>
+<div class="kicker">GTA 6 est sorti · le fil en français</div>
+<h1 class="page" id="t-une">Ce qui se passe <span>sur GTA 6</span> en ce moment</h1>
+<div class="une-grid">
+<div id="lead"><div class="skel" style="min-height:420px"></div></div>
+<div class="side" id="side"><div class="skel" style="height:100px"></div><div class="skel" style="height:100px"></div><div class="skel" style="height:100px"></div></div>
+</div>
+<div class="facts" aria-label="L'essentiel">
+<div class="fact"><b>Sorti</b><span>le 19 novembre 2026</span></div>
+<div class="fact"><b>PS5 · Xbox Series</b><span>seulement, pour l'instant</span></div>
+<div class="fact"><b>PC</b><span>pas de date annoncée</span></div>
+<div class="fact"><b>Online</b><span>pas au lancement</span></div>
+<div class="fact"><b>212 Go</b><span>d'espace à prévoir</span></div>
 </div>
 </div>
 </section>
 
-<section id="actus" aria-labelledby="t-actus" style="padding-bottom:0">
+<section id="fil" aria-labelledby="t-fil">
 <div class="wrap">
-<div class="head"><h2 id="t-actus">Les dernières actus</h2><a class="btn" href="actus.html" style="min-height:44px">Toutes les actus</a></div>
-<div class="infos" id="latest"></div>
+<div class="head">
+<h2 class="sec" id="t-fil">Le fil</h2>
+<div class="chips" role="group" aria-label="Filtrer les actus" id="chips"></div>
+</div>
+<div class="feed" id="feed"></div>
+<div class="more"><a class="btn" href="actus.html">Toutes les actus</a></div>
 </div>
 </section>
 
-<section id="nouveautes" aria-labelledby="t-news">
+<section id="guides" aria-labelledby="t-guides" style="padding-top:0">
 <div class="wrap">
-<div class="head"><h2 id="t-news">Les nouveautés</h2></div>
-<div class="news-launch">
+<div class="head">
+<div>
+<div class="kicker">Pour bien jouer</div>
+<h2 class="sec" id="t-guides">Les guides</h2>
+</div>
+<a class="btn" href="actus.html?c=guide" style="min-height:40px">Tous les guides</a>
+</div>
+<div class="feed" id="guides-list"></div>
+</div>
+</section>
+
+<section class="hunt" id="chasse" aria-labelledby="t-chasse">
+<div class="wrap">
+<div class="head">
+<div>
+<div class="kicker">Le jeu GTASTUCE</div>
+<h2 class="sec" id="t-chasse">La chasse aux secrets de Leonida</h2>
+</div>
+</div>
+<div class="score" aria-live="polite">
+<span class="big" id="sc">0/0</span>
+<span class="bar"><i id="scbar"></i></span>
+<span class="rank" id="rank">Touriste à Vice City</span>
+</div>
+<div class="eggs" id="eggs"></div>
+<p class="hint">Coche ce que tu as trouvé en jeu : ta progression reste enregistrée sur ton appareil. Tu as découvert un secret qui n'est pas dans la liste ? Dis-le en commentaire sur <a href="https://www.tiktok.com/@gtastucevice">TikTok</a>, on vérifie et on t'ajoute avec ton pseudo.</p>
+</div>
+</section>
+
+<section aria-labelledby="t-video">
+<div class="wrap duo">
 <video src="assets/lancement.mp4" poster="assets/poster.jpg" controls playsinline preload="metadata" aria-label="Vidéo de lancement GTASTUCE VICE"></video>
-<div class="txt">
-<div class="kicker">Vidéo de lancement</div>
-<h3 style="margin:0;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(26px,3vw,34px);line-height:1.1">Bienvenue à Vice 🌴</h3>
-<p>GTASTUCE VICE est lancé ! Une astuce, un tuto ou un secret de GTA 6 chaque jour, en français et sans blabla. La vidéo est en ligne sur nos trois réseaux.</p>
-<div class="pills">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div class="kicker">Qui on est</div>
+<h2 class="sec" id="t-video">Une astuce, un secret ou une actu GTA 6 chaque jour</h2>
+<p style="margin:0;color:var(--soft);font-size:17px">GTASTUCE VICE, c'est le fil français de GTA 6 : on suit l'actu en continu, on cite toujours nos sources, et quand ce n'est pas sûr, on te le dit. Pas de leaks, pas de spoilers, pas de glitchs qui font bannir.</p>
+<div class="socials" style="justify-content:flex-start;margin-top:0">
 <a href="https://www.tiktok.com/@gtastucevice">TikTok</a>
 <a href="https://www.instagram.com/gtastucevice/">Instagram</a>
 <a href="https://www.youtube.com/@gtastucevice">YouTube</a>
-</div>
-</div>
-</div>
-<div class="kicker">À lire avant de lancer ta partie</div>
-<h3 style="margin:8px 0 0;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,2.8vw,30px);line-height:1.1">Les 5 trucs à savoir avant de lancer GTA 6</h3>
-<div class="infos">
-<article class="info"><img src="assets/info_1.jpg" alt="" loading="lazy" width="800" height="800"><div class="body"><div class="n">01</div><h3>Sortie le 19 novembre</h3><p>GTA 6 sort le jeudi 19 novembre 2026, uniquement sur PS5 et Xbox Series X|S.</p></div></article>
-<article class="info"><img src="assets/info_2.jpg" alt="" loading="lazy" width="800" height="800"><div class="body"><div class="n">02</div><h3>Pas de version PC pour l'instant</h3><p>Rockstar n'a annoncé aucune date pour le PC. Pour GTA 5, la version PC était sortie bien après les consoles.</p></div></article>
-<article class="info"><img src="assets/info_3.jpg" alt="" loading="lazy" width="800" height="800"><div class="body"><div class="n">03</div><h3>79,99 € ou 99,99 €</h3><p>L'édition Standard est à 79,99 €, l'édition Ultimate à 99,99 €. Compare avant d'acheter.</p></div></article>
-<article class="info"><img src="assets/info_4.jpg" alt="" loading="lazy" width="800" height="800"><div class="body"><div class="n">04</div><h3>Bienvenue à Leonida</h3><p>Le jeu se passe dans l'État de Leonida, inspiré de la Floride, avec Vice City comme grande ville.</p></div></article>
-<article class="info"><img src="assets/info_5.jpg" alt="" loading="lazy" width="800" height="800"><div class="body"><div class="n">05</div><h3>Zéro spoiler</h3><p>Rockstar fait retirer les vidéos qui montrent la fin ou les grosses révélations. Fais gaffe à ce que tu regardes !</p></div></article>
-</div>
-<p class="ai-note">Illustrations d'ambiance générées par IA. Ce ne sont pas des images du jeu.</p>
-</div>
-</section>
-
-<section id="guides" aria-labelledby="t-guides">
-<div class="wrap">
-<div class="head">
-<h2 id="t-guides">Les guides</h2>
-<div class="chips" role="group" aria-label="Filtrer par type">
-<button class="chip" type="button" data-cat="all" aria-pressed="true">Tout</button>
-<button class="chip" type="button" data-cat="tuto" aria-pressed="false">Tutos</button>
-<button class="chip" type="button" data-cat="astuce" aria-pressed="false">Astuces</button>
-<button class="chip" type="button" data-cat="secret" aria-pressed="false">Secrets de Vice</button>
-<button class="chip" type="button" data-cat="top" aria-pressed="false">Tops</button>
-</div>
-</div>
-<div class="grid" id="grid"></div>
-<p class="empty" id="empty">Rien trouvé pour cette recherche… pour l'instant. Pose ta question en commentaire sur TikTok, elle deviendra peut-être la prochaine vidéo.</p>
-</div>
-</section>
-
-<section aria-labelledby="t-methode" style="padding-top:0">
-<div class="wrap">
-<h2 id="t-methode">Pourquoi tu peux nous faire confiance</h2>
-<div class="steps">
-<div class="step"><div class="n">01</div><h3>Sourcé</h3><p>Chaque info cite ses sources. Tu peux toujours vérifier d'où ça vient.</p></div>
-<div class="step"><div class="n">02</div><h3>Honnête</h3><p>Rumeur, estimation ou « à tester en jeu » : quand ce n'est pas sûr, on te le dit clairement.</p></div>
-<div class="step"><div class="n">03</div><h3>Zéro triche</h3><p>Pas de glitch d'argent, pas de mods, pas de spoilers : rien qui fasse bannir ou gâche ta partie.</p></div>
-</div>
-</div>
-</section>
-
-<section id="outils" aria-labelledby="t-outils" style="padding-top:0">
-<div class="wrap">
-<div class="head"><h2 id="t-outils">Les outils GTASTUCE</h2></div>
-<div class="duo">
-<div class="panel">
-<div class="kicker">Bientôt</div>
-<h3 style="margin:0;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:26px;line-height:1.1">La carte des easter eggs de Leonida</h3>
-<p>Tous les secrets confirmés, placés sur la carte. Filtre par type et suis ta progression.</p>
-<div class="map" aria-hidden="true"><span class="pin" style="left:24%;top:52%"></span><span class="pin" style="left:58%;top:30%"></span><span class="pin" style="left:68%;top:62%"></span><span class="pin" style="left:40%;top:72%;background:var(--teal);box-shadow:0 0 10px var(--teal)"></span></div>
-</div>
-<div class="panel">
-<div class="kicker">Bientôt</div>
-<h3 style="margin:0;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:26px;line-height:1.1">La checklist 100 %</h3>
-<p>Coche les collectibles et les secrets trouvés : ta progression reste enregistrée sur ton appareil.</p>
-<div class="mock" aria-hidden="true">
-<div class="bar"><i></i></div>
-<div class="row done"><span class="box"></span><span>Exemple : premier secret trouvé</span></div>
-<div class="row done"><span class="box"></span><span>Exemple : véhicule rare récupéré</span></div>
-<div class="row"><span class="box"></span><span>Exemple : spot caché de Vice City</span></div>
-</div>
 </div>
 </div>
 </div>
@@ -247,7 +229,7 @@ dialog p,dialog li{color:var(--soft);font-size:14px}
 <div class="wrap">
 <div class="nl-in">
 <div class="script">Le Brief de Vice</div>
-<h2 id="t-nl">Les 5 astuces de la semaine, chaque vendredi dans ta boîte mail</h2>
+<h2 class="sec" id="t-nl" style="font-size:clamp(22px,2.6vw,30px)">Les 5 infos et astuces de la semaine, chaque vendredi</h2>
 <p style="margin:0;color:#F2ECFF">Gratuit. Pas de spam. Désinscription en un clic.</p>
 <form id="nl-form" novalidate>
 <div class="line">
@@ -259,11 +241,6 @@ dialog p,dialog li{color:var(--soft);font-size:14px}
 <div class="msg" id="nl-msg" role="status" aria-live="polite"></div>
 </form>
 </div>
-<div class="socials" aria-label="Nos réseaux">
-<a href="https://www.tiktok.com/@gtastucevice" aria-label="TikTok @gtastucevice">TikTok</a>
-<a href="https://www.instagram.com/gtastucevice/" aria-label="Instagram @gtastucevice">Instagram</a>
-<a href="https://www.youtube.com/@gtastucevice" aria-label="YouTube @gtastucevice">YouTube</a>
-</div>
 </div>
 </section>
 </main>
@@ -272,7 +249,7 @@ dialog p,dialog li{color:var(--soft);font-size:14px}
 <div class="wrap">
 <div>
 <a class="brand" href="#top"><b>GTASTUCE</b><i>Vice</i></a>
-<small>Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto et les éléments associés sont des marques de Take-Two Interactive.</small>
+<small>Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto et les éléments associés sont des marques de Take-Two Interactive. Images : Rockstar Games (captures officielles), sauf mention contraire.</small>
 </div>
 <nav aria-label="Liens légaux">
 <a href="#" data-open="legal">Mentions légales</a>
@@ -288,43 +265,57 @@ dialog p,dialog li{color:var(--soft);font-size:14px}
 <p><strong>Éditeur :</strong> [Nom et prénom de l'éditeur], [adresse ou mention « adresse communiquée à l'hébergeur »], contact : gtastucevice@gmail.com.</p>
 <p><strong>Hébergeur :</strong> GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
 <p><strong>Newsletter :</strong> l'adresse email sert uniquement à l'envoi du Brief de Vice, via [prestataire d'envoi]. Elle n'est ni vendue ni partagée. Tu peux te désinscrire depuis chaque email ou demander la suppression de tes données à l'adresse de contact.</p>
-<p><strong>Marques :</strong> site de fans non officiel. Grand Theft Auto est une marque de Take-Two Interactive. Les captures publiées sont réalisées par l'équipe GTASTUCE VICE ou ses contributeurs.</p>
+<p><strong>Chasse aux secrets :</strong> ta progression est enregistrée uniquement dans ton navigateur (stockage local). Rien n'est envoyé.</p>
+<p><strong>Marques :</strong> site de fans non officiel. Grand Theft Auto est une marque de Take-Two Interactive. Images : Rockstar Games (captures officielles), sauf mention contraire.</p>
 </dialog>
 
 <script>
-const GUIDES=[
-{cat:'tuto',tag:'TUTO',t:'Le premier véhicule à récupérer',d:'Où le trouver et comment le garder',img:'PRENDS-LA DÈS LE DÉBUT'},
-{cat:'astuce',tag:'ASTUCE',t:'Les réglages à changer avant de jouer',d:'3 minutes pour un jeu plus agréable',img:'CHANGE ÇA AVANT DE JOUER'},
-{cat:'astuce',tag:'ASTUCE',t:'Semer la police en 10 secondes',d:'La technique qui marche à tous les coups',img:'SÈME LA POLICE'},
-{cat:'tuto',tag:'TUTO',t:'Gagner de l\'argent légalement au début',d:'Les activités qui rapportent le plus',img:'TES PREMIERS MILLIONS'},
-{cat:'secret',tag:'SECRET DE VICE',t:'Les clins d\'œil aux anciens GTA',d:'Ce que les fans de 2002 vont reconnaître',img:'TU L\'AS VU ?'},
-{cat:'secret',tag:'SECRET DE VICE',t:'Le détail que personne n\'a remarqué',d:'Tu es passé devant sans le voir',img:'99 % L\'ONT RATÉ'},
-{cat:'top',tag:'TOP 5',t:'Les 5 plus beaux spots de Leonida',d:'Et à quelle heure y aller',img:'5 SPOTS DE RÊVE'},
-{cat:'top',tag:'TOP 5',t:'Vice City dans le jeu vs le vrai Miami',d:'Les lieux qui existent vraiment',img:'ÇA EXISTE VRAIMENT'}
-];
-const tagClass={tuto:'t-tuto',astuce:'t-astuce',secret:'t-secret',top:'t-top'};
-const grid=document.getElementById('grid'),empty=document.getElementById('empty'),q=document.getElementById('q');
-let cat='all';
-const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-function render(){
- const term=norm(q.value.trim());
- const list=GUIDES.filter(g=>(cat==='all'||g.cat===cat)&&(!term||norm(g.t+' '+g.d+' '+g.tag).includes(term)));
- grid.innerHTML='';
- list.forEach(g=>{
-  const a=document.createElement('a');a.className='card';a.href='#guides';
-  a.innerHTML='<div class="thumb"><span class="soon">BIENTÔT</span></div><div class="body"><span class="tag"></span><h3></h3><p></p></div>';
-  a.querySelector('.thumb').prepend(document.createTextNode(g.img));
-  const tg=a.querySelector('.tag');tg.textContent=g.tag;tg.classList.add(tagClass[g.cat]);
-  a.querySelector('h3').textContent=g.t;a.querySelector('p').textContent=g.d;
-  grid.appendChild(a);
- });
- empty.style.display=list.length?'none':'block';
+const CATS={actu:'Actu',test:'Test',astuce:'Astuce',secret:'Secret',drama:'Drama',guide:'Guide'};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const url=a=>'actus.html?a='+encodeURIComponent(a.slug);
+function ago(d){const m=Math.round((Date.now()-new Date(d))/60000);if(m<1)return"à l'instant";if(m<60)return"il y a "+m+" min";const h=Math.round(m/60);if(h<24)return"il y a "+h+" h";const j=Math.round(h/24);return j===1?"hier":"il y a "+j+" jours";}
+const isNew=d=>(Date.now()-new Date(d))<12*3600e3;
+const meta=a=>`<div class="meta"><span class="cat c-${esc(a.cat)}">${CATS[a.cat]||esc(a.cat)}</span>${isNew(a.date)?'<span class="new">NOUVEAU</span>':''}<span>${ago(a.date)}</span></div>`;
+let ART=[],GUIDES=[],cat='all';
+function renderGuides(){document.getElementById('guides-list').innerHTML=GUIDES.slice(0,6).map(a=>`<a class="post" href="${url(a)}"><img src="${esc(a.img)}" alt="" loading="lazy"><div class="b"><div class="meta"><span class="cat c-${esc(a.cat)}">${CATS[a.cat]||esc(a.cat)}</span></div><h3>${esc(a.title)}</h3><p>${esc(a.chapo)}</p></div></a>`).join('');}
+function renderFeed(){
+ const rest=ART.slice(5);const l=(cat==='all'?rest:ART.filter(a=>a.cat===cat)).slice(0,9);
+ document.getElementById('feed').innerHTML=l.map(a=>`<a class="post" href="${url(a)}"><img src="${esc(a.img)}" alt="" loading="lazy"><div class="b">${meta(a)}<h3>${esc(a.title)}</h3><p>${esc(a.chapo)}</p></div></a>`).join('')||'<p style="color:var(--soft)">Rien pour l\'instant dans cette catégorie.</p>';
+ document.querySelectorAll('#chips .chip').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.c===cat)));
 }
-function setCat(c){cat=c;document.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cat===c)));render();}
-document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>setCat(b.dataset.cat)));
-document.querySelectorAll('nav a[data-filter]').forEach(a=>a.addEventListener('click',()=>setCat(a.dataset.filter)));
-q.addEventListener('input',render);
-document.getElementById('search-form').addEventListener('submit',e=>{e.preventDefault();setCat('all');document.getElementById('guides').scrollIntoView();});
+fetch('articles.json').then(r=>r.json()).then(d=>{
+ const all=d.sort((a,b)=>b.date.localeCompare(a.date));
+ GUIDES=all.filter(a=>a.cat==='guide'||a.cat==='astuce');
+ ART=all.filter(a=>a.cat!=='guide');
+ renderGuides();
+ const [L,...S]=ART;
+ document.getElementById('lead').innerHTML=`<a class="lead" href="${url(L)}"><img src="${esc(L.img)}" alt=""><span class="ov"></span><div class="txt">${meta(L)}<h2>${esc(L.title)}</h2><p>${esc(L.chapo)}</p></div></a>`;
+ document.getElementById('side').innerHTML=S.slice(0,4).map(a=>`<a class="mini" href="${url(a)}"><img src="${esc(a.img)}" alt="" loading="lazy"><div>${meta(a)}<h3>${esc(a.title)}</h3></div></a>`).join('');
+ const t=ART.slice(0,8).map(a=>`<a href="${url(a)}">${esc(a.title)}</a>`).join('');
+ document.getElementById('ticker').innerHTML=t+t;
+ const cats=['all',...Object.keys(CATS).filter(c=>c!=='guide'&&ART.some(a=>a.cat===c))];
+ document.getElementById('chips').innerHTML=cats.map(c=>`<button class="chip" type="button" data-c="${c}">${c==='all'?'Tout':CATS[c]}</button>`).join('');
+ document.querySelectorAll('#chips .chip').forEach(b=>b.onclick=()=>{cat=b.dataset.c;renderFeed();});
+ renderFeed();
+}).catch(()=>{document.getElementById('lead').innerHTML='<p>Les actus n\'ont pas pu se charger. <a href="actus.html">Voir toutes les actus</a></p>';document.getElementById('side').innerHTML='';});
+
+/* Chasse aux secrets */
+const KEY='gtv_secrets';let found={};
+try{found=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(_){found={}}
+const ST={confirme:'Confirmé',rumeur:'Rumeur','a-tester':'À tester'};
+const RANKS=[[0,'Touriste à Vice City'],[0.34,'Explorateur de Leonida'],[0.67,'Chasseur de secrets'],[1,'Légende de Vice City 🌴']];
+let EGGS=[];
+function renderEggs(){
+ const n=EGGS.filter(e=>found[e.id]).length,t=EGGS.length,r=t?n/t:0;
+ document.getElementById('sc').textContent=n+'/'+t;
+ document.getElementById('scbar').style.width=(r*100)+'%';
+ document.getElementById('rank').textContent=RANKS.filter(x=>r>=x[0]).pop()[1];
+ document.getElementById('eggs').innerHTML=EGGS.map(e=>`<div class="egg${found[e.id]?' found':''}"><div class="row" style="margin:0"><span class="st st-${esc(e.status)}">${ST[e.status]||esc(e.status)}</span></div><h3>${esc(e.title)}</h3><p><strong>Où :</strong> ${esc(e.where)}</p><p>${esc(e.how)}</p><div class="row"><button class="check" type="button" data-id="${esc(e.id)}" aria-pressed="${!!found[e.id]}">${found[e.id]?'✓ Trouvé':'Je l\'ai trouvé'}</button><a class="src" href="${esc(e.source.u)}" target="_blank" rel="noopener">Source : ${esc(e.source.t)}</a></div></div>`).join('');
+ document.querySelectorAll('.check').forEach(b=>b.onclick=()=>{const id=b.dataset.id;found[id]=!found[id];if(!found[id])delete found[id];try{localStorage.setItem(KEY,JSON.stringify(found))}catch(_){}renderEggs();});
+}
+fetch('secrets.json').then(r=>r.json()).then(d=>{EGGS=d;renderEggs();}).catch(()=>{document.getElementById('chasse').style.display='none'});
+
+/* Newsletter + légal */
 document.getElementById('nl-form').addEventListener('submit',e=>{
  e.preventDefault();
  const m=document.getElementById('nl-msg'),em=document.getElementById('email').value.trim();
@@ -335,11 +326,6 @@ document.getElementById('nl-form').addEventListener('submit',e=>{
 const dlg=document.getElementById('legal');
 document.querySelectorAll('[data-open="legal"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();try{dlg.showModal()}catch(_){dlg.setAttribute('open','')}}));
 dlg.querySelector('[data-close]').addEventListener('click',()=>dlg.close());
-render();
-</script>
-<script>
-fetch('articles.json').then(r=>r.json()).then(d=>{const C={actu:'Actu',test:'Tests',astuce:'Astuces',secret:'Secrets',drama:'Drama'};const e=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-document.getElementById('latest').innerHTML=d.sort((a,b)=>b.date.localeCompare(a.date)).slice(0,4).map(a=>`<a class="info" href="actus.html?a=${encodeURIComponent(a.slug)}" style="text-decoration:none;color:inherit"><img src="${e(a.img)}" alt="" loading="lazy" style="aspect-ratio:16/9"><div class="body"><span class="tag" style="background:var(--teal)">${C[a.cat]||a.cat}</span><h3>${e(a.title)}</h3><p>${e(a.chapo)}</p></div></a>`).join('')}).catch(()=>{document.getElementById('actus').style.display='none'});
 </script>
 </body>
 </html>

@@ -1,5 +1,142 @@
 [
  {
+  "slug": "guide-carte-leonida-6-regions",
+  "date": "2026-11-19T13:10:00+01:00",
+  "cat": "guide",
+  "title": "Carte de GTA 6 : les 6 régions de Leonida expliquées",
+  "chapo": "Vice City, les Keys, les marais, la côte oubliée, la campagne et la montagne : le tour de Leonida pour savoir où aller.",
+  "img": "assets/rs_keys_aerien.jpg",
+  "body": [
+   "GTA 6 se passe dans l'État imaginaire de Leonida, inspiré de la Floride. Rockstar y a nommé six régions : Vice City, les Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia et Mount Kalaga. Rockstar n'a pas donné de taille officielle pour la carte, les chiffres qui circulent sont des estimations de la communauté.",
+   "Vice City, au sud-est : la grande ville, version moderne de Miami. Plages, néons, tours, vie nocturne. C'est là que se passe une bonne partie de l'action.",
+   "Les Leonida Keys : un chapelet d'îles reliées par des ponts, inspiré des Florida Keys. C'est là que démarre le jeu, et c'est aussi le meilleur coin pour la plongée et les épaves.",
+   "Grassrivers : la version Rockstar des Everglades. Marais, alligators, hydroglisseurs… et Bigfoot, d'après les premiers joueurs.",
+   "Port Gellhorn, sur la côte ouest : la « côte oubliée » de Leonida, inspirée de Panama City et du Panhandle de Floride. Motels fatigués, centres commerciaux vides et un port industriel.",
+   "Ambrosia : une région plus rurale et industrielle au bord du lac Leonida, avec une grosse raffinerie de sucre qui domine le paysage.",
+   "Mount Kalaga, au nord : le parc national, avec canyons, rivières et forêts. Le coin idéal pour la conduite, le kayak ou juste des belles photos.",
+   "Notre conseil : commence par profiter des Keys, puis monte vers Vice City. Garde les marais et Mount Kalaga pour quand tu auras un véhicule tout-terrain."
+  ],
+  "sources": [
+   {
+    "t": "Gfinity – guide de la carte",
+    "u": "https://www.gfinityesports.com/article/gta-6-map-guide-every-confirmed-location-in-leonida"
+   },
+   {
+    "t": "Driffle – régions de Leonida",
+    "u": "https://driffle.com/blog/gta-6-map-locations-guide/"
+   },
+   {
+    "t": "Mobalytics – carte interactive",
+    "u": "https://mobalytics.gg/gamebase/guides/grand-theft-auto-6-interactive-map"
+   },
+   {
+    "t": "All Things How – régions",
+    "u": "https://allthings.how/gta-6-map-locations-every-confirmed-region-in-leonida/"
+   },
+   {
+    "t": "Beebom – carte",
+    "u": "https://beebom.com/gta-6-map/amp/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-police-semer-les-flics-gta-6",
+  "date": "2026-11-19T13:05:00+01:00",
+  "cat": "guide",
+  "title": "Police dans GTA 6 : comment fonctionne le système de recherche et comment semer les flics",
+  "chapo": "Six étoiles, des icônes rouges et des flics qui se souviennent de toi : la police de GTA 6 ne marche plus comme avant.",
+  "img": "assets/rs_police_pont.jpg",
+  "body": [
+   "Grosse nouveauté : la police de GTA 6 a de la mémoire. Selon GTABase, les flics retiennent tes crimes et ton apparence, là où les anciens GTA oubliaient tout dès que les étoiles disparaissaient.",
+   "Les étoiles : le niveau de recherche monte jusqu'à six étoiles, comme dans GTA 4, contre cinq dans GTA 5. Plus il y a d'étoiles, plus les moyens déployés sont lourds (hélicos, chiens, barrages).",
+   "Les icônes rouges sous les étoiles : elles montrent ce que la police sait de toi. D'après GTABase, ça peut être ta tenue, ton véhicule, ton arme, une image de vidéosurveillance, ou le fait que Jason et Lucia sont ensemble.",
+   "1. Casse la description. Change de tenue (garde-en dans le coffre), abandonne la voiture repérée, change d'arme : chaque icône effacée rend la recherche plus difficile.",
+   "2. Sépare Jason et Lucia. Selon GTABase, la police sait qu'ils sont ensemble : les séparer brouille les pistes et fait baisser le niveau d'une étoile.",
+   "3. Évite les zones chaudes. Après une fuite, les flics continuent de quadriller le coin où ils t'ont perdu. Ne repasse pas par là tout de suite.",
+   "4. Pour une seule étoile, parle. D'après les premiers guides, discuter avec le policier peut suffire à t'en débarrasser.",
+   "Les détails exacts de chaque niveau d'étoiles ne sont pas encore tous documentés : on complète ce guide au fur et à mesure qu'on teste en jeu."
+  ],
+  "sources": [
+   {
+    "t": "GTABase – système de recherche",
+    "u": "https://www.gtabase.com/articles/gta-6/gta-6-wanted-level-explained-police-system-guide"
+   },
+   {
+    "t": "Final Boss – la police de GTA 6",
+    "u": "https://finalboss.io/gta-6s-smarter-cops-make-losing-a-wanted-level-a-real-escape-plan"
+   },
+   {
+    "t": "Kotaku – 32 astuces",
+    "u": "https://kotaku.com/32-spoiler-free-tips-as-you-hop-into-grand-theft-auto-6-2000758016"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-reglages-ps5-gta-6",
+  "date": "2026-11-19T13:00:00+01:00",
+  "cat": "guide",
+  "title": "Les réglages PS5 à faire pour bien jouer à GTA 6",
+  "chapo": "Le jeu tourne à 30 images par seconde sur toutes les consoles, donc pas de miracle côté fluidité. Mais quelques réglages changent vraiment l'image et le son.",
+  "img": "assets/rs_vicecity_skyline_nuit.jpg",
+  "body": [
+   "À savoir d'abord : GTA 6 vise 30 images par seconde sur toutes les consoles, et aucun réglage de la PS5 ne changera ça. Les réglages ci-dessous améliorent l'image, le son et le confort, pas la fluidité.",
+   "1. Active le HDR. Paramètres, puis Écran et vidéo, puis Sortie vidéo, puis HDR : choisis « Activé si pris en charge ». Si l'image te paraît trop sombre, refais le calibrage HDR.",
+   "2. Mets ta télé en mode Jeu, et coupe les traitements d'image de la télé (lissage de mouvement, etc.) qui ajoutent du retard.",
+   "3. Le son 3D. Selon TechNerdiness, tous les sons de GTA 6 sont compatibles avec l'audio 3D Tempest de la PS5 : avec un casque, tu entends d'où viennent les sirènes et les tirs. Active l'audio 3D dans les réglages son.",
+   "4. La manette. Les réglages de vibrations et gâchettes adaptatives sont dans le menu d'accessibilité du jeu. Baisser les vibrations fait aussi durer la batterie plus longtemps pendant les longues sessions.",
+   "5. Les mises à jour en mode repos. Active les téléchargements en mode repos pour que les patchs s'installent pendant que tu ne joues pas.",
+   "Sur PS5 Pro, le jeu propose une image plus nette et des ombres en ray tracing. Et si ta console chauffe ou s'éteint, lis notre article sur les plantages."
+  ],
+  "sources": [
+   {
+    "t": "TechNerdiness – réglages PS5",
+    "u": "https://www.technerdiness.com/gta/gta-6-ps5-settings/"
+   },
+   {
+    "t": "MacMyths – HDR PS5 et Xbox",
+    "u": "https://macmyths.com/best-tv-and-console-settings-for-gta-6-hdr-and-smooth-performance-ps5-and-xbox-series-xs/"
+   },
+   {
+    "t": "Skycoach – réglages GTA 6",
+    "u": "https://skycoach.gg/blog/gta-6/articles/gta-6-best-settings"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-eviter-spoilers-gta-6",
+  "date": "2026-11-19T12:55:00+01:00",
+  "cat": "guide",
+  "title": "Comment éviter les spoilers de GTA 6 sur X, TikTok, YouTube et Reddit",
+  "chapo": "Des streamers ont déjà fini l'histoire et les vidéos circulent. Voici comment protéger ta partie en 5 minutes.",
+  "img": "assets/rs_jason_lucia.jpg",
+  "body": [
+   "Des joueurs ont déjà bouclé l'histoire et les vidéos de la fin circulent. Si tu veux découvrir l'aventure de Jason et Lucia par toi-même, prends 5 minutes pour régler tes réseaux.",
+   "X (Twitter) : selon Gameblog, le plus efficace est de masquer les mots-clés liés à l'histoire, dans Paramètres et confidentialité, puis Confidentialité et sécurité, puis Mots masqués. Ajoute par exemple « GTA 6 fin », « GTA 6 ending », « GTA 6 spoiler », « dernière mission ».",
+   "TikTok : tu peux aussi filtrer des mots-clés dans les réglages de contenu. Mets les mêmes mots que sur X.",
+   "YouTube : on ne peut pas bloquer de mots dans les titres ou les miniatures. Le seul moyen, c'est de cliquer sur « Pas intéressé » sur les vidéos à risque et d'éviter de chercher l'histoire du jeu.",
+   "Reddit : mets en sourdine les communautés comme r/GTA6 et r/GTA le temps de finir l'histoire.",
+   "Et ici ? Chez GTASTUCE VICE, zéro spoiler d'histoire : pas de fin, pas de grosses révélations, pas de cinématiques. Tu peux lire nos actus et nos astuces sans risque."
+  ],
+  "sources": [
+   {
+    "t": "Gameblog – conseils anti-spoilers",
+    "u": "https://gameblog.fr/jeu-video/ed/news/gta-6-conseils-eviter-spoilers-sortie-726365"
+   },
+   {
+    "t": "Next Stage",
+    "u": "https://www.next-stage.fr/?p=261968"
+   },
+   {
+    "t": "Androidphoria – bloquer les spoilers",
+    "u": "https://androidphoria.com/tutoriales/evitar-spoilers-de-gta-6-en-internet-y-redes-sociales"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "2026-11-19-streamer-fini-gta-6-en-7-heures",
   "date": "2026-11-19T10:30:00+01:00",
   "cat": "drama",
