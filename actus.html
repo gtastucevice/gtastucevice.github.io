@@ -155,6 +155,7 @@ article.full p{font-size:17px;line-height:1.7;margin:0 0 18px}
 <a href="actus.html">Actus</a>
 <a href="index.html#guides">Guides</a>
 <a href="index.html#chasse">Chasse aux secrets</a>
+<a href="matos.html">Le matos</a>
 <a class="btn" href="index.html#newsletter">Newsletter</a>
 </nav>
 </div>
@@ -166,7 +167,7 @@ const app=document.getElementById('app');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt=d=>new Date(d).toLocaleString('fr-FR',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'});
 let ART=[],cat=new URLSearchParams(location.search).get('c')||'all';
-function card(a,lead){return `<a class="post${lead?' hl':''}" href="?a=${encodeURIComponent(a.slug)}"><img src="${esc(a.img)}" alt="" loading="lazy"><div class="b"><div class="meta"><span class="cat c-${a.cat}">${CATS[a.cat]||a.cat}</span><span>${fmt(a.date)}</span></div><h2>${esc(a.title)}</h2><p>${esc(a.chapo)}</p></div></a>`}
+function card(a,lead){return `<a class="post${lead?' hl':''}" href="actus/${encodeURIComponent(a.slug)}.html"><img src="${esc(a.img)}" alt="" loading="lazy"><div class="b"><div class="meta"><span class="cat c-${a.cat}">${CATS[a.cat]||a.cat}</span><span>${fmt(a.date)}</span></div><h2>${esc(a.title)}</h2><p>${esc(a.chapo)}</p></div></a>`}
 function list(){
  document.title='Actus GTA 6 – GTASTUCE VICE';
  const l=ART.filter(a=>cat==='all'||a.cat===cat);
@@ -184,7 +185,7 @@ function view(a){
  </article>`;
  window.scrollTo(0,0);
 }
-function route(){const s=new URLSearchParams(location.search).get('a');const a=s&&ART.find(x=>x.slug===s);a?view(a):list();}
+function route(){const s=new URLSearchParams(location.search).get('a');const a=s&&ART.find(x=>x.slug===s);if(a){location.replace('actus/'+a.slug+'.html');return;}list();}
 fetch('articles.json').then(r=>r.json()).then(d=>{ART=d.sort((a,b)=>b.date.localeCompare(a.date));route();}).catch(()=>{app.innerHTML='<p>Les actus n\'ont pas pu se charger. Réessaie dans un instant.</p>'});
 </script>
 <footer>

@@ -139,7 +139,7 @@ dialog p{color:var(--soft);font-size:14px}
 <a href="#fil">Actus</a>
 <a href="#guides">Guides</a>
 <a href="#chasse">Chasse aux secrets</a>
-<a href="actus.html?c=drama">Dramas</a>
+<a href="matos.html">Le matos</a>
 <a class="btn" href="#newsletter">Newsletter</a>
 </nav>
 </div>
@@ -273,7 +273,7 @@ dialog p{color:var(--soft);font-size:14px}
 <script>
 const CATS={actu:'Actu',test:'Test',astuce:'Astuce',secret:'Secret',drama:'Drama',guide:'Guide'};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const url=a=>'actus.html?a='+encodeURIComponent(a.slug);
+const url=a=>'actus/'+a.slug+'.html';
 function ago(d){const m=Math.round((Date.now()-new Date(d))/60000);if(m<1)return"à l'instant";if(m<60)return"il y a "+m+" min";const h=Math.round(m/60);if(h<24)return"il y a "+h+" h";const j=Math.round(h/24);return j===1?"hier":"il y a "+j+" jours";}
 const isNew=d=>(Date.now()-new Date(d))<12*3600e3;
 const meta=a=>`<div class="meta"><span class="cat c-${esc(a.cat)}">${CATS[a.cat]||esc(a.cat)}</span>${isNew(a.date)?'<span class="new">NOUVEAU</span>':''}<span>${ago(a.date)}</span></div>`;
