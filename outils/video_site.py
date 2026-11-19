@@ -13,8 +13,11 @@ Exemple de spec :
    {"page": "gta-6-easter-eggs.html", "from": ".map", "to": 120, "caption": [["BIGFOOT", "w"], ["À GRASSRIVERS", "y"]], "bars": 2, "pins": true, "sub": "Dans les marais, au bord des routes"},
    {"search": "bigfoot", "caption": [["TOUT EST", "w"], ["SUR LE SITE", "y"]], "bars": 1.5}
  ],
- "outro": {"line": "Abonne-toi : une astuce GTA 6 par jour"}
+ "outro": {"line": "Abonne-toi : une astuce GTA 6 par jour"},
+ "music": "/chemin/vers/une-musique.mp3"
 }
+"music" (facultatif) : une musique libre de droits (dossier Drive « GTASTUCE VICE / Musiques »).
+Sans "music", une piste synthwave est générée.
 "from"/"to" : nombre de pixels CSS, ou sélecteur CSS (to = nombre = décalage depuis from).
 """
 import asyncio, json, math, os, subprocess, sys, threading, http.server, socketserver, functools, hashlib
@@ -80,6 +83,22 @@ async def capture(spec, port):
     return out
 
 # ---------- musique ----------
+def music_file(src, path, dur):
+    """Extrait le passage le plus énergique d'une vraie musique (libre de droits) et l'écrit en wav."""
+    full = f"{TMP}/full.wav"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-ar", "44100", "-ac", "2", full], check=True)
+    sr, x = wavfile.read(full); x = x.astype(np.float64) / 32767
+    need = int((dur + 1) * sr)
+    if len(x) < need: x = np.concatenate([x] * (need // len(x) + 1))
+    env = np.abs(x).mean(1); hop = sr // 2
+    rms = np.array([env[i:i + need].mean() for i in range(0, max(1, len(x) - need), hop)])
+    start = int(np.argmax(rms[: max(1, len(rms))]) * hop) if len(rms) else 0
+    seg = x[start:start + need].copy()
+    fi, fo = int(0.25 * sr), int(1.2 * sr)
+    seg[:fi] *= np.linspace(0, 1, fi)[:, None]; seg[-fo:] *= np.linspace(1, 0, fo)[:, None]
+    seg = seg / max(1e-6, np.abs(seg).max()) * 0.75
+    wavfile.write(path, sr, (seg * 32767).astype(np.int16))
+
 def music(path, dur, seed):
     SR = 44100; N = int(SR * (dur + 1)); mix = np.zeros((N, 2)); rng = np.random.default_rng(seed)
     progs = [([[57,60,64],[53,57,60],[48,52,55],[55,59,62]],[45,41,48,43]),
@@ -236,7 +255,11 @@ def render(spec, caps, out_mp4):
         return im
     segs.append((ot.get("bars", 2.5)*BAR, f_out))
     total = sum(s for s, _ in segs)
-    wav = f"{TMP}/music.wav"; music(wav, total, int(hashlib.md5(spec["slug"].encode()).hexdigest(), 16))
+    wav = f"{TMP}/music.wav"
+    if spec.get("music") and os.path.exists(spec["music"]):
+        music_file(spec["music"], wav, total)
+    else:
+        music(wav, total, int(hashlib.md5(spec["slug"].encode()).hexdigest(), 16))
     cuts, t = [], 0.0
     for dur, _ in segs: cuts.append(t); t += dur
     ev = [("riser.wav", cuts[1] - 2.1, 0.55)]                       # montée vers la fin de l'accroche
