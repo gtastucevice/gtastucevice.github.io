@@ -14,13 +14,21 @@ W, H, FPS, BAR, BEAT = vs.W, vs.H, vs.FPS, vs.BAR, vs.BEAT
 NIGHT, PINK, PINK2, YEL, WHITE = vs.NIGHT, vs.PINK, vs.PINK2, vs.YEL, vs.WHITE
 fnt = vs.fnt; ease = vs.ease
 
+_CACHE = {}
 def cover(img, t, zoom=0.08, pan=30):
-    """Zoom lent et régulier (style cinéma), t peut dépasser 1 pendant les fondus."""
-    w, h = img.size; s = 1 + zoom * min(1.15, max(0, t))
-    ch = h; cw = int(ch * W / H)
-    if cw > w: cw = w; ch = int(cw * H / W)
-    cw2, ch2 = int(cw / s), int(ch / s); x = (w - cw2) // 2 + int(pan * (t - 0.5)); y = (h - ch2) // 2
-    x = max(0, min(w - cw2, x)); return img.crop((x, y, x + cw2, y + ch2)).resize((W, H), Image.BICUBIC)
+    """Zoom lent et continu, calculé au sous-pixel (pas de tremblement). t peut dépasser 1 pendant les fondus."""
+    key = id(img)
+    if key not in _CACHE:  # pré-agrandit l'image une fois pour un rendu net
+        w, h = img.size; k = max(W / (h * W / H), H / h) * 1.25
+        _CACHE[key] = img.resize((int(w * k), int(h * k)), Image.LANCZOS)
+    src = _CACHE[key]; w, h = src.size
+    s_ = 1 + zoom * min(1.15, max(0.0, t))
+    ch = h / s_; cw = ch * W / H
+    if cw > w: cw = w; ch = cw * H / W
+    cx = w / 2 + pan * 1.6 * (t - 0.5); cy = h / 2
+    x0 = min(max(0, cx - cw / 2), w - cw); y0 = min(max(0, cy - ch / 2), h - ch)
+    sc = cw / W
+    return src.transform((W, H), Image.AFFINE, (sc, 0, x0, 0, sc, y0), resample=Image.BICUBIC)
 
 def wrap(d, txt, f, maxw):
     words, lines, cur = txt.split(), [], ""
@@ -51,7 +59,60 @@ def shadow_text(d, xy, txt, f, fill):
     x, y = xy
     d.text((x + 3, y + 4), txt, font=f, fill=(0, 0, 0, 150)); d.text((x, y), txt, font=f, fill=fill)
 
-def frame_item(img, n, it, t, sec, dur):
+def word_times(text, start, dur):
+    """Répartit les mots sur la durée de la voix (poids = longueur, pauses sur la ponctuation)."""
+    words = text.replace("...", "…").split(); w = []
+    for wd in words: w.append(len(wd) + 2 + (5 if wd[-1] in ".,:;!?…" else 0))
+    tot = sum(w) or 1; t, out = start, []
+    for wd, ww in zip(words, w):
+        d = dur * ww / tot; out.append((wd, t, t + d)); t += d
+    return out
+
+def chunks_of(wt, maxw=3):
+    ch, cur = [], []
+    for x in wt:
+        cur.append(x)
+        if len(cur) >= maxw or x[0][-1] in ".,:;!?…": ch.append(cur); cur = []
+    if cur: ch.append(cur)
+    return ch
+
+CAP = fnt("ArchivoBlack.ttf", 92)
+def draw_caption(im, chunks, sec, y=1180):
+    """Sous-titres façon TikTok : le groupe de mots en cours, le mot prononcé en jaune, petite apparition."""
+    cur = None
+    for c in chunks:
+        if c[0][1] - 0.05 <= sec <= c[-1][2] + 0.08: cur = c
+    if not cur: return
+    d = ImageDraw.Draw(im); words = [x[0].upper() for x in cur]
+    sp = d.textlength(" ", font=CAP); widths = [d.textlength(wd, font=CAP) for wd in words]
+    lines, line, lw = [], [], 0
+    for i, wdt in enumerate(widths):
+        if line and lw + sp + wdt > 960: lines.append(line); line, lw = [], 0
+        line.append(i); lw += (sp if len(line) > 1 else 0) + wdt
+    if line: lines.append(line)
+    pop = ease_out((sec - cur[0][1]) / 0.14); scale = 0.88 + 0.12 * pop
+    lay = Image.new("RGBA", (W, 420), (0, 0, 0, 0)); ld = ImageDraw.Draw(lay); yy = 10
+    for ln in lines:
+        tw = sum(widths[i] for i in ln) + sp * (len(ln) - 1); x = (W - tw) / 2
+        for i in ln:
+            active = cur[i][1] <= sec < cur[i][2] + 0.02
+            ld.text((x, yy), words[i], font=CAP, fill=YEL if active else WHITE, stroke_width=9, stroke_fill=(10, 4, 22))
+            x += widths[i] + sp
+        yy += 110
+    if scale < 0.999:
+        lay = lay.resize((int(W * scale), int(420 * scale)), Image.BICUBIC); ox = (W - lay.size[0]) // 2
+    else: ox = 0
+    im.alpha_composite(lay, (ox, int(y + (1 - scale) * 120)))
+
+def progress(im, idx, N, sec, dur):
+    """Barre de compte à rebours en haut de l'écran."""
+    d = ImageDraw.Draw(im); gap = 10; bw = (W - 140 - gap * (N - 1)) / N
+    for k in range(N):
+        x = 70 + k * (bw + gap); d.rounded_rectangle([x, 60, x + bw, 70], radius=5, fill=(255, 255, 255, 70))
+        f = 1 if k < idx else (min(1, sec / dur) if k == idx else 0)
+        if f > 0: d.rounded_rectangle([x, 60, x + bw * f, 70], radius=5, fill=YEL + (255,))
+
+def frame_item(img, n, it, t, sec, dur, chunks=None, idx=0, N=10):
     """sec = secondes écoulées dans le plan (pour des animations à vitesse fixe)."""
     im = cover(img, t).convert("RGBA"); im.alpha_composite(GRAD)
     # numéro : glisse depuis la gauche
@@ -67,20 +128,23 @@ def frame_item(img, n, it, t, sec, dur):
     d0 = ImageDraw.Draw(im)
     tf = fnt("ArchivoBlack.ttf", 86); lines = wrap(d0, it["title"].upper(), tf, 940)
     while len(lines) > 3: tf = fnt("ArchivoBlack.ttf", tf.size - 6); lines = wrap(d0, it["title"].upper(), tf, 940)
-    bf = fnt("Inter.ttf", 48); blines = wrap(d0, it["text"], bf, 940)[:3]
+    bf = fnt("Inter.ttf", 48); blines = [] if chunks else wrap(d0, it["text"], bf, 940)[:3]
     ytop = H - 150 - len(blines) * 62 - 28 - len(lines) * int(tf.size * 1.1)
+    if chunks:
+        tf = fnt("ArchivoBlack.ttf", 64); lines = wrap(d0, it["title"].upper(), tf, 940)[:2]; ytop = 340
     a2 = ease_out((sec - 0.15) / 0.5); a3 = ease_out((sec - 0.45) / 0.5)
     def dtitle(d):
         y = ytop
         for ln in lines: shadow_text(d, (70, y), ln, tf, WHITE + (255,)); y += int(tf.size * 1.1)
     def dbody(d):
         y = ytop + len(lines) * int(tf.size * 1.1) + 28
-        d.rectangle([70, y - 14, 150, y - 8], fill=PINK + (255,))
+        if blines: d.rectangle([70, y - 14, 150, y - 8], fill=PINK + (255,))
         for ln in blines: d.text((70, y + 6), ln, font=bf, fill=(236, 230, 250, 255)); y += 62
     im.alpha_composite(text_layer(dtitle, a2, int(36 * (1 - a2))))
     im.alpha_composite(text_layer(dbody, a3, int(28 * (1 - a3))))
     # fondu de sortie des textes juste avant la coupe
     out = ease_out((sec - (dur - 0.3)) / 0.3)
+    if chunks: draw_caption(im, chunks, sec); progress(im, idx, N, sec, dur)
     ImageDraw.Draw(im).text((70, H - 70), "Image : Rockstar Games", font=fnt("Inter.ttf", 28), fill=(210, 200, 230, 255))
     return im.convert("RGB"), out
 
@@ -102,9 +166,14 @@ def main():
         return im.convert("RGB"), 0
     segs.append((hk.get("bars", 1.5) * BAR, f_hook))
     items = spec["items"]; N = len(items); bpi = spec.get("bars_per_item", 2.5)
+    vt = spec.get("voice_text") or []; vf = spec.get("voice") or []
+    def vdur(path):
+        try: return float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path], capture_output=True, text=True).stdout)
+        except Exception: return 0
+    CH = [chunks_of(word_times(vt[i], 0.18, max(0.5, vdur(vf[i]) - 0.15))) if i < len(vt) and i < len(vf) and vt[i] else None for i in range(N + 2)]
     for i, it in enumerate(items):
         img = Image.open(P(it["image"])).convert("RGB"); n = N - i
-        segs.append((bpi * BAR, lambda t, ta, sec, dur, img=img, n=n, it=it: frame_item(img, n, it, t, sec, dur)))
+        segs.append((bpi * BAR, lambda t, ta, sec, dur, img=img, n=n, it=it, i=i: frame_item(img, n, it, t, sec, dur, CH[i + 1], i, N)))
     ot = spec.get("outro", {})
     def f_out(t, ta, sec, dur):
         im = BG.copy().convert("RGBA")
