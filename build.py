@@ -29,6 +29,7 @@ HEADER = """<header>
 <div class="wrap">
 <a class="brand" href="../index.html" aria-label="GTASTUCE VICE, accueil"><b>GTASTUCE</b><i>Vice</i></a>
 <nav aria-label="Navigation principale">
+<a class="nav-search" href="../recherche.html" aria-label="Rechercher"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span>Rechercher</span></a>
 <a href="../actus.html">Actus</a>
 <a href="../index.html#guides">Guides</a>
 <a href="../index.html#chasse">Chasse aux secrets</a>
@@ -279,7 +280,7 @@ def simple_page(path, title, desc, h1, kicker, body, ld=None):
 {head_block(path, title, desc)}
 {FONTS}
 {SIMPLE_CSS}
-<style>{MAP_CSS}{MOBILE_CSS}</style>
+<style>{MAP_CSS}{SEARCH_CSS}{MOBILE_CSS}</style>
 {ldj}
 </head>
 <body>
@@ -368,6 +369,30 @@ MAP_CSS = """
 @media (min-width:900px){.hunt-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:22px;align-items:start}.hunt-grid .map{position:sticky;top:90px}}
 """
 
+SEARCH_CSS = """
+.nav-search{display:inline-flex;align-items:center;gap:6px}
+.nav-search .ico{flex:none}
+.homesearch{display:flex;align-items:center;gap:8px;margin:0 0 18px;background:var(--night2);border:2px solid var(--line);border-radius:14px;padding:6px 6px 6px 14px;max-width:720px}
+.homesearch:focus-within{border-color:var(--teal)}
+.homesearch .hs-ico{color:var(--mute);flex:none}
+.homesearch input{flex:1;min-width:0;height:44px;border:0;background:transparent;color:var(--white);font:16px Inter,sans-serif;outline:none}
+.homesearch input::placeholder{color:var(--mute)}
+.homesearch .btn{min-height:42px;padding:0 16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.sres{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.sres .post{display:grid;grid-template-columns:180px minmax(0,1fr);align-items:center}
+.sres .post img{width:180px;height:100%;min-height:110px;aspect-ratio:auto;object-fit:cover}
+.sres .post p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sres .egglink{display:block;padding:14px 16px;border-radius:14px;background:var(--night2);border:1px solid var(--line);color:var(--white);text-decoration:none}
+.sres .egglink:hover{border-color:var(--pink2)}
+.sres .egglink small{display:block;color:var(--soft);margin-top:4px}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.sugg button{min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--night2);color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}
+.scount{color:var(--mute);font-size:14px;margin-top:14px}
+mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
+@media (max-width:640px){.nav-search span{display:none}.homesearch .btn{display:none}.homesearch{margin-bottom:14px}}
+"""
+
 MOBILE_CSS = """
 @media (max-width:640px){
  header .wrap{flex-wrap:nowrap;gap:12px;padding-top:8px;padding-bottom:8px}
@@ -401,6 +426,39 @@ MOBILE_CSS = """
 """
 
 
+SEARCH_JS = r"""<script>
+const HUBS=__HUBS__;
+const CATS={actu:'Actu',test:'Tests',astuce:'Astuces',secret:'Secrets',drama:'Drama',guide:'Guides'};
+const ST={confirme:'Confirmé',rumeur:'Rumeur','a-tester':'À tester'};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+let ARTS=[],EGGS=[];
+const q=document.getElementById('q'),out=document.getElementById('sres'),cnt=document.getElementById('scount');
+function score(words,fields){let t=0;for(const w of words){let hit=false;fields.forEach(([txt,wt])=>{if(norm(txt).includes(w)){t+=wt;hit=true}});if(!hit)return 0}return t}
+function hl(s,words){let h=esc(s);words.forEach(w=>{if(w.length<2)return;const n=norm(h);let i=n.indexOf(w);if(i>=0)h=h.slice(0,i)+'<mark>'+h.slice(i,i+w.length)+'</mark>'+h.slice(i+w.length)});return h}
+function run(){
+ const v=q.value.trim();history.replaceState(null,'',v?'?q='+encodeURIComponent(v):location.pathname);
+ const words=norm(v).split(/\s+/).filter(w=>w.length>1);
+ if(!words.length){out.innerHTML='';cnt.textContent='';return}
+ const r=[];
+ HUBS.forEach(h=>{const s=score(words,[[h.nav,6],[h.title,3],[h.desc,1]]);if(s)r.push([s+5,`<a class="egglink" href="${h.slug}.html"><span class="cat c-guide">Sujet</span> <strong>${hl(h.title,words)}</strong><small>${esc(h.desc)}</small></a>`])});
+ ARTS.forEach(a=>{const s=score(words,[[a.title,6],[a.chapo,3],[(a.body||[]).join(' '),1]]);if(s)r.push([s,`<a class="post" href="actus/${esc(a.slug)}.html"><img src="${esc(a.img)}" alt="" loading="lazy"><div class="b"><div class="meta"><span class="cat c-${esc(a.cat)}">${CATS[a.cat]||esc(a.cat)}</span></div><h3>${hl(a.title,words)}</h3><p>${esc(a.chapo)}</p></div></a>`])});
+ EGGS.forEach(e=>{const s=score(words,[[e.title,6],[e.where,3],[e.how,2]]);if(s)r.push([s,`<a class="egglink" href="index.html#egg-${esc(e.id)}"><span class="cat c-secret">Secret · ${ST[e.status]||''}</span> <strong>${hl(e.title,words)}</strong><small>Où : ${esc(e.where)}</small></a>`])});
+ r.sort((a,b)=>b[0]-a[0]);
+ cnt.textContent=r.length?r.length+' résultat'+(r.length>1?'s':''):'';
+ out.innerHTML=r.length?r.map(x=>x[1]).join(''):'<p>Rien trouvé pour « '+esc(v)+' ». Essaie un autre mot, ou demande-nous en commentaire sur <a href="https://www.tiktok.com/@gtastucevice" target="_blank" rel="noopener">TikTok</a> : on en fera peut-être un guide.</p>';
+}
+q.addEventListener('input',run);
+document.querySelectorAll('.sugg button').forEach(b=>b.onclick=()=>{q.value=b.textContent;run();q.focus()});
+Promise.all([fetch('articles.json').then(r=>r.json()),fetch('secrets.json').then(r=>r.json())]).then(([a,e])=>{ARTS=a.sort((x,y)=>y.date.localeCompare(x.date));EGGS=e;const p=new URLSearchParams(location.search).get('q');if(p){q.value=p}run()});
+</script>"""
+
+SEARCH_BODY = """<form class="homesearch" role="search" onsubmit="return false"><label class="sr" for="q">Rechercher</label>__ICON__<input id="q" type="search" placeholder="Une astuce, un secret, un lieu…" autocomplete="off" autofocus></form>
+<div class="sugg" aria-label="Recherches populaires"><button type="button">argent</button><button type="button">police</button><button type="button">Bigfoot</button><button type="button">carte</button><button type="button">réglages PS5</button><button type="button">spoilers</button></div>
+<p class="scount" id="scount" role="status" aria-live="polite"></p>
+<div class="sres feed" id="sres"></div>"""
+
+
 def build_static_pages(arts, secrets):
     home = [a for a in arts if a["cat"] != "guide"]
     guides = [a for a in arts if a["cat"] in ("guide", "astuce")]
@@ -422,7 +480,7 @@ def build_static_pages(arts, secrets):
     t = fill(t, "eggs", "".join(egg_card(x) for x in secrets))
     t = fill(t, "sc", f"0/{len(secrets)}")
     t = fill(t, "map", map_svg(secrets))
-    t = fill(t, "css", MAP_CSS + MOBILE_CSS)
+    t = fill(t, "css", MAP_CSS + SEARCH_CSS + MOBILE_CSS)
     t = fill(t, "ld", '<script type="application/ld+json">' + json.dumps([
         {"@context": "https://schema.org", "@type": "WebSite", "name": "GTASTUCE VICE", "alternateName": ["GTAstuce", "GTA Stuce", "GTAstuce Vice", "gtastucevice"], "url": BASE + "/", "inLanguage": "fr-FR"},
         {"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "alternateName": "GTAstuce", "url": BASE + "/", "logo": BASE + "/favicon-512.png", "email": "gtastucevice@gmail.com",
@@ -431,7 +489,7 @@ def build_static_pages(arts, secrets):
     # Liste des actus
     p = os.path.join(ROOT, "actus.html"); t = open(p, encoding="utf-8").read()
     t = fill(t, "head", head_block("actus.html", "Actus GTA 6 – GTASTUCE VICE", "Toute l'actu GTA 6 en français : news, tests, astuces, secrets et dramas, sourcés."))
-    t = fill(t, "css", MOBILE_CSS)
+    t = fill(t, "css", SEARCH_CSS + MOBILE_CSS)
     t = fill(t, "actuslist", '<div class="kicker">Le fil GTA 6</div><h1 class="ptitle">Les actus</h1><div class="feed">' + "".join(post_card(a, h="h2") for a in arts) + "</div>")
     open(p, "w", encoding="utf-8").write(t)
     # Matos
@@ -442,10 +500,17 @@ def build_static_pages(arts, secrets):
     org = {"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "url": BASE, "logo": f"{BASE}/favicon-512.png", "email": "gtastucevice@gmail.com",
            "sameAs": ["https://www.tiktok.com/@gtastucevice", "https://www.instagram.com/gtastucevice/", "https://www.youtube.com/@gtastucevice"]}
     p = os.path.join(ROOT, "matos.html"); t = open(p, encoding="utf-8").read()
-    open(p, "w", encoding="utf-8").write(fill(t, "css", MOBILE_CSS))
+    open(p, "w", encoding="utf-8").write(fill(t, "css", SEARCH_CSS + MOBILE_CSS))
     open(os.path.join(ROOT, "a-propos.html"), "w", encoding="utf-8").write(
         simple_page("a-propos.html", "Qui sommes-nous – GTASTUCE VICE", "Qui est derrière GTASTUCE VICE, comment on choisit et vérifie nos infos sur GTA 6, et comment nous contacter.",
                     "Qui sommes-nous ?", "GTASTUCE VICE", ABOUT_BODY, org))
+    # Recherche
+    hubs_js = json.dumps([{k: h[k] for k in ("slug", "nav", "title", "desc")} for h in HUBS], ensure_ascii=False)
+    sp = simple_page("recherche.html", "Rechercher – GTASTUCE VICE", "Cherche une astuce, un guide ou un secret de GTA 6 sur GTASTUCE VICE.",
+                     "Rechercher", "GTASTUCE VICE", SEARCH_BODY.replace("__ICON__", '<svg class="ico hs-ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>'))
+    sp = sp.replace("</body>", SEARCH_JS.replace("__HUBS__", hubs_js) + "\n</body>")
+    sp = sp.replace('<meta name="robots" content="max-image-preview:large">', '<meta name="robots" content="noindex,follow">')
+    open(os.path.join(ROOT, "recherche.html"), "w", encoding="utf-8").write(sp)
     # Pages sujets
     for h in HUBS:
         lst = hub_articles(h, arts)

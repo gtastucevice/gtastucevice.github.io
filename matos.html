@@ -61,6 +61,28 @@ footer{border-top:4px solid var(--teal);background:#12062A;padding:36px 0;margin
 footer small{display:block;max-width:640px;color:var(--mute);font-size:13px;margin-top:8px}
 main{padding:36px 0 0}
 <!--S:css-->
+.nav-search{display:inline-flex;align-items:center;gap:6px}
+.nav-search .ico{flex:none}
+.homesearch{display:flex;align-items:center;gap:8px;margin:0 0 18px;background:var(--night2);border:2px solid var(--line);border-radius:14px;padding:6px 6px 6px 14px;max-width:720px}
+.homesearch:focus-within{border-color:var(--teal)}
+.homesearch .hs-ico{color:var(--mute);flex:none}
+.homesearch input{flex:1;min-width:0;height:44px;border:0;background:transparent;color:var(--white);font:16px Inter,sans-serif;outline:none}
+.homesearch input::placeholder{color:var(--mute)}
+.homesearch .btn{min-height:42px;padding:0 16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.sres{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.sres .post{display:grid;grid-template-columns:180px minmax(0,1fr);align-items:center}
+.sres .post img{width:180px;height:100%;min-height:110px;aspect-ratio:auto;object-fit:cover}
+.sres .post p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sres .egglink{display:block;padding:14px 16px;border-radius:14px;background:var(--night2);border:1px solid var(--line);color:var(--white);text-decoration:none}
+.sres .egglink:hover{border-color:var(--pink2)}
+.sres .egglink small{display:block;color:var(--soft);margin-top:4px}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.sugg button{min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--night2);color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}
+.scount{color:var(--mute);font-size:14px;margin-top:14px}
+mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
+@media (max-width:640px){.nav-search span{display:none}.homesearch .btn{display:none}.homesearch{margin-bottom:14px}}
+
 @media (max-width:640px){
  header .wrap{flex-wrap:nowrap;gap:12px;padding-top:8px;padding-bottom:8px}
  .brand b{font-size:17px}.brand i{font-size:24px}
@@ -98,6 +120,7 @@ main{padding:36px 0 0}
 <div class="wrap">
 <a class="brand" href="index.html" aria-label="GTASTUCE VICE, accueil"><b>GTASTUCE</b><i>Vice</i></a>
 <nav aria-label="Navigation principale">
+<a class="nav-search" href="recherche.html" aria-label="Rechercher"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span>Rechercher</span></a>
 <a href="actus.html">Actus</a>
 <a href="index.html#guides">Guides</a>
 <a href="index.html#chasse">Chasse aux secrets</a>

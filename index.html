@@ -165,6 +165,28 @@ dialog p{color:var(--soft);font-size:14px}
 .egg.flash{border-color:var(--yel);box-shadow:0 0 0 3px var(--yel)}
 @media (min-width:900px){.hunt-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:22px;align-items:start}.hunt-grid .map{position:sticky;top:90px}}
 
+.nav-search{display:inline-flex;align-items:center;gap:6px}
+.nav-search .ico{flex:none}
+.homesearch{display:flex;align-items:center;gap:8px;margin:0 0 18px;background:var(--night2);border:2px solid var(--line);border-radius:14px;padding:6px 6px 6px 14px;max-width:720px}
+.homesearch:focus-within{border-color:var(--teal)}
+.homesearch .hs-ico{color:var(--mute);flex:none}
+.homesearch input{flex:1;min-width:0;height:44px;border:0;background:transparent;color:var(--white);font:16px Inter,sans-serif;outline:none}
+.homesearch input::placeholder{color:var(--mute)}
+.homesearch .btn{min-height:42px;padding:0 16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.sres{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.sres .post{display:grid;grid-template-columns:180px minmax(0,1fr);align-items:center}
+.sres .post img{width:180px;height:100%;min-height:110px;aspect-ratio:auto;object-fit:cover}
+.sres .post p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sres .egglink{display:block;padding:14px 16px;border-radius:14px;background:var(--night2);border:1px solid var(--line);color:var(--white);text-decoration:none}
+.sres .egglink:hover{border-color:var(--pink2)}
+.sres .egglink small{display:block;color:var(--soft);margin-top:4px}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.sugg button{min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--night2);color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}
+.scount{color:var(--mute);font-size:14px;margin-top:14px}
+mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
+@media (max-width:640px){.nav-search span{display:none}.homesearch .btn{display:none}.homesearch{margin-bottom:14px}}
+
 @media (max-width:640px){
  header .wrap{flex-wrap:nowrap;gap:12px;padding-top:8px;padding-bottom:8px}
  .brand b{font-size:17px}.brand i{font-size:24px}
@@ -202,6 +224,7 @@ dialog p{color:var(--soft);font-size:14px}
 <div class="wrap">
 <a class="brand" href="#top" aria-label="GTASTUCE VICE, accueil"><b>GTASTUCE</b><i>Vice</i></a>
 <nav aria-label="Navigation principale">
+<a class="nav-search" href="recherche.html" aria-label="Rechercher"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span>Rechercher</span></a>
 <a href="#fil">Actus</a>
 <a href="#guides">Guides</a>
 <a href="#chasse">Chasse aux secrets</a>
@@ -220,6 +243,7 @@ dialog p{color:var(--soft);font-size:14px}
 <div class="wrap">
 <div class="kicker">GTA 6 est sorti · le fil en français</div>
 <h1 class="page" id="t-une">Ce qui se passe <span>sur GTA 6</span> en ce moment</h1>
+<form class="homesearch" action="recherche.html" method="get" role="search"><label class="sr" for="hq">Rechercher sur le site</label><svg class="ico hs-ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><input id="hq" name="q" type="search" placeholder="Une astuce, un secret, une voiture… (ex : argent, Bigfoot)" autocomplete="off"><button class="btn" type="submit">Chercher</button></form>
 <div class="une-grid">
 <div id="lead"><!--S:lead--><a class="lead" href="actus/2026-11-19-gta-6-ventes-record.html"><img src="assets/rs_vicecity_marina.jpg" alt=""><span class="ov"></span><div class="txt"><div class="meta"><span class="cat c-actu">Actu</span><span>19 novembre 2026</span></div><h2>GTA 6 aurait déjà dépassé 17 millions de ventes : le record de GTA 5 explose</h2><p>Ce sont des estimations, pas des chiffres officiels, mais tout indique le plus gros lancement de l&#x27;histoire du divertissement.</p></div></a><!--E:lead--></div>
 <div class="side" id="side"><!--S:side--><a class="mini" href="actus/2026-11-19-gta-6-plantages-ps5-que-faire.html"><img src="assets/rs_vicecity_skyline_nuit.jpg" alt="" loading="lazy"><div><div class="meta"><span class="cat c-actu">Actu</span><span>19 novembre 2026</span></div><h3>GTA 6 plante ou ta PS5 s&#x27;éteint ? Les réflexes à avoir</h3></div></a><a class="mini" href="actus/2026-11-19-argent-debut-gta-6.html"><img src="assets/rs_keys_plongee.jpg" alt="" loading="lazy"><div><div class="meta"><span class="cat c-astuce">Astuces</span><span>19 novembre 2026</span></div><h3>Argent au début de GTA 6 : 5 astuces pour ne pas finir fauché</h3></div></a><a class="mini" href="actus/2026-11-19-appartement-dexter-gta-6.html"><img src="assets/rs_vicecity_quartier.jpg" alt="" loading="lazy"><div><div class="meta"><span class="cat c-secret">Secrets</span><span>19 novembre 2026</span></div><h3>L&#x27;appartement de Dexter est dans GTA 6 (et son bateau aussi ?)</h3></div></a><a class="mini" href="actus/2026-11-19-bigfoot-chien-jet-ski-secrets-gta-6.html"><img src="assets/rs_grassrivers_pilotis.jpg" alt="" loading="lazy"><div><div class="meta"><span class="cat c-secret">Secrets</span><span>19 novembre 2026</span></div><h3>Bigfoot, crabe géant, chien en jet-ski : les secrets trouvés en 24 heures</h3></div></a><!--E:side--></div>
