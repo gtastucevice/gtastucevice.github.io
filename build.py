@@ -75,7 +75,7 @@ def thumbs(src):
 
 
 SIZES = {"post": "(max-width:640px) 104px, 360px", "mini": "120px", "lead": "(max-width:860px) 100vw, 720px",
-         "hero": "(max-width:800px) 100vw, 760px", "search": "(max-width:640px) 104px, 180px"}
+         "hero": "(max-width:800px) 100vw, 760px", "search": "(max-width:640px) 104px, 180px", "egg": "(max-width:640px) 100vw, 420px"}
 
 
 def img_html(src, prefix="", kind="post", alt="", lazy=True, priority=False, extra=""):
@@ -207,6 +207,11 @@ def body_html(a):
             out.append(f'<h2 class="sec2" id="{sid}">{e(b["h2"])}</h2>')
         elif "steps" in b:
             out.append('<ol class="steps">' + "".join(f"<li><strong>{e(s['t'])}</strong>{e(s['d'])}</li>" for s in b["steps"]) + "</ol>")
+        elif "capture" in b:  # capture en jeu (PS5) : {"capture": "assets/captures/x.jpg", "legende": "...", "credit": "..."}
+            leg = e(b.get("legende", ""))
+            cr = e(b.get("credit", CAPTURE_CREDIT))
+            out.append(f'<figure class="capt">{img_html(b["capture"], "../", "hero", b.get("legende", ""))}'
+                       f'<figcaption>{leg}{" · " if leg else ""}<span>{cr}</span></figcaption></figure>')
         elif "controls" in b:
             c = b["controls"]
             rows = "".join(f'<tr><th scope="row">{e(r[0])}</th><td data-label="PS5">{e(r[1])}</td><td data-label="Xbox">{e(r[2])}</td></tr>' for r in c["rows"])
@@ -419,13 +424,20 @@ def hub_articles(h, arts):
     return main_, side
 
 
-def egg_card(x, check=False, found_label="Je l'ai trouvé"):
+CAPTURE_CREDIT = "Capture en jeu : GTASTUCE VICE"
+
+
+def egg_card(x, check=False, found_label="Je l'ai trouvé", prefix=""):
     btn = (f'<button class="check" type="button" data-id="{e(x["id"])}" aria-pressed="false">{found_label}</button>' if check else "")
     z = zone_of(x)
+    cap = ""
+    if x.get("capture"):  # capture en jeu de l'emplacement (mini-carte visible), affichée à l'ouverture de « Où et comment »
+        cap = (f'<figure class="capt">{img_html(x["capture"], prefix, "egg", x.get("capture_alt", "Emplacement : " + x["title"]))}'
+               f'<figcaption><span>{e(x.get("capture_credit", CAPTURE_CREDIT))}</span></figcaption></figure>')
     return (f'<article class="egg" id="egg-{e(x["id"])}" data-st="{e(x["status"])}" data-zone="{z}">'
             f'<div class="egg-top">{status_badge(x["status"])}{tested_html(x)}</div>'
             f'<h4>{e(x["title"])}</h4>'
-            f'<details><summary>Où et comment</summary><p><strong>Où :</strong> {e(x["where"])}</p><p>{e(x["how"])}</p>'
+            f'<details><summary>Où et comment</summary>{cap}<p><strong>Où :</strong> {e(x["where"])}</p><p>{e(x["how"])}</p>'
             f'<p><a class="src" href="{e(x["source"]["u"])}" target="_blank" rel="noopener">Source : {e(x["source"]["t"])}</a></p></details>'
             f'{btn}</article>')
 
@@ -1080,8 +1092,14 @@ def main():
         assert set(a.get("secrets", [])) <= sec_ids, (a["slug"], a.get("secrets"))
         if "topics" not in a:
             print(f"⚠ {a['slug']} : pas de champ topics (classement par mots-clés du titre)")
+    for a in arts:
+        for b in a["body"]:
+            if isinstance(b, dict) and "capture" in b:
+                assert os.path.exists(os.path.join(ROOT, b["capture"])), (a["slug"], b["capture"])
     for s in secrets:
         assert s["status"] in STATUS, (s["id"], s["status"])
+        if s.get("capture"):
+            assert os.path.exists(os.path.join(ROOT, s["capture"])), (s["id"], s["capture"])
     hub_dates = build_static_pages(arts, secrets)
     cheat_date = cheat_page()
     css = styles()

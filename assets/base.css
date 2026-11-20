@@ -158,3 +158,7 @@ nav a.nav-cheat:hover,nav a.nav-cheat[aria-current="page"]{color:#fff;text-decor
 @media (max-width:640px){.cheat-banner strong{font-size:18px}.cheat-banner .cb-t{font-size:14px}}
 nav .nmt{display:none}
 @media (max-width:640px){header nav .nmt{display:inline}}
+/* Captures en jeu (PS5) dans les articles et les fiches secrets */
+figure.capt{margin:0 0 20px}figure.capt img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line,#3A2366)}
+figure.capt figcaption{margin-top:6px;font-size:13px;color:#C9BFEA}figure.capt figcaption span{color:#8F84B8}
+.egg figure.capt{margin:8px 0 10px}.egg figure.capt img{border-radius:10px}
