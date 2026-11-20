@@ -419,10 +419,14 @@ def hub_articles(h, arts):
 
 
 def egg_card(x, check=False, found_label="Je l'ai trouvé"):
-    btn = (f'<button class="check" type="button" data-id="{e(x["id"])}" aria-pressed="false">{found_label}</button>' if check else "<span></span>")
-    return (f'<div class="egg" id="egg-{e(x["id"])}"><div class="row" style="margin:0">{status_badge(x["status"])}{tested_html(x)}</div>'
-            f'<h3>{e(x["title"])}</h3><p><strong>Où :</strong> {e(x["where"])}</p><p>{e(x["how"])}</p>'
-            f'<div class="row">{btn}<a class="src" href="{e(x["source"]["u"])}" target="_blank" rel="noopener">Source : {e(x["source"]["t"])}</a></div></div>')
+    btn = (f'<button class="check" type="button" data-id="{e(x["id"])}" aria-pressed="false">{found_label}</button>' if check else "")
+    z = zone_of(x)
+    return (f'<article class="egg" id="egg-{e(x["id"])}" data-st="{e(x["status"])}" data-zone="{z}">'
+            f'<div class="egg-top">{status_badge(x["status"])}{tested_html(x)}</div>'
+            f'<h4>{e(x["title"])}</h4>'
+            f'<details><summary>Où et comment</summary><p><strong>Où :</strong> {e(x["where"])}</p><p>{e(x["how"])}</p>'
+            f'<p><a class="src" href="{e(x["source"]["u"])}" target="_blank" rel="noopener">Source : {e(x["source"]["t"])}</a></p></details>'
+            f'{btn}</article>')
 
 
 SIMPLE_CSS = """<style>
@@ -552,8 +556,16 @@ LEONIDA_PATH = ("M60 40 L330 34 L338 70 L300 92 L292 140 L318 200 L346 262 L358 
 KEYS = [(250, 410, 26, 9), (214, 430, 22, 8), (180, 446, 20, 7), (150, 458, 16, 6), (282, 398, 14, 6)]
 
 
+ZONE_ORDER = ["vice-city", "keys", "grassrivers", "mer", "gellhorn", "ambrosia", "kalaga"]
+LOOSE = ("partout", "Partout ou lieu à préciser")
+
+
+def zone_of(s):
+    return s.get("zone") if s.get("zone") in ZONES else LOOSE[0]
+
+
 def map_svg(secrets, link_prefix=""):
-    """Carte schématique de Leonida avec un repère par secret localisé."""
+    """Carte schématique de Leonida, zoomable (boutons, double-clic, pincement, Ctrl + molette), un repère par secret localisé."""
     pins, per = [], {}
     for s in secrets:
         z = s.get("zone")
@@ -561,24 +573,51 @@ def map_svg(secrets, link_prefix=""):
             continue
         k = per.get(z, 0); per[z] = k + 1
         _, x, y = ZONES[z]
-        x += [0, 22, -22, 12, -12][k % 5]; y += [18, 30, 30, 44, 44][k % 5]
-        pins.append(f'<a class="pin" data-id="{e(s["id"])}" href="{link_prefix}#egg-{e(s["id"])}" aria-label="{e(s["title"])}">'
-                    f'<title>{e(s["title"])}</title><circle class="halo" cx="{x}" cy="{y}" r="14"/><circle class="dot" cx="{x}" cy="{y}" r="8"/></a>')
+        x += [0, 22, -22, 12, -12, 30, -30, 0][k % 8]; y += [18, 30, 30, 44, 44, 14, 14, 58][k % 8]
+        pins.append(f'<a class="pin" data-id="{e(s["id"])}" data-zone="{e(z)}" href="{link_prefix}#egg-{e(s["id"])}" aria-label="{e(s["title"])}" transform="translate({x} {y})">'
+                    f'<title>{e(s["title"])}</title><g class="pg"><circle class="halo" r="14"/><circle class="dot" r="8"/></g></a>')
     LBL = {"keys": (150, 488)}
     labels = "".join(f'<text x="{LBL.get(k, (x, y))[0]}" y="{LBL.get(k, (x, y))[1]}" text-anchor="middle">{e(n)}</text>' for k, (n, x, y) in ZONES.items())
     keys = "".join(f'<ellipse cx="{x}" cy="{y}" rx="{rx}" ry="{ry}"/>' for x, y, rx, ry in KEYS)
-    loose = [s for s in secrets if s.get("zone") not in ZONES]
-    loose_html = ""
-    if loose:
-        loose_html = ('<p class="map-loose"><strong>Pas sur la carte</strong> (partout ou lieu inconnu) : '
-                      + ", ".join(f'<a href="{link_prefix}#egg-{e(s["id"])}">{e(s["title"])}</a>' for s in loose) + "</p>")
-    return (f'<figure class="map"><svg viewBox="0 0 400 500" role="img" aria-label="Carte simplifiée de Leonida avec les secrets">'
+    ctrl = ('<div class="map-ctrl" role="group" aria-label="Zoom de la carte">'
+            '<button type="button" data-zoom="in" aria-label="Zoomer">+</button>'
+            '<button type="button" data-zoom="out" aria-label="Dézoomer">−</button>'
+            '<button type="button" data-zoom="reset" aria-label="Voir toute la carte">⟲</button></div>')
+    return (f'<figure class="map" data-map>{ctrl}<svg viewBox="0 0 400 500" role="img" aria-label="Carte simplifiée de Leonida avec les secrets">'
             f'<defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B0D3C"/><stop offset="1" stop-color="#2A1050"/></linearGradient></defs>'
-            f'<rect width="400" height="500" rx="18" fill="url(#sea)"/>'
+            f'<rect x="-400" y="-500" width="1200" height="1500" fill="url(#sea)"/>'
             f'<g class="land"><path d="{LEONIDA_PATH}"/>{keys}</g>'
             f'<g class="lbl">{labels}</g>{"".join(pins)}</svg>'
-            f'<figcaption>Carte simplifiée, positions approximatives. Touche un repère pour voir le secret. Rose = à trouver, turquoise = trouvé.</figcaption>'
-            f'{loose_html}</figure>')
+            f'<figcaption>Positions approximatives. Zoome avec + et −, un double-clic ou deux doigts ; fais glisser pour te déplacer. Rose = à trouver, turquoise = trouvé.</figcaption></figure>')
+
+
+def hunt_html(secrets, check=True, link_prefix=""):
+    """Chasse aux secrets : carte collante + progression par zone à gauche, filtres + secrets rangés par zone à droite."""
+    zones = [z for z in ZONE_ORDER if any(zone_of(s) == z for s in secrets)]
+    if any(zone_of(s) == LOOSE[0] for s in secrets):
+        zones.append(LOOSE[0])
+    name = lambda z: ZONES[z][0] if z in ZONES else LOOSE[1]
+    zone_btns = "".join(
+        f'<li><button type="button" class="zbtn" data-zone="{z}"' + (f' data-x="{ZONES[z][1]}" data-y="{ZONES[z][2]}"' if z in ZONES else "")
+        + f' aria-pressed="false"><span>{e(name(z))}</span><b class="zn" data-zone-count="{z}">0/{sum(zone_of(s) == z for s in secrets)}</b></button></li>' for z in zones)
+    side = (f'<aside class="hunt-side"><div class="hunt-sticky">{map_svg(secrets, link_prefix)}'
+            f'<h3 class="zh">Par zone</h3><ul class="zones">{zone_btns}</ul></div></aside>')
+    st_chips = "".join(f'<button type="button" class="chip" data-st="{k}" aria-pressed="{str(k == "all").lower()}">{e(v)}</button>'
+                       for k, v in [("all", "Tous")] + [(k, v[0]) for k, v in STATUS.items()])
+    tools = ('<div class="hunt-tools"><label class="sr-only" for="egg-q">Chercher un secret</label>'
+             '<input id="egg-q" type="search" placeholder="Chercher un secret (ex : Bigfoot, Vice City…)" autocomplete="off">'
+             f'<div class="chips" role="group" aria-label="Filtrer par statut">{st_chips}</div>'
+             + ('<label class="hide-found"><input type="checkbox" id="egg-hide"> Masquer ceux que j\'ai trouvés</label>' if check else "")
+             + '<p class="scount" id="egg-count" role="status" aria-live="polite"></p></div>')
+    groups = []
+    for z in zones:
+        items = [s for s in secrets if zone_of(s) == z]
+        groups.append(f'<section class="egg-group" data-zone="{z}" aria-labelledby="zg-{z}"><h3 class="zg" id="zg-{z}">{e(name(z))} '
+                      f'<span class="zgn" data-zone-count="{z}">0/{len(items)}</span></h3><div class="eggs">'
+                      + "".join(egg_card(x, check) for x in items) + "</div></section>")
+    main_ = (f'<div class="hunt-main">{tools}<div id="eggs">{"".join(groups)}</div>'
+             '<p class="empty-eggs" hidden>Aucun secret ne correspond. Change de filtre ou de zone.</p></div>')
+    return f'<div class="hunt-grid">{side}{main_}</div>'
 
 
 MAP_CSS = """
@@ -784,10 +823,8 @@ def build_static_pages(arts, secrets):
     t = fill(t, "guides", "".join(post_card(a) for a in guides[:6]))
     t = fill(t, "topics", topics_html())
     t = fill(t, "legend", legend_html())
-    t = fill(t, "eggs", "".join(egg_card(x, check=True) for x in secrets))
+    t = fill(t, "hunt", hunt_html(secrets, check=True))
     t = fill(t, "sc", f"0/{len(secrets)}")
-    t = fill(t, "nbeggs", f"Voir les {len(secrets)} secrets")
-    t = fill(t, "map", map_svg(secrets))
     t = fill(t, "css", MAP_CSS + SEARCH_CSS + MOBILE_CSS)
     t = fill(t, "ld", '<script type="application/ld+json">' + json.dumps([
         {"@context": "https://schema.org", "@type": "WebSite", "name": "GTASTUCE VICE", "alternateName": ["GTAstuce", "GTA Stuce", "GTAstuce Vice", "gtastucevice"], "url": BASE + "/", "inLanguage": "fr-FR",
@@ -848,8 +885,8 @@ def build_static_pages(arts, secrets):
         hub_dates[h["slug"]] = max([a.get("updated", a["date"]) for a in lst], default="")[:10]
         body = f'<p class="lead">{e(h["intro"])}</p>'
         if h.get("eggs"):
-            body += ('<h2>La carte des secrets</h2>' + map_svg(secrets, "index.html") + '<h2>Les secrets trouvés</h2>' + legend_html()
-                     + '<div class="eggs">' + "".join(egg_card(x) for x in secrets) + '</div><p style="margin-top:16px"><a class="btn" href="index.html#chasse">Coche-les dans la chasse aux secrets</a></p>')
+            body += ('<h2>La carte et la liste des secrets</h2>' + legend_html() + hunt_html(secrets, check=False)
+                     + '<p style="margin-top:16px"><a class="btn" href="index.html#chasse">Coche-les dans la chasse aux secrets</a></p>')
         if main_:
             body += "<h2>L'essentiel</h2><div class=\"feed\">" + "".join(post_card(a) for a in main_) + "</div>"
         if side:
