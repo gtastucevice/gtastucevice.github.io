@@ -699,6 +699,65 @@ def shared_chrome(t, prefix="", current=""):
     return t
 
 
+# ---------- Le matos (piloté par matos.json) ----------
+AMAZON_TAG = "gtastucevice-21"
+MATOS_CSS = """
+.mfilters{margin:0 0 6px}
+.mfilters .chips{display:flex;flex-wrap:wrap;gap:8px}
+.mfilters .chip{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--night2);color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}
+.mfilters .chip[aria-pressed="true"]{background:var(--white);color:var(--night);border-color:var(--white)}
+.scount{color:var(--soft);font-size:14px;margin:8px 0 0;min-height:1em}
+.msec{margin:34px 0 14px;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(24px,3vw,30px)}
+.item h3{margin:0 0 6px;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:22px;line-height:1.15}
+.item.noill{grid-template-columns:1fr}
+.item .plats{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.item .plat{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid var(--line);color:var(--soft)}
+.item .msrc{font-size:13px;color:var(--mute);margin:0 0 12px}
+.item .why a,.item li a{color:var(--teal)}
+@media (max-width:640px){.item h3{font-size:20px}}
+"""
+
+
+MATOS_DISC = "<p class=\"disc\">Transparence : certains liens de cette page sont des liens affiliés. Si tu achètes après avoir cliqué, GTASTUCE VICE touche une petite commission, sans que ça te coûte plus cher. C'est ce qui nous permet de rester gratuits. On ne recommande que des critères qu'on vérifierait pour nous-mêmes. <strong>En tant que Partenaire Amazon, GTASTUCE VICE réalise un bénéfice sur les achats remplissant les conditions requises.</strong> Les prix et la disponibilité sont ceux affichés par le vendeur au moment de ta visite. Site non affilié à Sony ni à Microsoft.</p>"
+
+
+def amazon(q):
+    from urllib.parse import quote_plus
+    return f"https://www.amazon.fr/s?k={quote_plus(q)}&amp;tag={AMAZON_TAG}"
+
+
+def matos_html(m):
+    labels = {p["id"]: p["label"] for p in m["platforms"]}
+    out = ['<div class="mfilters"><div class="chips" role="group" aria-label="Filtrer par plateforme">'
+           + "".join(f'<button class="chip" type="button" data-p="{p["id"]}" aria-pressed="{str(p["id"] == "all").lower()}">{e(p["label"])}</button>' for p in m["platforms"])
+           + '</div><p class="scount" id="mcount" role="status" aria-live="polite"></p></div>',
+           f'<section class="quick" aria-labelledby="mq-t"><h2 id="mq-t">L\'essentiel</h2><p>{e(m["intro_quick"])}</p></section>',
+           MATOS_DISC]
+    for sec in m["sections"]:
+        items = [x for x in m["items"] if x["section"] == sec["id"]]
+        if not items:
+            continue
+        out.append(f'<div class="mgroup" data-sec="{sec["id"]}"><h2 class="msec" id="sec-{sec["id"]}">{e(sec["title"])}</h2>')
+        for x in items:
+            ill = f'<img class="ill" src="{e(x["ill"])}" alt="{e(x.get("ill_alt", ""))}" width="640" height="360" loading="lazy">' if x.get("ill") else ""
+            tag = status_badge(x["status"]) if x.get("status") else f'<span class="tag">{e(x["tag"])}</span>'
+            plats = "".join(f'<span class="plat">{e(labels[p])}</span>' for p in x["plats"])
+            lis = "".join(f"<li>{li}</li>" for li in x["list"])  # HTML écrit à la main dans matos.json (liens internes, gras)
+            src = f'<p class="msrc">Source : <a href="{e(x["source"]["u"])}" target="_blank" rel="noopener">{e(x["source"]["t"])}</a></p>' if x.get("source") else ""
+            links = []
+            for i, l in enumerate(x["links"]):
+                if l.get("url"):
+                    links.append(f'<a class="ghost" href="{e(l["url"])}" target="_blank" rel="noopener">{e(l["label"])}</a>')
+                else:
+                    cls = "btn aff" if i == 0 else "ghost aff"
+                    links.append(f'<a class="{cls}" href="{amazon(l["q"])}" target="_blank" rel="sponsored noopener" data-goatcounter-click="matos-{e(x["id"])}-{i + 1}" data-goatcounter-title="{e(l["label"])}">{e(l["label"])}<span class="sr-only"> (Amazon, lien affilié)</span></a>')
+            lk = f'<div class="links">{"".join(links)}</div>' if links else ""
+            out.append(f'<section class="item{"" if ill else " noill"}" id="{e(x["id"])}" data-plats="{" ".join(x["plats"])}">{ill}<div class="itxt">'
+                       f'{tag}<h3>{e(x["title"])}</h3><div class="plats">{plats}</div><p class="why">{x["why"]}</p>{src}<ul>{lis}</ul>{lk}</div></section>')
+        out.append("</div>")
+    return "\n".join(out)
+
+
 def build_static_pages(arts, secrets):
     home = [a for a in arts if a["cat"] != "guide"]
     guides = [a for a in arts if a["cat"] in ("guide", "astuce")]
@@ -751,11 +810,16 @@ def build_static_pages(arts, secrets):
     open(p, "w", encoding="utf-8").write(t)
     # ---------- Matos ----------
     p = os.path.join(ROOT, "matos.html"); t = open(p, encoding="utf-8").read()
-    t = fill(t, "head", head_block("matos.html", "Le matos pour GTA 6 : SSD, casque, manette", "Le matos utile pour jouer à GTA 6 sur PS5 et Xbox et les critères à vérifier avant d'acheter."))
-    t = re.sub(r"<title>.*?</title>", "<title>Le matos pour GTA 6 : SSD, casque, manette – GTASTUCE VICE</title>", t, count=1)
-    t = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Le matos utile pour jouer à GTA 6 sur PS5 et Xbox : SSD, casque audio 3D, manette, charge. Les critères à vérifier avant d\'acheter.">', t, count=1)
+    t = fill(t, "head", head_block("matos.html", "Le matos pour GTA 6 : PS5, Xbox, PC et créateurs", "Le matos utile pour GTA 6 sur PS5 et Xbox Series, et pour filmer tes parties : stockage, casque, manette, écran, réseau. Les critères à vérifier avant d'acheter."))
+    t = re.sub(r"<title>.*?</title>", "<title>Le matos pour GTA 6 : PS5, Xbox, PC et créateurs</title>", t, count=1)
+    t = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Le matos utile pour GTA 6 sur PS5 et Xbox Series, et pour filmer tes parties : stockage, casque, manette, écran, réseau. Les critères avant d\'acheter.">', t, count=1)
     t = shared_chrome(t, "", "matos.html")
-    t = fill(t, "css", SEARCH_CSS + MOBILE_CSS)
+    t = fill(t, "css", SEARCH_CSS + MOBILE_CSS + MATOS_CSS)
+    matos = json.load(open(os.path.join(ROOT, "matos.json"), encoding="utf-8"))
+    for x in matos["items"]:  # garde-fous
+        assert x["section"] in {s["id"] for s in matos["sections"]}, x["id"]
+        assert set(x["plats"]) <= {p["id"] for p in matos["platforms"]}, x["id"]
+    t = fill(t, "matos", matos_html(matos))
     open(p, "w", encoding="utf-8").write(t)
     # ---------- Pages simples ----------
     org = {"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "url": BASE + "/", "logo": f"{BASE}/favicon-512.png", "email": "gtastucevice@gmail.com",
