@@ -1,148 +1,447 @@
 {
  "intro_quick": "Le minimum utile : de la place pour installer le jeu (SSD M.2 sur PS5, carte d'extension sur Xbox Series), un casque et une deuxième manette chargée. Tout le reste est du confort.",
  "platforms": [
-  {"id": "all", "label": "Tout"},
-  {"id": "ps5", "label": "PS5"},
-  {"id": "xbox", "label": "Xbox Series"},
-  {"id": "pc", "label": "PC"},
-  {"id": "createur", "label": "Créer du contenu"}
+  {
+   "id": "all",
+   "label": "Tout"
+  },
+  {
+   "id": "ps5",
+   "label": "PS5"
+  },
+  {
+   "id": "xbox",
+   "label": "Xbox Series"
+  },
+  {
+   "id": "pc",
+   "label": "PC"
+  },
+  {
+   "id": "createur",
+   "label": "Créer du contenu"
+  }
  ],
  "sections": [
-  {"id": "jeu", "title": "Le jeu"},
-  {"id": "stockage", "title": "Stockage"},
-  {"id": "audio", "title": "Audio"},
-  {"id": "manettes", "title": "Manettes"},
-  {"id": "ecran", "title": "Écran et réseau"},
-  {"id": "createur", "title": "Créer du contenu"},
-  {"id": "pc", "title": "Et sur PC ?"}
+  {
+   "id": "jeu",
+   "title": "Le jeu"
+  },
+  {
+   "id": "stockage",
+   "title": "Stockage"
+  },
+  {
+   "id": "audio",
+   "title": "Audio"
+  },
+  {
+   "id": "manettes",
+   "title": "Manettes"
+  },
+  {
+   "id": "ecran",
+   "title": "Écran et réseau"
+  },
+  {
+   "id": "createur",
+   "title": "Créer du contenu"
+  },
+  {
+   "id": "pc",
+   "title": "Et sur PC ?"
+  }
  ],
  "items": [
-  {"id": "jeu", "section": "jeu", "plats": ["ps5", "xbox"], "tag": "La base",
+  {
+   "id": "jeu",
+   "section": "jeu",
+   "plats": [
+    "ps5",
+    "xbox"
+   ],
+   "tag": "La base",
    "title": "GTA 6 sur PS5 ou Xbox Series",
    "why": "Le jeu existe uniquement sur PS5 et Xbox Series X|S. Vérifie la plateforme écrite sur la boîte avant de commander.",
-   "list": ["Pas de version PS4, Xbox One ni PC.",
-            "Sur Xbox One, tu peux seulement y jouer en streaming via le cloud, à condition d'acheter le jeu : <a href=\"actus/2026-11-19-jouer-gta-6-xbox-one-cloud.html\">notre article</a>.",
-            "Même en boîte, le jeu s'installe sur la console : prévois la place (voir Stockage)."],
-   "links": [{"label": "GTA 6 sur PS5", "q": "gta 6 ps5"}, {"label": "GTA 6 sur Xbox Series", "q": "gta 6 xbox series x"}]},
-
-  {"id": "ssd", "section": "stockage", "plats": ["ps5"], "tag": "Priorité n°1 sur PS5", "ill": "assets/matos_ssd.svg", "ill_alt": "Illustration : un SSD M.2 avec dissipateur",
+   "list": [
+    "Pas de version PS4, Xbox One ni PC.",
+    "Sur Xbox One, tu peux seulement y jouer en streaming via le cloud, à condition d'acheter le jeu : <a href=\"actus/2026-11-19-jouer-gta-6-xbox-one-cloud.html\">notre article</a>.",
+    "Même en boîte, le jeu s'installe sur la console : prévois la place (voir Stockage)."
+   ],
+   "links": [
+    {
+     "label": "GTA 6 sur PS5",
+     "q": "gta 6 ps5"
+    },
+    {
+     "label": "GTA 6 sur Xbox Series",
+     "q": "gta 6 xbox series x"
+    }
+   ],
+   "ill": "assets/matos_jeu.svg",
+   "ill_alt": "Illustration : un boîtier de jeu et son disque"
+  },
+  {
+   "id": "ssd",
+   "section": "stockage",
+   "plats": [
+    "ps5"
+   ],
+   "tag": "Priorité n°1 sur PS5",
+   "ill": "assets/matos_ssd.svg",
+   "ill_alt": "Illustration : un SSD M.2 avec dissipateur",
    "title": "Un SSD M.2 pour la PS5",
    "why": "Avec un jeu aussi lourd, la mémoire interne de la PS5 sature vite. Un SSD M.2 se glisse dans le port d'extension de la console et se joue aussi vite que le stockage d'origine.",
-   "list": ["<strong>Type :</strong> M.2 NVMe PCIe Gen4 x4. Les SSD M.2 SATA ne marchent pas.",
-            "<strong>Vitesse :</strong> au moins 5 500 Mo/s en lecture séquentielle, c'est le minimum demandé par Sony.",
-            "<strong>Dissipateur :</strong> obligatoire. Prends un modèle « avec dissipateur » vendu compatible PS5, sinon il ne rentrera pas.",
-            "<strong>Format :</strong> 2280, c'est le plus courant et il est compatible.",
-            "<strong>Capacité :</strong> 1 To est le bon compromis. 2 To si tu gardes beaucoup de jeux."],
-   "links": [{"label": "SSD 1 To compatibles PS5", "q": "ssd m.2 nvme pcie 4.0 dissipateur ps5 1to"},
-             {"label": "SSD 2 To compatibles PS5", "q": "ssd m.2 nvme pcie 4.0 dissipateur ps5 2to"},
-             {"label": "La page officielle de Sony", "url": "https://www.playstation.com/fr-fr/support/hardware/ps5-install-m2-ssd/"}]},
-
-  {"id": "xbox-carte", "section": "stockage", "plats": ["xbox"], "tag": "Priorité n°1 sur Xbox", "ill": "assets/matos_xbox.svg", "ill_alt": "Illustration : une carte d'extension de stockage",
+   "list": [
+    "<strong>Type :</strong> M.2 NVMe PCIe Gen4 x4. Les SSD M.2 SATA ne marchent pas.",
+    "<strong>Vitesse :</strong> au moins 5 500 Mo/s en lecture séquentielle, c'est le minimum demandé par Sony.",
+    "<strong>Dissipateur :</strong> obligatoire. Prends un modèle « avec dissipateur » vendu compatible PS5, sinon il ne rentrera pas.",
+    "<strong>Format :</strong> 2280, c'est le plus courant et il est compatible.",
+    "<strong>Capacité :</strong> 1 To est le bon compromis. 2 To si tu gardes beaucoup de jeux."
+   ],
+   "links": [
+    {
+     "label": "SSD 1 To compatibles PS5",
+     "q": "ssd m.2 nvme pcie 4.0 dissipateur ps5 1to"
+    },
+    {
+     "label": "SSD 2 To compatibles PS5",
+     "q": "ssd m.2 nvme pcie 4.0 dissipateur ps5 2to"
+    },
+    {
+     "label": "La page officielle de Sony",
+     "url": "https://www.playstation.com/fr-fr/support/hardware/ps5-install-m2-ssd/"
+    }
+   ]
+  },
+  {
+   "id": "xbox-carte",
+   "section": "stockage",
+   "plats": [
+    "xbox"
+   ],
+   "tag": "Priorité n°1 sur Xbox",
+   "ill": "assets/matos_xbox.svg",
+   "ill_alt": "Illustration : une carte d'extension de stockage",
    "title": "Une carte d'extension pour Xbox Series",
    "why": "Sur Xbox Series X|S, l'équivalent du SSD, c'est la carte d'extension de stockage, qui se branche à l'arrière de la console.",
-   "list": ["Prends un modèle officiellement compatible Xbox Series X|S : c'est le seul moyen d'ajouter du stockage sur lequel tu peux jouer directement.",
-            "1 To est le bon compromis, 2 To si tu gardes beaucoup de jeux installés."],
-   "links": [{"label": "Cartes d'extension 1 To", "q": "carte extension stockage xbox series 1to"},
-             {"label": "Cartes d'extension 2 To", "q": "carte extension stockage xbox series 2to"}]},
-
-  {"id": "usb", "section": "stockage", "plats": ["ps5", "xbox"], "tag": "Malin",
+   "list": [
+    "Prends un modèle officiellement compatible Xbox Series X|S : c'est le seul moyen d'ajouter du stockage sur lequel tu peux jouer directement.",
+    "1 To est le bon compromis, 2 To si tu gardes beaucoup de jeux installés."
+   ],
+   "links": [
+    {
+     "label": "Cartes d'extension 1 To",
+     "q": "carte extension stockage xbox series 1to"
+    },
+    {
+     "label": "Cartes d'extension 2 To",
+     "q": "carte extension stockage xbox series 2to"
+    }
+   ]
+  },
+  {
+   "id": "usb",
+   "section": "stockage",
+   "plats": [
+    "ps5",
+    "xbox"
+   ],
+   "tag": "Malin",
    "title": "Un disque dur USB pour ranger tes jeux",
    "why": "Moins cher qu'un SSD, il sert d'entrepôt : tu y ranges les jeux que tu ne joues pas en ce moment, et tu les recopies au lieu de tout retélécharger.",
-   "list": ["Un jeu PS5 ou Xbox Series stocké sur un disque USB doit être recopié sur le stockage interne (ou le SSD, la carte d'extension) pour être joué.",
-            "Prends un modèle USB 3 (USB 5 Gb/s ou plus).",
-            "Un disque dur classique suffit pour ce rôle d'entrepôt ; inutile de payer un SSD externe."],
-   "links": [{"label": "Disques durs externes 2 To", "q": "disque dur externe usb 3.0 2to"},
-             {"label": "Disques durs externes 4 To", "q": "disque dur externe usb 3.0 4to"}]},
-
-  {"id": "casque-ps5", "section": "audio", "plats": ["ps5"], "tag": "Immersion", "ill": "assets/matos_casque.svg", "ill_alt": "Illustration : un casque audio",
+   "list": [
+    "Un jeu PS5 ou Xbox Series stocké sur un disque USB doit être recopié sur le stockage interne (ou le SSD, la carte d'extension) pour être joué.",
+    "Prends un modèle USB 3 (USB 5 Gb/s ou plus).",
+    "Un disque dur classique suffit pour ce rôle d'entrepôt ; inutile de payer un SSD externe."
+   ],
+   "links": [
+    {
+     "label": "Disques durs externes 2 To",
+     "q": "disque dur externe usb 3.0 2to"
+    },
+    {
+     "label": "Disques durs externes 4 To",
+     "q": "disque dur externe usb 3.0 4to"
+    }
+   ],
+   "ill": "assets/matos_usb.svg",
+   "ill_alt": "Illustration : un disque dur externe et son câble USB"
+  },
+  {
+   "id": "casque-ps5",
+   "section": "audio",
+   "plats": [
+    "ps5"
+   ],
+   "tag": "Immersion",
+   "ill": "assets/matos_casque.svg",
+   "ill_alt": "Illustration : un casque audio",
    "title": "Un casque pour l'audio 3D sur PS5",
    "why": "Sur PS5, GTA 6 profite de l'audio 3D : avec un casque, tu entends d'où viennent les sirènes, les tirs et les moteurs. Pour semer la police, ça change tout.",
-   "list": ["N'importe quel casque stéréo filaire branché sur la manette suffit pour l'audio 3D.",
-            "Sans fil : vérifie qu'il est bien compatible PS5 et que la batterie tient au moins 20 heures.",
-            "Un micro correct si tu joues avec tes potes."],
-   "links": [{"label": "Casques sans fil PS5", "q": "casque gaming ps5 sans fil"},
-             {"label": "Casques filaires", "q": "casque gaming filaire jack 3.5 mm micro"}]},
-
-  {"id": "casque-xbox", "section": "audio", "plats": ["xbox"], "tag": "Immersion",
+   "list": [
+    "N'importe quel casque stéréo filaire branché sur la manette suffit pour l'audio 3D.",
+    "Sans fil : vérifie qu'il est bien compatible PS5 et que la batterie tient au moins 20 heures.",
+    "Un micro correct si tu joues avec tes potes."
+   ],
+   "links": [
+    {
+     "label": "Casques sans fil PS5",
+     "q": "casque gaming ps5 sans fil"
+    },
+    {
+     "label": "Casques filaires",
+     "q": "casque gaming filaire jack 3.5 mm micro"
+    }
+   ]
+  },
+  {
+   "id": "casque-xbox",
+   "section": "audio",
+   "plats": [
+    "xbox"
+   ],
+   "tag": "Immersion",
    "title": "Un casque pour Xbox Series",
    "why": "Un casque t'aide à repérer d'où viennent les sirènes et les tirs, et à jouer tard sans réveiller tout le monde.",
-   "list": ["Filaire : il se branche sur la prise jack de la manette Xbox Series.",
-            "Sans fil : prends un modèle vendu compatible Xbox. Beaucoup de casques sans fil « PS5 » ne marchent pas sur Xbox, vérifie la fiche.",
-            "Batterie d'au moins 20 heures si tu enchaînes les longues sessions."],
-   "links": [{"label": "Casques sans fil Xbox", "q": "casque gaming sans fil compatible xbox series"},
-             {"label": "Casques filaires", "q": "casque gaming filaire jack 3.5 mm micro"}]},
-
-  {"id": "manette-ps5", "section": "manettes", "plats": ["ps5"], "tag": "Confort", "ill": "assets/matos_manette.svg", "ill_alt": "Illustration : une manette et sa station de charge",
+   "list": [
+    "Filaire : il se branche sur la prise jack de la manette Xbox Series.",
+    "Sans fil : prends un modèle vendu compatible Xbox. Beaucoup de casques sans fil « PS5 » ne marchent pas sur Xbox, vérifie la fiche.",
+    "Batterie d'au moins 20 heures si tu enchaînes les longues sessions."
+   ],
+   "links": [
+    {
+     "label": "Casques sans fil Xbox",
+     "q": "casque gaming sans fil compatible xbox series"
+    },
+    {
+     "label": "Casques filaires",
+     "q": "casque gaming filaire jack 3.5 mm micro"
+    }
+   ],
+   "ill": "assets/matos_casque-xbox.svg",
+   "ill_alt": "Illustration : un casque audio avec micro"
+  },
+  {
+   "id": "manette-ps5",
+   "section": "manettes",
+   "plats": [
+    "ps5"
+   ],
+   "tag": "Confort",
+   "ill": "assets/matos_manette.svg",
+   "ill_alt": "Illustration : une manette et sa station de charge",
    "title": "Une deuxième DualSense et de quoi la charger",
    "why": "Les longues sessions vident la batterie de la DualSense. Une deuxième manette chargée, c'est zéro pause forcée.",
-   "list": ["Une deuxième DualSense officielle, à faire tourner avec la première.",
-            "Une station de charge double, pour poser les manettes et les retrouver pleines.",
-            "Astuce gratuite : baisse l'intensité des vibrations dans les réglages, ça fait durer la batterie plus longtemps."],
-   "links": [{"label": "Manettes DualSense", "q": "manette dualsense ps5"},
-             {"label": "Stations de charge", "q": "station de charge dualsense"}]},
-
-  {"id": "manette-xbox", "section": "manettes", "plats": ["xbox", "pc"], "tag": "Confort",
+   "list": [
+    "Une deuxième DualSense officielle, à faire tourner avec la première.",
+    "Une station de charge double, pour poser les manettes et les retrouver pleines.",
+    "Astuce gratuite : baisse l'intensité des vibrations dans les réglages, ça fait durer la batterie plus longtemps."
+   ],
+   "links": [
+    {
+     "label": "Manettes DualSense",
+     "q": "manette dualsense ps5"
+    },
+    {
+     "label": "Stations de charge",
+     "q": "station de charge dualsense"
+    }
+   ]
+  },
+  {
+   "id": "manette-xbox",
+   "section": "manettes",
+   "plats": [
+    "xbox",
+    "pc"
+   ],
+   "tag": "Confort",
    "title": "Une manette Xbox et des piles rechargeables",
    "why": "La manette Xbox fonctionne avec des piles AA. Pour ne pas en racheter sans arrêt, passe aux piles rechargeables ou à un kit batterie.",
-   "list": ["Piles AA rechargeables + chargeur : la solution la moins chère.",
-            "Kit batterie rechargeable : tu recharges la manette avec un câble, sans sortir les piles.",
-            "La manette Xbox est aussi reconnue directement par Windows, si tu joues sur PC."],
-   "links": [{"label": "Manettes Xbox", "q": "manette xbox series sans fil"},
-             {"label": "Piles AA rechargeables", "q": "piles aa rechargeables chargeur manette xbox"},
-             {"label": "Kits batterie", "q": "kit batterie rechargeable manette xbox series"}]},
-
-  {"id": "manette-pro", "section": "manettes", "plats": ["ps5", "xbox"], "tag": "Pour les gros joueurs",
+   "list": [
+    "Piles AA rechargeables + chargeur : la solution la moins chère.",
+    "Kit batterie rechargeable : tu recharges la manette avec un câble, sans sortir les piles.",
+    "La manette Xbox est aussi reconnue directement par Windows, si tu joues sur PC."
+   ],
+   "links": [
+    {
+     "label": "Manettes Xbox",
+     "q": "manette xbox series sans fil"
+    },
+    {
+     "label": "Piles AA rechargeables",
+     "q": "piles aa rechargeables chargeur manette xbox"
+    },
+    {
+     "label": "Kits batterie",
+     "q": "kit batterie rechargeable manette xbox series"
+    }
+   ],
+   "ill": "assets/matos_manette-xbox.svg",
+   "ill_alt": "Illustration : une manette et des piles rechargeables"
+  },
+  {
+   "id": "manette-pro",
+   "section": "manettes",
+   "plats": [
+    "ps5",
+    "xbox"
+   ],
+   "tag": "Pour les gros joueurs",
    "title": "Une manette pro à palettes",
    "why": "Les palettes à l'arrière permettent d'agir sans lâcher le stick droit : pratique pour conduire et viser en même temps.",
-   "list": ["Sur PS5 : la DualSense Edge, manette officielle de Sony.",
-            "Sur Xbox : la manette Elite Series 2, manette officielle de Microsoft.",
-            "Chères : ça vaut le coup surtout si tu joues beaucoup."],
-   "links": [{"label": "DualSense Edge", "q": "dualsense edge"},
-             {"label": "Manette Xbox Elite Series 2", "q": "manette xbox elite series 2"}]},
-
-  {"id": "ecran", "section": "ecran", "plats": ["ps5", "xbox"], "tag": "Image",
+   "list": [
+    "Sur PS5 : la DualSense Edge, manette officielle de Sony.",
+    "Sur Xbox : la manette Elite Series 2, manette officielle de Microsoft.",
+    "Chères : ça vaut le coup surtout si tu joues beaucoup."
+   ],
+   "links": [
+    {
+     "label": "DualSense Edge",
+     "q": "dualsense edge"
+    },
+    {
+     "label": "Manette Xbox Elite Series 2",
+     "q": "manette xbox elite series 2"
+    }
+   ],
+   "ill": "assets/matos_manette-pro.svg",
+   "ill_alt": "Illustration : une manette vue de dos avec des palettes"
+  },
+  {
+   "id": "ecran",
+   "section": "ecran",
+   "plats": [
+    "ps5",
+    "xbox"
+   ],
+   "tag": "Image",
    "title": "Un écran avec HDR et mode Jeu",
    "why": "GTA 6 tourne à 30 images par seconde sur toutes les consoles (<a href=\"actus/2026-11-19-gta-6-60-fps-rockstar-repond.html\">notre article</a>). Ce qui compte pour ce jeu, c'est le HDR et un écran réactif, pas les 120 Hz.",
-   "list": ["<strong>HDR :</strong> les couchers de soleil de Vice City en profitent. Active-le dans la console (voir <a href=\"actus/guide-reglages-ps5-gta-6.html\">nos réglages PS5</a>).",
-            "<strong>Mode Jeu</strong> (ou ALLM, qui l'active tout seul) : il réduit le temps de réponse.",
-            "<strong>120 Hz :</strong> sans intérêt pour GTA 6 en 30 images par seconde ; utile seulement pour d'autres jeux."],
-   "links": [{"label": "Téléviseurs 4K HDR", "q": "televiseur 4k hdr mode jeu allm 55 pouces"},
-             {"label": "Écrans gaming 27 pouces 4K", "q": "ecran gaming 27 pouces 4k hdr hdmi"}]},
-
-  {"id": "reseau", "section": "ecran", "plats": ["ps5", "xbox", "pc"], "tag": "Téléchargement",
+   "list": [
+    "<strong>HDR :</strong> les couchers de soleil de Vice City en profitent. Active-le dans la console (voir <a href=\"actus/guide-reglages-ps5-gta-6.html\">nos réglages PS5</a>).",
+    "<strong>Mode Jeu</strong> (ou ALLM, qui l'active tout seul) : il réduit le temps de réponse.",
+    "<strong>120 Hz :</strong> sans intérêt pour GTA 6 en 30 images par seconde ; utile seulement pour d'autres jeux."
+   ],
+   "links": [
+    {
+     "label": "Téléviseurs 4K HDR",
+     "q": "televiseur 4k hdr mode jeu allm 55 pouces"
+    },
+    {
+     "label": "Écrans gaming 27 pouces 4K",
+     "q": "ecran gaming 27 pouces 4k hdr hdmi"
+    }
+   ],
+   "ill": "assets/matos_ecran.svg",
+   "ill_alt": "Illustration : un téléviseur qui affiche un coucher de soleil"
+  },
+  {
+   "id": "reseau",
+   "section": "ecran",
+   "plats": [
+    "ps5",
+    "xbox",
+    "pc"
+   ],
+   "tag": "Téléchargement",
    "title": "Un câble Ethernet ou un kit CPL",
    "why": "Le jeu pèse jusqu'à 212 Go, sans compter les mises à jour. En filaire, le téléchargement est souvent plus rapide et plus stable qu'en Wi-Fi.",
-   "list": ["Console proche de la box : un câble Ethernet catégorie 6, de la bonne longueur.",
-            "Console loin de la box : un kit CPL fait passer internet par les prises électriques.",
-            "Branche les boîtiers CPL directement au mur, pas sur une multiprise."],
-   "links": [{"label": "Câbles Ethernet Cat 6", "q": "cable ethernet rj45 cat 6 10m"},
-             {"label": "Kits CPL", "q": "kit cpl gigabit avec prise"}]},
-
-  {"id": "capture", "section": "createur", "plats": ["createur", "ps5", "xbox"], "tag": "Créateurs",
+   "list": [
+    "Console proche de la box : un câble Ethernet catégorie 6, de la bonne longueur.",
+    "Console loin de la box : un kit CPL fait passer internet par les prises électriques.",
+    "Branche les boîtiers CPL directement au mur, pas sur une multiprise."
+   ],
+   "links": [
+    {
+     "label": "Câbles Ethernet Cat 6",
+     "q": "cable ethernet rj45 cat 6 10m"
+    },
+    {
+     "label": "Kits CPL",
+     "q": "kit cpl gigabit avec prise"
+    }
+   ],
+   "ill": "assets/matos_reseau.svg",
+   "ill_alt": "Illustration : une box internet reliée par un câble réseau"
+  },
+  {
+   "id": "capture",
+   "section": "createur",
+   "plats": [
+    "createur",
+    "ps5",
+    "xbox"
+   ],
+   "tag": "Créateurs",
    "title": "Une carte d'acquisition pour filmer tes parties",
    "why": "Pour enregistrer de longues sessions en bonne qualité, ou streamer avec un PC, une carte d'acquisition se place entre la console et la télé.",
-   "list": ["<strong>Passthrough 4K HDR :</strong> l'image arrive intacte sur ta télé pendant que tu enregistres.",
-            "<strong>Enregistrement 1080p à 60 i/s :</strong> largement suffisant pour TikTok, Instagram et YouTube Shorts.",
-            "<strong>Sur PS5 :</strong> désactive le HDCP dans les paramètres HDMI de la console, sinon l'image enregistrée reste noire.",
-            "Pour quelques clips, le bouton de capture de la manette suffit, gratuitement."],
-   "links": [{"label": "Cartes d'acquisition 4K", "q": "carte acquisition video 4k60 passthrough hdr usb"}]},
-
-  {"id": "micro", "section": "createur", "plats": ["createur", "pc"], "tag": "Créateurs",
+   "list": [
+    "<strong>Passthrough 4K HDR :</strong> l'image arrive intacte sur ta télé pendant que tu enregistres.",
+    "<strong>Enregistrement 1080p à 60 i/s :</strong> largement suffisant pour TikTok, Instagram et YouTube Shorts.",
+    "<strong>Sur PS5 :</strong> désactive le HDCP dans les paramètres HDMI de la console, sinon l'image enregistrée reste noire.",
+    "Pour quelques clips, le bouton de capture de la manette suffit, gratuitement."
+   ],
+   "links": [
+    {
+     "label": "Cartes d'acquisition 4K",
+     "q": "carte acquisition video 4k60 passthrough hdr usb"
+    }
+   ],
+   "ill": "assets/matos_capture.svg",
+   "ill_alt": "Illustration : un boîtier d'acquisition vidéo relié par deux câbles HDMI"
+  },
+  {
+   "id": "micro",
+   "section": "createur",
+   "plats": [
+    "createur",
+    "pc"
+   ],
+   "tag": "Créateurs",
    "title": "Un micro USB pour tes vidéos",
    "why": "Pour commenter tes parties, le son compte plus que l'image : un bon micro USB fait une vraie différence.",
-   "list": ["USB : il se branche directement au PC, sans carte son.",
-            "Cardioïde : il capte surtout ta voix, moins les bruits de la pièce.",
-            "Un bras articulé et une bonnette anti-pop si tu parles près du micro."],
-   "links": [{"label": "Micros USB", "q": "micro usb cardioide streaming"},
-             {"label": "Bras de micro", "q": "bras articule micro bureau"}]},
-
-  {"id": "pc-attente", "section": "pc", "plats": ["pc"], "tag": "Rumeur", "status": "rumeur",
+   "list": [
+    "USB : il se branche directement au PC, sans carte son.",
+    "Cardioïde : il capte surtout ta voix, moins les bruits de la pièce.",
+    "Un bras articulé et une bonnette anti-pop si tu parles près du micro."
+   ],
+   "links": [
+    {
+     "label": "Micros USB",
+     "q": "micro usb cardioide streaming"
+    },
+    {
+     "label": "Bras de micro",
+     "q": "bras articule micro bureau"
+    }
+   ],
+   "ill": "assets/matos_micro.svg",
+   "ill_alt": "Illustration : un micro sur un bras articulé"
+  },
+  {
+   "id": "pc-attente",
+   "section": "pc",
+   "plats": [
+    "pc"
+   ],
+   "tag": "Rumeur",
+   "status": "rumeur",
    "title": "GTA 6 sur PC : pas encore annoncé",
    "why": "Rockstar n'a annoncé aucune version PC. Selon GamesBeat, elle viserait le premier trimestre 2027, mais ce n'est pas officiel.",
-   "list": ["Il n'existe aucune configuration requise officielle : n'achète pas de carte graphique ni de processeur « pour GTA 6 » maintenant.",
-            "Ce qui sert déjà sur PC : une manette (celle de la Xbox est reconnue par Windows) et un câble Ethernet.",
-            "On mettra cette section à jour dès une annonce de Rockstar."],
-   "source": {"t": "Dexerto, d'après GamesBeat", "u": "https://www.dexerto.fr/gta/gta-6-pourrait-sortir-sur-pc-bien-plus-tot-que-prevu-1661379/"},
-   "links": []}
+   "list": [
+    "Il n'existe aucune configuration requise officielle : n'achète pas de carte graphique ni de processeur « pour GTA 6 » maintenant.",
+    "Ce qui sert déjà sur PC : une manette (celle de la Xbox est reconnue par Windows) et un câble Ethernet.",
+    "On mettra cette section à jour dès une annonce de Rockstar."
+   ],
+   "source": {
+    "t": "Dexerto, d'après GamesBeat",
+    "u": "https://www.dexerto.fr/gta/gta-6-pourrait-sortir-sur-pc-bien-plus-tot-que-prevu-1661379/"
+   },
+   "links": [],
+   "ill": "assets/matos_pc-attente.svg",
+   "ill_alt": "Illustration : un ordinateur avec un sablier"
+  }
  ]
 }

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Illustration : un micro sur un bras articulé"><defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#170A33"/><stop offset=".65" stop-color="#3A0F55"/><stop offset="1" stop-color="#6B1E6E"/></linearGradient>
+<linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE45C"/><stop offset=".55" stop-color="#FF9A3D"/><stop offset="1" stop-color="#FF3D7F"/></linearGradient>
+<linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A2B86"/><stop offset="1" stop-color="#241046"/></linearGradient>
+<filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="sunclip"><rect x="0" y="0" width="640" height="232"/></clipPath>
+</defs>
+<rect width="640" height="360" fill="url(#sky)"/>
+<g clip-path="url(#sunclip)"><circle cx="320" cy="250" r="118" fill="url(#sun)" opacity=".9"/>
+<g fill="#3A0F55"><rect x="190" y="196" width="260" height="6"/><rect x="190" y="212" width="260" height="8"/><rect x="190" y="226" width="260" height="10"/></g></g>
+<rect y="232" width="640" height="128" fill="#1E0B3D"/>
+<g stroke="#FF5FA2" stroke-opacity=".55" stroke-width="1.5"><line x1="0" y1="232" x2="640" y2="232"/><line x1="0" y1="250" x2="640" y2="250"/><line x1="0" y1="274" x2="640" y2="274"/><line x1="0" y1="306" x2="640" y2="306"/><line x1="0" y1="348" x2="640" y2="348"/>
+<line x1="320" y1="232" x2="320" y2="360"/><line x1="280" y1="232" x2="200" y2="360"/><line x1="360" y1="232" x2="440" y2="360"/><line x1="240" y1="232" x2="60" y2="360"/><line x1="400" y1="232" x2="580" y2="360"/><line x1="200" y1="232" x2="-80" y2="360"/><line x1="440" y1="232" x2="720" y2="360"/></g><g transform="translate(320 200)">
+<g stroke="#2EE6D6" stroke-width="9" stroke-linecap="round" fill="none" filter="url(#glow)"><path d="M-170 100 L-110 10 L-10 -40"/></g>
+<circle cx="-110" cy="10" r="10" fill="#FFE45C"/><rect x="-200" y="96" width="70" height="14" rx="6" fill="url(#metal)" stroke="#FF5FA2" stroke-width="2"/>
+<g transform="translate(14 -96) rotate(-20)"><rect x="-34" y="-80" width="68" height="140" rx="34" fill="url(#metal)" stroke="#FF5FA2" stroke-width="4" filter="url(#glow)"/>
+<g stroke="#FF5FA2" stroke-opacity=".7" stroke-width="2"><line x1="-28" y1="-50" x2="28" y2="-50"/><line x1="-30" y1="-34" x2="30" y2="-34"/><line x1="-30" y1="-18" x2="30" y2="-18"/><line x1="-30" y1="-2" x2="30" y2="-2"/></g></g>
+<line x1="40" y1="-40" x2="78" y2="-70" stroke="#FFE45C" stroke-width="4"/><circle cx="96" cy="-112" r="48" fill="#170A33" fill-opacity=".55" stroke="#FFE45C" stroke-width="4"/>
+<g stroke="#2EE6D6" stroke-width="5" fill="none" stroke-linecap="round"><path d="M-50 -130 q-16 -20 0 -40"/><path d="M-72 -140 q-22 -30 0 -60"/></g></g></svg>

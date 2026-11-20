@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Illustration : un téléviseur qui affiche un coucher de soleil"><defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#170A33"/><stop offset=".65" stop-color="#3A0F55"/><stop offset="1" stop-color="#6B1E6E"/></linearGradient>
+<linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE45C"/><stop offset=".55" stop-color="#FF9A3D"/><stop offset="1" stop-color="#FF3D7F"/></linearGradient>
+<linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A2B86"/><stop offset="1" stop-color="#241046"/></linearGradient>
+<filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="sunclip"><rect x="0" y="0" width="640" height="232"/></clipPath>
+</defs>
+<rect width="640" height="360" fill="url(#sky)"/>
+<g clip-path="url(#sunclip)"><circle cx="320" cy="250" r="118" fill="url(#sun)" opacity=".9"/>
+<g fill="#3A0F55"><rect x="190" y="196" width="260" height="6"/><rect x="190" y="212" width="260" height="8"/><rect x="190" y="226" width="260" height="10"/></g></g>
+<rect y="232" width="640" height="128" fill="#1E0B3D"/>
+<g stroke="#FF5FA2" stroke-opacity=".55" stroke-width="1.5"><line x1="0" y1="232" x2="640" y2="232"/><line x1="0" y1="250" x2="640" y2="250"/><line x1="0" y1="274" x2="640" y2="274"/><line x1="0" y1="306" x2="640" y2="306"/><line x1="0" y1="348" x2="640" y2="348"/>
+<line x1="320" y1="232" x2="320" y2="360"/><line x1="280" y1="232" x2="200" y2="360"/><line x1="360" y1="232" x2="440" y2="360"/><line x1="240" y1="232" x2="60" y2="360"/><line x1="400" y1="232" x2="580" y2="360"/><line x1="200" y1="232" x2="-80" y2="360"/><line x1="440" y1="232" x2="720" y2="360"/></g><g transform="translate(320 200)">
+<rect x="-180" y="-150" width="360" height="214" rx="12" fill="#170A33" stroke="#2EE6D6" stroke-width="5" filter="url(#glow)"/>
+<clipPath id="scr"><rect x="-166" y="-136" width="332" height="186" rx="4"/></clipPath>
+<g clip-path="url(#scr)"><rect x="-166" y="-136" width="332" height="186" fill="url(#sky)"/><circle cx="0" cy="10" r="74" fill="url(#sun)"/><rect x="-166" y="14" width="332" height="40" fill="#1E0B3D"/>
+<g stroke="#FF5FA2" stroke-opacity=".6" stroke-width="1.5"><line x1="-166" y1="26" x2="166" y2="26"/><line x1="-166" y1="40" x2="166" y2="40"/><line x1="0" y1="14" x2="0" y2="54"/><line x1="-40" y1="14" x2="-120" y2="54"/><line x1="40" y1="14" x2="120" y2="54"/></g>
+<g transform="translate(-120 16)"><path d="M0 0 C-4 -30 -2 -50 4 -70" stroke="#170A33" stroke-width="5" fill="none"/><path d="M4 -70 C-14 -80 -30 -74 -36 -64 M4 -70 C20 -82 36 -76 42 -64 M4 -70 C-6 -90 -2 -100 10 -104 M4 -70 C16 -90 30 -92 36 -86" stroke="#170A33" stroke-width="5" fill="none" stroke-linecap="round"/></g><g transform="translate(118 16) scale(-.85 .85)"><path d="M0 0 C-4 -30 -2 -50 4 -70" stroke="#170A33" stroke-width="5" fill="none"/><path d="M4 -70 C-14 -80 -30 -74 -36 -64 M4 -70 C20 -82 36 -76 42 -64 M4 -70 C-6 -90 -2 -100 10 -104 M4 -70 C16 -90 30 -92 36 -86" stroke="#170A33" stroke-width="5" fill="none" stroke-linecap="round"/></g></g>
+<rect x="-30" y="64" width="60" height="22" fill="url(#metal)"/><rect x="-90" y="86" width="180" height="12" rx="6" fill="url(#metal)" stroke="#FF5FA2" stroke-width="2"/>
+<rect x="120" y="-128" width="40" height="20" rx="4" fill="#FFE45C"/><text x="140" y="-113" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="#170A33">HDR</text></g></svg>
