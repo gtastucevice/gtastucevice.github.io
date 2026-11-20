@@ -200,18 +200,7 @@ def main():
     vs.add_sfx(wav, ev)
     voice = spec.get("voice")  # liste de wav : accroche, chaque élément, fin (même ordre que les plans)
     if voice:
-        import numpy as np
-        from scipy.io import wavfile
-        sr, mix = wavfile.read(wav); mix = mix.astype(np.float64) / 32767 * 0.42   # musique en fond sous la voix
-        for path, c in zip(voice, cuts):
-            if not path or not os.path.exists(path): continue
-            tmpw = f"{vs.TMP}/voice.wav"
-            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", path, "-ar", str(sr), "-ac", "2", "-af", "highpass=f=70,acompressor=threshold=-18dB:ratio=3", tmpw], check=True)
-            _, v = wavfile.read(tmpw); v = v.astype(np.float64) / 32767
-            v = v / max(1e-6, np.abs(v).max()) * 0.9
-            i = int((c + 0.18) * sr); j = min(len(mix), i + len(v)); mix[i:j] += v[: j - i]
-        mix = mix / max(1.0, np.abs(mix).max() / 0.97)
-        wavfile.write(wav, sr, (mix * 32767).astype(np.int16))
+        vs.mix_voice(wav, [(p, c + 0.18) for p, c in zip(voice, cuts)])
     os.makedirs(os.path.join(ROOT, "assets", "videos"), exist_ok=True); out = os.path.join(ROOT, "assets", "videos", spec["slug"] + ".mp4")
     ff = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-i", wav,
         "-map", "0:v", "-map", "1:a", "-t", f"{total:.3f}", "-af", f"afade=t=out:st={total-1.2:.3f}:d=1.2", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",

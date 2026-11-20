@@ -86,6 +86,33 @@ async def capture(spec, port):
         await b.close()
     return out
 
+# ---------- voix off + musique ----------
+MUSIC_BED = 0.20    # niveau de la musique sous la voix (0,42 avant : trop fort, retour de Roméo du 20/11)
+DUCK = 0.45         # pendant que la voix parle, la musique baisse encore (x0,45 ≈ -7 dB)
+
+def mix_voice(wav, items):
+    """Pose les voix (liste de (fichier, début en s)) sur la musique de wav : musique en fond, baissée sous la voix
+    (ducking progressif), voix compressée et devant. Réécrit wav."""
+    sr, mix = wavfile.read(wav); mix = mix.astype(np.float64) / 32767 * MUSIC_BED
+    vtrack = np.zeros_like(mix)
+    for path, start in items:
+        if not path or not os.path.exists(path): continue
+        tmpw = f"{TMP}/voice.wav"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", path, "-ar", str(sr), "-ac", "2", "-af",
+                        "highpass=f=70,acompressor=threshold=-20dB:ratio=3:attack=5:release=120,loudnorm=I=-16:TP=-1.5", tmpw], check=True)
+        _, v = wavfile.read(tmpw); v = v.astype(np.float64) / 32767; v = v / max(1e-6, np.abs(v).max()) * 0.95
+        a = int(start * sr); b = min(len(mix), a + len(v)); vtrack[a:b] += v[: b - a]
+    # enveloppe de la voix lissée (attaque 80 ms, relâche 400 ms) -> gain de la musique entre 1 et DUCK
+    env = (np.abs(vtrack).max(1) > 0.02).astype(np.float64)
+    k_up, k_dn = 1 - np.exp(-1 / (0.08 * sr)), 1 - np.exp(-1 / (0.4 * sr))
+    g = np.empty_like(env); cur = 0.0
+    for i, x in enumerate(env):
+        cur += (k_up if x > cur else k_dn) * (x - cur); g[i] = cur
+    mix = mix * (1 - (1 - DUCK) * g)[:, None] + vtrack
+    mix = mix / max(1.0, np.abs(mix).max() / 0.97)
+    wavfile.write(wav, sr, (mix * 32767).astype(np.int16))
+
+
 # ---------- musique ----------
 def music_file(src, path, dur):
     """Extrait le passage le plus énergique d'une vraie musique (libre de droits) et l'écrit en wav."""
@@ -289,14 +316,7 @@ def render(spec, caps, out_mp4):
         if "search" in sh: ev.append(("typewriter.wav", c + 0.2, 0.35))  # frappe pendant la recherche
     add_sfx(wav, ev)
     if any(VD):
-        sr, mix = wavfile.read(wav); mix = mix.astype(np.float64) / 32767 * 0.42
-        for i, c in enumerate(cuts):
-            if not VD[i]: continue
-            tmpw = f"{TMP}/voice.wav"
-            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", vf[i], "-ar", str(sr), "-ac", "2", "-af", "highpass=f=70,acompressor=threshold=-18dB:ratio=3", tmpw], check=True)
-            _, v = wavfile.read(tmpw); v = v.astype(np.float64) / 32767; v = v / max(1e-6, np.abs(v).max()) * 0.9
-            a = int((c + 0.18) * sr); b = min(len(mix), a + len(v)); mix[a:b] += v[: b - a]
-        mix = mix / max(1.0, np.abs(mix).max() / 0.97); wavfile.write(wav, sr, (mix * 32767).astype(np.int16))
+        mix_voice(wav, [(vf[i], c + 0.18) for i, c in enumerate(cuts) if VD[i]])
     ff = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
         "-i", wav, "-map", "0:v", "-map", "1:a", "-t", f"{total:.3f}", "-af", f"afade=t=out:st={total-1.2:.3f}:d=1.2",
         "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out_mp4], stdin=subprocess.PIPE)
