@@ -1,0 +1,754 @@
+{
+ "updated": "2026-11-20",
+ "sources": [
+  {
+   "t": "Red Bull",
+   "u": "https://www.redbull.com/us-en/gta-6-cheat-codes"
+  },
+  {
+   "t": "Vice",
+   "u": "https://www.vice.com/en/article/gta-6-cheat-codes-list/"
+  },
+  {
+   "t": "Beebom",
+   "u": "https://beebom.com/gta-6-cheat-codes/"
+  },
+  {
+   "t": "HappyGamer",
+   "u": "https://happygamer.com/gta-6-cheats-codes-176352/"
+  },
+  {
+   "t": "Presse-citron",
+   "u": "https://www.presse-citron.net/gta-6-codes-triche-rockstar-liste-conditions-ps5-xbox-pc/"
+  }
+ ],
+ "codes": [
+  {
+   "id": "argent",
+   "cat": "joueur",
+   "name": "250 000 $",
+   "en": "$250,000 Money",
+   "effect": "Ajoute 250 000 $ (l'argent ne reste pas dans ta sauvegarde).",
+   "code": [
+    "haut",
+    "droite",
+    "bas",
+    "gauche",
+    "haut",
+    "gauche",
+    "bas",
+    "droite"
+   ],
+   "unlock": "Finir l'histoire principale."
+  },
+  {
+   "id": "ivre",
+   "cat": "joueur",
+   "name": "Ivresse",
+   "en": "Get Drunk",
+   "effect": "Toi et ton partenaire êtes ivres.",
+   "code": null,
+   "unlock": "Dépenser 2 500 $ en alcool."
+  },
+  {
+   "id": "chaleur",
+   "cat": "joueur",
+   "name": "Augmenter la chaleur",
+   "en": "Raise Heat Level",
+   "effect": "Fait monter ta « chaleur » (l'attention de la police).",
+   "code": [
+    "gauche",
+    "bas",
+    "droite",
+    "bas",
+    "haut",
+    "bas",
+    "haut"
+   ],
+   "unlock": "Semer la police à 3 étoiles 25 fois."
+  },
+  {
+   "id": "recherche",
+   "cat": "joueur",
+   "name": "Augmenter le niveau de recherche",
+   "en": "Raise Wanted Level",
+   "effect": "Ajoute des étoiles de recherche.",
+   "code": [
+    "gauche",
+    "bas",
+    "droite",
+    "bas",
+    "haut",
+    "droite",
+    "haut"
+   ],
+   "unlock": "Semer la police à 3 étoiles 50 fois."
+  },
+  {
+   "id": "concentration",
+   "cat": "joueur",
+   "name": "Concentration illimitée",
+   "en": "Unlimited Focus",
+   "effect": "Ta jauge de concentration ne se vide plus.",
+   "code": [
+    "bas",
+    "haut",
+    "haut",
+    "bas",
+    "haut",
+    "bas",
+    "haut",
+    "bas",
+    "haut",
+    "droite"
+   ],
+   "unlock": "Finir l'histoire principale."
+  },
+  {
+   "id": "chute",
+   "cat": "joueur",
+   "name": "Pas de dégâts de chute",
+   "en": "No Fall Damage",
+   "effect": "Tu ne prends plus de dégâts en tombant.",
+   "code": null,
+   "unlock": "Survivre à 20 chutes de plus de 12 m (40 pieds)."
+  },
+  {
+   "id": "parachute",
+   "cat": "joueur",
+   "name": "Parachute",
+   "en": "Get a Parachute",
+   "effect": "Te donne un parachute.",
+   "code": null,
+   "unlock": "Faire 50 sauts en parachute ou BASE jumps de plus de 90 m."
+  },
+  {
+   "id": "armure",
+   "cat": "joueur",
+   "name": "Gilet pare-balles",
+   "en": "Get Body Armor",
+   "effect": "Te donne un gilet pare-balles.",
+   "code": [
+    "bas",
+    "haut",
+    "gauche",
+    "haut",
+    "haut",
+    "haut",
+    "haut",
+    "haut",
+    "bas",
+    "bas"
+   ],
+   "unlock": "Faire 100 séances de sport."
+  },
+  {
+   "id": "reparer",
+   "cat": "joueur",
+   "name": "Réparer le véhicule",
+   "en": "Repair Vehicle",
+   "effect": "Répare ton véhicule.",
+   "code": null,
+   "unlock": "Gagner 10 courses à Gellhorn Raceway, au Thrillbilly Mud Club ou à Boone Speedway."
+  },
+  {
+   "id": "nitro",
+   "cat": "joueur",
+   "name": "Nitro illimitée",
+   "en": "Unlimited Nitrous",
+   "effect": "Nitro (et carburant) infinis.",
+   "code": null,
+   "unlock": "Réussir 50 cascades."
+  },
+  {
+   "id": "munitions-max",
+   "cat": "combat",
+   "name": "Munitions au max",
+   "en": "Max Ammo",
+   "effect": "Recharge toutes tes munitions.",
+   "code": [
+    "bas",
+    "haut",
+    "droite",
+    "bas",
+    "gauche",
+    "gauche",
+    "haut",
+    "haut",
+    "bas",
+    "gauche"
+   ],
+   "unlock": "25 médailles de bronze (ou mieux) au stand de tir."
+  },
+  {
+   "id": "munitions-infinies",
+   "cat": "combat",
+   "name": "Munitions infinies",
+   "en": "Infinite Ammo",
+   "effect": "Tes munitions ne baissent plus.",
+   "code": [
+    "bas",
+    "haut",
+    "droite",
+    "bas",
+    "gauche",
+    "gauche",
+    "haut",
+    "bas",
+    "bas",
+    "bas"
+   ],
+   "unlock": "25 médailles d'argent (ou mieux) au stand de tir."
+  },
+  {
+   "id": "sans-recharge",
+   "cat": "combat",
+   "name": "Pas de rechargement",
+   "en": "No Reload",
+   "effect": "Tu tires sans jamais recharger.",
+   "code": [
+    "bas",
+    "haut",
+    "droite",
+    "bas",
+    "gauche",
+    "gauche",
+    "haut",
+    "bas",
+    "bas",
+    "haut"
+   ],
+   "unlock": "25 médailles d'or au stand de tir."
+  },
+  {
+   "id": "explosifs",
+   "cat": "combat",
+   "name": "Toutes les armes explosives",
+   "en": "All Explosive Weapons",
+   "effect": "Te donne les armes explosives avec toutes les munitions.",
+   "code": null,
+   "unlock": "Lancer 100 grenades."
+  },
+  {
+   "id": "incendiaire",
+   "cat": "combat",
+   "name": "Munitions incendiaires",
+   "en": "Incendiary Ammo",
+   "effect": "Tes balles mettent le feu.",
+   "code": null,
+   "unlock": "Éliminer 100 ennemis par le feu."
+  },
+  {
+   "id": "bouteilles",
+   "cat": "combat",
+   "name": "Bouteilles explosives",
+   "en": "Exploding Bottles",
+   "effect": "Les bouteilles lancées explosent.",
+   "code": null,
+   "unlock": "Lancer 100 cocktails Molotov."
+  },
+  {
+   "id": "fusil-explosif",
+   "cat": "combat",
+   "name": "Fusil à pompe explosif",
+   "en": "Explosive Shotgun",
+   "effect": "Te donne le Mason & Keen Shortstraw avec des cartouches explosives.",
+   "code": null,
+   "unlock": "Toucher 100 ennemis avec des explosifs."
+  },
+  {
+   "id": "lance-roquettes",
+   "cat": "combat",
+   "name": "Lance-roquettes Hauners H-AT",
+   "en": "Hauners H-AT",
+   "effect": "Te donne le lance-roquettes H-AT.",
+   "code": null,
+   "unlock": "Détruire 100 véhicules."
+  },
+  {
+   "id": "force-attaque",
+   "cat": "combat",
+   "name": "Force d'attaque",
+   "en": "Attack Force",
+   "effect": "Tes balles et tes coups envoient valser les gens.",
+   "code": [
+    "bas",
+    "haut",
+    "gauche",
+    "gauche",
+    "droite",
+    "bas",
+    "bas",
+    "haut",
+    "bas"
+   ],
+   "unlock": "Finir l'histoire principale."
+  },
+  {
+   "id": "ballons",
+   "cat": "combat",
+   "name": "Ballons explosifs",
+   "en": "Exploding Balls",
+   "effect": "Les ballons de sport explosent.",
+   "code": [
+    "bas",
+    "haut",
+    "gauche",
+    "gauche",
+    "droite",
+    "bas",
+    "bas",
+    "haut",
+    "droite"
+   ],
+   "unlock": "Toucher 20 ennemis avec des explosifs."
+  },
+  {
+   "id": "force-vehicule",
+   "cat": "combat",
+   "name": "Force du véhicule",
+   "en": "Vehicle Force",
+   "effect": "Ton véhicule projette les gens qu'il touche.",
+   "code": [
+    "bas",
+    "haut",
+    "gauche",
+    "gauche",
+    "droite",
+    "bas",
+    "gauche",
+    "haut",
+    "bas"
+   ],
+   "unlock": "Éliminer 25 ennemis avec un véhicule."
+  },
+  {
+   "id": "ambulance",
+   "cat": "vehicule",
+   "name": "Ambulance (Interstate)",
+   "en": "Interstate Ambulance",
+   "effect": "Fait apparaître une ambulance.",
+   "code": null,
+   "unlock": "À découvrir dans le menu Progression."
+  },
+  {
+   "id": "hydroglisseur",
+   "cat": "vehicule",
+   "name": "Hydroglisseur Airboat 09",
+   "en": "Airboat 09",
+   "effect": "Fait apparaître un hydroglisseur.",
+   "code": null,
+   "unlock": "5 défis de survie."
+  },
+  {
+   "id": "banshee",
+   "cat": "vehicule",
+   "name": "Bravado Banshee",
+   "en": "Bravado Banshee",
+   "effect": "Fait apparaître une Banshee.",
+   "code": null,
+   "unlock": "Tous les défis de combat."
+  },
+  {
+   "id": "bmx",
+   "cat": "vehicule",
+   "name": "BMX (Tuff)",
+   "en": "Tuff BMX",
+   "effect": "Fait apparaître un BMX.",
+   "code": null,
+   "unlock": "5 défis de fitness."
+  },
+  {
+   "id": "boomazoom",
+   "cat": "vehicule",
+   "name": "Maibatsu Boomazoom",
+   "en": "Maibatsu Boomazoom",
+   "effect": "Fait apparaître une Boomazoom.",
+   "code": [
+    "gauche",
+    "haut",
+    "droite",
+    "bas",
+    "gauche",
+    "gauche",
+    "haut",
+    "gauche"
+   ],
+   "unlock": "5 défis shopping."
+  },
+  {
+   "id": "carbon-rs",
+   "cat": "vehicule",
+   "name": "Moto Nagasaki Carbon RS",
+   "en": "Nagasaki Carbon RS",
+   "effect": "Fait apparaître une Carbon RS.",
+   "code": null,
+   "unlock": "Tous les défis d'exploration."
+  },
+  {
+   "id": "dominator",
+   "cat": "vehicule",
+   "name": "Vapid Dominator 1965",
+   "en": "'65 Vapid Dominator",
+   "effect": "Fait apparaître une Dominator de 1965.",
+   "code": null,
+   "unlock": "Tous les défis de fitness."
+  },
+  {
+   "id": "emerus",
+   "cat": "vehicule",
+   "name": "Progen Emerus",
+   "en": "Progen Emerus",
+   "effect": "Fait apparaître une supercar Emerus.",
+   "code": null,
+   "unlock": "Tous les défis de véhicule."
+  },
+  {
+   "id": "flamant",
+   "cat": "vehicule",
+   "name": "Flamant gonflable",
+   "en": "Inflatable Flamingo",
+   "effect": "Fait apparaître une bouée flamant rose.",
+   "code": null,
+   "unlock": "Détruire 50 flamants roses (décorations)."
+  },
+  {
+   "id": "pompiers",
+   "cat": "vehicule",
+   "name": "Camion de pompiers MTL Pumper",
+   "en": "MTL Pumper",
+   "effect": "Fait apparaître un camion de pompiers.",
+   "code": [
+    "gauche",
+    "haut",
+    "droite",
+    "bas",
+    "gauche",
+    "droite",
+    "droite",
+    "haut"
+   ],
+   "unlock": "À découvrir dans le menu Progression."
+  },
+  {
+   "id": "taxi",
+   "cat": "vehicule",
+   "name": "Taxi Vapid Stanier G2",
+   "en": "Vapid Stanier G2 Taxi",
+   "effect": "Fait apparaître un taxi.",
+   "code": null,
+   "unlock": "5 défis sportifs."
+  },
+  {
+   "id": "lazer",
+   "cat": "vehicule",
+   "name": "Avion de chasse Hauners P-996 Lazer",
+   "en": "Hauners P-996 Lazer",
+   "effect": "Fait apparaître le jet Lazer.",
+   "code": null,
+   "unlock": "Tous les défis du jeu."
+  },
+  {
+   "id": "bulldozer",
+   "cat": "vehicule",
+   "name": "Bulldozer HVY",
+   "en": "HVY Bulldozer",
+   "effect": "Fait apparaître un bulldozer.",
+   "code": [
+    "gauche",
+    "haut",
+    "droite",
+    "bas",
+    "gauche",
+    "droite",
+    "droite",
+    "bas"
+   ],
+   "unlock": "À découvrir dans le menu Progression."
+  },
+  {
+   "id": "mallard",
+   "cat": "vehicule",
+   "name": "Avion Lapwing Mallard",
+   "en": "Lapwing Mallard",
+   "effect": "Fait apparaître un petit avion Mallard.",
+   "code": null,
+   "unlock": "5 défis de véhicule."
+  },
+  {
+   "id": "golfette",
+   "cat": "vehicule",
+   "name": "Voiturette de golf Brimstone Golfer",
+   "en": "Brimstone Golfer",
+   "effect": "Fait apparaître une voiturette de golf.",
+   "code": null,
+   "unlock": "Tous les défis sportifs."
+  },
+  {
+   "id": "tank",
+   "cat": "vehicule",
+   "name": "Tank Hauners Rhino",
+   "en": "Hauners Rhino Tank",
+   "effect": "Fait apparaître le tank Rhino.",
+   "code": null,
+   "unlock": "Tous les défis de survie."
+  },
+  {
+   "id": "sanchez",
+   "cat": "vehicule",
+   "name": "Moto cross Maibatsu Sanchez",
+   "en": "Maibatsu Sanchez",
+   "effect": "Fait apparaître une Sanchez.",
+   "code": null,
+   "unlock": "5 défis criminels."
+  },
+  {
+   "id": "sea-sparrow",
+   "cat": "vehicule",
+   "name": "Hélicoptère Nagasaki Sea Sparrow",
+   "en": "Nagasaki Sea Sparrow",
+   "effect": "Fait apparaître un hélicoptère Sea Sparrow.",
+   "code": null,
+   "unlock": "5 défis d'exploration."
+  },
+  {
+   "id": "speeder",
+   "cat": "vehicule",
+   "name": "Bateau Speeder 700 GT",
+   "en": "Speeder 700 GT",
+   "effect": "Fait apparaître un bateau rapide.",
+   "code": null,
+   "unlock": "5 défis de combat."
+  },
+  {
+   "id": "thrax",
+   "cat": "vehicule",
+   "name": "Truffade Thrax",
+   "en": "Truffade Thrax",
+   "effect": "Fait apparaître une supercar Thrax.",
+   "code": null,
+   "unlock": "Tous les défis shopping."
+  },
+  {
+   "id": "zombie-bobber",
+   "cat": "vehicule",
+   "name": "Moto Western Zombie Bobber",
+   "en": "Western Zombie Bobber",
+   "effect": "Fait apparaître une Zombie Bobber.",
+   "code": null,
+   "unlock": "Tous les défis criminels."
+  },
+  {
+   "id": "avancer-heure",
+   "cat": "monde",
+   "name": "Avancer l'heure",
+   "en": "Move Time Forward",
+   "effect": "Fait avancer l'heure de la journée.",
+   "code": null,
+   "unlock": "Trouver 10 montres de collection."
+  },
+  {
+   "id": "figer-heure",
+   "cat": "monde",
+   "name": "Figer l'heure",
+   "en": "Pause Time of Day",
+   "effect": "Bloque l'heure de la journée.",
+   "code": null,
+   "unlock": "Trouver 20 montres de collection."
+  },
+  {
+   "id": "meteo",
+   "cat": "monde",
+   "name": "Changer la météo",
+   "en": "Cycle Weather",
+   "effect": "Fait défiler les météos.",
+   "code": [
+    "bas",
+    "droite",
+    "haut",
+    "bas",
+    "droite",
+    "haut",
+    "droite"
+   ],
+   "unlock": "Finir l'histoire principale."
+  },
+  {
+   "id": "golden-hour",
+   "cat": "filtre",
+   "name": "Golden Hour",
+   "en": "Golden Hour",
+   "effect": "Filtre doré.",
+   "code": null,
+   "unlock": "Passer 4 heures main dans la main avec ton partenaire."
+  },
+  {
+   "id": "powdered-sugar",
+   "cat": "filtre",
+   "name": "Powdered Sugar",
+   "en": "Powdered Sugar",
+   "effect": "Filtre blanc pailleté.",
+   "code": null,
+   "unlock": "Scanner tous les débris spatiaux avec WAiNK."
+  },
+  {
+   "id": "pinhole",
+   "cat": "filtre",
+   "name": "Pinhole",
+   "en": "Pinhole Camera",
+   "effect": "Effet appareil sténopé.",
+   "code": null,
+   "unlock": "Faire 25 opérations de gang avec ton partenaire."
+  },
+  {
+   "id": "neon-jungle",
+   "cat": "filtre",
+   "name": "Neon Jungle",
+   "en": "Neon Jungle",
+   "effect": "Filtre néon.",
+   "code": null,
+   "unlock": "Trouver les 16 véhicules Girlypop."
+  },
+  {
+   "id": "yesteryear",
+   "cat": "filtre",
+   "name": "Yesteryear",
+   "en": "Yesteryear",
+   "effect": "Noir et blanc façon vieille télé.",
+   "code": null,
+   "unlock": "Découvrir la Ridgeway."
+  },
+  {
+   "id": "cataclysm",
+   "cat": "filtre",
+   "name": "Cataclysm",
+   "en": "Cataclysm",
+   "effect": "Fumée et brouillard.",
+   "code": [
+    "bas",
+    "bas",
+    "haut",
+    "droite",
+    "droite",
+    "haut",
+    "gauche",
+    "gauche",
+    "droite",
+    "droite"
+   ],
+   "unlock": "Découvrir la Vamos de Martha (menu Progression)."
+  },
+  {
+   "id": "videotape",
+   "cat": "filtre",
+   "name": "Videotape",
+   "en": "Videotape",
+   "effect": "Effet cassette VHS.",
+   "code": null,
+   "unlock": "Faire 50 activités avec ton partenaire."
+  },
+  {
+   "id": "dark-mirror",
+   "cat": "filtre",
+   "name": "Dark Mirror",
+   "en": "Dark Mirror",
+   "effect": "Couleurs inversées et sombres.",
+   "code": null,
+   "unlock": "Gagner 500 000 $ en vendant des véhicules."
+  },
+  {
+   "id": "migraine",
+   "cat": "filtre",
+   "name": "Migraine",
+   "en": "Migraine",
+   "effect": "Image floue et déformée.",
+   "code": null,
+   "unlock": "Tenir 6 minutes avec 6 étoiles de recherche."
+  },
+  {
+   "id": "dollhouse",
+   "cat": "filtre",
+   "name": "Dollhouse",
+   "en": "Dollhouse",
+   "effect": "Couleurs vives, champ de vision réduit.",
+   "code": [
+    "bas",
+    "bas",
+    "haut",
+    "droite",
+    "droite",
+    "haut",
+    "gauche",
+    "gauche",
+    "bas",
+    "droite"
+   ],
+   "unlock": "Passer 8 heures avec ton partenaire."
+  },
+  {
+   "id": "bubblegum",
+   "cat": "filtre",
+   "name": "Bubblegum",
+   "en": "Bubblegum",
+   "effect": "Paillettes violettes et jaunes.",
+   "code": null,
+   "unlock": "Trouver les 24 cartes Vice City Flamingos."
+  },
+  {
+   "id": "fast-forward",
+   "cat": "filtre",
+   "name": "Fast Forward",
+   "en": "Fast Forward",
+   "effect": "Flou de mouvement.",
+   "code": null,
+   "unlock": "Faire 50 méditations."
+  },
+  {
+   "id": "fisheye",
+   "cat": "filtre",
+   "name": "Fisheye",
+   "en": "Fisheye",
+   "effect": "Effet fish-eye.",
+   "code": null,
+   "unlock": "Attraper 100 poissons."
+  },
+  {
+   "id": "faded-glory",
+   "cat": "filtre",
+   "name": "Faded Glory",
+   "en": "Faded Glory",
+   "effect": "Couleurs passées façon vieil écran.",
+   "code": [
+    "bas",
+    "bas",
+    "haut",
+    "droite",
+    "droite",
+    "haut",
+    "gauche",
+    "gauche",
+    "gauche",
+    "droite"
+   ],
+   "unlock": "Braquer 50 magasins avec ton partenaire."
+  },
+  {
+   "id": "pixel-art",
+   "cat": "filtre",
+   "name": "Pixel Art",
+   "en": "Pixel Art",
+   "effect": "Image pixelisée.",
+   "code": null,
+   "unlock": "Gagner 250 000 $ en vendant des objets de collection."
+  },
+  {
+   "id": "hellscape",
+   "cat": "filtre",
+   "name": "Hellscape",
+   "en": "Hellscape",
+   "effect": "Brume de chaleur rouge et orange.",
+   "code": null,
+   "unlock": "Voler 100 véhicules de police."
+  }
+ ]
+}

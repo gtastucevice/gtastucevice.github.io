@@ -159,6 +159,7 @@ def nav_html(prefix="", current=""):
             f'<a class="nav-search" href="{prefix}recherche.html" aria-label="Rechercher"{cur("recherche.html")}>{SEARCH_ICO}<span>Rechercher</span></a>\n'
             f'<a href="{prefix}actus.html"{cur("actus.html")}>Actus</a>\n'
             f'<a href="{prefix}index.html#guides">Guides</a>\n'
+            f'<a class="nav-cheat" href="{prefix}gta-6-codes-triche.html"{cur("gta-6-codes-triche.html")}><span class="nm">Codes de t</span><span class="nmt">T</span>riche</a>\n'
             f'<a href="{prefix}index.html#chasse">Chasse<span class="nm"> aux secrets</span></a>\n'
             f'<a href="{prefix}matos.html"{cur("matos.html")}>Le matos</a>\n'
             f'<a class="btn" href="{prefix}index.html#newsletter">Newsletter</a>\n</nav>')
@@ -469,7 +470,8 @@ FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 
 
 def topics_html(prefix=""):
-    return "".join(f'<a href="{prefix}{h["slug"]}.html">{e(h["nav"])}</a>' for h in HUBS)
+    return (f'<a href="{prefix}gta-6-codes-triche.html">Codes de triche</a>'
+            + "".join(f'<a href="{prefix}{h["slug"]}.html">{e(h["nav"])}</a>' for h in HUBS))
 
 
 def simple_page(path, title, desc, h1, kicker, body, ld=None, topics=True):
@@ -510,7 +512,7 @@ ABOUT_BODY = """<p class="lead">GTASTUCE VICE, c'est le fil français de GTA 6 :
 <ul>
 <li><strong>On cite toujours nos sources.</strong> Chaque article se termine par la liste des médias d'où viennent les infos, pour que tu puisses vérifier.</li>
 <li><strong>On te dit quand ce n'est pas sûr.</strong> Une info qui ne vient que de joueurs est marquée « rumeur » ou « à tester en jeu », un chiffre non officiel « estimation ».</li>
-<li><strong>Zéro spoiler, zéro leak, zéro triche.</strong> Pas de fin d'histoire, pas de contenu volé, pas de glitch d'argent qui risque de te faire bannir.</li>
+<li><strong>Zéro spoiler, zéro leak, zéro glitch.</strong> Pas de fin d'histoire, pas de contenu volé, pas de glitch d'argent ni de mod qui risque de te faire bannir. Les seuls codes de triche dont on parle sont ceux prévus par Rockstar dans le mode histoire.</li>
 <li><strong>Transparence :</strong> nos articles sont rédigés avec l'aide d'outils d'intelligence artificielle, à partir des sources citées, et mis à jour dès qu'une info évolue.</li>
 </ul></div>
 <div class="box"><h2 style="margin-top:0">Nous contacter</h2>
@@ -871,7 +873,8 @@ def build_static_pages(arts, secrets):
         simple_page("mentions-legales.html", "Mentions légales et confidentialité", "Mentions légales, hébergeur, données personnelles, mesure d'audience et liens affiliés du site GTASTUCE VICE.",
                     "Mentions légales et confidentialité", "GTASTUCE VICE", LEGAL_BODY, topics=False))
     # ---------- Recherche ----------
-    hubs_js = json.dumps([{k: h[k] for k in ("slug", "nav", "title", "desc")} for h in HUBS], ensure_ascii=False)
+    hubs_js = json.dumps([{"slug": "gta-6-codes-triche", "nav": "Codes de triche cheats", "title": "Codes de triche GTA 6 : la liste complète PS5 et Xbox", "desc": "Les 61 cheats de GTA 6, les combinaisons connues et comment les activer."}]
+                         + [{k: h[k] for k in ("slug", "nav", "title", "desc")} for h in HUBS], ensure_ascii=False)
     sp = simple_page("recherche.html", "Rechercher", "Cherche une astuce, un guide ou un secret de GTA 6 sur GTASTUCE VICE.",
                      "Rechercher", "GTASTUCE VICE", SEARCH_BODY.replace("__ICON__", SEARCH_ICO.replace('class="ico"', 'class="ico hs-ico"')) + legend_html())
     sp = sp.replace("</body>", SEARCH_JS.replace("__HUBS__", hubs_js).replace("__ST__", json.dumps(EGG_ST, ensure_ascii=False)) + "\n</body>")
@@ -898,6 +901,127 @@ def build_static_pages(arts, secrets):
         open(os.path.join(ROOT, h["slug"] + ".html"), "w", encoding="utf-8").write(
             simple_page(h["slug"] + ".html", h["title"], h["desc"], h["h1"], "Le sujet", body, ld))
     return hub_dates
+
+
+# ---------- Codes de triche (piloté par codes.json) ----------
+CHEAT_SLUG = "gta-6-codes-triche"
+CHEAT_TITLE = "Codes de triche GTA 6 : la liste complète PS5 et Xbox (et comment les activer)"
+CHEAT_DESC = "Tous les codes de triche de GTA 6 sur PS5 et Xbox Series : les 61 cheats, les combinaisons connues, comment les taper sur le téléphone et comment les débloquer."
+CHEAT_CATS = {"joueur": "Joueur", "combat": "Armes et combat", "vehicule": "Véhicules", "monde": "Heure et météo", "filtre": "Filtres d'écran"}
+ARROW = {"haut": "↑", "bas": "↓", "gauche": "←", "droite": "→"}
+CHEAT_CSS = """
+.quickans{background:linear-gradient(135deg,#2A0F4A,#6B1E6E);border:1px solid var(--pink2);border-radius:20px;padding:22px 24px;margin:18px 0}
+.quickans p{margin:0 0 10px;font-size:17px}.quickans p:last-child{margin:0}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.steps li{counter-increment:s;position:relative;padding:14px 16px 14px 58px;background:var(--night2);border:1px solid var(--line);border-radius:14px}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:12px;width:32px;height:32px;border-radius:50%;background:var(--pink);color:var(--night);font:400 16px 'Archivo Black',sans-serif;display:flex;align-items:center;justify-content:center}
+.pads{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}.pads div{background:var(--night2);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.pads strong{display:block;color:var(--teal);font-size:13px;text-transform:uppercase;letter-spacing:1px}
+.ctools{position:sticky;top:72px;z-index:5;background:rgba(23,10,51,.96);padding:12px 0;margin:0 0 6px}
+.ctools input{width:100%;min-height:48px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:var(--night2);color:var(--white);font:500 16px Inter,sans-serif}
+.ctools .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.ctools .chip{min-height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--night2);color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}
+.ctools .chip[aria-pressed="true"]{background:var(--white);color:var(--night);border-color:var(--white)}
+.ccount{color:var(--soft);font-size:14px;margin:8px 0 0}
+.cgroup h2{scroll-margin-top:170px}
+.codes{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.code{background:var(--night2);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.code.known{border-color:var(--teal)}
+.code h3{margin:0;font-size:18px;line-height:1.25}.code .en{color:var(--mute);font-size:12px}
+.code p{margin:0;font-size:14px;color:var(--soft)}.code .unl strong{color:var(--white)}
+.seq{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0}
+.seq kbd{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9px;background:var(--white);color:var(--night);font:700 20px Inter,sans-serif;box-shadow:0 3px 0 #9C8FD0}
+.nocode{font-size:13px;font-weight:700;color:var(--orange)}
+.copy{align-self:flex-start;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--teal);font:700 13px Inter,sans-serif;cursor:pointer}
+.faq details{background:var(--night2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 10px}
+.faq summary{cursor:pointer;font-weight:700;font-size:16px}.faq details p{margin:10px 0 0;color:#F2ECFF}
+.srcs a{margin-right:12px}
+@media (max-width:640px){.pads{grid-template-columns:1fr}.ctools{position:static}.seq kbd{width:32px;height:32px;font-size:18px}}
+"""
+CHEAT_JS = r"""<script>
+(()=>{const q=document.getElementById('cq'),chips=[...document.querySelectorAll('.ctools .chip')],cards=[...document.querySelectorAll('.code')],groups=[...document.querySelectorAll('.cgroup')],cnt=document.getElementById('ccount');
+let cat='all';const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+function run(){const w=norm(q.value).split(/\s+/).filter(Boolean);let n=0;
+cards.forEach(c=>{const ok=(cat==='all'||(cat==='known'?c.classList.contains('known'):c.dataset.cat===cat))&&w.every(x=>c.dataset.t.includes(x));c.hidden=!ok;if(ok)n++});
+groups.forEach(g=>g.hidden=!g.querySelector('.code:not([hidden])'));cnt.textContent=n+(n>1?' codes affichés':' code affiché')}
+chips.forEach(b=>b.addEventListener('click',()=>{cat=b.dataset.c;chips.forEach(x=>x.setAttribute('aria-pressed',x===b));run()}));
+q.addEventListener('input',run);
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{const t=b.dataset.seq;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent='Copié !';setTimeout(()=>b.textContent='Copier le code',1500)}).catch(()=>{})}));
+try{const h=new URLSearchParams(location.search).get('q');if(h){q.value=h}}catch(e){}run()})();
+</script>"""
+
+CHEAT_FAQ = [
+    ("Y a-t-il des codes de triche dans GTA 6 ?", "Oui. GTA 6 compte 61 codes de triche en mode histoire, sur PS5 et Xbox Series X|S. Mais ils ne sont pas tous disponibles tout de suite : il faut finir l'histoire principale, puis relever des défis pour débloquer chaque code."),
+    ("Comment activer un code de triche dans GTA 6 ?", "Appuie sur la flèche du haut pour sortir le téléphone. Maintiens L1 + R1 sur PS5 (LB + RB sur Xbox), puis tape la suite de flèches de la croix directionnelle. Les codes sont les mêmes sur PS5 et Xbox."),
+    ("Est-ce qu'il y a des numéros de téléphone à composer comme dans GTA 5 ?", "Non. D'après Red Bull et Beebom, les numéros de triche façon GTA 5 ne marchent pas dans GTA 6 : tout passe par les combinaisons de flèches."),
+    ("Est-ce que les codes désactivent les trophées et la sauvegarde ?", "Oui, pour la session en cours : tant qu'un code est actif, tu ne peux plus sauvegarder ni débloquer de trophées ou de succès. Fais une sauvegarde manuelle avant, puis relance-la pour tout retrouver. Ce que tu fais pendant la triche ne sera pas sauvegardé."),
+    ("Y a-t-il un code d'argent infini dans GTA 6 ?", "Il existe un code qui donne 250 000 $, débloqué à la fin de l'histoire. Mais selon Vice, cet argent n'est pas conservé dans ta sauvegarde. Méfie-toi des vidéos qui promettent de l'argent infini avec un glitch : ça ne marche pas ou ça peut abîmer ta partie."),
+    ("Les codes de triche marchent-ils sur PC ou dans GTA Online ?", "GTA 6 n'est sorti que sur PS5 et Xbox Series X|S, et il n'a pas encore de mode en ligne. Les codes sont réservés au mode histoire."),
+]
+
+
+def cheat_page():
+    data = json.load(open(os.path.join(ROOT, "codes.json"), encoding="utf-8"))
+    codes = data["codes"]
+    ids = [c["id"] for c in codes]
+    assert len(ids) == len(set(ids)), "id de code en double"
+    for c in codes:
+        assert c["cat"] in CHEAT_CATS, c["id"]
+        assert c["code"] is None or all(x in ARROW for x in c["code"]), c["id"]
+    known = [c for c in codes if c["code"]]
+    known_by_cat = ", ".join(f'{c["name"]}' for c in known[:3])
+    body = [f'<p class="lead">Les codes de triche sont bien dans GTA 6 : <strong>{len(codes)} cheats</strong> en mode histoire, sur PS5 et Xbox Series. '
+            f'Voici la liste complète, les <strong>{len(known)} combinaisons déjà connues</strong> et comment débloquer les autres.</p>',
+            '<div class="quickans"><p><strong>En bref :</strong> finis l\'histoire principale, sors le téléphone (flèche haut), maintiens <strong>L1 + R1</strong> (PS5) ou <strong>LB + RB</strong> (Xbox) et tape la suite de flèches.</p>'
+            '<p>Chaque code se débloque avec un défi (stand de tir, cascades, courses…). Tant qu\'un code est actif : pas de sauvegarde, pas de trophées.</p></div>',
+            '<h2 id="activer">Comment taper un code de triche</h2><ol class="steps">'
+            '<li><strong>Finis l\'histoire principale.</strong> Avant ça, les codes ne marchent pas. Ensuite, une page « Triches » apparaît dans le menu Progression : elle te dit quels codes tu as débloqués.</li>'
+            '<li><strong>Fais une sauvegarde manuelle.</strong> Les codes bloquent la sauvegarde et les trophées pour la session : tu pourras relancer ta partie propre après.</li>'
+            '<li><strong>Sors le téléphone</strong> avec la flèche du haut de la croix directionnelle.</li>'
+            '<li><strong>Maintiens les deux gâchettes hautes</strong> et tape la suite de flèches du code.</li></ol>'
+            '<div class="pads"><div><strong>PS5</strong>Flèche haut, puis maintiens L1 + R1 et tape les flèches</div><div><strong>Xbox Series X|S</strong>Flèche haut, puis maintiens LB + RB et tape les flèches</div></div>'
+            '<p>Pour annuler un code, tape-le une deuxième fois. Pas de numéro de téléphone à composer comme dans GTA 5 : tout se fait avec les flèches.</p>',
+            '<h2 id="liste">La liste des 61 codes</h2>'
+            '<p>Les codes avec des flèches sont ceux déjà relayés par plusieurs sites spécialisés (mêmes combinaisons partout). Ils restent <strong>à tester en jeu</strong> : si l\'un ne marche pas chez toi, dis-le-nous. Les autres n\'ont pas encore été trouvés : on complète la liste dès qu\'ils sortent.</p>'
+            '<div class="ctools"><label class="sr" for="cq">Chercher un code</label><input id="cq" type="search" placeholder="Cherche : argent, tank, munitions, parachute…" autocomplete="off">'
+            '<div class="chips" role="group" aria-label="Filtrer les codes">'
+            '<button class="chip" type="button" data-c="all" aria-pressed="true">Tout</button>'
+            f'<button class="chip" type="button" data-c="known" aria-pressed="false">Codes connus ({len(known)})</button>'
+            + "".join(f'<button class="chip" type="button" data-c="{k}" aria-pressed="false">{e(v)}</button>' for k, v in CHEAT_CATS.items())
+            + '</div><p class="ccount" id="ccount" role="status" aria-live="polite"></p></div>']
+    for k, label in CHEAT_CATS.items():
+        grp = [c for c in codes if c["cat"] == k]
+        body.append(f'<section class="cgroup"><h2 id="cat-{k}">{e(label)} ({len(grp)})</h2><div class="codes">')
+        for c in grp:
+            words = " ".join(c["code"] or [])
+            t = (c["name"] + " " + c["en"] + " " + c["effect"] + " " + c["unlock"] + " " + label).lower()
+            import unicodedata
+            t = "".join(ch for ch in unicodedata.normalize("NFD", t) if unicodedata.category(ch) != "Mn")
+            if c["code"]:
+                seq = ('<div class="seq" role="img" aria-label="' + e(", ".join(c["code"])) + '">'
+                       + "".join(f"<kbd>{ARROW[x]}</kbd>" for x in c["code"]) + "</div>"
+                       + f'<button class="copy" type="button" data-seq="{e(" ".join(ARROW[x] for x in c["code"]))}">Copier le code</button>')
+            else:
+                seq = '<span class="nocode">Combinaison pas encore trouvée</span>'
+            body.append(f'<article class="code{" known" if c["code"] else ""}" id="code-{e(c["id"])}" data-cat="{k}" data-t="{e(t)}">'
+                        f'<h3>{e(c["name"])}</h3><span class="en">En anglais : {e(c["en"])}</span>{seq}'
+                        f'<p>{e(c["effect"])}</p><p class="unl"><strong>Déblocage :</strong> {e(c["unlock"])}</p></article>')
+        body.append("</div></section>")
+    body.append('<h2 id="faq">Questions fréquentes</h2><div class="faq">'
+                + "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in CHEAT_FAQ) + "</div>")
+    body.append('<div class="box"><p><strong>Codes de triche, oui. Glitchs et mods, non.</strong> Les codes de cette page sont prévus par Rockstar dans le mode histoire. '
+                'On ne publie pas de glitch d\'argent, de duplication ni de mod : ça peut casser ta sauvegarde ou te faire bannir.</p></div>')
+    body.append(f'<p class="srcs">Mise à jour : {fr_date(data["updated"] + "T12:00:00")}. Sources : '
+                + "".join(f'<a href="{e(s["u"])}" target="_blank" rel="noopener">{e(s["t"])}</a>' for s in data["sources"]) + "</p>")
+    ld = [{"@context": "https://schema.org", "@type": "Article", "headline": CHEAT_TITLE[:110], "description": CHEAT_DESC, "inLanguage": "fr-FR",
+           "dateModified": data["updated"], "url": f"{BASE}/{CHEAT_SLUG}.html", "image": SHARE_IMG,
+           "author": {"@type": "Organization", "name": "GTASTUCE VICE"}, "publisher": {"@type": "Organization", "name": "GTASTUCE VICE", "logo": {"@type": "ImageObject", "url": f"{BASE}/favicon-512.png"}}},
+          {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in CHEAT_FAQ]}]
+    html_ = simple_page(CHEAT_SLUG + ".html", CHEAT_TITLE, CHEAT_DESC, "Codes de triche GTA 6", "Le guide", "\n".join(body), None)
+    html_ = html_.replace("</head>", f'<style>{CHEAT_CSS}</style>\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n</head>', 1)
+    html_ = html_.replace("</body>", CHEAT_JS + "\n</body>", 1)
+    open(os.path.join(ROOT, CHEAT_SLUG + ".html"), "w", encoding="utf-8").write(html_)
+    return data["updated"]
 
 
 # ---------- Ressources communes injectées dans toutes les pages ----------
@@ -959,6 +1083,7 @@ def main():
     for s in secrets:
         assert s["status"] in STATUS, (s["id"], s["status"])
     hub_dates = build_static_pages(arts, secrets)
+    cheat_date = cheat_page()
     css = styles()
     out = os.path.join(ROOT, "actus")
     os.makedirs(out, exist_ok=True)
@@ -973,8 +1098,8 @@ def main():
             os.remove(os.path.join(out, f))
     inject_assets()
     newest = max(a.get("updated", a["date"]) for a in arts)[:10]
-    static = ["index.html", "actus.html", "matos.html"] + [h["slug"] + ".html" for h in HUBS] + ["a-propos.html", "contact.html", "mentions-legales.html"]
-    lm = lastmods(static, {"index.html": newest, "actus.html": newest, **{h["slug"] + ".html": hub_dates.get(h["slug"]) for h in HUBS}})
+    static = ["index.html", "gta-6-codes-triche.html", "actus.html", "matos.html"] + [h["slug"] + ".html" for h in HUBS] + ["a-propos.html", "contact.html", "mentions-legales.html"]
+    lm = lastmods(static, {"index.html": newest, "actus.html": newest, "gta-6-codes-triche.html": cheat_date, **{h["slug"] + ".html": hub_dates.get(h["slug"]) for h in HUBS}})
     urls = [(f"{BASE}/" if p == "index.html" else f"{BASE}/{p}", lm[p]) for p in static]
     urls += [(f"{BASE}/actus/{a['slug']}.html", a.get("updated", a["date"])[:10]) for a in arts]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

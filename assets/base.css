@@ -146,3 +146,15 @@ nav a[aria-current="page"]{color:var(--teal,#2EE6D6)}
 .empty-eggs{color:var(--soft,#C9BFE8);margin-top:16px}
 @media (max-width:640px){.zones{grid-template-columns:1fr 1fr}.map-ctrl{top:20px;right:20px}}
 .hunt-tools .scount{margin:0;min-height:0}.hunt-tools .scount:empty{display:none}.egg-group:first-child{margin-top:8px}
+/* Codes de triche : accès direct depuis le menu et l'accueil */
+nav a.nav-cheat{color:#FFE45C}
+nav a.nav-cheat:hover,nav a.nav-cheat[aria-current="page"]{color:#fff;text-decoration:underline;text-decoration-color:#FFE45C;text-underline-offset:6px}
+.cheat-banner{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 18px;padding:14px 18px;min-height:56px;border-radius:16px;background:linear-gradient(135deg,#FF3D7F,#FF9A3D);color:#170A33;text-decoration:none}
+.cheat-banner:hover{color:#170A33;filter:brightness(1.07)}
+.cheat-banner strong{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:20px}
+.cheat-banner .cb-k{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#170A33;color:#FFE45C;padding:3px 8px;border-radius:6px}
+.cheat-banner .cb-t{font-weight:600;font-size:15px}
+.cheat-banner .cb-a{margin-left:auto;font-size:22px;font-weight:700}
+@media (max-width:640px){.cheat-banner strong{font-size:18px}.cheat-banner .cb-t{font-size:14px}}
+nav .nmt{display:none}
+@media (max-width:640px){header nav .nmt{display:inline}}
