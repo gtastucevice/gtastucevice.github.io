@@ -188,6 +188,8 @@ def main():
         im.alpha_composite(text_layer(dlogo, a, int(30 * (1 - a)))); im.alpha_composite(text_layer(dcta, b2, int(30 * (1 - b2))))
         return im.convert("RGB"), 0
     segs.append((ot.get("bars", 2.5) * BAR, f_out))
+    # Chaque plan dure au moins le temps de sa voix off (+0,35 s), pour ne jamais couper une phrase
+    segs = [(max(d, vdur(vf[i]) + 0.35) if i < len(vf) and vf[i] and os.path.exists(vf[i]) else d, fn) for i, (d, fn) in enumerate(segs)]
     total = sum(s for s, _ in segs); wav = f"{vs.TMP}/music.wav"
     if spec.get("music") and os.path.exists(spec["music"]): vs.music_file(spec["music"], wav, total)
     else: vs.music(wav, total, 7)
