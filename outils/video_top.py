@@ -5,7 +5,8 @@ Usage : python3 outils/video_top.py spec.json
 spec : {"slug", "hook": {"lines": [[txt, "w|y"]...], "image": "banque/x.jpg"},
         "items": [{"title", "text", "image", "tag"(facultatif: "À TESTER"/"RUMEUR")}...]  (dans l'ordre d'affichage),
         "voice": [wav accroche, wav élément 1, ..., wav fin] (facultatif : voix off générée avec Speko),
-        "outro": {"line"}, "music": "/chemin.mp3" (facultatif), "bars_per_item": 2.5}"""
+        "outro": {"line"}, "music": "/chemin.mp3" (facultatif), "bars_per_item": 2.5,
+        "order": "up" (facultatif : numérote les étapes 1, 2, 3… au lieu du compte à rebours)}"""
 import json, math, os, subprocess, sys, importlib.util
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
@@ -172,7 +173,7 @@ def main():
         except Exception: return 0
     CH = [chunks_of(word_times(vt[i], 0.18, max(0.5, vdur(vf[i]) - 0.15))) if i < len(vt) and i < len(vf) and vt[i] else None for i in range(N + 2)]
     for i, it in enumerate(items):
-        img = Image.open(P(it["image"])).convert("RGB"); n = N - i
+        img = Image.open(P(it["image"])).convert("RGB"); n = i + 1 if spec.get("order") == "up" else N - i  # "up" : étapes 1, 2, 3… au lieu du compte à rebours
         segs.append((bpi * BAR, lambda t, ta, sec, dur, img=img, n=n, it=it, i=i: frame_item(img, n, it, t, sec, dur, CH[i + 1], i, N)))
     ot = spec.get("outro", {})
     def f_out(t, ta, sec, dur):
