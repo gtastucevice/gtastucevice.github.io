@@ -1,5 +1,111 @@
 [
  {
+  "slug": "2026-11-20-vue-premiere-personne-gta-6",
+  "date": "2026-11-20T10:35:00+01:00",
+  "cat": "astuce",
+  "title": "Comment jouer en vue à la première personne dans GTA 6 (PS5 et Xbox)",
+  "chapo": "GTA 6 n'a pas d'option « vue FPS » dans ses menus, mais une manip avec le téléphone permet de basculer en première personne. Voici comment faire sur PS5 et Xbox, et le piège à connaître avant d'essayer.",
+  "img": "assets/rs_kalaga_canyon_motos.jpg",
+  "body": [
+   "Tu as fouillé les réglages de caméra sans trouver la vue à la première personne ? Normal : Rockstar ne la propose pas officiellement au lancement. Pourtant, selon VGTimes, une vue FPS bien finie se cache dans le jeu, avec balancement de la tête quand tu marches et animations dédiées pour les armes. On y accède avec une petite manip que des joueurs ont repérée dès la sortie. Considère-la comme une astuce à tester en jeu : elle n'a rien d'officiel et peut sauter avec une mise à jour.",
+   {
+    "h2": "La manip sur PS5"
+   },
+   "D'abord, va dans les réglages de la manette du jeu et réattribue le pavé tactile : à la place de la carte, mets-lui l'action « Caméra ». Ensuite, monte dans un véhicule, sors le smartphone, referme-le avec Rond et, tout de suite après, appuie plusieurs fois très vite sur le pavé tactile. Si l'angle de caméra ne change pas au moment où le téléphone se ferme, c'est gagné : tu sors de la voiture en vue subjective. Sinon, recommence l'étape du téléphone.",
+   {
+    "h2": "La manip sur Xbox Series X|S"
+   },
+   "Sur Xbox, pas besoin de toucher aux touches. Monte dans une voiture, ouvre le téléphone, ferme-le avec B et martèle aussitôt le bouton qui change la caméra (la touche Affichage par défaut, à vérifier dans tes réglages). Même principe : si la caméra ne bouge pas à la fermeture, la vue FPS est active.",
+   {
+    "h2": "Attention : pas de retour facile"
+   },
+   "Le gros défaut, c'est qu'il n'existe aucun moyen normal de revenir en vue à la troisième personne. Pour retrouver la caméra classique, il faut recharger ta dernière sauvegarde. Donc sauvegarde juste avant d'essayer, et évite de tester pendant une mission importante.",
+   "À noter aussi : la vue fonctionne surtout à pied et pendant les fusillades. Comme ce n'est pas une fonction prévue pour les joueurs, attends-toi à quelques bizarreries (caméra qui tremble, objets qui traversent l'écran). Beaucoup de fans espèrent que Rockstar l'ajoute proprement dans une future mise à jour, comme pour GTA 5 sur PS4 à l'époque. Rien n'est annoncé pour l'instant."
+  ],
+  "topics": [
+   "gta-6-debuter"
+  ],
+  "sources": [
+   {
+    "t": "VGTimes",
+    "u": "https://vgtimes.com/gaming-news/175155-first-person-mode-found-in-gta-6-heres-how-to-enable-it.html"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-20-mode-facile-gta-6-accessibilite",
+  "date": "2026-11-20T10:30:00+01:00",
+  "cat": "astuce",
+  "title": "GTA 6 trop dur ? Le « mode facile » caché dans les options d'accessibilité",
+  "chapo": "GTA 6 n'a pas de choix de difficulté, mais ses options d'accessibilité font office de mode facile : ennemis moins résistants, voiture plus solide, mini-jeux simplifiés. Et d'après Push Square, ça ne bloque aucun trophée.",
+  "img": "assets/rs_grassrivers_poursuite.jpg",
+  "body": [
+   "Tu bloques sur une fusillade ou tes voitures finissent en épave au bout de deux virages ? Avant de jeter la manette, file dans les options. GTA 6 ne propose pas de niveau de difficulté au lancement de la partie, mais le menu Accessibilité cache plusieurs réglages qui rendent le jeu nettement plus simple. C'est Push Square qui les a testés en premier, comme le relaie VGTimes.",
+   {
+    "h2": "Les deux réglages qui changent tout"
+   },
+   "Le premier s'appelle Combat accessible (Accessible Combat en anglais). Il baisse la santé des ennemis et les dégâts qu'ils t'infligent. Tu restes obligé de te mettre à couvert, ce n'est pas un mode invincible, mais les gunfights deviennent beaucoup plus tolérants.",
+   "Le second réduit les dégâts sur ton véhicule (Reduced Vehicle Damage). Ta caisse encaisse plus de chocs avant de fumer, pratique pour les courses-poursuites avec la police ou les missions où tu dois livrer une voiture intacte.",
+   {
+    "h2": "Les autres options utiles"
+   },
+   "Le même menu permet de régler l'aide à la visée et le verrouillage des cibles, de réattribuer toutes les touches, de simplifier les mini-jeux, de changer la disposition de la manette, et d'activer des options pour les malvoyants : luminosité renforcée et mode contraste élevé. Si tu galères sur une activité précise, commence par les mini-jeux simplifiés et l'aide à la visée avant de toucher au reste.",
+   {
+    "h2": "Et les trophées ?"
+   },
+   "Bonne nouvelle pour les chasseurs de platine : selon Push Square, activer ces options ne désactive aucun trophée ni succès. Rockstar prévient seulement que ces réglages modifient l'équilibre du jeu et donc ton expérience. Tu peux les activer pour passer un passage difficile, puis les couper ensuite : rien ne t'oblige à les garder toute la partie."
+  ],
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-police"
+  ],
+  "sources": [
+   {
+    "t": "VGTimes (d'après Push Square)",
+    "u": "https://vgtimes.com/gaming-news/175134-gta-6-has-an-easy-mode-hidden-in-its-accessibility-settings.html"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-20-bateau-michael-gta-5-dans-gta-6",
+  "date": "2026-11-20T10:25:00+01:00",
+  "cat": "secret",
+  "title": "Le bateau de Michael (GTA 5) est-il dans GTA 6 ? Ce que les joueurs ont repéré",
+  "chapo": "Devant la planque de Jason, un voilier ressemble trait pour trait au Marquis que Michael De Santa possédait dans GTA 5. Et son GPS afficherait Los Santos. Clin d'œil ou coïncidence ? On fait le point, sans spoiler.",
+  "img": "assets/rs_vicecity_towers.jpg",
+  "body": [
+   "Les fans de GTA 5 se souviennent du voilier de Michael, ce Marquis amarré devant sa villa de Rockford Hills (et de l'épisode où son fils le fait embarquer sur une remorque…). Selon VGTimes, des joueurs pensent l'avoir retrouvé dans GTA 6 : un bateau du même modèle est amarré devant la planque de Jason, visible très tôt dans l'histoire. Des fans l'avaient déjà repéré dans les bandes-annonces, mais la sortie du jeu permet maintenant d'aller le voir de près.",
+   {
+    "h2": "Le détail qui relance la théorie"
+   },
+   "D'après Game Rant, cité par VGTimes, l'écran du GPS de ce bateau montrerait une carte de Los Santos, et non de Leonida. De quoi faire dire à certains que le voilier a fait la route depuis San Andreas. À ce stade, ça reste une rumeur : Rockstar n'a rien confirmé et le Marquis est aussi un modèle de bateau générique qu'on croise dans plusieurs GTA.",
+   {
+    "h2": "Comment aller le voir"
+   },
+   "Pas besoin d'avancer loin : le bateau est près de la planque de Jason, que tu visites dès le début de la partie. Approche-toi du ponton et regarde le tableau de bord. Si tu vois bien Los Santos sur l'écran, c'est que le clin d'œil est réel. On le classe « à tester en jeu » dans notre Chasse aux secrets en attendant une confirmation.",
+   {
+    "h2": "Pas le seul clin d'œil du genre"
+   },
+   "Ce n'est pas la première référence repérée depuis la sortie : l'immeuble de Dexter recréé à Vice City ou l'Eclipse de Paul Walker cachée dans un garage ont déjà fait parler. Retrouve-les tous sur notre page Chasse aux secrets, mise à jour plusieurs fois par jour."
+  ],
+  "topics": [
+   "gta-6-easter-eggs"
+  ],
+  "sources": [
+   {
+    "t": "VGTimes",
+    "u": "https://vgtimes.com/gaming-news/175213-gta-6-players-spot-a-possible-michael-de-santa-boat-easter-egg.html"
+   },
+   {
+    "t": "Game Rant",
+    "u": "https://gamerant.com/grand-theft-auto-6-gta-5-easter-egg-michael-boat/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "guide-radios-gta-6",
   "date": "2026-11-20T07:30:00+01:00",
   "cat": "guide",
