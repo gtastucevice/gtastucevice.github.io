@@ -223,6 +223,36 @@
    "ill_alt": "Illustration : un casque audio avec micro"
   },
   {
+   "id": "dualsense-gta",
+   "section": "manettes",
+   "plats": [
+    "ps5"
+   ],
+   "tag": "Édition limitée",
+   "ill": "assets/matos_manette.svg",
+   "ill_alt": "Illustration : une manette",
+   "title": "La DualSense édition limitée GTA VI",
+   "why": "Deux DualSense aux couleurs de Vice City, une noire et une blanche, à 84,99 € chacune. Mêmes fonctions qu'une DualSense classique.",
+   "list": [
+    "La noire est vendue en France uniquement sur PlayStation Direct ; la blanche aussi chez certains revendeurs.",
+    "En cas de rupture, évite les revendeurs qui la proposent bien plus cher."
+   ],
+   "source": {
+    "u": "https://iphonesoft.fr/2026/09/03/gta-6-playstation-deux-nouvelles-manettes-dualsense-edition-limitee",
+    "t": "iPhoneSoft"
+   },
+   "links": [
+    {
+     "label": "DualSense GTA VI blanche",
+     "q": "manette dualsense gta 6 blanche edition limitee"
+    },
+    {
+     "label": "La noire sur PlayStation Direct",
+     "url": "https://direct.playstation.com/fr-fr/buy-accessories/dualsense-wireless-controller-grand-theft-auto-vi-black-limited-edition-for-ps5-pc-mac-mobile"
+    }
+   ]
+  },
+  {
    "id": "manette-ps5",
    "section": "manettes",
    "plats": [

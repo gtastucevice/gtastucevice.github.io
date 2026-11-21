@@ -1,0 +1,305 @@
+{
+ "intro_quick": "Le cadeau qui marche à coup sûr : le jeu lui-même (79,99 € en édition Standard) ou, s'il l'a déjà, la manette DualSense édition limitée GTA VI (84,99 €). Avant d'acheter, vérifie une seule chose : PS5 ou Xbox Series ? Les deux ne sont pas compatibles entre elles.",
+ "platforms": [
+  {
+   "id": "all",
+   "label": "Tout"
+  },
+  {
+   "id": "ps5",
+   "label": "Il a une PS5"
+  },
+  {
+   "id": "xbox",
+   "label": "Il a une Xbox Series"
+  },
+  {
+   "id": "rien",
+   "label": "Il n'a pas de console"
+  }
+ ],
+ "sections": [
+  {
+   "id": "jeu",
+   "title": "Il n'a pas encore le jeu"
+  },
+  {
+   "id": "deja",
+   "title": "Il a déjà le jeu"
+  },
+  {
+   "id": "petit",
+   "title": "Petit budget (moins de 30 €)"
+  },
+  {
+   "id": "gros",
+   "title": "Le gros cadeau"
+  },
+  {
+   "id": "fan",
+   "title": "Pour le fan"
+  }
+ ],
+ "items": [
+  {
+   "id": "cadeau-jeu",
+   "section": "jeu",
+   "plats": [
+    "ps5",
+    "xbox"
+   ],
+   "tag": "Le classique",
+   "ill": "assets/matos_jeu.svg",
+   "ill_alt": "Illustration : un boîtier de jeu",
+   "title": "GTA 6, édition Standard ou Ultimate",
+   "why": "Le cadeau de Noël de l'année. Deux éditions : Standard à 79,99 € et Ultimate à 99,99 € (prix conseillés, les revendeurs font parfois mieux).",
+   "list": [
+    "<strong>Vérifie la console :</strong> la version PS5 ne marche pas sur Xbox, et inversement. Pas de version PS4, Xbox One ni PC.",
+    "<strong>Pas de disque dans la boîte :</strong> c'est un code à entrer sur la console. Ça marche donc aussi sur une PS5 sans lecteur.",
+    "Le jeu pèse lourd : si sa console est pleine, ajoute un SSD (voir plus bas)."
+   ],
+   "source": {
+    "u": "https://www.redbull.com/fr-fr/gta-6-edition-standard-ultime",
+    "t": "Red Bull Gaming"
+   },
+   "links": [
+    {
+     "label": "GTA 6 sur PS5",
+     "q": "gta 6 ps5"
+    },
+    {
+     "label": "GTA 6 sur Xbox Series",
+     "q": "gta 6 xbox series x"
+    }
+   ]
+  },
+  {
+   "id": "cadeau-carte",
+   "section": "jeu",
+   "plats": [
+    "ps5",
+    "xbox"
+   ],
+   "tag": "Sans risque de se tromper",
+   "ill": "assets/matos_jeu.svg",
+   "ill_alt": "Illustration : un boîtier de jeu",
+   "title": "Une carte cadeau PlayStation Store ou Xbox",
+   "why": "Tu ne sais pas s'il préfère la Standard ou l'Ultimate ? Offre une carte cadeau du bon montant : il achète lui-même l'édition qu'il veut sur sa console.",
+   "list": [
+    "Prends une carte <strong>française</strong> (en euros) si son compte PlayStation ou Xbox est français : les cartes d'un autre pays ne marchent pas.",
+    "Le code arrive par email : c'est le cadeau de dernière minute parfait, même le 24 au soir."
+   ],
+   "links": [
+    {
+     "label": "Cartes PlayStation Store",
+     "q": "carte cadeau playstation store code"
+    },
+    {
+     "label": "Cartes Xbox",
+     "q": "carte cadeau xbox code"
+    }
+   ]
+  },
+  {
+   "id": "cadeau-dualsense-gta",
+   "section": "deja",
+   "plats": [
+    "ps5"
+   ],
+   "tag": "Édition limitée",
+   "ill": "assets/matos_manette.svg",
+   "ill_alt": "Illustration : une manette",
+   "title": "La manette DualSense édition limitée GTA VI",
+   "why": "Sony a sorti deux DualSense aux couleurs de Vice City, une noire (la nuit et les néons) et une blanche (la plage au petit matin), à 84,99 € chacune. Le cadeau parfait pour quelqu'un qui a déjà le jeu.",
+   "list": [
+    "<strong>La noire</strong> est vendue en France uniquement sur PlayStation Direct, la boutique de Sony.",
+    "<strong>La blanche</strong> est aussi vendue chez certains revendeurs.",
+    "Édition limitée : si elle est en rupture, méfie-toi des revendeurs qui la proposent beaucoup plus cher."
+   ],
+   "source": {
+    "u": "https://iphonesoft.fr/2026/09/03/gta-6-playstation-deux-nouvelles-manettes-dualsense-edition-limitee",
+    "t": "iPhoneSoft"
+   },
+   "links": [
+    {
+     "label": "DualSense GTA VI blanche",
+     "q": "manette dualsense gta 6 blanche edition limitee"
+    },
+    {
+     "label": "La noire sur PlayStation Direct",
+     "url": "https://direct.playstation.com/fr-fr/buy-accessories/dualsense-wireless-controller-grand-theft-auto-vi-black-limited-edition-for-ps5-pc-mac-mobile"
+    }
+   ]
+  },
+  {
+   "id": "cadeau-ssd",
+   "section": "deja",
+   "plats": [
+    "ps5"
+   ],
+   "tag": "Utile",
+   "ill": "assets/matos_ssd.svg",
+   "ill_alt": "Illustration : un SSD M.2",
+   "title": "Un SSD pour sa PS5",
+   "why": "Le cadeau malin : GTA 6 remplit vite le stockage de la PS5. Un SSD M.2 se glisse dans la console et lui évite de désinstaller ses autres jeux.",
+   "list": [
+    "Prends un <strong>M.2 NVMe PCIe Gen4</strong>, au moins 5 500 Mo/s, <strong>avec dissipateur</strong>.",
+    "1 To, c'est le bon compromis.",
+    "Tous les critères sont détaillés dans <a href=\"matos.html#ssd\">notre page Le matos</a>."
+   ],
+   "links": [
+    {
+     "label": "SSD 1 To compatibles PS5",
+     "q": "ssd m.2 nvme pcie 4.0 dissipateur ps5 1to"
+    }
+   ]
+  },
+  {
+   "id": "cadeau-xbox-carte",
+   "section": "deja",
+   "plats": [
+    "xbox"
+   ],
+   "tag": "Utile",
+   "ill": "assets/matos_ssd.svg",
+   "ill_alt": "Illustration : une carte de stockage",
+   "title": "Une carte d'extension pour sa Xbox Series",
+   "why": "Même logique sur Xbox : une carte d'extension de stockage se branche à l'arrière de la console et donne de la place pour GTA 6 et les autres jeux.",
+   "list": [
+    "Vérifie qu'elle est faite pour Xbox Series X|S : un disque dur USB classique ne suffit pas pour lancer les jeux Series.",
+    "Détails dans <a href=\"matos.html#xbox-carte\">notre page Le matos</a>."
+   ],
+   "links": [
+    {
+     "label": "Cartes d'extension Xbox Series",
+     "q": "carte extension stockage xbox series 1to"
+    }
+   ]
+  },
+  {
+   "id": "cadeau-casque",
+   "section": "deja",
+   "plats": [
+    "ps5",
+    "xbox"
+   ],
+   "tag": "Immersion",
+   "ill": "assets/matos_casque.svg",
+   "ill_alt": "Illustration : un casque",
+   "title": "Un casque gaming",
+   "why": "Les radios, les dialogues et les bruits de Vice City prennent une autre dimension au casque. Et ça laisse la télé tranquille pour le reste de la famille.",
+   "list": [
+    "Pour PS5 : un casque sans fil compatible PS5, ou n'importe quel casque filaire branché sur la manette.",
+    "Pour Xbox : vérifie la mention « compatible Xbox Series » pour un sans-fil."
+   ],
+   "links": [
+    {
+     "label": "Casques compatibles PS5",
+     "q": "casque gaming ps5 sans fil"
+    },
+    {
+     "label": "Casques compatibles Xbox",
+     "q": "casque gaming sans fil compatible xbox series"
+    }
+   ]
+  },
+  {
+   "id": "cadeau-charge",
+   "section": "petit",
+   "plats": [
+    "ps5"
+   ],
+   "tag": "Moins de 30 €",
+   "ill": "assets/matos_manette.svg",
+   "ill_alt": "Illustration : une manette sur sa station de charge",
+   "title": "Une station de charge pour manettes",
+   "why": "Petit prix, gros confort : il pose ses manettes et les retrouve chargées. Fini la pause forcée au milieu d'une poursuite.",
+   "list": [
+    "Prends un modèle double, pour deux DualSense."
+   ],
+   "links": [
+    {
+     "label": "Stations de charge DualSense",
+     "q": "station de charge dualsense"
+    }
+   ]
+  },
+  {
+   "id": "cadeau-batterie-xbox",
+   "section": "petit",
+   "plats": [
+    "xbox"
+   ],
+   "tag": "Moins de 30 €",
+   "ill": "assets/matos_manette.svg",
+   "ill_alt": "Illustration : une manette",
+   "title": "Un kit batterie pour manette Xbox",
+   "why": "La manette Xbox marche avec des piles : un kit batterie rechargeable ou des piles rechargeables, c'est le petit cadeau qu'il remerciera à chaque session.",
+   "list": [],
+   "links": [
+    {
+     "label": "Kits batterie manette Xbox",
+     "q": "kit batterie rechargeable manette xbox series"
+    }
+   ]
+  },
+  {
+   "id": "cadeau-console",
+   "section": "gros",
+   "plats": [
+    "rien"
+   ],
+   "tag": "Le gros cadeau",
+   "ill": "assets/matos_jeu.svg",
+   "ill_alt": "Illustration : un boîtier de jeu",
+   "title": "Une console et le jeu",
+   "why": "Il n'y a <strong>pas de pack officiel PS5 + GTA 6 en France</strong> : il faut acheter la console et le jeu séparément.",
+   "list": [
+    "Le jeu étant un code sans disque, une <strong>PS5 Édition numérique</strong> (sans lecteur) suffit.",
+    "PS5 ou Xbox Series ? Regarde ce qu'ont ses amis : pour jouer ensemble en ligne plus tard, mieux vaut être sur la même console.",
+    "Pense à ajouter un casque ou une deuxième manette."
+   ],
+   "source": {
+    "u": "https://ayther.fr/?p=128762",
+    "t": "Ayther"
+   },
+   "links": [
+    {
+     "label": "PS5 Édition numérique",
+     "q": "ps5 edition numerique"
+    },
+    {
+     "label": "Xbox Series X",
+     "q": "xbox series x console"
+    }
+   ]
+  },
+  {
+   "id": "cadeau-merch",
+   "section": "fan",
+   "plats": [
+    "ps5",
+    "xbox",
+    "rien"
+   ],
+   "tag": "Pour le fan",
+   "ill": "assets/matos_jeu.svg",
+   "ill_alt": "Illustration : un boîtier de jeu",
+   "title": "Les produits dérivés officiels GTA VI",
+   "why": "T-shirts, casquettes, sacs, porte-clés : Rockstar vend le merch officiel GTA VI sur sa propre boutique. Pour un fan qui a déjà tout le reste.",
+   "list": [
+    "Méfie-toi des produits « GTA 6 » vendus ailleurs sans licence : la qualité est souvent décevante."
+   ],
+   "source": {
+    "u": "https://www.journaldugeek.com/dossier/gta-6-vehicules-map-date-de-sortie-precommande-tout-savoir-sur-le-prochain-jeu-rockstar-games/",
+    "t": "Journal du Geek"
+   },
+   "links": [
+    {
+     "label": "La boutique Rockstar",
+     "url": "https://store.rockstargames.com/"
+    }
+   ]
+  }
+ ]
+}

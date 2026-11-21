@@ -191,6 +191,13 @@ EXTRA_CSS = """<style>
 .cta p{margin:0 0 12px;font-size:16px}
 .srcs h2{margin:0 0 8px;font-family:Inter,system-ui,sans-serif;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:2px;color:var(--teal)}
 .related .post h3{margin:0;font-size:17px;line-height:1.3}
+.affbox{margin:28px 0;padding:20px;border-radius:16px;background:var(--night2,#21104A);border:1px solid var(--line)}
+.affbox h2{margin:0 0 6px;font-family:'Archivo Black',sans-serif;font-weight:400;font-size:20px;line-height:1.2}
+.affbox p{margin:0 0 14px}
+.affbox .alinks{display:flex;flex-wrap:wrap;gap:10px}
+.affbox .alinks a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:12px;border:1px solid var(--line);color:var(--white,#fff);text-decoration:none;font-weight:700}
+.affbox .alinks a.main{background:var(--pink,#FF3EA5);border-color:transparent}
+.affbox .adisc{margin:12px 0 0;font-size:12px;color:var(--mute,#8F84B8)}
 </style>"""
 
 
@@ -225,6 +232,50 @@ def body_html(a):
 
 
 GAMEPLAY = ("guide", "astuce", "secret")
+
+# ---------- Encart « matos / cadeaux » en bas des articles (liens affiliés Amazon) ----------
+# Choix automatique : "tech" pour les articles sur la console (stockage, réglages, plantages), "none" pour les dramas,
+# "fan" sinon. Un article peut forcer son encart avec le champ "aff": "fan" | "tech" | "none".
+AFF_TECH_WORDS = ("plantage", "reglages", "xbox-one", "heure-de-sortie", "psn", "60-fps", "sans-disque", "telecharg", "stockage")
+NOEL_FIN = "2026-12-25"
+AFF_DISC_SHORT = ('<p class="adisc">Liens affiliés Amazon : si tu achètes après avoir cliqué, GTASTUCE VICE touche une petite commission, '
+                  'sans que ça te coûte plus cher. En tant que Partenaire Amazon, nous réalisons un bénéfice sur les achats remplissant les conditions requises.</p>')
+
+
+def aff_link(label, q, track, main=False):
+    cls = ' class="main"' if main else ""
+    return (f'<a{cls} href="{amazon(q)}" target="_blank" rel="sponsored noopener" '
+            f'data-goatcounter-click="aff-{track}" data-goatcounter-title="{e(label)}">{e(label)}<span class="sr-only"> (Amazon, lien affilié)</span></a>')
+
+
+def aff_box(a, prefix="../"):
+    kind = a.get("aff")
+    if not kind:
+        if a["cat"] == "drama":
+            kind = "none"
+        elif any(w in a["slug"] for w in AFF_TECH_WORDS):
+            kind = "tech"
+        else:
+            kind = "fan"
+    if kind == "none":
+        return ""
+    if kind == "tech":
+        return ('<aside class="affbox" aria-labelledby="aff-t"><h2 id="aff-t">Plus de place pour GTA 6&nbsp;?</h2>'
+                '<p>Le jeu remplit vite la console. Un SSD M.2 sur PS5 ou une carte d\'extension sur Xbox Series règle le problème sans désinstaller tes autres jeux.</p>'
+                '<div class="alinks">' + aff_link("SSD compatibles PS5", "ssd m.2 nvme pcie 4.0 dissipateur ps5 1to", "ssd", True)
+                + aff_link("Cartes d'extension Xbox", "carte extension stockage xbox series 1to", "xbox-carte")
+                + f'<a href="{prefix}matos.html#ssd">Les critères à vérifier</a></div>{AFF_DISC_SHORT}</aside>')
+    if datetime.now(timezone.utc).strftime("%Y-%m-%d") <= NOEL_FIN:
+        return ('<aside class="affbox" aria-labelledby="aff-t"><h2 id="aff-t">Un cadeau GTA 6 pour Noël&nbsp;?</h2>'
+                '<p>Le jeu, la manette DualSense édition limitée GTA VI, une carte PlayStation Store ou Xbox : on a fait la liste, avec ce qu\'il faut vérifier avant d\'acheter.</p>'
+                f'<div class="alinks"><a class="main" href="{prefix}gta-6-idees-cadeaux.html" data-goatcounter-click="aff-cadeaux">Les idées cadeaux GTA 6</a>'
+                + aff_link("DualSense GTA VI", "manette dualsense gta 6 blanche edition limitee", "dualsense-gta")
+                + aff_link("GTA 6 sur PS5", "gta 6 ps5", "jeu-ps5") + f"</div>{AFF_DISC_SHORT}</aside>")
+    return ('<aside class="affbox" aria-labelledby="aff-t"><h2 id="aff-t">Bien équipé pour Leonida</h2>'
+            '<p>Une deuxième manette chargée, un casque pour les radios, de la place pour le jeu : notre sélection, avec les critères à vérifier.</p>'
+            f'<div class="alinks"><a class="main" href="{prefix}matos.html" data-goatcounter-click="aff-matos">Le matos GTA 6</a>'
+            + aff_link("DualSense GTA VI", "manette dualsense gta 6 blanche edition limitee", "dualsense-gta")
+            + aff_link("Casques PS5", "casque gaming ps5 sans fil", "casque") + f"</div>{AFF_DISC_SHORT}</aside>")
 
 
 def page(a, arts, css, secrets_by_id):
@@ -314,6 +365,7 @@ def page(a, arts, css, secrets_by_id):
 {toc_html}
 {sbox}
 {body}
+{aff_box(a)}
 <div class="srcs"><h2 class="h3">Sources</h2><ul>{srcs}</ul>{verif}</div>
 {cta}
 </article>
@@ -554,7 +606,7 @@ LEGAL_BODY = """<div class="box legal"><h2 style="margin-top:0" id="editeur">Éd
 <p><strong>Mesure d'audience :</strong> le site utilise GoatCounter (gtastucevice.goatcounter.com) pour compter les visites de façon agrégée.</p>
 <p><strong>Polices de caractères :</strong> elles sont chargées depuis Google Fonts ; ton navigateur contacte donc les serveurs de Google à l'ouverture des pages.</p></div>
 <div class="box legal"><h2 style="margin-top:0" id="affiliation">Liens affiliés</h2>
-<p>La page <a href="matos.html">Le matos</a> contient des liens affiliés Amazon. En tant que Partenaire Amazon, GTASTUCE VICE réalise un bénéfice sur les achats remplissant les conditions requises. Ça ne change pas le prix que tu paies.</p></div>
+<p>Les pages <a href="matos.html">Le matos</a> et <a href="gta-6-idees-cadeaux.html">Idées cadeaux</a>, ainsi que l'encart en bas de certains articles, contiennent des liens affiliés Amazon, toujours signalés. En tant que Partenaire Amazon, GTASTUCE VICE réalise un bénéfice sur les achats remplissant les conditions requises. Ça ne change pas le prix que tu paies.</p></div>
 <div class="box legal"><h2 style="margin-top:0" id="marques">Marques et images</h2>
 <p>Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto est une marque de Take-Two Interactive. Images : Rockstar Games (captures officielles), sauf mention contraire.</p></div>"""
 
@@ -753,6 +805,9 @@ def shared_chrome(t, prefix="", current=""):
 
 
 # ---------- Le matos (piloté par matos.json) ----------
+CADEAUX_SLUG = "gta-6-idees-cadeaux.html"
+CADEAUX_TITLE = "Idées cadeaux GTA 6 pour Noël 2026 : quoi offrir (PS5 et Xbox)"
+CADEAUX_DESC = "Quoi offrir à un fan de GTA 6 pour Noël : le jeu, la manette DualSense édition limitée, une carte PlayStation ou Xbox, un SSD. Ce qu'il faut vérifier avant d'acheter."
 AMAZON_TAG = "gtastucevice-21"
 MATOS_CSS = """
 .mfilters{margin:0 0 6px}
@@ -871,6 +926,19 @@ def build_static_pages(arts, secrets):
         assert x["section"] in {s["id"] for s in matos["sections"]}, x["id"]
         assert set(x["plats"]) <= {p["id"] for p in matos["platforms"]}, x["id"]
     t = fill(t, "matos", matos_html(matos))
+    open(p, "w", encoding="utf-8").write(t)
+    # ---------- Idées cadeaux (même moteur que Le matos, piloté par cadeaux.json) ----------
+    p = os.path.join(ROOT, CADEAUX_SLUG); t = open(p, encoding="utf-8").read()
+    t = fill(t, "head", head_block(CADEAUX_SLUG, CADEAUX_TITLE, CADEAUX_DESC))
+    t = re.sub(r"<title>.*?</title>", f"<title>{e(CADEAUX_TITLE)}</title>", t, count=1)
+    t = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{e(CADEAUX_DESC)}">', t, count=1)
+    t = shared_chrome(t, "", CADEAUX_SLUG)
+    t = fill(t, "css", SEARCH_CSS + MOBILE_CSS + MATOS_CSS)
+    cad = json.load(open(os.path.join(ROOT, "cadeaux.json"), encoding="utf-8"))
+    for x in cad["items"]:
+        assert x["section"] in {s["id"] for s in cad["sections"]}, x["id"]
+        assert set(x["plats"]) <= {p["id"] for p in cad["platforms"]}, x["id"]
+    t = fill(t, "matos", matos_html(cad).replace('data-goatcounter-click="matos-', 'data-goatcounter-click="cadeau-'))
     open(p, "w", encoding="utf-8").write(t)
     # ---------- Pages simples ----------
     org = {"@context": "https://schema.org", "@type": "Organization", "name": "GTASTUCE VICE", "url": BASE + "/", "logo": f"{BASE}/favicon-512.png", "email": "gtastucevice@gmail.com",
@@ -1116,7 +1184,7 @@ def main():
             os.remove(os.path.join(out, f))
     inject_assets()
     newest = max(a.get("updated", a["date"]) for a in arts)[:10]
-    static = ["index.html", "gta-6-codes-triche.html", "actus.html", "matos.html"] + [h["slug"] + ".html" for h in HUBS] + ["a-propos.html", "contact.html", "mentions-legales.html"]
+    static = ["index.html", "gta-6-codes-triche.html", "actus.html", "matos.html", CADEAUX_SLUG] + [h["slug"] + ".html" for h in HUBS] + ["a-propos.html", "contact.html", "mentions-legales.html"]
     lm = lastmods(static, {"index.html": newest, "actus.html": newest, "gta-6-codes-triche.html": cheat_date, **{h["slug"] + ".html": hub_dates.get(h["slug"]) for h in HUBS}})
     urls = [(f"{BASE}/" if p == "index.html" else f"{BASE}/{p}", lm[p]) for p in static]
     urls += [(f"{BASE}/actus/{a['slug']}.html", a.get("updated", a["date"])[:10]) for a in arts]
