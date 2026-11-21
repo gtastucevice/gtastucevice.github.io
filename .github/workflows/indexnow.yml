@@ -1,0 +1,25 @@
+name: IndexNow (Bing, Yandex…)
+on:
+  push:
+    branches: [main]
+    paths: ["sitemap.xml"]
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attendre la publication GitHub Pages
+        run: sleep 90
+      - name: Envoyer les URL du sitemap à IndexNow
+        run: |
+          KEY=cfe7ea9f6a0344238d8e3185f2dfa1c7
+          python3 - <<PY
+          import json, re, urllib.request
+          urls = re.findall(r"<loc>(.*?)</loc>", open("sitemap.xml", encoding="utf-8").read())
+          body = json.dumps({"host": "gtastucevice.fr", "key": "$KEY",
+                             "keyLocation": "https://gtastucevice.fr/$KEY.txt", "urlList": urls[:10000]}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=body,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          print(len(urls), "URL envoyées, réponse", urllib.request.urlopen(req).status)
+          PY
