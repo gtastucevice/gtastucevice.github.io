@@ -1,5 +1,156 @@
 [
  {
+  "slug": "guide-armes-uniques-gta-6",
+  "date": "2026-11-21T10:30:00+01:00",
+  "cat": "guide",
+  "title": "Armes uniques GTA 6 : où trouver les meilleures armes gratuites dès le début",
+  "chapo": "Pas besoin de vider ton compte à l'Ammu-Nation : GTA 6 cache une douzaine d'armes uniques gratuites dans Leonida, la plupart accessibles dès le chapitre 1. Revolvers, fusils de sniper, SMG militaire, lance-roquettes… voici où les récupérer, d'après le guide de KeenGamer.",
+  "img": "assets/rs_grassrivers_hydroglisseur.jpg",
+  "body": [
+   "Au début de GTA 6, l'argent est rare et les armes de l'Ammu-Nation coûtent cher. Bonne nouvelle : Rockstar a semé dans la carte des versions uniques d'armes, souvent plus jolies ou mieux équipées que les modèles du commerce, et gratuites. Le site KeenGamer en a recensé une bonne douzaine. Ce guide reprend leurs emplacements sans rien dévoiler de l'histoire.",
+   "Point important selon KeenGamer : une fois récupérée, une arme unique reste débloquée pour de bon. Si tu la perds, tu peux la reprendre dans le casier à armes de n'importe quel Ammu-Nation.",
+   {
+    "h2": "Les armes des marais (Pelican Valley et Hamlet)"
+   },
+   {
+    "steps": [
+     {
+      "t": "Swamp Bait Akulus (revolver) et Cruel Huntsman's SM-69 (sniper) : ",
+      "d": "les deux sont dans la même cabane en ruine au milieu des marais de Pelican Valley. Vas-y en bateau dès le chapitre 1. Des munitions de sniper traînent aussi dans la cabane."
+     },
+     {
+      "t": "Marabunta Grande Hobo (fusil à pompe) : ",
+      "d": "dans une mallette à armes, à l'intérieur d'un entrepôt industriel au sud de Hamlet, près de l'autoroute. Il y a aussi de l'argent à ramasser à côté."
+     },
+     {
+      "t": "Hunter's Laird 350 (sniper) : ",
+      "d": "c'est la récompense d'une rencontre au bord de la route, au sud de Hamlet. Des chasseurs ont un blessé : emmène-le à l'entrée des urgences d'un hôpital. Pas de combat, et tu gagnes en plus 3 % de Focus."
+     }
+    ]
+   },
+   {
+    "h2": "Le Crabshack VF5 : la SMG militaire cachée derrière une énigme"
+   },
+   "C'est la plus fun à récupérer. Direction un avant-poste de recherche sur les crabes, abandonné, au sud-ouest de Pelican Valley (dès le chapitre 1). Allume le boîtier électrique dehors, puis va sur l'ordinateur et tape le mot de passe CLEAVES. Prépare-toi : un crabe géant attaque, il faut s'en sortir avec les touches affichées à l'écran.",
+   "Ensuite, ouvre le coffre avec la combinaison 0072 (il contient aussi du cash), puis tape 0212 sur le digicode du bâtiment fermé au bout de la passerelle. La VF5 t'y attend.",
+   {
+    "h2": "Les armes des Keys"
+   },
+   {
+    "steps": [
+     {
+      "t": "Assassin Nipper .38 (pistolet) : ",
+      "d": "sur l'épave d'un bateau espion, à la pointe sud de l'île la plus au sud-est des Permit Keys, à l'est de la base aérienne Mile Zero. Ouvre la trappe au milieu du pont. Tu y trouveras aussi une curiosité WAiNK et une vieille note."
+     },
+     {
+      "t": "Smuggler Gorse 425 (fusil à pompe) : ",
+      "d": "posé sur le sable, à côté d'un bateau de contrebandiers échoué et penché, sur l'île la plus au nord des Permit Keys."
+     },
+     {
+      "t": "Drug Mule KZ-59 (fusil d'assaut) : ",
+      "d": "sous l'eau, à côté d'un hors-bord coulé au large de la côte nord des Riquezas Keys. Repère les paquets qui flottent en surface, et garde du souffle pour plonger."
+     },
+     {
+      "t": "Unpacked Comshot 12 : ",
+      "d": "KeenGamer la place au nord-ouest de Key Lento et la conseille en tout premier pour le combat rapproché, mais sans donner l'emplacement exact. À chercher en jeu."
+     }
+    ]
+   },
+   {
+    "h2": "Mariana County et Vice City"
+   },
+   {
+    "steps": [
+     {
+      "t": "Kingfishers W-22 (fusil avec lunette et silencieux) : ",
+      "d": "dans une mallette, dans le bâtiment au bord de l'eau du camp de pêche des Kingfishers, à Wetman Bay. C'est une opportunité de vol qui s'ouvre tôt dans l'histoire : il faudra neutraliser des gardes armés."
+     },
+     {
+      "t": "Turnt Nipper .38 (pistolet) : ",
+      "d": "coincé dans l'épave d'un paramoteur accroché à un pin, sur la côte de Bobcat Bight (Capri Island). Tire dans les câbles pour le faire tomber."
+     },
+     {
+      "t": "Conspiracist Type 9 (pistolet-mitrailleur) et Hauners H-AT (lance-roquettes, 4 roquettes) : ",
+      "d": "dans un bunker souterrain caché sous un camping-car, à la casse de Balsero, au sud-ouest du stand de tir Griffin. Accessible après la mission « Building a Life » du chapitre 1. Grenades et matériel en bonus."
+     }
+    ]
+   },
+   {
+    "h2": "Les armes liées aux missions (attention à ne pas les rater)"
+   },
+   "Donnie's H&L .38 (revolver) : il est dans le coffre de la Dinka Blista de Donnie, pendant la mission « Don Gone » du chapitre 1. Si tu détruis la voiture avant de l'ouvrir, il est perdu pour de bon. Fais une sauvegarde manuelle avant la mission.",
+   "Killtelligence SM-69 (sniper de chasse) : offert par Bret Vogel pendant la série de quêtes de chasse du chapitre 2, qui commence avec la mission « Veteran Hunted » dans le comté de Lummox.",
+   {
+    "h2": "Dans quel ordre les récupérer ?"
+   },
+   "KeenGamer conseille de commencer par le Comshot 12 à Key Lento, puis les deux armes de la cabane de Pelican Valley, la VF5 du Crabshack et enfin le bunker de Balsero pour le lance-roquettes. Avec ça, tu as de quoi gérer quasiment toutes les situations du début de partie sans dépenser un dollar. Ce guide se base sur une seule source publiée juste après la sortie : on le mettra à jour après vérification en jeu."
+  ],
+  "sources": [
+   {
+    "t": "KeenGamer",
+    "u": "https://www.keengamer.com/articles/guides/gta-6-best-early-game-unique-weapon-locations/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-21-observer-oiseaux-jumelles-gta-6",
+  "date": "2026-11-21T10:25:00+01:00",
+  "cat": "astuce",
+  "title": "Oiseaux dans GTA 6 : comment les observer aux jumelles et les ajouter au carnet de faune",
+  "chapo": "GTA 6 compte une soixantaine d'espèces d'oiseaux (62 selon Rockstar, d'après Vice et GTA BOOM), qu'on observe aux jumelles pour remplir un carnet de faune. Les amateurs d'ornithologie s'en donnent déjà à cœur joie. Voici comment ça marche et où chercher.",
+  "img": "assets/rs_vicecity_piscine_hotel.jpg",
+  "body": [
+   "Tout le monde braque des bijouteries, et pendant ce temps une partie des joueurs… regarde les oiseaux. Sur Reddit, la communauté r/birding s'est emballée pour GTA 6 : selon GTA BOOM, un membre explique même que son club d'ornithologie prévoit de streamer des sessions d'observation dans Leonida, comme il l'avait fait avec Red Dead Redemption 2. C'est un seul témoignage, donc à prendre comme une anecdote.",
+   {
+    "h2": "Combien d'oiseaux dans GTA 6 ?"
+   },
+   "Le chiffre qui circule est 62 espèces. Vice l'attribue à Rob Nelson, codirecteur de Rockstar, et GTA BOOM raconte que le studio l'a donné lors d'une démo du carnet de faune. Le site eGamers, lui, parle de « plus de 60 » espèces et compte 60 entrées dans la liste établie par PowerPyx. Retiens donc une soixantaine : Rockstar n'a pas publié de liste complète. À titre de comparaison, GTA 5 n'en avait que cinq.",
+   "Les oiseaux font partie d'une faune bien plus large : eGamers évoque 255 animaux au total dans le carnet, dont 100 à étudier pour viser les 100 % (estimation à vérifier en jeu).",
+   {
+    "h2": "Comment observer un oiseau aux jumelles"
+   },
+   {
+    "steps": [
+     {
+      "t": "Sors les jumelles : ",
+      "d": "elles sont dans l'emplacement d'équipement de la roue d'armes (L1 sur PS5, LB sur Xbox)."
+     },
+     {
+      "t": "Zoome sur l'oiseau : ",
+      "d": "vise-le et rapproche l'image (flèche haut selon eGamers)."
+     },
+     {
+      "t": "Étudie-le : ",
+      "d": "maintiens le bouton d'étude (R1 sur PS5, RB sur Xbox) jusqu'à ce que l'animal soit enregistré dans ton carnet de faune."
+     }
+    ]
+   },
+   "Ces commandes viennent du guide d'eGamers : à tester en jeu, elles peuvent varier selon tes réglages. Bonne nouvelle pour les âmes sensibles : pas besoin de chasser, tout se fait aux jumelles. Lors de la démo racontée par GTA BOOM, Jason étudie simplement une mouette posée sur un poteau de plage.",
+   {
+    "h2": "Où trouver les oiseaux à Leonida"
+   },
+   "Les espèces les plus souvent citées par les médias sont les flamants roses, les pélicans, les hérons, la spatule rosée et les mouettes. Plusieurs sites mentionnent aussi canards, grues, cormorans, pigeons et pics.",
+   "Pour les flamants et les mouettes, va du côté des piscines d'hôtels de Vice City. Les mouettes et les canards traînent le long des quais et des restaurants au bord de l'eau, et les grands vols d'oiseaux survolent les mangroves de Grassrivers. Conseil perso : les marais sont aussi le bon coin pour croiser alligators et autres bêtes à ajouter au carnet, donc fais d'une pierre deux coups.",
+   "Il n'y aurait pas de trophée dédié aux oiseaux selon eGamers, mais le trophée « Master of None », qui demande d'essayer chaque activité, te donnera une bonne excuse pour sortir les jumelles. Et pour une balade tranquille, combine ça avec la pêche : tout est dans notre guide."
+  ],
+  "sources": [
+   {
+    "t": "Vice",
+    "u": "https://www.vice.com/en/article/birdwatchers-are-apparently-buying-gta-6-just-to-watch-birds-heres-how-many-are-in-the-game/"
+   },
+   {
+    "t": "GTA BOOM",
+    "u": "https://www.gtaboom.com/birdwatchers-are-buying-gta-6-just-to-spot-its-62-birds-861f"
+   },
+   {
+    "t": "eGamers",
+    "u": "https://egamers.io/gta-6-bird-guide-confirmed-species-and-how-binocular-studies-work/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "guide-trophees-succes-gta-6",
   "date": "2026-11-21T07:30:00+01:00",
   "cat": "guide",
