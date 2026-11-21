@@ -6,7 +6,10 @@ spec : {"slug", "hook": {"lines": [[txt, "w|y"]...], "image": "banque/x.jpg"},
         "items": [{"title", "text", "image", "tag"(facultatif: "À TESTER"/"RUMEUR")}...]  (dans l'ordre d'affichage),
         "voice": [wav accroche, wav élément 1, ..., wav fin] (facultatif : voix off générée avec Speko),
         "outro": {"line"}, "music": "/chemin.mp3" (facultatif), "bars_per_item": 2.5,
-        "order": "up" (facultatif : numérote les étapes 1, 2, 3… au lieu du compte à rebours)}"""
+        "order": "up" (facultatif : numérote les étapes 1, 2, 3… au lieu du compte à rebours)}
+Gameplay : à la place de "image", un élément (ou l'accroche) peut avoir
+  "clip": {"src": "video.mp4", "start": s, "len": 14, "speed": 1, "crop": [x, y, l, h]}
+  -> bande 16:9 nette au centre, fond flouté, son du jeu coupé, crédit « Capture en jeu : GTASTUCE VICE »."""
 import json, math, os, subprocess, sys, importlib.util
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
@@ -41,6 +44,41 @@ def wrap(d, txt, f, maxw):
     return lines
 
 def ease_out(x): x = max(0.0, min(1.0, x)); return 1 - (1 - x) ** 3
+
+# ---------- extraits de gameplay (captures en jeu) ----------
+CAPTURE_CREDIT = "Capture en jeu : GTASTUCE VICE"
+BAND_Y, BAND_H = 520, 810   # bande au milieu de l'écran vertical (16:9 rogné sur les côtés, plus lisible sur téléphone)
+_CLIPS = {}
+def clip_frames(c):
+    """Extrait une fois les images d'un passage de vidéo (son coupé : jamais le son du jeu, pour les droits)."""
+    key = (c["src"], c["start"])
+    if key not in _CLIPS:
+        d = f"{vs.TMP}/clip_{BAND_H}_{abs(hash(key))}"
+        if not os.path.isdir(d) or not os.listdir(d):
+            os.makedirs(d, exist_ok=True)
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(c["start"]), "-i", c["src"], "-t", str(c.get("len", 14)),
+                            "-an", "-vf", f"fps={FPS},scale=-2:{BAND_H}:flags=lanczos,crop={W}:{BAND_H}", "-q:v", "2", f"{d}/%05d.jpg"], check=True)
+        _CLIPS[key] = sorted(os.path.join(d, f) for f in os.listdir(d))
+    return _CLIPS[key]
+
+def clip_frame(c, sec):
+    fr = clip_frames(c); i = max(0, min(len(fr) - 1, int(sec * FPS * c.get("speed", 1.0))))
+    return Image.open(fr[i]).convert("RGB")
+
+def clip_layout(c, sec, dim=1.0):
+    """Fond = même image floutée et assombrie, bande nette au centre, fin liseré rose."""
+    band = clip_frame(c, sec)
+    if c.get("crop"):  # zoom sur une partie (x, y, l, h en fractions)
+        x, y, w, h = c["crop"]; bw, bh = band.size
+        band = band.crop((int(x * bw), int(y * bh), int((x + w) * bw), int((y + h) * bh))).resize((W, BAND_H), Image.LANCZOS)
+    small = band.resize((W // 8, BAND_H // 8)).filter(ImageFilter.GaussianBlur(3))
+    k = H / small.size[1]; bg = small.resize((int(small.size[0] * k), H), Image.BILINEAR)
+    x0 = (bg.size[0] - W) // 2; bg = bg.crop((x0, 0, x0 + W, H))
+    bg = ImageEnhance.Brightness(bg).enhance(0.35 * dim)
+    if dim < 1: band = ImageEnhance.Brightness(band).enhance(0.75)
+    bg.paste(band, (0, BAND_Y))
+    d = ImageDraw.Draw(bg); d.rectangle([0, BAND_Y - 6, W, BAND_Y - 1], fill=PINK); d.rectangle([0, BAND_Y + BAND_H, W, BAND_Y + BAND_H + 5], fill=PINK)
+    return bg
 
 GRAD = Image.new("RGBA", (W, H), (0, 0, 0, 0)); _g = ImageDraw.Draw(GRAD)
 for y in range(H):
@@ -115,7 +153,8 @@ def progress(im, idx, N, sec, dur):
 
 def frame_item(img, n, it, t, sec, dur, chunks=None, idx=0, N=10):
     """sec = secondes écoulées dans le plan (pour des animations à vitesse fixe)."""
-    im = cover(img, t).convert("RGBA"); im.alpha_composite(GRAD)
+    if it.get("clip"): im = clip_layout(it["clip"], sec).convert("RGBA")
+    else: im = cover(img, t).convert("RGBA"); im.alpha_composite(GRAD)
     # numéro : glisse depuis la gauche
     a1 = ease_out(sec / 0.45)
     nf = fnt("ArchivoBlack.ttf", 190)
@@ -145,25 +184,27 @@ def frame_item(img, n, it, t, sec, dur, chunks=None, idx=0, N=10):
     im.alpha_composite(text_layer(dbody, a3, int(28 * (1 - a3))))
     # fondu de sortie des textes juste avant la coupe
     out = ease_out((sec - (dur - 0.3)) / 0.3)
-    if chunks: draw_caption(im, chunks, sec); progress(im, idx, N, sec, dur)
-    ImageDraw.Draw(im).text((70, H - 70), "Image : Rockstar Games", font=fnt("Inter.ttf", 28), fill=(210, 200, 230, 255))
+    if chunks: draw_caption(im, chunks, sec, y=1390 if it.get("clip") else 1180); progress(im, idx, N, sec, dur)
+    ImageDraw.Draw(im).text((70, H - 70), CAPTURE_CREDIT if it.get("clip") else "Image : Rockstar Games", font=fnt("Inter.ttf", 28), fill=(210, 200, 230, 255))
     return im.convert("RGB"), out
 
 def main():
     spec = json.load(open(sys.argv[1], encoding="utf-8"))
     P = lambda p: p if os.path.isabs(p) else os.path.join(ROOT, p)
     BG = vs.synth_bg(); segs = []
-    hk = spec["hook"]; himg = Image.open(P(hk["image"])).convert("RGB")
+    hk = spec["hook"]; himg = None if hk.get("clip") else Image.open(P(hk["image"])).convert("RGB")
     def f_hook(t, ta, sec, dur):
-        im = ImageEnhance.Brightness(cover(himg, t, 0.10, 40)).enhance(0.55).convert("RGBA")
-        d0 = ImageDraw.Draw(im); y = 640
+        if hk.get("clip"): im = clip_layout(hk["clip"], sec).convert("RGBA")
+        else: im = ImageEnhance.Brightness(cover(himg, t, 0.10, 40)).enhance(0.55).convert("RGBA")
+        d0 = ImageDraw.Draw(im); y = 110 if hk.get("clip") else 640
         for k, (txt, c) in enumerate(hk["lines"]):
-            size = 124
+            size = 104 if hk.get("clip") else 124
             while size > 50 and d0.textlength(txt, font=fnt("ArchivoBlack.ttf", size)) > 960: size -= 4
             fz = fnt("ArchivoBlack.ttf", size); w = d0.textlength(txt, font=fz); a = ease_out((sec - 0.12 * k) / 0.45)
             im.alpha_composite(text_layer(lambda d, txt=txt, fz=fz, w=w, y=y, c=c: shadow_text(d, ((W - w) / 2, y), txt, fz, vs.COL.get(c, WHITE) + (255,)), a, int(30 * (1 - a))))
             y += int(size * 1.12)
-        ImageDraw.Draw(im).text((40, H - 70), "Image : Rockstar Games", font=fnt("Inter.ttf", 28), fill=(210, 200, 230, 255))
+        ImageDraw.Draw(im).text((40, H - 70), CAPTURE_CREDIT if hk.get("clip") else "Image : Rockstar Games", font=fnt("Inter.ttf", 28), fill=(210, 200, 230, 255))
+        if hk.get("clip") and CH[0]: draw_caption(im, CH[0], sec, y=1390)
         return im.convert("RGB"), 0
     segs.append((hk.get("bars", 1.5) * BAR, f_hook))
     items = spec["items"]; N = len(items); bpi = spec.get("bars_per_item", 2.5)
@@ -173,7 +214,7 @@ def main():
         except Exception: return 0
     CH = [chunks_of(word_times(vt[i], 0.18, max(0.5, vdur(vf[i]) - 0.15))) if i < len(vt) and i < len(vf) and vt[i] else None for i in range(N + 2)]
     for i, it in enumerate(items):
-        img = Image.open(P(it["image"])).convert("RGB"); n = i + 1 if spec.get("order") == "up" else N - i  # "up" : étapes 1, 2, 3… au lieu du compte à rebours
+        img = None if it.get("clip") else Image.open(P(it["image"])).convert("RGB"); n = i + 1 if spec.get("order") == "up" else N - i  # "up" : étapes 1, 2, 3… au lieu du compte à rebours
         segs.append((bpi * BAR, lambda t, ta, sec, dur, img=img, n=n, it=it, i=i: frame_item(img, n, it, t, sec, dur, CH[i + 1], i, N)))
     ot = spec.get("outro", {})
     def f_out(t, ta, sec, dur):
