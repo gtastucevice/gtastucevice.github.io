@@ -175,8 +175,21 @@ def footer_inner(prefix=""):
             '</nav>\n</div>')
 
 
+VICO_TAGS = {"secret": "LE SECRET DE VICO", "astuce": "L'ASTUCE DE VICO", "verifier": "VICO VÉRIFIE"}
+
+
+def vico_box(a):
+    """Encadré de Vico dans un article : "vico": {"type": "secret|astuce|verifier", "text": "..."}"""
+    v = a.get("vico")
+    if not v:
+        return ""
+    t = v.get("type", "astuce"); assert t in VICO_TAGS, (a["slug"], t)
+    return (f'<div class="vico-box v-{t}"><img src="../assets/vico/tete.svg" alt="" width="64" height="56">'
+            f'<div><span class="tag">{VICO_TAGS[t]}</span><p>{e(v["text"])}</p></div></div>')
+
+
 def header_html(prefix="", current=""):
-    return (f'<header>\n<div class="wrap">\n<a class="brand" href="{prefix}index.html" aria-label="GTASTUCE VICE, accueil"><b>GTASTUCE</b><i>Vice</i></a>\n'
+    return (f'<header>\n<div class="wrap">\n<a class="brand" href="{prefix}index.html" aria-label="GTASTUCE VICE, accueil"><img class="vico" src="{prefix}assets/vico/tete.svg" alt="" width="46" height="40"><b>GTASTUCE</b><i>Vice</i></a>\n'
             f'{nav_html(prefix, current)}\n</div>\n</header>')
 
 
@@ -362,6 +375,7 @@ def page(a, arts, css, secrets_by_id):
 {quick}
 {img_html(a["img"], "../", "hero", a.get("img_alt", ""), priority=True, extra=' style="margin-bottom:6px"')}
 <p style="font-size:13px;color:#8F84B8;margin:0 0 22px">{e(a.get('credit', ''))}</p>
+{vico_box(a)}
 {toc_html}
 {sbox}
 {body}

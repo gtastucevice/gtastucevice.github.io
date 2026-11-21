@@ -38,7 +38,11 @@
    },
    "Nous, on y a joué sur la console du salon de la maison de Jason, au début de l'histoire. On ne sait pas encore si d'autres consoles ou bornes de Leonida permettent d'y rejouer plus tard : si tu en trouves une, dis-le-nous sur nos réseaux, on mettra l'article à jour."
   ],
-  "sources": []
+  "sources": [],
+  "vico": {
+   "type": "secret",
+   "text": "Les deux jeux tournent sur la console du salon de Jason, dès le chapitre 1. Joue à Tenebrae Lux au casque : l'ambiance est bien meilleure."
+  }
  },
  {
   "slug": "2026-11-21-gta-6-review-bombing-note-joueurs-metacritic",

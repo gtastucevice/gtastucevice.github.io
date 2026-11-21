@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="320" height="320" viewBox="0 0 320 320" role="img"><title>GTASTUCE VICE — Vico</title><style></style><defs><g id="vico-head"><g stroke="#170A33" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+<path fill="#FF388D" d="M77 101 56 64 100 70 90 30 135 54 155 28 178 67 207 57 212 106Z"/>
+<path fill="#58DAC5" d="M56 133C43 102 67 79 104 77 135 65 169 70 192 89 213 86 232 98 238 122L248 156C277 160 290 177 286 197 281 223 250 234 215 234L138 230C93 233 58 211 48 181 43 163 46 146 56 133Z"/>
+<path fill="#A6F1D9" stroke="none" d="M65 186C98 206 146 208 184 201 226 192 250 199 277 192 272 218 242 226 208 226L136 222C103 222 76 208 65 186Z"/>
+<path fill="#FFDA4F" d="M98 124C103 95 132 95 144 119 150 133 149 151 146 159L98 158C94 148 94 137 98 124Z"/>
+<path fill="#FFDA4F" d="M195 123C202 103 222 110 226 132L230 157 193 157C190 145 191 134 195 123Z"/>
+<path fill="#170A33" stroke="none" d="M123 112C137 109 139 127 136 145 134 156 121 156 117 146 112 132 113 118 123 112ZM212 120C221 119 223 137 219 148 216 156 208 152 207 143 204 133 206 123 212 120Z"/>
+<path fill="#FFF8E8" stroke="none" d="M119 115C125 108 132 114 127 122 121 130 115 122 119 115ZM208 121C212 116 217 122 213 127 209 133 204 126 208 121Z"/>
+<path fill="#209B99" stroke="none" d="M67 132C62 123 69 112 80 116 90 120 83 137 74 137ZM73 160C73 153 82 151 85 157 90 167 74 170 73 160Z"/>
+<path fill="none" d="M80 177C116 206 190 213 250 189M77 175 86 169"/>
+<path fill="#170A33" stroke="none" d="M238 170C245 166 249 171 247 177 243 183 236 177 238 170ZM258 173C263 172 266 179 262 181 258 183 254 177 258 173Z"/>
+<!-- Sunglasses rest on the forehead; both eyes remain visible. -->
+<path fill="none" stroke="#FF388D" stroke-width="12" d="M67 108 77 70 98 66M167 66 181 64M238 94 229 59"/>
+<path fill="#170A33" stroke="#FF388D" d="M89 57Q120 43 161 56L161 77Q154 99 125 96 99 95 89 73ZM181 53Q209 41 233 52L232 74Q224 94 206 90 185 87 181 69Z"/>
+<path fill="#FFF8E8" stroke="none" d="M104 61 131 57 111 72ZM193 57 214 53 198 67Z"/>
+</g></g><g id="vico-body"><g stroke="#170A33" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+<path fill="#58DAC5" d="M196 419C129 457 61 452 58 397 56 350 113 330 132 366 145 389 118 409 103 395 96 389 104 379 111 382 107 368 84 375 90 393 100 424 147 405 175 389Z"/>
+<path fill="#58DAC5" d="M211 452 198 540 157 567C139 579 151 599 169 592L194 583C180 603 204 612 219 595L240 562 254 465ZM284 458 295 548 283 578C274 600 298 607 308 589L314 580C316 603 340 601 339 585 359 602 376 583 358 569L331 547 325 450Z"/>
+<path fill="#58DAC5" d="M186 310 129 301 100 279 85 246Q72 237 67 249L71 274 52 268Q34 270 45 283L65 297 44 299Q30 312 48 320L80 317 113 337 184 351Z"/>
+<path fill="#59215E" d="M215 266 178 291 151 332 187 360 192 460Q256 487 333 455L328 354 353 329 329 285 289 264Z"/>
+<path fill="#FFF8E8" d="M240 273 261 297 284 273 291 456 250 460Z"/>
+<path fill="#FF388D" d="M215 266 242 277 259 297 234 323 213 299ZM286 267 269 295 290 315 309 288Z"/>
+<path fill="#58DAC5" d="M328 333 344 377 377 369 391 335 409 343 404 388Q399 407 379 411L334 420Q320 419 313 403L296 353Z"/>
+<path fill="none" d="M273 321 277 439"/>
+<g fill="#FFDA4F" stroke="none"><circle cx="277" cy="342" r="5"/><circle cx="278" cy="376" r="5"/><circle cx="279" cy="410" r="5"/></g>
+</g>
+<g transform="translate(201 337) rotate(-12) scale(.86)"><g fill="#FF388D"><path d="M0-15C8-24 18-12 9-5 25-9 25 8 10 8 19 22 2 28 0 12-10 25-24 12-11 4-29 2-19-15-6-7Z"/><circle r="4" fill="#FFDA4F"/></g></g><g transform="translate(217 414) rotate(18)"><g fill="#FF388D"><path d="M0-15C8-24 18-12 9-5 25-9 25 8 10 8 19 22 2 28 0 12-10 25-24 12-11 4-29 2-19-15-6-7Z"/><circle r="4" fill="#FFDA4F"/></g></g><g transform="translate(309 331) scale(.65)"><g fill="#FF388D"><path d="M0-15C8-24 18-12 9-5 25-9 25 8 10 8 19 22 2 28 0 12-10 25-24 12-11 4-29 2-19-15-6-7Z"/><circle r="4" fill="#FFDA4F"/></g></g><g transform="translate(314 438) rotate(-15) scale(.7)"><g fill="#FF388D"><path d="M0-15C8-24 18-12 9-5 25-9 25 8 10 8 19 22 2 28 0 12-10 25-24 12-11 4-29 2-19-15-6-7Z"/><circle r="4" fill="#FFDA4F"/></g></g>
+<g transform="translate(89 38) scale(.92)"><use href="#vico-head"/></g>
+<!-- Folded map and visible hand -->
+<g stroke="#170A33" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path fill="#FFF8E8" d="M335 265 370 251 402 266 442 249 425 353 391 366 359 350 323 365Z"/><path fill="none" stroke="#C7B797" stroke-width="4" d="M370 254 359 347M402 270 391 361M337 306 362 296 396 313 433 299"/><path fill="#FF388D" stroke="none" d="M386 277C366 277 361 297 371 310L385 328 400 308C411 292 401 277 386 277Z"/><circle cx="386" cy="294" r="6" fill="#FFF8E8" stroke="none"/><path fill="#58DAC5" d="M396 366 386 353Q379 342 387 338 394 335 399 345L403 326Q407 315 414 321L419 343Q421 361 408 368Z"/></g></g><g id="vico-head-mono"><g stroke="#170A33" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+<path fill="#FFF8E8" d="M77 101 56 64 100 70 90 30 135 54 155 28 178 67 207 57 212 106Z"/>
+<path fill="#FFF8E8" d="M56 133C43 102 67 79 104 77 135 65 169 70 192 89 213 86 232 98 238 122L248 156C277 160 290 177 286 197 281 223 250 234 215 234L138 230C93 233 58 211 48 181 43 163 46 146 56 133Z"/>
+<path fill="#FFF8E8" stroke="none" d="M65 186C98 206 146 208 184 201 226 192 250 199 277 192 272 218 242 226 208 226L136 222C103 222 76 208 65 186Z"/>
+<path fill="#FFF8E8" d="M98 124C103 95 132 95 144 119 150 133 149 151 146 159L98 158C94 148 94 137 98 124Z"/>
+<path fill="#FFF8E8" d="M195 123C202 103 222 110 226 132L230 157 193 157C190 145 191 134 195 123Z"/>
+<path fill="#170A33" stroke="none" d="M123 112C137 109 139 127 136 145 134 156 121 156 117 146 112 132 113 118 123 112ZM212 120C221 119 223 137 219 148 216 156 208 152 207 143 204 133 206 123 212 120Z"/>
+<path fill="#FFF8E8" stroke="none" d="M119 115C125 108 132 114 127 122 121 130 115 122 119 115ZM208 121C212 116 217 122 213 127 209 133 204 126 208 121Z"/>
+<path fill="#170A33" stroke="none" d="M67 132C62 123 69 112 80 116 90 120 83 137 74 137ZM73 160C73 153 82 151 85 157 90 167 74 170 73 160Z"/>
+<path fill="none" d="M80 177C116 206 190 213 250 189M77 175 86 169"/>
+<path fill="#170A33" stroke="none" d="M238 170C245 166 249 171 247 177 243 183 236 177 238 170ZM258 173C263 172 266 179 262 181 258 183 254 177 258 173Z"/>
+<!-- Sunglasses rest on the forehead; both eyes remain visible. -->
+<path fill="none" stroke="#FFF8E8" stroke-width="12" d="M67 108 77 70 98 66M167 66 181 64M238 94 229 59"/>
+<path fill="#170A33" stroke="#FFF8E8" d="M89 57Q120 43 161 56L161 77Q154 99 125 96 99 95 89 73ZM181 53Q209 41 233 52L232 74Q224 94 206 90 185 87 181 69Z"/>
+<path fill="#FFF8E8" stroke="none" d="M104 61 131 57 111 72ZM193 57 214 53 198 67Z"/>
+</g></g></defs><rect width="320" height="320" rx="68" fill="#170A33"/><use href="#vico-head" transform="translate(0 25)"/></svg>

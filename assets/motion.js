@@ -78,3 +78,21 @@
     }, 0);
   }, true);
 })();
+
+/* Vico : bulle mot à mot, encadrés qui apparaissent au défilement */
+(function () {
+  var html = document.documentElement;
+  if (!html.classList.contains('mo')) return;
+  document.querySelectorAll('.vico-guide .bulle').forEach(function (b) {
+    var i = 0;
+    b.querySelectorAll('[data-w]').forEach(function (el) {
+      el.innerHTML = el.textContent.split(' ').map(function (w) { return '<span class="bt" style="--i:' + (i++) + '">' + w + '</span>'; }).join(' ');
+    });
+  });
+  var boxes = document.querySelectorAll('.vico-box');
+  if (!('IntersectionObserver' in window)) { boxes.forEach(function (b) { b.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: .25 });
+  boxes.forEach(function (b) { io.observe(b); });
+})();

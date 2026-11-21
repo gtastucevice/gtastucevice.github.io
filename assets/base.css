@@ -162,3 +162,17 @@ nav .nmt{display:none}
 figure.capt{margin:0 0 20px}figure.capt img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line,#3A2366)}
 figure.capt figcaption{margin-top:6px;font-size:13px;color:#C9BFEA}figure.capt figcaption span{color:#8F84B8}
 .egg figure.capt{margin:8px 0 10px}.egg figure.capt img{border-radius:10px}
+/* ---------- Vico, la mascotte guide ---------- */
+.brand{align-items:center}.brand .vico{width:46px;height:40px;margin-right:2px;filter:drop-shadow(0 2px 0 rgba(0,0,0,.4))}
+.vico-guide{display:flex;align-items:flex-end;gap:14px;margin:6px 0 18px;position:relative;z-index:1}
+.vico-guide .vico-svg{width:132px;height:auto;flex:none;margin-bottom:-6px;overflow:visible}
+.bulle{position:relative;background:#FFF8E8;color:#170A33;border-radius:18px;padding:14px 18px;font-size:16px;line-height:1.45;box-shadow:4px 4px 0 var(--pink,#FF388D);max-width:520px;margin-bottom:44px}
+.bulle b{font-family:'Archivo Black',sans-serif;font-weight:400}
+.bulle:after{content:"";position:absolute;left:-12px;bottom:18px;border:10px solid transparent;border-right-color:#FFF8E8;border-left:0}
+.vico-box{display:flex;gap:14px;align-items:flex-start;background:#22113f;border:2px solid #58DAC5;border-radius:16px;padding:14px 16px;margin:0 0 24px;position:relative;overflow:hidden}
+.vico-box.v-astuce{border-color:#FFDA4F}.vico-box.v-verifier{border-color:#FF388D}
+.vico-box img{width:64px!important;height:56px!important;flex:none;border:0!important;margin:0!important;padding:0!important;background:none!important;border-radius:0!important;box-shadow:none!important}
+.vico-box .tag{display:inline-block;background:#58DAC5;color:#170A33;font-family:'Archivo Black',sans-serif;font-size:12px;letter-spacing:.06em;padding:3px 9px;border-radius:99px;margin-bottom:6px}
+.vico-box.v-astuce .tag{background:#FFDA4F}.vico-box.v-verifier .tag{background:#FF388D}
+.vico-box p{margin:0;font-size:15px;line-height:1.5;color:#EDE7FB}
+@media (max-width:640px){.vico-guide .vico-svg{width:100px}.bulle{font-size:15px}}

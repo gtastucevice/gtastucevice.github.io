@@ -28,3 +28,9 @@ Depuis la sortie du jeu, on illustre les astuces avec nos propres captures PS5 (
 3. `python3 outils/captures.py publier <numéro ou fichier> <nom-slug> [--recadrer x,y,l,h]` : écrit `assets/captures/<nom-slug>.jpg` (1280 px).
 4. Article : bloc `{"capture": "assets/captures/x.jpg", "legende": "..."}` dans `body`. Secret : champ `"capture"` dans `secrets.json` (s'affiche dans « Où et comment »). Puis `python3 build.py`.
 Jamais de cinématique d'histoire (spoilers) ni de capture d'un autre créateur.
+
+## Vico, la mascotte (assets/vico/)
+- `tete.svg` : en-tête de toutes les pages ; `guide.svg`, `icone.svg`, `logo.svg` : fichiers vectoriels sources.
+- Accueil : Vico animé (SVG en ligne dans index.html, classes v-tail / v-arm / v-head / v-eyes / v-map) + bulle mot à mot.
+- Article : champ `"vico": {"type": "secret|astuce|verifier", "text": "..."}` -> encadré animé au défilement.
+- Animations dans motion.css / motion.js, seulement si le mouvement est autorisé (prefers-reduced-motion et bouton du site respectés).
