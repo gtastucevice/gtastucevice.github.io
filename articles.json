@@ -1,5 +1,96 @@
 [
  {
+  "slug": "2026-11-22-oeufs-sommet-tour-gta-6",
+  "date": "2026-11-22T19:40:00+01:00",
+  "cat": "secret",
+  "title": "GTA 6 : un nid d'œufs en haut d'une tour cache un easter egg (rumeur)",
+  "chapo": "Un joueur affirme avoir grimpé une tour à Leonida, trouvé un nid avec des œufs colorés et déclenché une courte scène en en lançant un sur une voiture en contrebas. Pour l'instant, c'est une rumeur : seul IBTimes UK le relaie, à partir d'une vidéo sur X.",
+  "img": "assets/rs_leonida_iguane.jpg",
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-easter-eggs"
+  ],
+  "body": [
+   "Depuis la sortie du jeu le 19 novembre, les joueurs fouillent chaque recoin de Leonida. Celui-ci est amusant, mais il faut le prendre avec des pincettes : rien n'est confirmé par un média qui l'aurait testé lui-même.",
+   {
+    "h2": "C'est quoi l'easter egg des œufs dans GTA 6 ?"
+   },
+   "Selon IBTimes UK, qui cite une vidéo du joueur xGarbett publiée sur X le 18 novembre, il y aurait un nid garni d'œufs colorés tout en haut d'une tour de type radio ou communication. En lançant un œuf vers le sol, une courte scène se déclenche : l'œuf s'écrase sur le pare-brise d'un véhicule qui passe en bas.",
+   {
+    "h2": "Où se trouve la tour et comment faire ?"
+   },
+   "Le média ne donne ni nom de lieu ni coordonnées, donc impossible de te dire quelle tour. Voici la marche à suivre racontée par le joueur, à tester en jeu :",
+   "1. Grimpe jusqu'au sommet d'une tour : le joueur parle d'environ sept minutes de montée.",
+   "2. Cherche le nid avec les œufs colorés tout en haut.",
+   "3. Ramasse un œuf et lance-le vers le sol.",
+   "4. Regarde la scène : l'œuf touche un véhicule en contrebas.",
+   "Toujours selon l'article, on peut aussi discuter avec un influenceur au sommet, sans plus de détails.",
+   {
+    "h2": "Est-ce confirmé ?"
+   },
+   "Non. Rockstar ne documente pas ce détail et aucun autre média ne dit l'avoir vu en jeu. On le classe donc en rumeur dans notre Chasse aux secrets, en attendant qu'un joueur donne l'emplacement exact.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Y a-t-il un spoiler ? Non, c'est un détail d'exploration sans lien avec l'histoire.",
+   "Faut-il avancer dans le jeu avant ? L'article n'indique aucune condition de progression.",
+   "Où trouver la tour ? Personne ne l'a localisée précisément pour l'instant."
+  ],
+  "sources": [
+   {
+    "t": "IBTimes UK",
+    "u": "https://www.ibtimes.co.uk/gta-6-player-discovers-literal-easter-egg-leonida-1833342"
+   }
+  ]
+ },
+ {
+  "slug": "guide-se-soigner-gta-6",
+  "date": "2026-11-22T19:45:00+01:00",
+  "cat": "guide",
+  "title": "Comment se soigner dans GTA 6 : Zombix, nourriture et boissons",
+  "chapo": "Dans GTA 6, tu te soignes surtout avec le Zombix, un médicament vendu dans les supérettes, et tu renforces tes jauges en mangeant et en buvant avant de partir. Tu peux même le faire en conduisant ou en tirant.",
+  "img": "assets/rs_vicecity_plage.jpg",
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-debuter"
+  ],
+  "body": [
+   "Rien de plus agaçant que de tomber en pleine fusillade sans soin. Voici les réflexes à prendre, d'après le guide débutants de Game & Guide (une seule source, à vérifier en jeu).",
+   {
+    "h2": "Comment récupérer de la santé en plein combat ?"
+   },
+   "Avec le Zombix. Ce médicament restaure ta santé pendant un combat et s'achète dans les supérettes. Garde-en toujours quelques-uns dans ton inventaire avant un braquage ou une mission risquée.",
+   {
+    "h2": "À quoi servent la nourriture et les boissons ?"
+   },
+   "Elles améliorent tes jauges de santé, d'endurance et de concentration. Mange et bois avant d'attaquer une activité dangereuse pour tenir plus longtemps. Jason et Lucia peuvent consommer en conduisant ou en tirant, donc inutile de t'arrêter.",
+   {
+    "h2": "Comment gagner de la concentration ?"
+   },
+   "Caresse les chiens et les chats : maintiens la gâchette gauche pour zoomer, approche-toi de l'animal, puis caresse-le ou félicite-le pour obtenir un bonus de concentration. Pendant un braquage, la concentration révèle aussi les portes reliées à une alarme et les gardes proches.",
+   {
+    "h2": "Et mon véhicule, comment le réparer ?"
+   },
+   "Les pompes des stations-service réparent voitures et motos pour un petit montant, en plus du plein. Maintiens la flèche gauche de la croix directionnelle pour accéder aux fonctions du véhicule, dont le coffre et les phares.",
+   {
+    "h2": "Mon argent est-il en sécurité si je meurs ?"
+   },
+   "Pas celui de ton portefeuille : il peut être perdu en cas d'arrestation (Busted) ou de mort (Wasted). Dépose-le sur ton compte BuckMe, via l'app BuckMe puis ATM Finder qui marque le distributeur le plus proche.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Où acheter du Zombix ? Dans les supérettes.",
+   "Peut-on manger en conduisant ? Oui, selon Game & Guide.",
+   "Le cash du portefeuille est-il protégé ? Non, seul l'argent déposé sur BuckMe l'est."
+  ],
+  "sources": [
+   {
+    "t": "Game & Guide",
+    "u": "https://www.gamenguide.com/articles/109210/20261119/gta-6-beginners-guide-everything-new-players-need-know-before-starting.htm"
+   }
+  ]
+ },
+ {
   "slug": "guide-sauvegarder-gta-6",
   "date": "2026-11-22T13:40:00+01:00",
   "cat": "guide",
