@@ -1,5 +1,165 @@
 [
  {
+  "slug": "guide-edition-ultimate-bonus-gta-6",
+  "date": "2026-11-22T08:40:00+01:00",
+  "cat": "guide",
+  "title": "Édition Ultimate GTA 6 : comment récupérer tous les bonus (et à quel chapitre)",
+  "chapo": "Les bonus de l'Édition Ultimate de GTA 6 ne sont pas tous dispo dès le début : ils se débloquent chapitre par chapitre, dans des garages, des Ammu-Nation et des boutiques précises. Voici où aller pour chacun, d'après Dexerto.",
+  "img": "assets/rs_vicecity_meeting_voitures.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-carte"
+  ],
+  "body": [
+   "Tu as pris l'Édition Ultimate et tu ne vois rien dans ton inventaire ? C'est normal : selon Dexerto, les bonus sont répartis par chapitre et certains n'arrivent que plusieurs heures après le début de la partie. Il faut ensuite aller les chercher sur place, chez le garagiste, l'armurier ou le coiffeur concerné. Ce guide ne dévoile rien de l'histoire : on ne donne que les numéros de chapitre.",
+   {
+    "h2": "Où récupérer les bonus de l'Édition Ultimate dès le chapitre 1 ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Véhicules de Jason : ",
+      "d": "à la maison de Jason, uniquement là."
+     },
+     {
+      "t": "Kit de personnalisation Ganado Retro : ",
+      "d": "au garage Coastal Auto Care, à Key Lento."
+     },
+     {
+      "t": "Pistolets personnalisés de Jason : ",
+      "d": "dans un Ammu-Nation (ceux de Lucia arrivent au chapitre 2)."
+     },
+     {
+      "t": "Garages One-Eyed Willie's et Rideout Customs : ",
+      "d": "accessibles dès le chapitre 1."
+     },
+     {
+      "t": "Complexe PTT Youngin$ : ",
+      "d": "dès le chapitre 1, après avoir exploré Southside."
+     },
+     {
+      "t": "Boutique Stock 305, salon Sara's Unisex et tatouages Electric Fang : ",
+      "d": "disponibles dès le chapitre 1 (les styles exclusifs du salon arrivent à partir du chapitre 2)."
+     },
+     {
+      "t": "Produits dérivés Vice City : ",
+      "d": "sur les mannequins du Wonder Whale, à Key Lento."
+     }
+    ]
+   },
+   {
+    "h2": "Qu'est-ce qui se débloque à partir du chapitre 2 ?"
+   },
+   "Les pistolets personnalisés de Lucia apparaissent dans les Ammu-Nation, et les revolvers Morgan arrivent dans les casiers à armes des mêmes magasins. Le Dominator Buggy et le Gaga se débloquent après ta visite du Mud Club. Une fois le Dominator Buggy récupéré, la collection de voitures classiques devient disponible.",
+   {
+    "h2": "Et pour les bonus plus tardifs (chapitres 4 et 5) ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Tenues Vice City (chapitre 4) : ",
+      "d": "dans la catégorie « Spécial » de ta garde-robe et dans les magasins de vêtements."
+     },
+     {
+      "t": "Bateau Shitzu Squalo (chapitre 4) : ",
+      "d": "amarré à un quai de Washington Beach."
+     },
+     {
+      "t": "Grotti Cheetah 1995 (chapitre 5) : ",
+      "d": "aux Pegassi Residences."
+     }
+    ]
+   },
+   "Précision : ces emplacements viennent d'un seul guide, celui de Dexerto, sans confirmation officielle de Rockstar. Si un bonus manque chez toi, vérifie d'abord ton chapitre en cours.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   {
+    "h2": "Pourquoi je ne vois pas mes bonus Ultimate ?"
+   },
+   "Parce qu'ils sont débloqués progressivement par chapitre : avance dans l'histoire, puis va sur le lieu indiqué.",
+   {
+    "h2": "Les bonus Ultimate sont-ils dans l'inventaire dès le départ ?"
+   },
+   "Non, il faut aller les récupérer sur place (garage, Ammu-Nation, boutique ou maison de Jason).",
+   {
+    "h2": "Peut-on tout avoir au chapitre 1 ?"
+   },
+   "Non : les revolvers Morgan, le Dominator Buggy et les classiques arrivent au chapitre 2, les tenues Vice City et le bateau au chapitre 4, la Cheetah 1995 au chapitre 5."
+  ],
+  "sources": [
+   {
+    "t": "Dexerto",
+    "u": "https://www.dexerto.fr/gta/comment-recuperer-bonus-edition-ultimate-gta-6-1664392/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-22-emplacements-vehicules-gta-6",
+  "date": "2026-11-22T08:35:00+01:00",
+  "cat": "astuce",
+  "title": "GTA 6 : comment avoir plus d'emplacements de véhicules (4 au départ)",
+  "chapo": "Tu démarres GTA 6 avec 4 emplacements de véhicules personnels. Pour en avoir plus, il faut acheter des garages, et selon Playnews on dépasse la douzaine de places avec tous ceux de Leonida.",
+  "img": "assets/rs_vicecity_car.jpg",
+  "topics": [
+   "gta-6-argent",
+   "gta-6-debuter"
+  ],
+  "body": [
+   "Ton garage est plein et tu ne sais plus quelle voiture sacrifier ? Voici comment ça marche, d'après Playnews (un article rédigé avec l'aide d'une IA à partir de sources officielles, à prendre avec un peu de recul).",
+   {
+    "h2": "Combien d'emplacements de véhicules a-t-on au début de GTA 6 ?"
+   },
+   "Quatre, de quoi attribuer un véhicule personnel à Jason et à Lucia. Au départ, seule la Granada de Jason est vraiment à toi, avec sa moto (incluse dans l'Ultimate) et son bateau. Les voitures volées, elles, ne deviennent pas personnelles.",
+   {
+    "h2": "Comment avoir plus de places ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Achète des garages : ",
+      "d": "chacun ajoute des emplacements. Selon Playnews, tous les garages de la carte font presque tripler la capacité de départ. Les prix montent près de Vice City et des plages (aucun montant chiffré par l'article)."
+     },
+     {
+      "t": "Récupère le garage offert : ",
+      "d": "un garage à Ocean Beach, cadeau de Valentina plus tard dans l'histoire, donne 2 emplacements gratuits."
+     },
+     {
+      "t": "Avance dans le jeu : ",
+      "d": "avec tous les garages de Leonida et assez de progression, on dépasse une douzaine de places."
+     }
+    ]
+   },
+   {
+    "h2": "Où gérer ses véhicules personnels ?"
+   },
+   "Dans l'application Scooter Bros du téléphone, à l'atelier de Moses (réparer, vendre, immatriculer) ou dans n'importe quel Pay 'n' Spray. Les véhicules personnels s'ouvrent vers 30 % de l'histoire, à Port Gellhorn selon Playnews. Pour le détail des prix et des planques, lis notre guide sur les garages.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   {
+    "h2": "Les voitures volées prennent-elles une place ?"
+   },
+   "Non, selon Playnews, une voiture volée ne devient pas personnelle.",
+   {
+    "h2": "Combien de garages faut-il acheter ?"
+   },
+   "Autant que possible : chaque garage ajoute des places, et tous réunis on dépasse douze emplacements.",
+   {
+    "h2": "Le garage d'Ocean Beach est-il gratuit ?"
+   },
+   "Oui, c'est un cadeau de Valentina qui ajoute 2 emplacements."
+  ],
+  "sources": [
+   {
+    "t": "Playnews",
+    "u": "https://www.playnews.gg/guides/posseder-plus-de-vehicules-dans-gta-6-comment-debloquer-plus-d-emplacements"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "2026-11-21-snapmatic-race-and-chase-7-gta-6",
   "date": "2026-11-21T19:30:00+01:00",
   "cat": "secret",
