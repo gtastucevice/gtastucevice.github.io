@@ -9,7 +9,8 @@ spec : {"slug", "hook": {"lines": [[txt, "w|y"]...], "image": "banque/x.jpg"},
         "order": "up" (facultatif : numérote les étapes 1, 2, 3… au lieu du compte à rebours)}
 Gameplay : à la place de "image", un élément (ou l'accroche) peut avoir
   "clip": {"src": "video.mp4", "start": s, "len": 14, "speed": 1, "crop": [x, y, l, h]}
-  -> bande 16:9 nette au centre, fond flouté, son du jeu coupé, crédit « Capture en jeu : GTASTUCE VICE »."""
+  -> plein écran vertical (recadré au centre ; "fx": 0 à 1 pour déplacer le cadrage à gauche/droite), son du jeu coupé,
+  crédit « Capture en jeu : GTASTUCE VICE ». "band": true pour l'ancien format (bande 16:9 au centre, fond flouté)."""
 import json, math, os, subprocess, sys, importlib.util
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
@@ -51,13 +52,16 @@ BAND_Y, BAND_H = 520, 810   # bande au milieu de l'écran vertical (16:9 rogné 
 _CLIPS = {}
 def clip_frames(c):
     """Extrait une fois les images d'un passage de vidéo (son coupé : jamais le son du jeu, pour les droits)."""
-    key = (c["src"], c["start"])
+    full = not c.get("band")
+    key = (c["src"], c["start"], full, c.get("fx", 0.5))
     if key not in _CLIPS:
-        d = f"{vs.TMP}/clip_{BAND_H}_{abs(hash(key))}"
+        d = f"{vs.TMP}/clip_{'full' if full else BAND_H}_{abs(hash(key))}"
+        vf = (f"fps={FPS},scale=-2:{H}:flags=lanczos,crop={W}:{H}:(iw-{W})*{c.get('fx', 0.5)}:0" if full
+              else f"fps={FPS},scale=-2:{BAND_H}:flags=lanczos,crop={W}:{BAND_H}")
         if not os.path.isdir(d) or not os.listdir(d):
             os.makedirs(d, exist_ok=True)
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(c["start"]), "-i", c["src"], "-t", str(c.get("len", 14)),
-                            "-an", "-vf", f"fps={FPS},scale=-2:{BAND_H}:flags=lanczos,crop={W}:{BAND_H}", "-q:v", "2", f"{d}/%05d.jpg"], check=True)
+                            "-an", "-vf", vf, "-q:v", "2", f"{d}/%05d.jpg"], check=True)
         _CLIPS[key] = sorted(os.path.join(d, f) for f in os.listdir(d))
     return _CLIPS[key]
 
@@ -67,6 +71,9 @@ def clip_frame(c, sec):
 
 def clip_layout(c, sec, dim=1.0):
     """Fond = même image floutée et assombrie, bande nette au centre, fin liseré rose."""
+    if not c.get("band"):  # plein écran (par défaut depuis le 23/11) : l'action remplit tout l'écran vertical
+        fr = clip_frame(c, sec)
+        return ImageEnhance.Brightness(fr).enhance(0.8 * dim if dim < 1 else 1.0)
     band = clip_frame(c, sec)
     if c.get("crop"):  # zoom sur une partie (x, y, l, h en fractions)
         x, y, w, h = c["crop"]; bw, bh = band.size
