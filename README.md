@@ -17,6 +17,9 @@ Chaque secret de `secrets.json` peut avoir un champ `zone` pour apparaître sur 
 Laisser `zone` vide si le secret est « partout » ou si le lieu est inconnu : il est alors listé sous la carte.
 `build.py` dessine la carte (accueil + page easter eggs), rien d'autre à faire.
 
+## Carte interactive (page gta-6-carte.html, onglet « Carte »)
+`lieux.json` liste les lieux utiles hors secrets : {id, cat (arme|plongee|peche|activite), title, where, zone, x, y (repère 400x500 de la carte), link}. Les secrets de `secrets.json` avec une zone y sont ajoutés automatiquement. Fond de carte schématique dessiné dans build.py (land_svg) : à remplacer par une capture en jeu de la carte quand on l'aura.
+
 ## Vidéo du jour (outils/video_site.py)
 `python3 outils/video_site.py spec.json` fabrique une vidéo verticale (accroche sur une image Rockstar, pages du site filmées dans un téléphone, fin « gtastucevice.fr / lien en bio ») avec une musique synthwave générée (libre de droits). Le format du spec est décrit en tête du script. Sortie : `assets/videos/<slug>.mp4` et `.jpg`, à pousser pour que Metricool puisse la récupérer. Historique des sujets : `assets/videos/historique.json`.
 Effets sonores (fournis par Roméo, licence Pixabay : jamais dans ce dépôt public) : dossier Drive « GTASTUCE VICE / Musiques / Effets », à télécharger dans /tmp/gtv_sfx (ou $GTV_SFX) : riser.wav (montée sur la fin de l'accroche), swoosh1.wav (chaque changement de plan), swoosh2.wav (avant la fin), typewriter.wav (pendant un plan « search »). L'outil les mixe automatiquement.

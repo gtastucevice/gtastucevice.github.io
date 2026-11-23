@@ -159,6 +159,7 @@ def nav_html(prefix="", current=""):
             f'<a class="nav-search" href="{prefix}recherche.html" aria-label="Rechercher"{cur("recherche.html")}>{SEARCH_ICO}<span>Rechercher</span></a>\n'
             f'<a href="{prefix}actus.html"{cur("actus.html")}>Actus</a>\n'
             f'<a href="{prefix}index.html#guides">Guides</a>\n'
+            f'<a href="{prefix}gta-6-carte.html"{cur("gta-6-carte.html")}>Carte</a>\n'
             f'<a class="nav-cheat" href="{prefix}gta-6-codes-triche.html"{cur("gta-6-codes-triche.html")}><span class="nm">Codes de t</span><span class="nmt">T</span>riche</a>\n'
             f'<a href="{prefix}index.html#chasse">Chasse<span class="nm"> aux secrets</span></a>\n'
             f'<a href="{prefix}matos.html"{cur("matos.html")}>Le matos</a>\n'
@@ -632,9 +633,36 @@ ZONES = {
     "grassrivers": ("Grassrivers", 196, 290), "vice-city": ("Vice City", 308, 318), "keys": ("Leonida Keys", 262, 420),
     "mer": ("En mer", 352, 432),
 }
-LEONIDA_PATH = ("M60 40 L330 34 L338 70 L300 92 L292 140 L318 200 L346 262 L358 330 L344 372 L300 384 "
-                "L262 360 L226 336 L188 330 L160 300 L136 252 L104 226 L62 214 L40 170 L48 110 Z")
-KEYS = [(250, 410, 26, 9), (214, 430, 22, 8), (180, 446, 20, 7), (150, 458, 16, 6), (282, 398, 14, 6)]
+LEONIDA_PTS = [(14, 58), (120, 50), (232, 50), (344, 44), (354, 84), (342, 124), (340, 172), (352, 222), (368, 272),
+               (376, 322), (366, 362), (334, 386), (300, 392), (268, 378), (234, 362), (204, 356), (176, 340), (158, 314),
+               (146, 284), (128, 258), (104, 238), (78, 226), (52, 222), (30, 210), (18, 170), (12, 110)]
+
+
+def smooth_path(pts):
+    """Contour arrondi (Catmull-Rom -> Bézier) à partir de points : côtes moins anguleuses."""
+    n = len(pts); d = f"M{pts[0][0]} {pts[0][1]}"
+    for i in range(n):
+        p0, p1, p2, p3 = pts[i - 1], pts[i], pts[(i + 1) % n], pts[(i + 2) % n]
+        c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6); c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
+        d += f" C{c1[0]:.1f} {c1[1]:.1f} {c2[0]:.1f} {c2[1]:.1f} {p2[0]} {p2[1]}"
+    return d + " Z"
+
+
+LEONIDA_PATH = smooth_path(LEONIDA_PTS)
+KEYS = [(300, 398, 16, 6), (272, 404, 18, 7), (242, 418, 20, 7), (212, 434, 20, 7), (182, 448, 18, 6), (154, 460, 14, 5), (130, 468, 10, 4)]
+
+
+def land_svg():
+    """Le fond de carte : terre, lac Leonida, relief de Mount Kalaga, marais, Vice City et ses îles, chapelet des Keys, ponts."""
+    keys = "".join(f'<ellipse cx="{x}" cy="{y}" rx="{rx}" ry="{ry}"/>' for x, y, rx, ry in KEYS)
+    bridge = " ".join(f"{x},{y}" for x, y, _, _ in KEYS)
+    marsh = "".join(f'<path d="M{x} {y} q8 -6 16 0 t16 0"/>' for x, y in [(170, 276), (196, 290), (150, 300), (182, 318), (214, 306), (204, 334), (226, 322), (160, 330)])
+    peaks = "".join(f'<path d="M{x} {y} l9 -16 l9 16 z"/>' for x, y in [(96, 92), (112, 84), (128, 94), (142, 86), (106, 106), (152, 100)])
+    blocks = "".join(f'<rect x="{x}" y="{y}" width="7" height="7" rx="1"/>' for x, y in [(318, 300), (328, 300), (318, 310), (328, 310), (338, 310), (328, 320), (338, 320), (318, 320), (338, 330), (328, 330)])
+    return (f'<g class="land"><path d="{LEONIDA_PATH}"/>{keys}<ellipse class="isle" cx="364" cy="312" rx="5" ry="30"/><ellipse class="isle" cx="352" cy="352" rx="7" ry="5"/></g>'
+            f'<polyline class="bridge" points="{bridge}"/>'
+            f'<g class="relief">{peaks}</g><ellipse class="lake" cx="262" cy="166" rx="28" ry="20"/>'
+            f'<g class="marsh">{marsh}</g><path class="river" d="M120 120 q20 40 10 80 t30 60"/><g class="city">{blocks}</g>')
 
 
 ZONE_ORDER = ["vice-city", "keys", "grassrivers", "mer", "gellhorn", "ambrosia", "kalaga"]
@@ -659,7 +687,6 @@ def map_svg(secrets, link_prefix=""):
                     f'<title>{e(s["title"])}</title><g class="pg"><circle class="halo" r="14"/><circle class="dot" r="8"/></g></a>')
     LBL = {"keys": (150, 488)}
     labels = "".join(f'<text x="{LBL.get(k, (x, y))[0]}" y="{LBL.get(k, (x, y))[1]}" text-anchor="middle">{e(n)}</text>' for k, (n, x, y) in ZONES.items())
-    keys = "".join(f'<ellipse cx="{x}" cy="{y}" rx="{rx}" ry="{ry}"/>' for x, y, rx, ry in KEYS)
     ctrl = ('<div class="map-ctrl" role="group" aria-label="Zoom de la carte">'
             '<button type="button" data-zoom="in" aria-label="Zoomer">+</button>'
             '<button type="button" data-zoom="out" aria-label="Dézoomer">−</button>'
@@ -667,9 +694,63 @@ def map_svg(secrets, link_prefix=""):
     return (f'<figure class="map" data-map>{ctrl}<svg viewBox="0 0 400 500" role="img" aria-label="Carte simplifiée de Leonida avec les secrets">'
             f'<defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B0D3C"/><stop offset="1" stop-color="#2A1050"/></linearGradient></defs>'
             f'<rect x="-400" y="-500" width="1200" height="1500" fill="url(#sea)"/>'
-            f'<g class="land"><path d="{LEONIDA_PATH}"/>{keys}</g>'
+            f'{land_svg()}'
             f'<g class="lbl">{labels}</g>{"".join(pins)}</svg>'
             f'<figcaption>Positions approximatives. Zoome avec + et −, un double-clic ou deux doigts ; fais glisser pour te déplacer. Rose = à trouver, turquoise = trouvé.</figcaption></figure>')
+
+
+CARTE_CATS = {"secret": ("Secrets", "#FF3D7F"), "arme": ("Armes gratuites", "#FFE45C"), "plongee": ("Plongée et épaves", "#2EE6D6"),
+              "peche": ("Pêche", "#7FB2FF"), "activite": ("Activités", "#FF9A3D")}
+
+
+def carte_html(secrets):
+    """Grande carte interactive de la page Carte : secrets + lieux utiles (lieux.json), filtres par catégorie, fiche au clic, liste sous la carte."""
+    lieux = json.load(open(os.path.join(ROOT, "lieux.json"), encoding="utf-8"))
+    pts, per = [], {}
+    for x in secrets:
+        z = x.get("zone")
+        if z not in ZONES:
+            continue
+        k = per.get(z, 0); per[z] = k + 1; _, zx, zy = ZONES[z]
+        pts.append({"id": "s-" + x["id"], "cat": "secret", "title": x["title"], "where": x.get("where", ""), "zone": z,
+                    "x": zx + [0, 22, -22, 12, -12, 30, -30, 0][k % 8], "y": zy + [18, 30, 30, 44, 44, 14, 14, 58][k % 8],
+                    "link": f"index.html#egg-{x['id']}", "st": x.get("status", "")})
+    pts += [dict(l) for l in lieux if l.get("zone") in ZONES]
+    spots = "".join(
+        f'<a class="spot" href="{e(p["link"])}" data-i="{i}" data-cat="{p["cat"]}" transform="translate({p["x"]} {p["y"]})" aria-label="{e(p["title"])}">'
+        f'<title>{e(p["title"])}</title><circle class="halo" r="12" fill="{CARTE_CATS[p["cat"]][1]}"/><circle class="dot" r="7" fill="{CARTE_CATS[p["cat"]][1]}"/></a>'
+        for i, p in enumerate(pts))
+    LBL = {"keys": (150, 488)}
+    labels = "".join(f'<text x="{LBL.get(k, (x, y))[0]}" y="{LBL.get(k, (x, y))[1]}" text-anchor="middle">{e(n)}</text>' for k, (n, x, y) in ZONES.items())
+    ctrl = ('<div class="map-ctrl" role="group" aria-label="Zoom de la carte"><button type="button" data-zoom="in" aria-label="Zoomer">+</button>'
+            '<button type="button" data-zoom="out" aria-label="Dézoomer">−</button><button type="button" data-zoom="reset" aria-label="Voir toute la carte">⟲</button></div>')
+    chips = "".join(f'<button type="button" class="chip cchip" data-cat="{k}" aria-pressed="true"><i style="background:{c}"></i>{e(n)} '
+                    f'<b>{sum(p["cat"] == k for p in pts)}</b></button>' for k, (n, c) in CARTE_CATS.items())
+    lists = ""
+    for k, (n, c) in CARTE_CATS.items():
+        items = [p for p in pts if p["cat"] == k]
+        if items:
+            lists += (f'<section class="clist" data-cat="{k}"><h3><i style="background:{c}"></i>{e(n)}</h3><ul>'
+                      + "".join(f'<li><a href="{e(p["link"])}"><strong>{e(p["title"])}</strong></a> <span class="cz">{e(ZONES[p["zone"]][0])}</span><br>{e(p["where"])}</li>' for p in items)
+                      + "</ul></section>")
+    data = json.dumps([{k: p[k] for k in ("title", "where", "link", "cat")} | {"zone": ZONES[p["zone"]][0]} for p in pts], ensure_ascii=False).replace("</", "<\\/")
+    return ('<h2>La carte interactive de Leonida</h2>'
+            f'<div class="carte-tools" role="group" aria-label="Afficher sur la carte">{chips}</div>'
+            f'<div class="carte-grid"><figure class="map map-big" data-map>{ctrl}<svg viewBox="0 0 400 500" role="img" aria-label="Carte schématique de Leonida avec les secrets et les lieux utiles">'
+            '<defs><linearGradient id="sea2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B0D3C"/><stop offset="1" stop-color="#2A1050"/></linearGradient></defs>'
+            f'<rect x="-400" y="-500" width="1200" height="1500" fill="url(#sea2)"/>{land_svg()}<g class="lbl">{labels}</g>{spots}</svg>'
+            '<figcaption>Carte schématique dessinée par GTASTUCE VICE d\'après les six régions officielles : positions approximatives, à l\'échelle de la région. '
+            'Touche un repère pour voir où et comment.</figcaption></figure>'
+            '<aside class="spot-info" id="spot-info" aria-live="polite"><p class="si-hint">Touche un repère sur la carte pour voir ce qu\'il cache.</p></aside></div>'
+            f'<h2>Tous les lieux, région par région</h2><div class="clists">{lists}</div>'
+            f'<script>(function(){{var D={data},C={json.dumps({k: v for k, v in CARTE_CATS.items()}, ensure_ascii=False)},box=document.getElementById("spot-info");'
+            'function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",\'"\':"&quot;"}[c]})}'
+            'document.querySelectorAll(".spot").forEach(function(a){a.addEventListener("click",function(ev){ev.preventDefault();var p=D[+a.dataset.i];'
+            'document.querySelectorAll(".spot.on").forEach(function(x){x.classList.remove("on")});a.classList.add("on");'
+            'box.innerHTML="<p class=\\"si-cat\\"><i style=\\"background:"+C[p.cat][1]+"\\"></i>"+esc(C[p.cat][0])+" · "+esc(p.zone)+"</p><h3>"+esc(p.title)+"</h3><p>"+esc(p.where)+"</p><a class=\\"btn\\" href=\\""+esc(p.link)+"\\">Voir le guide</a>";'
+            'if(window.innerWidth<900)box.scrollIntoView({block:"nearest",behavior:"smooth"});});});'
+            'document.querySelectorAll(".cchip").forEach(function(b){b.addEventListener("click",function(){var on=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",String(on));'
+            'document.querySelectorAll(\'.spot[data-cat="\'+b.dataset.cat+\'"]\').forEach(function(x){x.style.display=on?"":"none"});});});})();</script>')
 
 
 def hunt_html(secrets, check=True, link_prefix=""):
@@ -712,7 +793,7 @@ MAP_CSS = """
 .map .pin:focus-visible .dot{stroke:#FFE45C;stroke-width:4}
 @keyframes pinpulse{50%{transform:scale(1.5);opacity:0}}
 .map figcaption{margin-top:10px;font-size:13px;color:var(--mute);text-align:center}
-.map-loose{margin:10px 0 0;font-size:14px;color:var(--soft);text-align:center}
+.map .land .isle{fill:#3A1D6B}.map .bridge{fill:none;stroke:#FF5FA2;stroke-width:1;stroke-dasharray:2 3;opacity:.7}.map .relief path{fill:#4C2A85;stroke:#7B5BB8;stroke-width:1}.map .lake{fill:#1F0E45;stroke:#7FB2FF;stroke-width:1.5;opacity:.9}.map .marsh path{fill:none;stroke:#2EE6D6;stroke-width:1.2;opacity:.45}.map .river{fill:none;stroke:#7FB2FF;stroke-width:1.5;opacity:.5}.map .city rect{fill:#FFE45C;opacity:.35}.map-big svg{max-width:640px}.carte-tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.cchip i,.clist h3 i,.si-cat i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}.cchip{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:var(--night2);border:1px solid var(--line);color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}.cchip[aria-pressed=false]{opacity:.45}.cchip b{margin-left:4px;color:var(--mute)}.spot{cursor:pointer}.spot .dot{stroke:#fff;stroke-width:2}.spot .halo{opacity:.22}.spot.on .dot{stroke:#FFE45C;stroke-width:4}.spot:focus-visible .dot{stroke:#FFE45C;stroke-width:4}.spot-info{background:var(--night2);border:1px solid var(--line);border-radius:18px;padding:18px;margin:0 0 20px}.spot-info h3{margin:6px 0 8px}.si-cat{font-size:13px;color:var(--mute);margin:0}.si-hint{color:var(--soft);margin:0}.clists{display:grid;gap:16px}.clist ul{margin:0;padding-left:18px}.clist li{margin:0 0 10px;color:var(--soft)}.cz{font-size:12px;color:var(--mute)}@media (min-width:900px){.carte-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:22px;align-items:start}.spot-info{position:sticky;top:90px}.clists{grid-template-columns:1fr 1fr}}.map-loose{margin:10px 0 0;font-size:14px;color:var(--soft);text-align:center}
 .egg.flash{border-color:var(--yel);box-shadow:0 0 0 3px var(--yel)}
 @media (min-width:900px){.hunt-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:22px;align-items:start}.hunt-grid .map{position:sticky;top:90px}}
 """
@@ -982,6 +1063,8 @@ def build_static_pages(arts, secrets):
         lst = main_ + side
         hub_dates[h["slug"]] = max([a.get("updated", a["date"]) for a in lst], default="")[:10]
         body = f'<p class="lead">{e(h["intro"])}</p>'
+        if h["slug"] == "gta-6-carte":
+            body += carte_html(secrets)
         if h.get("eggs"):
             body += ('<h2>La carte et la liste des secrets</h2>' + legend_html() + hunt_html(secrets, check=False)
                      + '<p style="margin-top:16px"><a class="btn" href="index.html#chasse">Coche-les dans la chasse aux secrets</a></p>')
