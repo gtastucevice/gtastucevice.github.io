@@ -846,32 +846,31 @@ def carte_html(secrets):
 
 
 def hunt_html(secrets, check=True, link_prefix=""):
-    """Chasse aux secrets : carte collante + progression par zone à gauche, filtres + secrets rangés par zone à droite."""
+    """Chasse aux secrets, version simple : barre collante Carte | Liste + progression ; vue Carte (fiche qui monte au toucher d'un repère) ; vue Liste par zone."""
     zones = [z for z in ZONE_ORDER if any(zone_of(s) == z for s in secrets)]
     if any(zone_of(s) == LOOSE[0] for s in secrets):
         zones.append(LOOSE[0])
     name = lambda z: ZONES[z][0] if z in ZONES else LOOSE[1]
-    zone_btns = "".join(
-        f'<li><button type="button" class="zbtn" data-zone="{z}"' + (f' data-x="{ZONES[z][1]}" data-y="{ZONES[z][2]}"' if z in ZONES else "")
-        + f' aria-pressed="false"><span>{e(name(z))}</span><b class="zn" data-zone-count="{z}">0/{sum(zone_of(s) == z for s in secrets)}</b></button></li>' for z in zones)
-    side = (f'<aside class="hunt-side"><div class="hunt-sticky">{map_svg(secrets, link_prefix)}'
-            f'<h3 class="zh">Par zone</h3><ul class="zones">{zone_btns}</ul></div></aside>')
-    st_chips = "".join(f'<button type="button" class="chip" data-st="{k}" aria-pressed="{str(k == "all").lower()}">{e(v)}</button>'
-                       for k, v in [("all", "Tous")] + [(k, v[0]) for k, v in STATUS.items()])
-    tools = ('<div class="hunt-tools"><label class="sr-only" for="egg-q">Chercher un secret</label>'
-             '<input id="egg-q" type="search" placeholder="Chercher un secret (ex : Bigfoot, Vice City…)" autocomplete="off">'
-             f'<div class="chips" role="group" aria-label="Filtrer par statut">{st_chips}</div>'
-             + ('<label class="hide-found"><input type="checkbox" id="egg-hide"> Masquer ceux que j\'ai trouvés</label>' if check else "")
-             + '<p class="scount" id="egg-count" role="status" aria-live="polite"></p></div>')
+    loose = sum(zone_of(s) == LOOSE[0] for s in secrets)
+    bar = ('<div class="h2bar"><div class="seg" role="group" aria-label="Affichage">'
+           '<button type="button" data-v="map" aria-pressed="true">🗺️ Carte</button><button type="button" data-v="list" aria-pressed="false">📋 Liste</button></div>'
+           + (f'<span class="h2n"><b id="h2n">0/{len(secrets)}</b> trouvés<i class="h2bar-fill"><i id="h2fill"></i></i></span>' if check else f'<span class="h2n"><b>{len(secrets)}</b> secrets</span>')
+           + '</div>')
+    sheet = ('<div class="h2sheet" id="h2sheet" hidden role="dialog" aria-label="Le secret"><button type="button" class="h2x" aria-label="Fermer">×</button><div id="h2body"></div></div>')
+    mapv = (f'<div class="h2map" data-pane="map">{map_svg(secrets, link_prefix)}'
+            + (f'<p class="h2loose">+ {loose} secrets sans lieu précis : <button type="button" class="linkbtn" data-v="list">voir la liste</button></p>' if loose else "")
+            + sheet + '</div>')
     groups = []
     for z in zones:
         items = [s for s in secrets if zone_of(s) == z]
         groups.append(f'<section class="egg-group" data-zone="{z}" aria-labelledby="zg-{z}"><h3 class="zg" id="zg-{z}">{e(name(z))} '
-                      f'<span class="zgn" data-zone-count="{z}">0/{len(items)}</span></h3><div class="eggs">'
-                      + "".join(egg_card(x, check) for x in items) + "</div></section>")
-    main_ = (f'<div class="hunt-main">{tools}<div id="eggs">{"".join(groups)}</div>'
-             '<p class="empty-eggs" hidden>Aucun secret ne correspond. Change de filtre ou de zone.</p></div>')
-    return f'<div class="hunt-grid">{side}{main_}</div>'
+                      f'<span class="zgn" data-zone-count="{z}">{"0/" if check else ""}{len(items)}</span></h3><div class="eggs">'
+                      + "".join(egg_card(x, check).replace("</article>", (f'<button type="button" class="tomap" data-id="{e(x["id"])}">📍 Voir sur la carte</button>' if z in ZONES else "") + "</article>") for x in items)
+                      + "</div></section>")
+    listv = ('<div class="h2list" data-pane="list" hidden>'
+             + ('<label class="hide-found"><input type="checkbox" id="egg-hide"> Masquer ceux que j\'ai trouvés</label>' if check else "")
+             + f'<div id="eggs">{"".join(groups)}</div></div>')
+    return f'<div class="hunt2" data-check="{int(check)}">{bar}{mapv}{listv}</div>'
 
 
 MAP_CSS = """

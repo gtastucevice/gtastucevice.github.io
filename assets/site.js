@@ -156,3 +156,49 @@
   if (location.hash.indexOf('#egg-') === 0) setTimeout(function () { reveal(location.hash.slice(5)); }, 50);
   filter();
 })();
+
+/* ---------- Chasse aux secrets, version simple (23/11) : Carte | Liste, fiche au toucher d'un repère ---------- */
+(function () {
+  var H = document.querySelector('.hunt2'); if (!H) return;
+  var hd = document.querySelector('header'); function hh() { if (hd) H.style.setProperty('--hh', hd.offsetHeight + 'px'); } hh(); addEventListener('resize', hh);
+  var panes = { map: H.querySelector('[data-pane=map]'), list: H.querySelector('[data-pane=list]') }, segs = H.querySelectorAll('.seg button');
+  var sheet = document.getElementById('h2sheet'), body = document.getElementById('h2body');
+  function view(v) {
+    panes.map.hidden = v !== 'map'; panes.list.hidden = v !== 'list';
+    segs.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === v)); });
+    if (v !== 'map') close();
+    if (H.getBoundingClientRect().top < 0) H.scrollIntoView({ block: 'start' });
+  }
+  function open(id, zoom) {
+    var egg = document.getElementById('egg-' + id); if (!egg) return;
+    var d = egg.querySelector('details'), found = egg.classList.contains('found');
+    body.innerHTML = '<div class="egg-top">' + egg.querySelector('.egg-top').innerHTML + '</div><h3>' + egg.querySelector('h4').innerHTML + '</h3>'
+      + (d ? [].slice.call(d.children).filter(function (x) { return x.tagName !== 'SUMMARY'; }).map(function (x) { return x.outerHTML; }).join('') : '')
+      + (H.dataset.check === '1' ? '<button type="button" class="h2check' + (found ? ' on' : '') + '" data-id="' + id + '">' + (found ? '✓ Trouvé' : '✅ Je l\'ai trouvé') + '</button>' : '');
+    sheet.hidden = false;
+    H.querySelectorAll('.map .pin').forEach(function (p) { p.classList.toggle('sel', p.dataset.id === id); });
+    var fig = H.querySelector('[data-map]'), pin = H.querySelector('.map .pin[data-id="' + id + '"]');
+    if (zoom && fig && fig.gtvZoomTo && pin) { var m = /translate\(([-\d.]+)[ ,]+([-\d.]+)\)/.exec(pin.getAttribute('transform')); if (m) fig.gtvZoomTo(+m[1], +m[2]); }
+  }
+  function close() { sheet.hidden = true; H.querySelectorAll('.map .pin.sel').forEach(function (p) { p.classList.remove('sel'); }); }
+  H.addEventListener('click', function (ev) {
+    var t = ev.target;
+    var vb = t.closest('[data-v]'); if (vb) { view(vb.dataset.v); return; }
+    var tm = t.closest('.tomap'); if (tm) { view('map'); open(tm.dataset.id, true); return; }
+    var pin = t.closest('.map .pin'); if (pin) { ev.preventDefault(); open(pin.dataset.id); return; }
+    if (t.closest('.h2x')) { close(); return; }
+    var sb = t.closest('.h2check'); if (sb) { var c = document.querySelector('#egg-' + sb.dataset.id + ' .check'); if (c) { c.click(); open(sb.dataset.id); } }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  var eggs = [].slice.call(H.querySelectorAll('.egg')), hide = document.getElementById('egg-hide');
+  function sync() {
+    var n = eggs.filter(function (e) { return e.classList.contains('found'); }).length, el = document.getElementById('h2n');
+    if (el) { el.textContent = n + '/' + eggs.length; document.getElementById('h2fill').style.width = (eggs.length ? n / eggs.length * 100 : 0) + '%'; }
+    if (hide) { eggs.forEach(function (e) { e.hidden = hide.checked && e.classList.contains('found'); });
+      H.querySelectorAll('.egg-group').forEach(function (g) { g.hidden = !g.querySelector('.egg:not([hidden])'); }); }
+  }
+  if (hide) hide.addEventListener('change', sync);
+  new MutationObserver(sync).observe(H, { subtree: true, attributes: true, attributeFilter: ['class'] });
+  sync();
+  if (location.hash.indexOf('#egg-') === 0) setTimeout(function () { open(location.hash.slice(5), true); }, 80);
+})();

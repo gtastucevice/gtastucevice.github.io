@@ -182,7 +182,7 @@ a.brand i{font-family:'Archivo Black',sans-serif;font-style:normal;text-transfor
 @media (max-width:640px){a.brand i{font-size:17px}}
 
 /* ---------- Mobile / web app (23/11) : barre d'onglets en bas, pas de défilement horizontal ---------- */
-html,body{overflow-x:hidden}
+html,body{overflow-x:clip}
 .head>*{min-width:0;max-width:100%}
 .tabbar{display:none}
 @media (max-width:640px){
@@ -203,3 +203,25 @@ html,body{overflow-x:hidden}
 .authorbox .aidea{margin-top:8px}.authorbox .aidea a{color:var(--yel);font-weight:700}
 .faq{display:grid;gap:10px;margin:0 0 18px}.fq{border:1px solid var(--line);border-radius:14px;background:var(--night2);padding:0 16px}.fq summary{cursor:pointer;font-weight:700;padding:14px 0;min-height:44px;list-style-position:inside}.fq p{margin:0 0 12px;color:var(--soft)}.fq a{color:var(--teal);font-weight:700}
 .box img.romeo{width:160px;height:160px}@media (max-width:640px){.box img.romeo{float:none;display:block;margin:0 auto 14px;width:150px;height:150px}}
+
+/* Chasse aux secrets simple (23/11) */
+.hunt2{--hh:64px}
+.h2bar{position:sticky;top:var(--hh);z-index:8;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;margin:0 0 12px;background:var(--night)}
+.seg{display:inline-flex;background:var(--night2);border:1px solid var(--line);border-radius:999px;padding:4px}
+.seg button{min-height:40px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:var(--soft);font:700 15px Inter,sans-serif;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--pink);color:var(--night)}
+.h2n{display:flex;align-items:center;gap:8px;color:var(--soft);font-weight:700;font-size:14px}.h2n b{color:var(--yel);font-size:18px}
+.h2bar-fill{display:inline-block;width:90px;height:8px;border-radius:9px;background:var(--line);overflow:hidden}.h2bar-fill i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--yel));transition:width .3s}
+.hunt2 .map svg{max-width:560px}.hunt2 .map .pin.sel .dot{stroke:#FFE45C;stroke-width:4}
+.h2loose{text-align:center;color:var(--soft);font-size:14px;margin:-8px 0 10px}.linkbtn{background:none;border:0;color:var(--teal);font:700 14px Inter,sans-serif;text-decoration:underline;cursor:pointer;padding:6px}
+.h2sheet{position:fixed;left:8px;right:8px;bottom:calc(72px + env(safe-area-inset-bottom));z-index:60;max-height:50vh;overflow:auto;background:var(--night2);border:1px solid var(--pink2);border-radius:20px;padding:18px 18px 16px;box-shadow:0 -10px 40px rgba(0,0,0,.5)}
+.h2sheet h3{margin:8px 34px 8px 0;font-size:20px}.h2sheet p{color:var(--soft);margin:0 0 8px}.h2sheet .src{color:var(--mute);font-size:13px}
+.h2x{position:absolute;top:8px;right:10px;width:40px;height:40px;border:0;border-radius:50%;background:var(--line);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.h2check{width:100%;min-height:48px;margin-top:8px;border:0;border-radius:14px;background:var(--teal);color:var(--night);font:800 16px Inter,sans-serif;cursor:pointer}.h2check.on{background:var(--line);color:var(--teal)}
+@media (min-width:900px){.h2sheet{left:auto;right:24px;bottom:24px;width:380px}}
+.hunt2 .egg-group{margin:0 0 16px}.hunt2 .zg{font-size:18px;margin:14px 0 8px}
+.hunt2 .eggs{display:grid;grid-template-columns:1fr;gap:8px}@media (min-width:900px){.hunt2 .eggs{grid-template-columns:1fr 1fr}}
+.hunt2 .egg{padding:12px 14px}.hunt2 .egg h4{font-size:16px;margin:6px 0}.hunt2 .egg details summary{font-size:14px}
+.hunt2 .egg .check{min-height:36px;padding:0 14px;font-size:14px;margin-right:8px}
+.tomap{min-height:36px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--teal);font:700 14px Inter,sans-serif;cursor:pointer;margin-top:6px}
+.hide-found{display:flex;align-items:center;gap:8px;color:var(--soft);font-size:14px;margin:0 0 10px}
