@@ -156,12 +156,12 @@ SEARCH_ICO = '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-h
 def nav_html(prefix="", current=""):
     cur = lambda h: ' aria-current="page"' if h == current else ""
     return (f'<nav aria-label="Navigation principale">\n'
-            f'<a class="nav-search" href="{prefix}recherche.html" aria-label="Rechercher"{cur("recherche.html")}>{SEARCH_ICO}<span>Rechercher</span></a>\n'
-            f'<a href="{prefix}actus.html"{cur("actus.html")}>Actus</a>\n'
+            f'<a class="nav-search tb-dup" href="{prefix}recherche.html" aria-label="Rechercher"{cur("recherche.html")}>{SEARCH_ICO}<span>Rechercher</span></a>\n'
+            f'<a class="tb-dup" href="{prefix}actus.html"{cur("actus.html")}>Actus</a>\n'
             f'<a href="{prefix}index.html#guides">Guides</a>\n'
-            f'<a href="{prefix}gta-6-carte.html"{cur("gta-6-carte.html")}>Carte</a>\n'
+            f'<a class="tb-dup" href="{prefix}gta-6-carte.html"{cur("gta-6-carte.html")}>Carte</a>\n'
             f'<a class="nav-cheat" href="{prefix}gta-6-codes-triche.html"{cur("gta-6-codes-triche.html")}><span class="nm">Codes de t</span><span class="nmt">T</span>riche</a>\n'
-            f'<a href="{prefix}index.html#chasse">Chasse<span class="nm"> aux secrets</span></a>\n'
+            f'<a class="tb-dup" href="{prefix}index.html#chasse">Chasse<span class="nm"> aux secrets</span></a>\n'
             f'<a href="{prefix}matos.html"{cur("matos.html")}>Le matos</a>\n'
             f'<a class="btn" href="{prefix}index.html#newsletter">Newsletter</a>\n</nav>')
 
@@ -1207,6 +1207,22 @@ HEAD_ASSETS = ('<link rel="stylesheet" href="/assets/motion.css">\n<link rel="st
                "<script>try{if(localStorage.getItem('gtv_motion')==='off')document.documentElement.classList.add('no-motion')}catch(e){}</script>\n"
                '<script src="/assets/motion.js" defer></script>\n<script src="/assets/site.js" defer></script>')
 
+ICO = {
+    "home": '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+    "actus": '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h10M7 17h6"/>',
+    "carte": '<path d="M9 4l6 2 6-2v16l-6 2-6-2-6 2V6z"/><path d="M9 4v16M15 6v16"/>',
+    "secrets": '<circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/>',
+    "search": '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/>'}
+TABS = [("home", "Accueil", "/index.html"), ("actus", "Actus", "/actus.html"), ("carte", "Carte", "/gta-6-carte.html"),
+        ("secrets", "Secrets", "/index.html#chasse"), ("search", "Chercher", "/recherche.html")]
+
+
+def tabbar_html(page):
+    cur = {"index.html": "home", "actus.html": "actus", "gta-6-carte.html": "carte", "recherche.html": "search"}.get(page, "actus" if "/actus/" in page else "")
+    return ('<nav class="tabbar" aria-label="Navigation rapide">' + "".join(
+        f'<a href="{h}"{" aria-current=\"page\"" if k == cur else ""}><svg viewBox="0 0 24 24" aria-hidden="true">{ICO[k]}</svg><span>{n}</span></a>'
+        for k, n, h in TABS) + '</nav>')
+
 
 def all_pages():
     files = [os.path.join(ROOT, f) for f in os.listdir(ROOT) if f.endswith(".html")]
@@ -1222,6 +1238,9 @@ def inject_assets():
         t = t.replace("</head>", HEAD_ASSETS + "\n</head>", 1)
         if 'class="skip"' not in t:
             t = re.sub(r"<body>\n?", '<body>\n<a class="skip" href="#contenu">Aller au contenu</a>\n', t, count=1)
+        t = re.sub(r'<nav class="tabbar".*?</nav>\n?', "", t, flags=re.S)
+        rel = os.path.relpath(f, ROOT).replace(os.sep, "/")
+        t = t.replace("</body>", tabbar_html(rel if not rel.startswith("actus/") else "/actus/" + rel) + "\n</body>", 1)
         if t != o:
             open(f, "w", encoding="utf-8").write(t)
 

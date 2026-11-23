@@ -169,12 +169,12 @@ mark{background:rgba(255,228,92,.3);color:inherit;border-radius:3px}
 <div class="wrap">
 <a class="brand" href="index.html" aria-label="GTASTUCE VICE, accueil"><img class="vico" src="assets/vico/tete.svg" alt="" width="46" height="40"><b>GTASTUCE</b><i>Vice</i></a>
 <nav aria-label="Navigation principale">
-<a class="nav-search" href="recherche.html" aria-label="Rechercher"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span>Rechercher</span></a>
-<a href="actus.html">Actus</a>
+<a class="nav-search tb-dup" href="recherche.html" aria-label="Rechercher"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span>Rechercher</span></a>
+<a class="tb-dup" href="actus.html">Actus</a>
 <a href="index.html#guides">Guides</a>
-<a href="gta-6-carte.html">Carte</a>
+<a class="tb-dup" href="gta-6-carte.html">Carte</a>
 <a class="nav-cheat" href="gta-6-codes-triche.html" aria-current="page"><span class="nm">Codes de t</span><span class="nmt">T</span>riche</a>
-<a href="index.html#chasse">Chasse<span class="nm"> aux secrets</span></a>
+<a class="tb-dup" href="index.html#chasse">Chasse<span class="nm"> aux secrets</span></a>
 <a href="matos.html">Le matos</a>
 <a class="btn" href="index.html#newsletter">Newsletter</a>
 </nav>
@@ -290,5 +290,6 @@ q.addEventListener('input',run);
 document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{const t=b.dataset.seq;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent='Copié !';setTimeout(()=>b.textContent='Copier le code',1500)}).catch(()=>{})}));
 try{const h=new URLSearchParams(location.search).get('q');if(h){q.value=h}}catch(e){}run()})();
 </script>
+<nav class="tabbar" aria-label="Navigation rapide"><a href="/index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Accueil</span></a><a href="/actus.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h10M7 17h6"/></svg><span>Actus</span></a><a href="/gta-6-carte.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l6 2 6-2v16l-6 2-6-2-6 2V6z"/><path d="M9 4v16M15 6v16"/></svg><span>Carte</span></a><a href="/index.html#chasse"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg><span>Secrets</span></a><a href="/recherche.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span>Chercher</span></a></nav>
 </body>
 </html>

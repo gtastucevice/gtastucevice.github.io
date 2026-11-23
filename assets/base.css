@@ -180,3 +180,19 @@ figure.capt figcaption{margin-top:6px;font-size:13px;color:#C9BFEA}figure.capt f
 a.brand{gap:7px}
 a.brand i{font-family:'Archivo Black',sans-serif;font-style:normal;text-transform:uppercase;font-size:22px;letter-spacing:.01em;color:#FF388D;text-shadow:2px 2px 0 #0B0420}
 @media (max-width:640px){a.brand i{font-size:17px}}
+
+/* ---------- Mobile / web app (23/11) : barre d'onglets en bas, pas de défilement horizontal ---------- */
+html,body{overflow-x:hidden}
+.head>*{min-width:0;max-width:100%}
+.tabbar{display:none}
+@media (max-width:640px){
+ header nav .tb-dup,header nav .btn{display:none}
+ header nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:100%;gap:0 16px;-webkit-overflow-scrolling:touch}
+ header nav::-webkit-scrollbar{display:none}
+ body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+ .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(23,10,51,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid #2E1A57;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+ .tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:48px;justify-content:center;color:#A99BD6;text-decoration:none;font:700 11px Inter,sans-serif}
+ .tabbar svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+ .tabbar a[aria-current=page]{color:#2EE6D6}
+ .tabbar a:active{color:#FFE45C}
+}
