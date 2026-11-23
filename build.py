@@ -1203,7 +1203,8 @@ def cheat_page():
 
 
 # ---------- Ressources communes injectées dans toutes les pages ----------
-HEAD_ASSETS = ('<link rel="stylesheet" href="/assets/motion.css">\n<link rel="stylesheet" href="/assets/base.css">\n'
+HEAD_ASSETS = ('<link rel="manifest" href="/manifest.webmanifest">\n<meta name="apple-mobile-web-app-capable" content="yes">\n<meta name="mobile-web-app-capable" content="yes">\n<meta name="apple-mobile-web-app-title" content="GTASTUCE">\n<meta name="apple-mobile-web-app-status-bar-style" content="black">\n'
+               '<link rel="stylesheet" href="/assets/motion.css">\n<link rel="stylesheet" href="/assets/base.css">\n'
                "<script>try{if(localStorage.getItem('gtv_motion')==='off')document.documentElement.classList.add('no-motion')}catch(e){}</script>\n"
                '<script src="/assets/motion.js" defer></script>\n<script src="/assets/site.js" defer></script>')
 
@@ -1234,6 +1235,7 @@ def inject_assets():
     for f in all_pages():
         t = open(f, encoding="utf-8").read()
         o = t
+        t = re.sub(r'<link rel="manifest" href="/manifest\.webmanifest">\n(?:<meta name="[^"]*" content="[^"]*">\n)*', "", t)
         t = re.sub(r'<link rel="stylesheet" href="/assets/motion\.css">\n(?:<link rel="stylesheet" href="/assets/base\.css">\n<script>try\{.*?</script>\n)?<script src="/assets/motion\.js" defer></script>\n(?:<script src="/assets/site\.js" defer></script>\n)?', "", t, flags=re.S)
         t = t.replace("</head>", HEAD_ASSETS + "\n</head>", 1)
         if 'class="skip"' not in t:

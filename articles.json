@@ -1612,11 +1612,19 @@
     }
    },
    "Plus tu maintiens R2 (RT), plus tu lances loin. Tourne le stick droit lentement : mouliner trop vite fait passer le leurre devant le poisson sans qu'il morde. Une petite vibration, c'est juste un poisson qui grignote : attends la grosse. Tu peux aussi couper la ligne pour abandonner une prise.",
+   {
+    "capture": "assets/captures/peche-gta-6-ferrer-bateau.jpg",
+    "legende": "On mouline depuis le bateau, au large des Keys : tourne le stick doucement pour ne pas perdre la prise."
+   },
    "Tu galères à tourner le stick ? Dans Paramètres > Jouabilité > Pêche, tu peux remplacer le moulinet au stick par un bouton maintenu ou des pressions répétées. Le guide d'Output Lag recommande l'option « pressions » si tu perds trop de poissons.",
    {
     "h2": "Les meilleurs spots pour débuter"
    },
    "Le ponton de Jason (des poissons nagent juste à côté, même la nuit), la pleine mer en bateau (plus tu t'éloignes de la côte, plus les prises sont nombreuses et grosses), les cercles violets que Cal t'ajoute sur la carte par SMS, et n'importe quel quai où la Concentration te montre des poissons.",
+   {
+    "capture": "assets/captures/peche-gta-6-prise-poisson-perroquet.jpg",
+    "legende": "Notre prise du jour : un poisson-perroquet (Sparisoma vert), pêché en pleine mer avec le leurre de départ."
+   },
    {
     "h2": "Ce qu'il faut savoir avant de t'y mettre"
    },
@@ -2276,6 +2284,18 @@
    "Premier conseil, donné par Red Bull Gaming : ne fais pas une fixette sur l'argent. Au début de l'histoire, tu seras forcément un peu juste, c'est voulu. Dépense dans l'utile (armes, améliorations de véhicule) et ne farme pas chaque dollar.",
    "1. Mets ton cash à l'abri. Si tu te fais arrêter ou tuer, tu peux perdre une partie de ce que tu as sur toi. Dans la chambre de Jason, une cachette sous le plancher sert de coffre en attendant d'avoir accès à la banque (BuckMe), selon GamerBolt.",
    "2. Les plongées au trésor dans les Keys. D'après OutputLag, c'est la meilleure source d'argent au début : environ 1 400 dollars par épave, quasiment sans risque. Vice cite aussi ces plongées parmi les meilleures méthodes.",
+   {
+    "capture": "assets/captures/plongee-gta-6-detecteur-metaux.jpg",
+    "legende": "Sous l'eau, sors le détecteur de métaux depuis la roue des objets pour repérer le coffre."
+   },
+   {
+    "capture": "assets/captures/plongee-gta-6-extraire-coffre.jpg",
+    "legende": "Coffre repéré : maintiens les touches indiquées pour l'extraire de l'épave."
+   },
+   {
+    "capture": "assets/captures/plongee-gta-6-epave-keys.jpg",
+    "legende": "Une épave au fond des Leonida Keys, le meilleur coin pour les plongées au trésor."
+   },
    "3. Revends des voitures volées. Selon Vice, c'est une méthode rapide dès le chapitre 1, puis auprès d'un receleur au chapitre 2.",
    "4. Supérettes : prends la caisse et file. IGGM conseille de ne pas t'acharner sur le coffre, la police arrive trop vite.",
    "5. Pense au dépôt : on ne peut pas déposer du cash par téléphone, il faut passer à un distributeur. Prévois ton trajet.",
