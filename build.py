@@ -170,7 +170,7 @@ def footer_inner(prefix=""):
     return (f'<div class="wrap">\n<div>\n<a class="brand" href="{prefix}index.html"><b>GTASTUCE</b><i>Vice</i></a>\n'
             '<small>Site de fans non officiel. Non affilié à Rockstar Games ni à Take-Two Interactive. Grand Theft Auto et les éléments associés sont des marques de Take-Two Interactive. Images : Rockstar Games (captures officielles), sauf mention contraire.</small>\n'
             '</div>\n<nav aria-label="Liens légaux">\n'
-            f'<a href="{prefix}a-propos.html">Qui sommes-nous</a>\n<a href="{prefix}contact.html">Contact</a>\n'
+            f'<a href="{prefix}gta-6-faq.html">FAQ</a>\n<a href="{prefix}a-propos.html">Qui sommes-nous</a>\n<a href="{prefix}contact.html">Contact</a>\n'
             f'<a href="{prefix}mentions-legales.html">Mentions légales</a>\n<a href="{prefix}mentions-legales.html#confidentialite">Confidentialité</a>\n'
             '<button class="motion-toggle" type="button" aria-pressed="false">Couper les animations</button>\n'
             '</nav>\n</div>')
@@ -554,7 +554,7 @@ FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 
 
 def topics_html(prefix=""):
-    return (f'<a href="{prefix}gta-6-codes-triche.html">Codes de triche</a>'
+    return (f'<a href="{prefix}gta-6-faq.html">FAQ</a><a href="{prefix}gta-6-codes-triche.html">Codes de triche</a>'
             + "".join(f'<a href="{prefix}{h["slug"]}.html">{e(h["nav"])}</a>' for h in HUBS))
 
 
@@ -1241,6 +1241,26 @@ def tabbar_html(page):
         for k, n, h in TABS) + '</nav>')
 
 
+def build_faq():
+    faq = json.load(open(os.path.join(ROOT, "faq.json"), encoding="utf-8"))
+    groups = []
+    for x in faq:
+        if x["g"] not in groups:
+            groups.append(x["g"])
+    body = ('<p class="lead">Les questions qu\'on se pose le plus sur GTA 6, avec une réponse courte et le guide complet pour aller plus loin. '
+            'Une question qui manque ? <a href="contact.html">Pose-la-moi</a>, je l\'ajoute.</p>')
+    for g in groups:
+        body += f'<h2>{e(g)}</h2><div class="faq">' + "".join(
+            f'<details class="fq"><summary>{e(x["q"])}</summary><p>{e(x["a"])}</p><p><a href="{e(x["l"])}">Lire le guide complet →</a></p></details>'
+            for x in faq if x["g"] == g) + "</div>"
+    ld = {"@context": "https://schema.org", "@type": "FAQPage", "url": f"{BASE}/gta-6-faq.html", "inLanguage": "fr-FR",
+          "mainEntity": [{"@type": "Question", "name": x["q"], "acceptedAnswer": {"@type": "Answer", "text": x["a"]}} for x in faq]}
+    open(os.path.join(ROOT, "gta-6-faq.html"), "w", encoding="utf-8").write(
+        simple_page("gta-6-faq.html", "FAQ GTA 6 : toutes les réponses à tes questions (consoles, online, codes, argent…)",
+                    "Consoles, mode online, taille, codes de triche, argent, sauvegarde, trophées : les réponses rapides aux questions les plus posées sur GTA 6.",
+                    "FAQ GTA 6 : tes questions, nos réponses", "La FAQ", body, ld))
+
+
 def all_pages():
     files = [os.path.join(ROOT, f) for f in os.listdir(ROOT) if f.endswith(".html")]
     return files + [os.path.join(ROOT, "actus", f) for f in os.listdir(os.path.join(ROOT, "actus")) if f.endswith(".html")]
@@ -1317,9 +1337,10 @@ def main():
     for f in os.listdir(out):
         if f.endswith(".html") and f not in keep:
             os.remove(os.path.join(out, f))
+    build_faq()
     inject_assets()
     newest = max(a.get("updated", a["date"]) for a in arts)[:10]
-    static = ["index.html", "gta-6-codes-triche.html", "actus.html", "matos.html", CADEAUX_SLUG] + [h["slug"] + ".html" for h in HUBS] + ["a-propos.html", "contact.html", "mentions-legales.html"]
+    static = ["index.html", "gta-6-codes-triche.html", "gta-6-faq.html", "actus.html", "matos.html", CADEAUX_SLUG] + [h["slug"] + ".html" for h in HUBS] + ["a-propos.html", "contact.html", "mentions-legales.html"]
     lm = lastmods(static, {"index.html": newest, "actus.html": newest, "gta-6-codes-triche.html": cheat_date, **{h["slug"] + ".html": hub_dates.get(h["slug"]) for h in HUBS}})
     urls = [(f"{BASE}/" if p == "index.html" else f"{BASE}/{p}", lm[p]) for p in static]
     urls += [(f"{BASE}/actus/{a['slug']}.html", a.get("updated", a["date"])[:10]) for a in arts]
