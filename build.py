@@ -228,6 +228,9 @@ def body_html(a):
             out.append(f'<h2 class="sec2" id="{sid}">{e(b["h2"])}</h2>')
         elif "steps" in b:
             out.append('<ol class="steps">' + "".join(f"<li><strong>{e(s['t'])}</strong>{e(s['d'])}</li>" for s in b["steps"]) + "</ol>")
+        elif "retenir" in b:  # tableau « À retenir » : {"retenir": [["Où", "..."], ["Prix", "..."]]}
+            rows = "".join(f'<tr><th scope="row">{e(r[0])}</th><td>{e(r[1])}</td></tr>' for r in b["retenir"])
+            out.append(f'<div class="retenir"><p class="rt">À retenir</p><table>{rows}</table></div>')
         elif "capture" in b:  # capture en jeu (PS5) : {"capture": "assets/captures/x.jpg", "legende": "...", "credit": "..."}
             leg = e(b.get("legende", ""))
             cr = e(b.get("credit", CAPTURE_CREDIT))
@@ -331,7 +334,7 @@ def page(a, arts, css, secrets_by_id):
         "dateModified": a.get("updated", a["date"]),
         "inLanguage": "fr-FR",
         "mainEntityOfPage": url,
-        "author": {"@type": "Organization", "name": "GTASTUCE VICE", "url": BASE + "/"},
+        "author": {"@type": "Person", "name": "Roméo", "url": BASE + "/a-propos.html#romeo", "description": AUTHOR_BIO, "worksFor": {"@type": "Organization", "name": "GTASTUCE VICE", "url": BASE + "/"}},
         "publisher": {"@type": "Organization", "name": "GTASTUCE VICE", "url": BASE + "/", "logo": {"@type": "ImageObject", "url": f"{BASE}/favicon-512.png"}},
     }
     crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -369,7 +372,7 @@ def page(a, arts, css, secrets_by_id):
 <main class="page" id="contenu"><div class="wrap">
 <article class="full">
 <a class="back" href="../actus.html">← Toutes les actus</a>
-<div class="meta"><span class="cat c-{e(a['cat'])}">{e(cat)}</span><time datetime="{e(a['date'])}">{fr_date(a['date'])}</time></div>
+<div class="meta"><span class="cat c-{e(a['cat'])}">{e(cat)}</span><time datetime="{e(a['date'])}">{fr_date(a['date'])}</time><span class="by">Par <a href="../a-propos.html#romeo">Roméo</a></span></div>
 <h1>{e(a['title'])}</h1>
 <p class="chapo">{e(a['chapo'])}</p>
 {upd}
@@ -382,6 +385,7 @@ def page(a, arts, css, secrets_by_id):
 {body}
 {aff_box(a)}
 <div class="srcs"><h2 class="h3">Sources</h2><ul>{srcs}</ul>{verif}</div>
+<aside class="authorbox"><img src="../assets/vico/icone.svg" alt="" width="56" height="56"><div><p class="an"><a href="../a-propos.html#romeo">Roméo</a> · fondateur de GTASTUCE VICE</p><p>{e(AUTHOR_BIO)}</p></div></aside>
 {cta}
 </article>
 <section class="related" aria-labelledby="rel-t"><h2 id="rel-t">À lire aussi</h2><div class="feed">{rel_html}</div></section>
@@ -585,9 +589,14 @@ def simple_page(path, title, desc, h1, kicker, body, ld=None, topics=True):
 """
 
 
+AUTHOR_BIO = ("Joueur PS5 depuis le premier jour de GTA 6, il teste les astuces en jeu dès qu'il peut et capture lui-même les images du site. "
+              "Quand une info n'est pas encore vérifiée, la source est citée et c'est écrit « à tester ».")
 ABOUT_BODY = """<p class="lead">GTASTUCE VICE, c'est le fil français de GTA 6 : l'actu, les astuces, les guides et les secrets de Leonida, expliqués simplement, en français et sans spoiler.</p>
 <div class="box"><h2 style="margin-top:0">Qui on est</h2>
 <p>Un projet de joueurs passionnés, lancé pour la sortie de GTA 6. On joue sur PS5, on suit tout ce qui sort sur le jeu, et on le partage sur ce site et sur TikTok, Instagram et YouTube (@gtastucevice).</p></div>
+<div class="box" id="romeo"><h2 style="margin-top:0">Roméo, le fondateur</h2>
+<p>Salut, moi c'est Roméo. J'ai lancé GTASTUCE VICE pour la sortie de GTA 6 : je joue sur PS5, je fouille Leonida, je filme mes parties et je teste les astuces avant de les publier quand c'est possible. Les vidéos gameplay et les captures « Capture en jeu : GTASTUCE VICE » du site viennent de mes parties.</p>
+<p>Une info fausse, un secret que tu as trouvé ? Écris-moi via la page <a href="contact.html">Contact</a> ou sur TikTok <a href="https://www.tiktok.com/@gtastucevice" target="_blank" rel="noopener">@gtastucevice</a>.</p></div>
 <div class="box"><h2 style="margin-top:0">Comment on travaille</h2>
 <ul>
 <li><strong>On cite toujours nos sources.</strong> Chaque article se termine par la liste des médias d'où viennent les infos, pour que tu puisses vérifier.</li>
