@@ -385,7 +385,7 @@ def page(a, arts, css, secrets_by_id):
 {body}
 {aff_box(a)}
 <div class="srcs"><h2 class="h3">Sources</h2><ul>{srcs}</ul>{verif}</div>
-<aside class="authorbox"><img src="../assets/romeo.jpg" alt="Roméo, fondateur de GTASTUCE VICE" width="64" height="64" loading="lazy"><div><p class="an"><a href="../a-propos.html#romeo">Roméo</a> · fondateur de GTASTUCE VICE</p><p>{e(AUTHOR_BIO)}</p></div></aside>
+<aside class="authorbox"><img src="../assets/romeo.jpg" alt="Roméo, fondateur de GTASTUCE VICE" width="64" height="64" loading="lazy"><div><p class="an"><a href="../a-propos.html#romeo">Roméo</a> · fondateur de GTASTUCE VICE</p><p>{e(AUTHOR_BIO)}</p><p class="aidea"><a href="../contact.html">Une idée pour le site ? Écris-moi</a></p></div></aside>
 {cta}
 </article>
 <section class="related" aria-labelledby="rel-t"><h2 id="rel-t">À lire aussi</h2><div class="feed">{rel_html}</div></section>
@@ -589,14 +589,17 @@ def simple_page(path, title, desc, h1, kicker, body, ld=None, topics=True):
 """
 
 
-AUTHOR_BIO = ("Joueur PS5 depuis le premier jour de GTA 6, il teste les astuces en jeu dès qu'il peut et capture lui-même les images du site. "
-              "Quand une info n'est pas encore vérifiée, la source est citée et c'est écrit « à tester ».")
+AUTHOR_BIO = ("Fan de jeux vidéo depuis tout petit (ça a commencé en cachette, sur la console de ses grands frères), il a lancé GTASTUCE VICE pour créer le site qu'il aurait aimé avoir. "
+              "Il joue sur PS5, teste les astuces en jeu dès qu'il peut et capture lui-même les images. Une info pas encore vérifiée est toujours sourcée et marquée « à tester ».")
 ABOUT_BODY = """<p class="lead">GTASTUCE VICE, c'est le fil français de GTA 6 : l'actu, les astuces, les guides et les secrets de Leonida, expliqués simplement, en français et sans spoiler.</p>
 <div class="box"><h2 style="margin-top:0">Qui on est</h2>
 <p>Un projet de joueurs passionnés, lancé pour la sortie de GTA 6. On joue sur PS5, on suit tout ce qui sort sur le jeu, et on le partage sur ce site et sur TikTok, Instagram et YouTube (@gtastucevice).</p></div>
 <div class="box" id="romeo"><img class="romeo" src="assets/romeo.jpg" alt="Roméo, fondateur de GTASTUCE VICE" width="120" height="120"><h2 style="margin-top:0">Roméo, le fondateur</h2>
-<p>Salut, moi c'est Roméo. J'ai lancé GTASTUCE VICE pour la sortie de GTA 6 : je joue sur PS5, je fouille Leonida, je filme mes parties et je teste les astuces avant de les publier quand c'est possible. Les vidéos gameplay et les captures « Capture en jeu : GTASTUCE VICE » du site viennent de mes parties.</p>
-<p>Une info fausse, un secret que tu as trouvé ? Écris-moi via la page <a href="contact.html">Contact</a> ou sur TikTok <a href="https://www.tiktok.com/@gtastucevice" target="_blank" rel="noopener">@gtastucevice</a>.</p></div>
+<p>Salut, moi c'est Roméo ! Fan de jeux vidéo depuis tout petit : tout a commencé en cachette, sur la console de mes grands frères (chut).</p>
+<p>Aujourd'hui, j'ai décidé de lancer le site que j'aurais aimé avoir : un endroit qui regroupe tout ce qu'il faut savoir sur un jeu, les astuces, les secrets, la carte, les actus, expliqués simplement et en français. Pour chaque page, je me mets à ta place : qu'est-ce que j'aurais voulu trouver, là, tout de suite, manette en main ?</p>
+<p>Pour l'instant, GTASTUCE VICE, c'est <strong>le site des gamers de GTA 6</strong>. Et ensuite, d'autres jeux ? Pourquoi pas…</p>
+<p>Je joue sur PS5, je filme mes parties et je teste les astuces en jeu quand c'est possible : les images « Capture en jeu : GTASTUCE VICE » viennent de mes parties.</p>
+<p><strong>Le site est en plein développement.</strong> Une idée pour l'améliorer, un secret à partager, une erreur à signaler ? Je suis preneur : écris-moi via la page <a href="contact.html">Contact</a> ou sur TikTok <a href="https://www.tiktok.com/@gtastucevice" target="_blank" rel="noopener">@gtastucevice</a>.</p></div>
 <div class="box"><h2 style="margin-top:0">Comment on travaille</h2>
 <ul>
 <li><strong>On cite toujours nos sources.</strong> Chaque article se termine par la liste des médias d'où viennent les infos, pour que tu puisses vérifier.</li>
