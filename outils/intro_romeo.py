@@ -5,6 +5,8 @@ Usage :
   python3 outils/intro_romeo.py clip  <video.MOV> <debut_s> <fin_s> <mots.json> <sortie.mp4>
       mots.json : [["Arrête", 6.1, 6.4], ["tout.", 6.4, 6.7], ...]  (secondes, temps de la vidéo source)
   python3 outils/intro_romeo.py joindre <intro.mp4> <video_du_jour.mp4> <sortie.mp4> [fin.mp4]
+  python3 outils/intro_romeo.py habiller <intro.mp4> <video_du_jour.mp4> <sortie.mp4>   (+ riser sous l'intro et swoosh sur la coupe,
+      effets dans $GTV_SFX : riser_intro.wav, swoosh_cut.mp3)
 Les vidéos source de Roméo et les intros découpées restent sur le Drive (dossier « GTASTUCE VICE / Intros Roméo »), jamais dans le dépôt."""
 import json, os, subprocess, sys, tempfile
 HERE = os.path.dirname(os.path.abspath(__file__)); FONTS = os.path.join(HERE, "fonts")
@@ -45,6 +47,28 @@ def clip(src, t0, t1, words_json, out):
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(t0), "-t", str(d), "-i", src, "-vf", vf, "-af", af, "-ac", "2",
                         "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-c:a", "aac", "-b:a", "160k", out], check=True)
 
+SFX = os.environ.get("GTV_SFX", "/tmp/gtv_sfx")  # effets Pixabay fournis par Roméo (jamais dans le dépôt)
+
+
+def dur(f):
+    return float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f], capture_output=True, text=True).stdout)
+
+
+def habiller(intro, video, out):
+    """Intro + vidéo, avec une montée (riser) discrète sous l'intro qui culmine à la coupe, puis un swoosh sur la coupe."""
+    tmp = out + ".tmp.mp4"; joindre(intro, video, tmp)
+    cut = dur(intro); riser = os.path.join(SFX, "riser_intro.wav"); sw = os.path.join(SFX, "swoosh_cut.mp3")
+    if not (os.path.exists(riser) and os.path.exists(sw)):
+        os.replace(tmp, out); return
+    rs = max(0.0, dur(riser) - cut)
+    fc = (f"[1:a]atrim=start={rs:.2f},asetpts=PTS-STARTPTS,volume=0.30,afade=t=in:d=0.6[r];"
+          f"[2:a]adelay={int(max(0, cut - 0.12) * 1000)}|{int(max(0, cut - 0.12) * 1000)},volume=0.75[s];"
+          "[0:a][r][s]amix=inputs=3:normalize=0:duration=first[a]")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", tmp, "-i", riser, "-i", sw, "-filter_complex", fc, "-map", "0:v", "-map", "[a]",
+                    "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", out], check=True)
+    os.remove(tmp)
+
+
 def joindre(intro, video, out, fin=None):
     ins = [intro, video] + ([fin] if fin else [])
     args = sum([["-i", x] for x in ins], [])
@@ -56,3 +80,4 @@ def joindre(intro, video, out, fin=None):
 if __name__ == "__main__":
     if sys.argv[1] == "clip": clip(*sys.argv[2:7])
     elif sys.argv[1] == "joindre": joindre(*sys.argv[2:])
+    elif sys.argv[1] == "habiller": habiller(*sys.argv[2:5])
