@@ -202,3 +202,4 @@ html,body{overflow-x:hidden}
 .authorbox img{border-radius:50%;object-fit:cover;flex:none;border:2px solid var(--pink2)}.box img.romeo{float:right;width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 0 10px 14px;border:3px solid var(--pink2)}
 .authorbox .aidea{margin-top:8px}.authorbox .aidea a{color:var(--yel);font-weight:700}
 .faq{display:grid;gap:10px;margin:0 0 18px}.fq{border:1px solid var(--line);border-radius:14px;background:var(--night2);padding:0 16px}.fq summary{cursor:pointer;font-weight:700;padding:14px 0;min-height:44px;list-style-position:inside}.fq p{margin:0 0 12px;color:var(--soft)}.fq a{color:var(--teal);font-weight:700}
+.box img.romeo{width:160px;height:160px}@media (max-width:640px){.box img.romeo{float:none;display:block;margin:0 auto 14px;width:150px;height:150px}}
