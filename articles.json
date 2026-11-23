@@ -1,5 +1,127 @@
 [
  {
+  "slug": "guide-wain-scanner-gta-6",
+  "date": "2026-11-23T08:45:00+01:00",
+  "cat": "guide",
+  "title": "WAiNK dans GTA 6 : comment scanner animaux, véhicules et monuments (et pourquoi le faire)",
+  "chapo": "Dans GTA 6, tu scannes les animaux, les véhicules et les monuments avec l'application WAiNK de ton téléphone. Selon ActuGaming, la manette vibre plus fort quand tu t'approches d'un élément scannable, et une même voiture avec une autre peinture est à rescanner.",
+  "img": "assets/rs_grassrivers_alligators.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-carte"
+  ],
+  "body": [
+   "WAiNK est l'application de ton téléphone dans GTA 6, et c'est elle qui sert à scanner ce que tu croises à Leonida. Ce guide reprend les conseils d'ActuGaming, sans aucun spoiler d'histoire. Ce sont des conseils d'auteur, pas des règles officielles de Rockstar : on les vérifiera en jeu.",
+   {
+    "h2": "C'est quoi WAiNK dans GTA 6 ?"
+   },
+   "WAiNK est l'application de scan du téléphone de Jason et Lucia. Tu l'utilises pour identifier ce qui t'entoure : animaux, véhicules, sculptures et monuments. Selon ActuGaming, c'est l'un des réflexes à prendre dès le début.",
+   {
+    "h2": "Quoi scanner en priorité ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Les animaux : ",
+      "d": "à scanner dès que tu en croises un, c'est la priorité donnée par ActuGaming."
+     },
+     {
+      "t": "Les véhicules : ",
+      "d": "idem, et pense à rescanner un même modèle quand il a une peinture particulière."
+     },
+     {
+      "t": "Les monuments et sculptures : ",
+      "d": "la manette te guide quand tu es proche."
+     }
+    ]
+   },
+   {
+    "h2": "Comment savoir qu'un élément est scannable ?"
+   },
+   "Écoute ta manette : elle vibre plus fort quand tu t'approches d'un monument, d'une sculpture ou d'un autre élément à scanner. Les notifications de WAiNK vont dans le même sens. Si ça vibre sans rien de visible autour, prends le temps de regarder autour de toi.",
+   {
+    "h2": "Faut-il rescanner un véhicule avec une autre couleur ?"
+   },
+   "Oui, selon ActuGaming : un même modèle avec une peinture particulière compte à part et doit être rescanné. À tester en jeu pour voir ce que ça rapporte exactement.",
+   {
+    "h2": "Pourquoi scanner autant ?"
+   },
+   "Le scan te fait découvrir Leonida à ton rythme : tu t'arrêtes pour regarder un animal ou un monument au lieu de filer d'une mission à l'autre. Il va bien avec Snapmatic, qui montre des lieux insolites, et avec la Concentration, qui met en surbrillance ce qui t'entoure.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "WAiNK est-il obligatoire ? Rien ne l'indique : c'est un outil de découverte, pas une étape imposée.",
+   "Faut-il scanner à pied ou en voiture ? Les deux marchent d'après les conseils relayés, mais à pied tu repères mieux les animaux.",
+   "Un animal peut-il m'échapper ? À tester en jeu : prends le réflexe de scanner dès que tu en vois un."
+  ],
+  "sources": [
+   {
+    "t": "ActuGaming",
+    "u": "https://www.actugaming.net/gta-6-guide-debutant-conseils-834089/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-23-scooterbros-remorquage-livraison-gta-6",
+  "date": "2026-11-23T08:50:00+01:00",
+  "cat": "astuce",
+  "title": "Scooterbros dans GTA 6 : comment faire livrer ou remorquer ta voiture presque partout",
+  "chapo": "Scooterbros est un service payant de GTA 6 qui remorque et livre un véhicule presque n'importe où. Selon ActuGaming, il est inutilisable quand tu es recherché par la police.",
+  "img": "assets/rs_kalaga_canyon_motos.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-police"
+  ],
+  "body": [
+   "Ta voiture est restée à l'autre bout de Leonida ? Scooterbros peut te la ramener. D'après ActuGaming, c'est un service de remorquage et de livraison, payant, qui marche presque partout.",
+   {
+    "h2": "À quoi sert Scooterbros dans GTA 6 ?"
+   },
+   "Scooterbros remorque et livre un véhicule presque partout sur la carte. C'est pratique quand tu as laissé une voiture loin ou abîmée, ou quand tu veux la récupérer sans refaire le trajet.",
+   {
+    "h2": "Est-ce gratuit ?"
+   },
+   "Non, le service est payant. Le tarif exact n'est pas donné par ActuGaming : à vérifier en jeu avant de l'utiliser sans compter.",
+   {
+    "h2": "Peut-on l'utiliser quand la police te cherche ?"
+   },
+   "Non, Scooterbros est inutilisable pendant une recherche. Sème d'abord les flics, c'est expliqué dans notre guide.",
+   {
+    "h2": "Quelles autres astuces de déplacement ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Voyage rapide : ",
+      "d": "Paradise Taxi au début, puis RydeMe à partir du chapitre 2 d'après ActuGaming."
+     },
+     {
+      "t": "Plusieurs garages : ",
+      "d": "le nombre de véhicules que tu peux garder dépend de tes garages."
+     },
+     {
+      "t": "Une voiture par usage : ",
+      "d": "asphalte, tout-terrain, course, deux-roues."
+     }
+    ]
+   },
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Scooterbros livre-t-il partout ? Presque partout, selon ActuGaming.",
+   "Combien ça coûte ? Le prix n'est pas précisé dans la source : à tester en jeu.",
+   "Ça marche en fuite ? Non, pas quand tu es recherché."
+  ],
+  "sources": [
+   {
+    "t": "ActuGaming",
+    "u": "https://www.actugaming.net/gta-6-guide-debutant-conseils-834089/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "2026-11-22-oeufs-sommet-tour-gta-6",
   "date": "2026-11-22T19:40:00+01:00",
   "cat": "secret",
