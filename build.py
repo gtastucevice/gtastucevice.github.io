@@ -215,12 +215,87 @@ EXTRA_CSS = """<style>
 </style>"""
 
 
+# ---------- Images d'illustration ajoutées automatiquement dans les articles longs (moins de « mur de texte ») ----------
+ILLUS = {
+    "assets/rs_police_pont.jpg": ("Course-poursuite avec la police sur un pont de Vice City", "police flic étoile recherch poursuite semer fuite arrêt"),
+    "assets/rs_grassrivers_poursuite.jpg": ("Pick-up poursuivi par la police dans les marais de Grassrivers", "police poursuite marais grassrivers fuite hélico"),
+    "assets/rs_grassrivers_alligators.jpg": ("Alligators dans les marais de Grassrivers", "alligator marais grassrivers faune animaux bigfoot chasse"),
+    "assets/rs_grassrivers_hydroglisseur.jpg": ("Hydroglisseur dans les marais", "hydroglisseur bateau marais grassrivers pelican"),
+    "assets/rs_grassrivers_pilotis.jpg": ("Restaurants sur pilotis à Grassrivers", "grassrivers pilotis restaurant lieu crabe"),
+    "assets/rs_jason_lucia_braquage.jpg": ("Jason et Lucia devant un coffre-fort", "braquage argent coffre billet banque cash dollars"),
+    "assets/rs_jason_lucia_voiture.jpg": ("Jason et Lucia en décapotable", "voiture conduite duo jason lucia décapotable"),
+    "assets/rs_jason_lucia.jpg": ("Jason et Lucia", "jason lucia personnage histoire duo"),
+    "assets/rs_kalaga_canyon_motos.jpg": ("Motos sur une route de Mount Kalaga", "moto route kalaga canyon conduite course"),
+    "assets/rs_kalaga_helico_news.jpg": ("Hélicoptère au-dessus des collines", "hélico hélicoptère avion collines kalaga"),
+    "assets/rs_kalaga_kayak.jpg": ("Kayak sous un pont ferroviaire", "kayak nature activité rivière kalaga"),
+    "assets/rs_keys_aerien.jpg": ("Hydravion au-dessus des Leonida Keys", "keys hydravion avion île pont carte"),
+    "assets/rs_keys_bar.jpg": ("Bar de plage dans les Keys", "bar boire keys plage manger soigner"),
+    "assets/rs_keys_bateaux_fete.jpg": ("Fête en bateaux et jet-skis", "bateau jet-ski fête mer chien pêche large"),
+    "assets/rs_keys_plongee.jpg": ("Plongée près d'un récif", "plongée plonger épave trésor sous l'eau récif"),
+    "assets/rs_leonida_iguane.jpg": ("Iguane, île au loin", "iguane faune animal oiseau scanner wain détail"),
+    "assets/rs_portgellhorn_motel.jpg": ("Motel néon de Port Gellhorn", "port gellhorn motel nuit planque dormir"),
+    "assets/rs_portgellhorn_banlieue.jpg": ("Quartier de mobil-homes à Port Gellhorn", "port gellhorn campagne quartier maison"),
+    "assets/rs_vicecity_car.jpg": ("Voiture dans une rue de Vice City", "voiture véhicule garage conduire"),
+    "assets/rs_vicecity_meeting_voitures.jpg": ("Meeting de voitures custom à Vice City", "voiture tuning custom personnalisation randy rare garage"),
+    "assets/rs_vicecity_gas_nuit.jpg": ("Station-service néon de nuit", "station essence supérette magasin nuit zombix"),
+    "assets/rs_vicecity_marina.jpg": ("Marina de Vice City", "marina bateau yacht argent luxe pêche ponton"),
+    "assets/rs_vicecity_neon_nuit.jpg": ("Vice Beach de nuit", "nuit néon boîte club radio musique fête police flic"),
+    "assets/rs_vicecity_centre_nuit.jpg": ("Centre-ville de Vice City la nuit", "ville nuit activité centre arcade"),
+    "assets/rs_vicecity_plage.jpg": ("Plage de Vice City", "plage soleil détente"),
+    "assets/rs_vicecity_piscine_hotel.jpg": ("Piscine d'hôtel vue du ciel", "hôtel luxe piscine propriété maison"),
+    "assets/rs_vicecity_quartier.jpg": ("Quartier d'hôtels de Vice City", "quartier ville lieu exploration carte"),
+    "assets/rs_vicecity_rue_fresques.jpg": ("Rue sous l'autoroute, fresques et motos", "rue moto quartier gang"),
+    "assets/rs_vicecity_skyline_nuit.jpg": ("Skyline de Vice City la nuit", "vice city skyline carte nuit"),
+    "assets/rs_vicecity_tour_helico.jpg": ("Tours de Vice City au crépuscule", "tour vice city hélico antenne"),
+    "assets/rs_vicecity_sign.jpg": ("Panneau Vice City au coucher du soleil", "sortie précommande patch disque ventes"),
+    "assets/captures/peche-gta-6-ferrer-bateau.jpg": ("On mouline depuis le bateau, au large des Keys", "pêche pêcher poisson canne leurre"),
+    "assets/captures/plongee-gta-6-epave-keys.jpg": ("Une épave au fond des Leonida Keys", "épave plongée trésor sous l'eau"),
+    "assets/captures/carte-gta-6-key-lento-kenton.jpg": ("Key Lento sur la carte du jeu", "carte key lento keys map"),
+}
+
+
+def pick_illus(a, ctx, used):
+    words = (ctx + " " + a["title"]).lower()
+    ranked = []
+    for f, (alt, kw) in ILLUS.items():
+        if f in used or not os.path.exists(os.path.join(ROOT, f)):
+            continue
+        score = sum(2 if k in ctx.lower() else 1 for k in kw.split() if k in words)
+        ranked.append((score, int(hashlib.md5((a["slug"] + f).encode()).hexdigest()[:6], 16), f))
+    ranked.sort(reverse=True)
+    return ranked[0][2] if ranked and ranked[0][0] >= 2 else None
+
+
+def illus_html(f):
+    alt = ILLUS[f][0]
+    cr = CAPTURE_CREDIT if "/captures/" in f else "Image : Rockstar Games"
+    return (f'<figure class="capt illus">{img_html(f, "../", "hero", alt)}'
+            f'<figcaption>{e(alt)} · <span>{cr}</span></figcaption></figure>')
+
+
 def body_html(a):
     """Corps d'article : paragraphes, intertitres (sommaire auto), étapes numérotées, tableau de commandes PS5/Xbox."""
     out, toc, n = [], [], 0
+    texts = sum(1 for b in a["body"] if isinstance(b, str) or "steps" in b)
+    budget = 0 if texts < 4 else 1 if texts < 8 else 2 if texts < 13 else 3
+    used = {a.get("img")} | {b["capture"] for b in a["body"] if isinstance(b, dict) and "capture" in b}
+    since = 0
+    def maybe(ctx, need):
+        nonlocal budget, since
+        if budget > 0 and since >= need:
+            f = pick_illus(a, ctx, used)
+            if f:
+                used.add(f); budget -= 1; since = 0
+                out.append(illus_html(f))
     for b in a["body"]:
+        if isinstance(b, dict) and ("capture" in b or "controls" in b):
+            since = 0
+        if isinstance(b, dict) and "h2" in b:
+            maybe(b["h2"], 3)
         if isinstance(b, str):
             out.append(f"<p>{e(b)}</p>")
+            since += 1
+            maybe(b, 4)
         elif "h2" in b:
             n += 1
             sid = f"s{n}"
@@ -228,6 +303,7 @@ def body_html(a):
             out.append(f'<h2 class="sec2" id="{sid}">{e(b["h2"])}</h2>')
         elif "steps" in b:
             out.append('<ol class="steps">' + "".join(f"<li><strong>{e(s['t'])}</strong>{e(s['d'])}</li>" for s in b["steps"]) + "</ol>")
+            since += 2
         elif "retenir" in b:  # tableau « À retenir » : {"retenir": [["Où", "..."], ["Prix", "..."]]}
             rows = "".join(f'<tr><th scope="row">{e(r[0])}</th><td>{e(r[1])}</td></tr>' for r in b["retenir"])
             out.append(f'<div class="retenir"><p class="rt">À retenir</p><table>{rows}</table></div>')
