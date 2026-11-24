@@ -848,10 +848,12 @@ def carte_html(secrets):
             '<figcaption>Carte schématique dessinée par GTASTUCE VICE d\'après les six régions officielles : positions approximatives, à l\'échelle de la région. '
             'Touche un repère pour voir où et comment.</figcaption></figure>'
             '<aside class="spot-info" id="spot-info" aria-live="polite"><p class="si-hint">Touche un repère sur la carte pour voir ce qu\'il cache.</p></aside></div>'
-            '<h2>Zoom sur Key Lento, sur la vraie carte du jeu</h2><p>Nos captures de la carte en jeu (PS5), autour de Key Lento, là où démarre l\'aventure : la boutique de Kenton pour les plongées au trésor, et l\'épave Nuestra Señora de la Ética Laxa au large.</p>'
+            '<h2>Zoom sur Key Lento, sur la vraie carte du jeu</h2><p>Nos captures de la carte en jeu (PS5), autour de Key Lento, là où démarre l\'aventure (la boutique de Kenton et l\'épave Nuestra Señora de la Ética Laxa), puis l\'arrivée à Vice City par Little Cuba et Downtown.</p>'
             '<div class="cmaps">' + "".join(f'<figure><img src="assets/captures/{f}.jpg" alt="{e(a)}" loading="lazy" width="1280" height="715"><figcaption>{e(a)} · Capture en jeu : GTASTUCE VICE</figcaption></figure>'
             for f, a in [("carte-gta-6-key-lento-kenton", "Key Lento sur la carte du jeu, avec la fiche de Kenton (plongées au trésor)"),
-                         ("carte-gta-6-epave-nuestra-senora", "Le site de plongée Nuestra Señora de la Ética Laxa, au large de Key Lento")]) + '</div>'
+                         ("carte-gta-6-epave-nuestra-senora", "Le site de plongée Nuestra Señora de la Ética Laxa, au large de Key Lento"),
+                         ("carte-gta-6-little-cuba", "Arrivée dans Little Cuba par l'autoroute, avec Vice City au fond"),
+                         ("carte-gta-6-downtown-vice-city", "Entrée dans Downtown, le centre-ville de Vice City et ses tours")]) + '</div>'
             f'<h2>Tous les lieux, région par région</h2><div class="clists">{lists}</div>'
             f'<script>(function(){{var D={data},C={json.dumps({k: v for k, v in CARTE_CATS.items()}, ensure_ascii=False)},box=document.getElementById("spot-info");'
             'function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",\'"\':"&quot;"}[c]})}'
