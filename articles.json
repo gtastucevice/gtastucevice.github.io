@@ -1,5 +1,68 @@
 [
  {
+  "slug": "2026-11-24-bug-missing-persons-blocage-lucia-gta-6",
+  "date": "2026-11-24T19:40:00+01:00",
+  "cat": "astuce",
+  "title": "GTA 6 : bug « Missing Persons », comment éviter de rester bloqué sur Lucia au chapitre 3",
+  "chapo": "Au chapitre 3 de GTA 6, la quête secondaire « Missing Persons » (comté de Kelly) peut te laisser bloqué sur Lucia, sans retour possible sur Jason. Selon GAMINGbible, le bug persiste après la mise à jour 01.002.002 : fais des sauvegardes manuelles avant.",
+  "img": "assets/rs_jason_lucia_03.jpg",
+  "topics": [
+   "gta-6-debuter"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Quoi",
+      "softlock : tu restes sur Lucia et l'histoire n'avance plus"
+     ],
+     [
+      "Où",
+      "quête secondaire « Missing Persons », comté de Kelly"
+     ],
+     [
+      "Quand",
+      "à partir du chapitre 3, quand tu ne peux pas encore alterner entre Jason et Lucia"
+     ],
+     [
+      "Correctif",
+      "aucun annoncé par Rockstar (le bug persiste après la 01.002.002)"
+     ],
+     [
+      "Parade",
+      "sauvegarde manuelle avant la quête"
+     ]
+    ]
+   },
+   "D'après GAMINGbible, des joueurs signalent un blocage lié à la quête secondaire « Missing Persons ». Au début du chapitre 3, tu joues Jason et tu ne peux pas passer sur Lucia ; cette quête te fait basculer sur elle, et une fois terminée, certains joueurs ne peuvent plus revenir à Jason. Résultat : impossible de continuer l'histoire. Rockstar n'a rien annoncé à ce sujet pour l'instant. Rien de tout ça n'a été testé de notre côté, c'est un bug à surveiller.",
+   {
+    "h2": "Comment éviter le blocage de « Missing Persons » ?"
+   },
+   "Évite de lancer cette quête tant que tu es dans la phase du chapitre 3 où tu ne peux pas alterner entre Jason et Lucia, et fais une sauvegarde manuelle juste avant. Le monde reste libre à explorer, tu peux donc faire autre chose en attendant un correctif.",
+   {
+    "h2": "Comment sauvegarder pour ne rien perdre ?"
+   },
+   "L'autosave ne couvre que les missions principales, pas le jeu libre. GAMINGbible conseille de garder 3 à 5 sauvegardes manuelles en rotation, environ une par heure de jeu. Tout est détaillé dans notre guide pour sauvegarder dans GTA 6.",
+   {
+    "h2": "Le patch 01.002.002 règle-t-il le problème ?"
+   },
+   "Non, des joueurs affirment que le blocage existe encore après la mise à jour 01.002.002 (retours sur Reddit cités par la source). Pour ce que corrige ce patch, voir notre article sur la mise à jour 01.002.002.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Où est la quête ? Dans le comté de Kelly, d'après la source.",
+   "Rockstar a-t-il réagi ? Pas à notre connaissance à ce jour.",
+   "Que faire si je suis déjà bloqué ? Recharge une sauvegarde manuelle antérieure à la quête."
+  ],
+  "sources": [
+   {
+    "t": "GAMINGbible",
+    "u": "https://www.gamingbible.com/news/gta-6-missing-persons-softlock-glitch-838670-20261123"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "2026-11-24-gta-6-45-millions-exemplaires-39-millions-joueurs-ps5",
   "date": "2026-11-24T13:40:00+01:00",
   "cat": "actu",
