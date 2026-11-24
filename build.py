@@ -381,9 +381,16 @@ def page(a, arts, css, secrets_by_id):
     quick = f'<section class="quick" aria-labelledby="q-t"><h2 id="q-t">Réponse rapide</h2><p>{e(a["quick"])}</p></section>' if a.get("quick") else ""
     srcs = "".join(f'<li><a href="{e(s["u"])}" target="_blank" rel="noopener">{e(s["t"])}</a></li>' for s in a["sources"])
     verif = ""
+    own = [b for b in a["body"] if isinstance(b, dict) and b.get("capture")] or (a.get("credit", "").startswith("Capture en jeu") and a["img"].startswith("assets/captures/"))
     if a["cat"] in GAMEPLAY:
-        verif = (f'<p class="verif"><strong>Testé par nous en jeu :</strong> oui, le {fr_date(a["teste"])}.</p>' if a.get("teste") else
-                 '<p class="verif"><strong>Testé par nous en jeu :</strong> pas encore. Les infos viennent des sources ci-dessus ; on mettra la page à jour après vérification.</p>')
+        if a.get("teste"):
+            verif = f'<p class="verif"><strong>Testé par nous en jeu :</strong> oui, sur PS5, le {fr_date(a["teste"])}.</p>'
+        elif own and a["sources"]:
+            verif = '<p class="verif"><strong>Testé par nous en jeu :</strong> en partie. Les captures viennent de nos parties sur PS5 ; le reste s\'appuie sur les sources ci-dessus.</p>'
+        elif own:
+            verif = '<p class="verif"><strong>Testé par nous en jeu :</strong> oui, sur PS5 : les captures de cet article viennent de nos parties.</p>'
+        else:
+            verif = '<p class="verif"><strong>Testé par nous en jeu :</strong> pas encore. Les infos viennent des sources ci-dessus ; on mettra la page à jour après vérification.</p>'
     sbox = ""
     ids = [i for i in a.get("secrets", []) if i in secrets_by_id]
     if ids:
@@ -460,7 +467,7 @@ def page(a, arts, css, secrets_by_id):
 {sbox}
 {body}
 {aff_box(a)}
-<div class="srcs"><h2 class="h3">Sources</h2><ul>{srcs}</ul>{verif}</div>
+{(f'<div class="srcs"><h2 class="h3">Sources</h2><ul>{srcs}</ul>{verif}</div>' if srcs else (f'<div class="srcs"><h2 class="h3">Vérification</h2>{verif}</div>' if verif else ""))}
 <aside class="authorbox"><img src="../assets/romeo.jpg" alt="Roméo, fondateur de GTASTUCE VICE" width="64" height="64" loading="lazy"><div><p class="an"><a href="../a-propos.html#romeo">Roméo</a> · fondateur de GTASTUCE VICE</p><p>{e(AUTHOR_BIO)}</p><p class="aidea"><a href="../contact.html">Une idée pour le site ? Écris-moi</a></p></div></aside>
 {cta}
 </article>
@@ -804,6 +811,17 @@ def carte_html(secrets):
                     "x": zx + [0, 22, -22, 12, -12, 30, -30, 0][k % 8], "y": zy + [18, 30, 30, 44, 44, 14, 14, 58][k % 8],
                     "link": f"index.html#egg-{x['id']}", "st": x.get("status", "")})
     pts += [dict(l) for l in lieux if l.get("zone") in ZONES]
+    for _ in range(60):  # écarte les repères qui se chevauchent (rayon 7, halo 12)
+        moved = False
+        for i in range(len(pts)):
+            for j in range(i + 1, len(pts)):
+                dx, dy = pts[j]["x"] - pts[i]["x"], pts[j]["y"] - pts[i]["y"]; d = (dx * dx + dy * dy) ** .5
+                if d < 15:
+                    if d < .01: dx, dy, d = 1.0, 0.0, 1.0
+                    k = (15 - d) / 2 / d; moved = True
+                    pts[i]["x"] -= dx * k; pts[i]["y"] -= dy * k; pts[j]["x"] += dx * k; pts[j]["y"] += dy * k
+        if not moved: break
+    for q in pts: q["x"], q["y"] = round(q["x"], 1), round(q["y"], 1)
     spots = "".join(
         f'<a class="spot" href="{e(p["link"])}" data-i="{i}" data-cat="{p["cat"]}" transform="translate({p["x"]} {p["y"]})" aria-label="{e(p["title"])}">'
         f'<title>{e(p["title"])}</title><circle class="halo" r="12" fill="{CARTE_CATS[p["cat"]][1]}"/><circle class="dot" r="7" fill="{CARTE_CATS[p["cat"]][1]}"/></a>'
@@ -821,7 +839,7 @@ def carte_html(secrets):
             lists += (f'<section class="clist" data-cat="{k}"><h3><i style="background:{c}"></i>{e(n)}</h3><ul>'
                       + "".join(f'<li><a href="{e(p["link"])}"><strong>{e(p["title"])}</strong></a> <span class="cz">{e(ZONES[p["zone"]][0])}</span><br>{e(p["where"])}</li>' for p in items)
                       + "</ul></section>")
-    data = json.dumps([{k: p[k] for k in ("title", "where", "link", "cat")} | {"zone": ZONES[p["zone"]][0]} for p in pts], ensure_ascii=False).replace("</", "<\\/")
+    data = json.dumps([{k: p[k] for k in ("title", "where", "link", "cat", "x", "y")} | {"zone": ZONES[p["zone"]][0]} for p in pts], ensure_ascii=False).replace("</", "<\\/")
     return ('<h2>La carte interactive de Leonida</h2>'
             f'<div class="carte-tools" role="group" aria-label="Afficher sur la carte">{chips}</div>'
             f'<div class="carte-grid"><figure class="map map-big" data-map>{ctrl}<svg viewBox="0 0 400 500" role="img" aria-label="Carte schématique de Leonida avec les secrets et les lieux utiles">'
@@ -837,11 +855,14 @@ def carte_html(secrets):
             f'<h2>Tous les lieux, région par région</h2><div class="clists">{lists}</div>'
             f'<script>(function(){{var D={data},C={json.dumps({k: v for k, v in CARTE_CATS.items()}, ensure_ascii=False)},box=document.getElementById("spot-info");'
             'function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",\'"\':"&quot;"}[c]})}'
-            'document.querySelectorAll(".spot").forEach(function(a){a.addEventListener("click",function(ev){ev.preventDefault();var p=D[+a.dataset.i];'
-            'document.querySelectorAll(".spot.on").forEach(function(x){x.classList.remove("on")});a.classList.add("on");'
-            'box.innerHTML="<p class=\\"si-cat\\"><i style=\\"background:"+C[p.cat][1]+"\\"></i>"+esc(C[p.cat][0])+" · "+esc(p.zone)+"</p><h3>"+esc(p.title)+"</h3><p>"+esc(p.where)+"</p><a class=\\"btn\\" href=\\""+esc(p.link)+"\\">Voir le guide</a>";'
+            'function show(a){var p=D[+a.dataset.i];document.querySelectorAll(".spot.on").forEach(function(x){x.classList.remove("on")});a.classList.add("on");'
+            'box.innerHTML="<p class=\\"si-cat\\"><i style=\\"background:"+C[p.cat][1]+"\\"></i>"+esc(C[p.cat][0])+" · "+esc(p.zone)+"</p><h3>"+esc(p.title)+"</h3><p>"+esc(p.where)+"</p><a class=\\"btn\\" href=\\""+esc(p.link)+"\\">Voir le guide</a>";}'
+            'document.querySelectorAll(".spot").forEach(function(a){a.addEventListener("click",function(ev){ev.preventDefault();var p=D[+a.dataset.i],near=[];'
+            'document.querySelectorAll(".spot").forEach(function(x){if(x.style.display==="none")return;var q=D[+x.dataset.i];if(Math.hypot(q.x-p.x,q.y-p.y)<24)near.push(x);});'
+            'if(near.length>1){box.innerHTML="<p class=\\"si-cat\\">"+near.length+" lieux à cet endroit</p><h3>Lequel tu cherches ?</h3><div class=\\"si-pick\\"></div>";var pk=box.querySelector(".si-pick");'
+            'near.forEach(function(x){var q=D[+x.dataset.i],b=document.createElement("button");b.type="button";b.innerHTML="<i style=\\"background:"+C[q.cat][1]+"\\"></i>"+esc(q.title);b.addEventListener("click",function(){show(x)});pk.appendChild(b);});}else show(a);'
             'if(window.innerWidth<900)box.scrollIntoView({block:"nearest",behavior:"smooth"});});});'
-            'document.querySelectorAll(".cchip").forEach(function(b){b.addEventListener("click",function(){var on=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",String(on));'
+'document.querySelectorAll(".cchip").forEach(function(b){b.addEventListener("click",function(){var on=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",String(on));'
             'document.querySelectorAll(\'.spot[data-cat="\'+b.dataset.cat+\'"]\').forEach(function(x){x.style.display=on?"":"none"});});});})();</script>')
 
 
@@ -884,7 +905,7 @@ MAP_CSS = """
 .map .pin:focus-visible .dot{stroke:#FFE45C;stroke-width:4}
 @keyframes pinpulse{50%{transform:scale(1.5);opacity:0}}
 .map figcaption{margin-top:10px;font-size:13px;color:var(--mute);text-align:center}
-.map .land .isle{fill:#3A1D6B}.map .bridge{fill:none;stroke:#FF5FA2;stroke-width:1;stroke-dasharray:2 3;opacity:.7}.map .relief path{fill:#4C2A85;stroke:#7B5BB8;stroke-width:1}.map .lake{fill:#1F0E45;stroke:#7FB2FF;stroke-width:1.5;opacity:.9}.map .marsh path{fill:none;stroke:#2EE6D6;stroke-width:1.2;opacity:.45}.map .river{fill:none;stroke:#7FB2FF;stroke-width:1.5;opacity:.5}.map .city rect{fill:#FFE45C;opacity:.35}.map-big svg{max-width:640px}.carte-tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.cchip i,.clist h3 i,.si-cat i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}.cchip{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:var(--night2);border:1px solid var(--line);color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}.cchip[aria-pressed=false]{opacity:.45}.cchip b{margin-left:4px;color:var(--mute)}.spot{cursor:pointer}.spot .dot{stroke:#fff;stroke-width:2}.spot .halo{opacity:.22}.spot.on .dot{stroke:#FFE45C;stroke-width:4}.spot:focus-visible .dot{stroke:#FFE45C;stroke-width:4}.spot-info{background:var(--night2);border:1px solid var(--line);border-radius:18px;padding:18px;margin:0 0 20px}.spot-info h3{margin:6px 0 8px}.si-cat{font-size:13px;color:var(--mute);margin:0}.si-hint{color:var(--soft);margin:0}.cmaps{display:grid;gap:16px;margin:0 0 10px}.cmaps img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}.cmaps figcaption{font-size:13px;color:var(--mute);margin-top:6px}@media (min-width:900px){.cmaps{grid-template-columns:1fr 1fr}}.clists{display:grid;gap:16px}.clist ul{margin:0;padding-left:18px}.clist li{margin:0 0 10px;color:var(--soft)}.cz{font-size:12px;color:var(--mute)}@media (min-width:900px){.carte-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:22px;align-items:start}.spot-info{position:sticky;top:90px}.clists{grid-template-columns:1fr 1fr}}.map-loose{margin:10px 0 0;font-size:14px;color:var(--soft);text-align:center}
+.map .land .isle{fill:#3A1D6B}.map .bridge{fill:none;stroke:#FF5FA2;stroke-width:1;stroke-dasharray:2 3;opacity:.7}.map .relief path{fill:#4C2A85;stroke:#7B5BB8;stroke-width:1}.map .lake{fill:#1F0E45;stroke:#7FB2FF;stroke-width:1.5;opacity:.9}.map .marsh path{fill:none;stroke:#2EE6D6;stroke-width:1.2;opacity:.45}.map .river{fill:none;stroke:#7FB2FF;stroke-width:1.5;opacity:.5}.map .city rect{fill:#FFE45C;opacity:.35}.map-big svg{max-width:640px}.carte-tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.cchip i,.clist h3 i,.si-cat i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}.cchip{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:var(--night2);border:1px solid var(--line);color:var(--white);font:700 14px Inter,sans-serif;cursor:pointer}.cchip[aria-pressed=false]{opacity:.45}.cchip b{margin-left:4px;color:var(--mute)}.spot{cursor:pointer}.spot .dot{stroke:#fff;stroke-width:2}.spot .halo{opacity:.22}.spot.on .dot{stroke:#FFE45C;stroke-width:4}.spot:focus-visible .dot{stroke:#FFE45C;stroke-width:4}.spot-info{background:var(--night2);border:1px solid var(--line);border-radius:18px;padding:18px;margin:0 0 20px}.spot-info h3{margin:6px 0 8px}.si-cat{font-size:13px;color:var(--mute);margin:0}.si-hint{color:var(--soft);margin:0}.si-pick{display:grid;gap:8px}.si-pick button{display:flex;align-items:center;text-align:left;min-height:44px;padding:8px 14px;border-radius:12px;background:var(--night);border:1px solid var(--line);color:var(--white);font:700 15px Inter,sans-serif;cursor:pointer}.si-pick i{flex:none;width:12px;height:12px;border-radius:50%;margin-right:10px}.cmaps{display:grid;gap:16px;margin:0 0 10px}.cmaps img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}.cmaps figcaption{font-size:13px;color:var(--mute);margin-top:6px}@media (min-width:900px){.cmaps{grid-template-columns:1fr 1fr}}.clists{display:grid;gap:16px}.clist ul{margin:0;padding-left:18px}.clist li{margin:0 0 10px;color:var(--soft)}.cz{font-size:12px;color:var(--mute)}@media (min-width:900px){.carte-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:22px;align-items:start}.spot-info{position:sticky;top:90px}.clists{grid-template-columns:1fr 1fr}}.map-loose{margin:10px 0 0;font-size:14px;color:var(--soft);text-align:center}
 .egg.flash{border-color:var(--yel);box-shadow:0 0 0 3px var(--yel)}
 @media (min-width:900px){.hunt-grid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:22px;align-items:start}.hunt-grid .map{position:sticky;top:90px}}
 """
@@ -1140,7 +1161,7 @@ def build_static_pages(arts, secrets):
         simple_page("mentions-legales.html", "Mentions légales et confidentialité", "Mentions légales, hébergeur, données personnelles, mesure d'audience et liens affiliés du site GTASTUCE VICE.",
                     "Mentions légales et confidentialité", "GTASTUCE VICE", LEGAL_BODY, topics=False))
     # ---------- Recherche ----------
-    hubs_js = json.dumps([{"slug": "gta-6-codes-triche", "nav": "Codes de triche cheats", "title": "Codes de triche GTA 6 : la liste complète PS5 et Xbox", "desc": "Les 61 cheats de GTA 6, les combinaisons connues et comment les activer."}]
+    hubs_js = json.dumps([{"slug": "gta-6-codes-triche", "nav": "Codes de triche cheats", "title": "Codes de triche GTA 6 : les 61 cheats PS5 et Xbox", "desc": "Les 61 cheats de GTA 6, les combinaisons rapportées (et celles vérifiées par nous) et comment les activer."}]
                          + [{k: h[k] for k in ("slug", "nav", "title", "desc")} for h in HUBS], ensure_ascii=False)
     sp = simple_page("recherche.html", "Rechercher", "Cherche une astuce, un guide ou un secret de GTA 6 sur GTASTUCE VICE.",
                      "Rechercher", "GTASTUCE VICE", SEARCH_BODY.replace("__ICON__", SEARCH_ICO.replace('class="ico"', 'class="ico hs-ico"')) + legend_html())
@@ -1174,11 +1195,12 @@ def build_static_pages(arts, secrets):
 
 # ---------- Codes de triche (piloté par codes.json) ----------
 CHEAT_SLUG = "gta-6-codes-triche"
-CHEAT_TITLE = "Codes de triche GTA 6 : la liste complète PS5 et Xbox (et comment les activer)"
-CHEAT_DESC = "Tous les codes de triche de GTA 6 sur PS5 et Xbox Series : les 61 cheats, les combinaisons connues, comment les taper sur le téléphone et comment les débloquer."
+CHEAT_TITLE = "Codes de triche GTA 6 : les 61 cheats PS5 et Xbox, codes rapportés et vérifiés"
+CHEAT_DESC = "Tous les codes de triche de GTA 6 sur PS5 et Xbox Series : les 61 cheats, les combinaisons rapportées et vérifiées, comment les taper sur le téléphone et comment les débloquer."
 CHEAT_CATS = {"joueur": "Joueur", "combat": "Armes et combat", "vehicule": "Véhicules", "monde": "Heure et météo", "filtre": "Filtres d'écran"}
 ARROW = {"haut": "↑", "bas": "↓", "gauche": "←", "droite": "→"}
-CHEAT_CSS = """
+CHEAT_CSS = """.cstat{display:grid;gap:6px;margin:0 0 18px;font-size:15px;color:var(--soft)}.cstat p{margin:0}.cs{display:inline-block;font:800 12px Inter,sans-serif;letter-spacing:.03em;padding:3px 9px;border-radius:99px;margin:6px 6px 6px 0;vertical-align:1px}.cs-r{background:#3A2A10;color:#FFE45C;border:1px solid #FFE45C}.cs-v{background:#0F3A35;color:#2EE6D6;border:1px solid #2EE6D6}
+
 .quickans{background:linear-gradient(135deg,#2A0F4A,#6B1E6E);border:1px solid var(--pink2);border-radius:20px;padding:22px 24px;margin:18px 0}
 .quickans p{margin:0 0 10px;font-size:17px}.quickans p:last-child{margin:0}
 .steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:10px}
@@ -1238,9 +1260,12 @@ def cheat_page():
         assert c["cat"] in CHEAT_CATS, c["id"]
         assert c["code"] is None or all(x in ARROW for x in c["code"]), c["id"]
     known = [c for c in codes if c["code"]]
+    verified = [c for c in known if c.get("teste")]
     known_by_cat = ", ".join(f'{c["name"]}' for c in known[:3])
     body = [f'<p class="lead">Les codes de triche sont bien dans GTA 6 : <strong>{len(codes)} cheats</strong> en mode histoire, sur PS5 et Xbox Series. '
-            f'Voici la liste complète, les <strong>{len(known)} combinaisons déjà connues</strong> et comment débloquer les autres.</p>',
+            f'Voici la liste des 61 cheats, les <strong>{len(known)} combinaisons rapportées</strong> par les sites spécialisés et comment débloquer les autres.</p>'
+            f'<div class="cstat"><p><span class="cs cs-r">{len(known) - len(verified)} rapportés</span> combinaisons relayées par plusieurs sites, pas encore refaites par nous.</p>'
+            f'<p><span class="cs cs-v">{len(verified)} vérifiés</span> codes testés par la rédaction en jeu sur PS5.</p></div>',
             '<div class="quickans"><p><strong>En bref :</strong> finis l\'histoire principale, sors le téléphone (flèche haut), maintiens <strong>L1 + R1</strong> (PS5) ou <strong>LB + RB</strong> (Xbox) et tape la suite de flèches.</p>'
             '<p>Chaque code se débloque avec un défi (stand de tir, cascades, courses…). Tant qu\'un code est actif : pas de sauvegarde, pas de trophées.</p></div>',
             '<h2 id="activer">Comment taper un code de triche</h2><ol class="steps">'
@@ -1255,7 +1280,7 @@ def cheat_page():
             '<div class="ctools"><label class="sr" for="cq">Chercher un code</label><input id="cq" type="search" placeholder="Cherche : argent, tank, munitions, parachute…" autocomplete="off">'
             '<div class="chips" role="group" aria-label="Filtrer les codes">'
             '<button class="chip" type="button" data-c="all" aria-pressed="true">Tout</button>'
-            f'<button class="chip" type="button" data-c="known" aria-pressed="false">Codes connus ({len(known)})</button>'
+            f'<button class="chip" type="button" data-c="known" aria-pressed="false">Codes rapportés ({len(known)})</button>'
             + "".join(f'<button class="chip" type="button" data-c="{k}" aria-pressed="false">{e(v)}</button>' for k, v in CHEAT_CATS.items())
             + '</div><p class="ccount" id="ccount" role="status" aria-live="polite"></p></div>']
     for k, label in CHEAT_CATS.items():
@@ -1273,7 +1298,9 @@ def cheat_page():
             else:
                 seq = '<span class="nocode">Combinaison pas encore trouvée</span>'
             body.append(f'<article class="code{" known" if c["code"] else ""}" id="code-{e(c["id"])}" data-cat="{k}" data-t="{e(t)}">'
-                        f'<h3>{e(c["name"])}</h3><span class="en">En anglais : {e(c["en"])}</span>{seq}'
+                        f'<h3>{e(c["name"])}</h3><span class="en">En anglais : {e(c["en"])}</span>'
+                        + (f'<span class="cs cs-v">Vérifié par nous le {fr_date(c["teste"])}</span>' if c.get("teste") else ('<span class="cs cs-r">Rapporté, à tester</span>' if c["code"] else ""))
+                        + f'{seq}'
                         f'<p>{e(c["effect"])}</p><p class="unl"><strong>Déblocage :</strong> {e(c["unlock"])}</p></article>')
         body.append("</div></section>")
     body.append('<h2 id="faq">Questions fréquentes</h2><div class="faq">'

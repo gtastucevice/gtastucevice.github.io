@@ -175,7 +175,8 @@ figure.capt figcaption{margin-top:6px;font-size:13px;color:#C9BFEA}figure.capt f
 .vico-box .tag{display:inline-block;background:#58DAC5;color:#170A33;font-family:'Archivo Black',sans-serif;font-size:12px;letter-spacing:.06em;padding:3px 9px;border-radius:99px;margin-bottom:6px}
 .vico-box.v-astuce .tag{background:#FFDA4F}.vico-box.v-verifier .tag{background:#FF388D}
 .vico-box p{margin:0;font-size:15px;line-height:1.5;color:#EDE7FB}
-@media (max-width:640px){.vico-guide .vico-svg{width:100px}.bulle{font-size:15px}}
+.bulle .b-short{display:none}
+@media (max-width:640px){.vico-guide{gap:10px;margin:2px 0 12px;align-items:center}.vico-guide .vico-svg{width:64px;margin-bottom:0}.bulle{font-size:15px;padding:10px 14px;margin-bottom:0}.bulle:after{bottom:auto;top:50%;margin-top:-10px}.vico-vu .bulle .b-long{display:none}.vico-vu .bulle .b-short{display:inline}}
 /* Nouveau logotype : VICE en rose, même graisse que GTASTUCE (logo Vico, 21/11) */
 a.brand{gap:7px}
 a.brand i{font-family:'Archivo Black',sans-serif;font-style:normal;text-transform:uppercase;font-size:22px;letter-spacing:.01em;color:#FF388D;text-shadow:2px 2px 0 #0B0420}
