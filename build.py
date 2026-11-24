@@ -160,7 +160,7 @@ def nav_html(prefix="", current=""):
             f'<a class="tb-dup" href="{prefix}actus.html"{cur("actus.html")}>Actus</a>\n'
             f'<a href="{prefix}index.html#guides">Guides</a>\n'
             f'<a class="tb-dup" href="{prefix}gta-6-carte.html"{cur("gta-6-carte.html")}>Carte</a>\n'
-            f'<a class="nav-cheat" href="{prefix}gta-6-codes-triche.html"{cur("gta-6-codes-triche.html")}><span class="nm">Codes de t</span><span class="nmt">T</span>riche</a>\n'
+            f'<a class="nav-cheat" href="{prefix}gta-6-codes-triche.html"{cur("gta-6-codes-triche.html")}><span class="nm">Codes de triche</span><span class="nmt">Triche</span></a>\n'
             f'<a class="tb-dup" href="{prefix}index.html#chasse">Chasse<span class="nm"> aux secrets</span></a>\n'
             f'<a href="{prefix}matos.html"{cur("matos.html")}>Le matos</a>\n'
             f'<a class="btn" href="{prefix}index.html#newsletter">Newsletter</a>\n</nav>')
