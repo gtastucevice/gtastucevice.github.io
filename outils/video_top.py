@@ -6,12 +6,13 @@ spec : {"slug", "hook": {"lines": [[txt, "w|y"]...], "image": "banque/x.jpg"},
         "items": [{"title", "text", "image", "tag"(facultatif: "À TESTER"/"RUMEUR")}...]  (dans l'ordre d'affichage),
         "voice": [wav accroche, wav élément 1, ..., wav fin] (facultatif : voix off générée avec Speko),
         "outro": {"line"}, "music": "/chemin.mp3" (facultatif), "bars_per_item": 2.5,
-        "order": "up" (facultatif : numérote les étapes 1, 2, 3… au lieu du compte à rebours)}
+        "order": "up" (facultatif : numérote les étapes 1, 2, 3… au lieu du compte à rebours),
+        "mood": "alerte" | "calme" (facultatif, sur le hook ou un élément : teinte orange = problème, nuit = solution)}
 Gameplay : à la place de "image", un élément (ou l'accroche) peut avoir
   "clip": {"src": "video.mp4", "start": s, "len": 14, "speed": 1, "crop": [x, y, l, h]}
   -> plein écran vertical (recadré au centre ; "fx": 0 à 1 pour déplacer le cadrage à gauche/droite), son du jeu coupé,
   crédit « Capture en jeu : GTASTUCE VICE ». "band": true pour l'ancien format (bande 16:9 au centre, fond flouté)."""
-import json, math, os, subprocess, sys, importlib.util
+import json, math, os, re, subprocess, sys, importlib.util
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 spec_ = importlib.util.spec_from_file_location("vs", os.path.join(HERE, "video_site.py")); vs = importlib.util.module_from_spec(spec_); spec_.loader.exec_module(vs)
@@ -95,8 +96,14 @@ for y in range(H):
     _g.line([(0, y), (W, y)], fill=(12, 6, 26, a))
 
 def text_layer(draw_fn, alpha, dy):
-    """Dessine sur un calque transparent puis l'applique avec une opacité et un décalage vertical."""
+    """Dessine sur un calque transparent puis l'applique avec une opacité et un décalage vertical.
+    Style « motion-gtastuce » (24/11) : pendant l'apparition, le texte arrive flou puis devient net (blur-in)."""
     lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); draw_fn(ImageDraw.Draw(lay))
+    if 0 < alpha < 0.98:
+        bb = lay.getbbox()
+        if bb:
+            x0, y0, x1, y1 = max(0, bb[0] - 30), max(0, bb[1] - 30), min(W, bb[2] + 30), min(H, bb[3] + 30)
+            lay.paste(lay.crop((x0, y0, x1, y1)).filter(ImageFilter.GaussianBlur(10 * (1 - alpha))), (x0, y0))
     if dy: lay = lay.transform(lay.size, Image.AFFINE, (1, 0, 0, 0, 1, -dy))
     if alpha < 1: lay.putalpha(lay.getchannel("A").point(lambda v: int(v * alpha)))
     return lay
@@ -158,10 +165,29 @@ def progress(im, idx, N, sec, dur):
         f = 1 if k < idx else (min(1, sec / dur) if k == idx else 0)
         if f > 0: d.rounded_rectangle([x, 60, x + bw * f, 70], radius=5, fill=YEL + (255,))
 
+# ---------- Ambiance « motion-gtastuce » : réseau de points qui dérive + humeur de couleur ----------
+import random as _r
+_r.seed(7)
+_PTS = [(_r.uniform(60, W - 60), _r.uniform(150, H - 300), _r.uniform(0, 6.28), _r.uniform(0.15, 0.4)) for _ in range(18)]
+MOODS = {"alerte": (122, 46, 14), "calme": (23, 10, 51)}
+def ambiance(im, t, mood=None):
+    """Fond qui vit : points reliés qui dérivent lentement (très discret) ; teinte orange (« alerte ») ou nuit (« calme »)."""
+    if mood in MOODS:
+        im.alpha_composite(Image.new("RGBA", (W, H), MOODS[mood] + (95,)))
+    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
+    pos = [(x + 26 * math.sin(t * s + ph), y + 20 * math.cos(t * s * 1.3 + ph)) for x, y, ph, s in _PTS]
+    for i, a in enumerate(pos):
+        for b in pos[i + 1:]:
+            dd = math.dist(a, b)
+            if dd < 260: d.line([a, b], fill=(170, 210, 255, int(46 * (1 - dd / 260))), width=2)
+    for x, y in pos: d.ellipse((x - 5, y - 5, x + 5, y + 5), fill=(190, 220, 255, 95))
+    im.alpha_composite(lay)
+
+
 def frame_item(img, n, it, t, sec, dur, chunks=None, idx=0, N=10):
     """sec = secondes écoulées dans le plan (pour des animations à vitesse fixe)."""
     if it.get("clip"): im = clip_layout(it["clip"], sec).convert("RGBA")
-    else: im = cover(img, t).convert("RGBA"); im.alpha_composite(GRAD)
+    else: im = cover(img, t).convert("RGBA"); im.alpha_composite(GRAD); ambiance(im, t, it.get("mood"))
     # numéro : glisse depuis la gauche
     a1 = ease_out(sec / 0.45)
     nf = fnt("ArchivoBlack.ttf", 190)
@@ -202,12 +228,15 @@ def main():
     hk = spec["hook"]; himg = None if hk.get("clip") else Image.open(P(hk["image"])).convert("RGB")
     def f_hook(t, ta, sec, dur):
         if hk.get("clip"): im = clip_layout(hk["clip"], sec).convert("RGBA")
-        else: im = ImageEnhance.Brightness(cover(himg, t, 0.10, 40)).enhance(0.55).convert("RGBA")
+        else: im = ImageEnhance.Brightness(cover(himg, t, 0.10, 40)).enhance(0.55).convert("RGBA"); ambiance(im, t, hk.get("mood"))
         d0 = ImageDraw.Draw(im); y = 110 if hk.get("clip") else 640
         for k, (txt, c) in enumerate(hk["lines"]):
             size = 104 if hk.get("clip") else 124
             while size > 50 and d0.textlength(txt, font=fnt("ArchivoBlack.ttf", size)) > 960: size -= 4
-            fz = fnt("ArchivoBlack.ttf", size); w = d0.textlength(txt, font=fz); a = ease_out((sec - 0.12 * k) / 0.45)
+            num = re.match(r"(\d+)(.*)", txt)
+            if num and int(num.group(1)) >= 10 and sec < 1.1:  # compteur qui monte (accroche chiffrée)
+                txt = str(int(round(int(num.group(1)) * ease_out(sec / 1.1)))) + num.group(2)
+            fz = fnt("ArchivoBlack.ttf", size); w = d0.textlength(txt, font=fz); a = ease_out((sec - 0.2 * k) / 0.45)
             im.alpha_composite(text_layer(lambda d, txt=txt, fz=fz, w=w, y=y, c=c: shadow_text(d, ((W - w) / 2, y), txt, fz, vs.COL.get(c, WHITE) + (255,)), a, int(30 * (1 - a))))
             y += int(size * 1.12)
         ImageDraw.Draw(im).text((40, H - 70), CAPTURE_CREDIT if hk.get("clip") else "Image : Rockstar Games", font=fnt("Inter.ttf", 28), fill=(210, 200, 230, 255))
