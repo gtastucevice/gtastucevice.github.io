@@ -1,5 +1,173 @@
 [
  {
+  "slug": "2026-11-24-mise-a-jour-01-002-002-gta-6-correctifs",
+  "date": "2026-11-24T08:45:00+01:00",
+  "cat": "actu",
+  "title": "GTA 6 : la mise à jour 01.002.002 corrige les plantages, la météo bloquée et le niveau de recherche",
+  "chapo": "Rockstar a publié le 23 novembre la première mise à jour de GTA 6 depuis la sortie : la 01.002.002 (environ 604 Mo sur PS5, 1,6 Go sur Xbox). Elle corrige des plantages, la météo qui ne changeait plus, une sauvegarde automatique défectueuse, des appels qui ne se lançaient pas et un bug qui empêchait de faire baisser les étoiles.",
+  "img": "assets/rs_vicecity_sign.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-police"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Version",
+      "01.002.002"
+     ],
+     [
+      "Date",
+      "23 novembre 2026"
+     ],
+     [
+      "Taille",
+      "environ 604 Mo (PS5), 1,6 Go (Xbox Series X|S), selon Beebom"
+     ],
+     [
+      "À faire",
+      "lancer la mise à jour depuis la console, sans attendre"
+     ]
+    ]
+   },
+   "Voici ce que change le premier patch post-lancement de GTA 6, d'après le suivi de Beebom qui reprend les notes de Rockstar. Si tu as eu des plantages ou des missions bloquées, c'est probablement pour toi.",
+   {
+    "h2": "Que corrige la mise à jour 01.002.002 de GTA 6 ?"
+   },
+   "Sept corrections sont listées. Les plus utiles au quotidien :",
+   {
+    "steps": [
+     {
+      "t": "Plantages : ",
+      "d": "plusieurs causes de crash sont réglées."
+     },
+     {
+      "t": "Météo : ",
+      "d": "un bug laissait le temps figé pendant de longues périodes."
+     },
+     {
+      "t": "Sauvegarde automatique : ",
+      "d": "un cas défectueux est corrigé. Si tu veux comprendre le système, lis notre guide pour sauvegarder dans GTA 6."
+     },
+     {
+      "t": "Appels téléphoniques : ",
+      "d": "certains appels ne se déclenchaient pas, y compris ceux qui font avancer l'histoire ou débloquent des missions."
+     },
+     {
+      "t": "Niveau de recherche : ",
+      "d": "un bug empêchait de le faire baisser. Pour semer les flics, voir notre page Police."
+     },
+     {
+      "t": "Salle de sport : ",
+      "d": "la barre de musculation était inutilisable dans certains cas."
+     },
+     {
+      "t": "Receleurs : ",
+      "d": "les partenaires ne remettaient pas les sacs, ce qui bloquait la revente."
+     }
+    ]
+   },
+   {
+    "h2": "Comment installer la mise à jour ?"
+   },
+   "Lance le jeu ou télécharge-la depuis la bibliothèque de ta console : le patch est léger. Beebom précise aussi que le firmware PS5 26.07-14.23.00 (17 novembre) est nécessaire pour jouer sur console.",
+   {
+    "h2": "Y a-t-il eu d'autres patchs avant ?"
+   },
+   "Oui : 01.002.000 (13 novembre) et 01.002.001 (16 novembre), sans notes détaillées publiées par Rockstar. La 01.002.002 est la première avec une liste de corrections.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Quelle est la dernière version de GTA 6 ? D'après Beebom, la 01.002.002 du 23 novembre.",
+   "Le patch efface-t-il ma sauvegarde ? Rien ne l'indique, mais fais une sauvegarde manuelle avant par précaution.",
+   "Reste-t-il des bugs connus ? La page de suivi n'en signale pas pour l'instant."
+  ],
+  "sources": [
+   {
+    "t": "Beebom",
+    "u": "https://beebom.com/gta-6-patch-notes-updates-tracker/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-animaux-caresser-chiens-chats-gta-6",
+  "date": "2026-11-24T08:40:00+01:00",
+  "cat": "guide",
+  "title": "Animaux dans GTA 6 : peut-on caresser les chiens et les chats ? (et le chien en jet-ski)",
+  "chapo": "Oui, tu peux caresser des animaux dans GTA 6 : les chiens proposent caresser, gronder ou observer, et des clips de joueurs montrent aussi des chats caressables, dont certains agressifs. Voici ce qui est confirmé, ce qui reste à tester et les secrets liés aux animaux.",
+  "img": "assets/rs_leonida_iguane.jpg",
+  "topics": [
+   "gta-6-easter-eggs",
+   "gta-6-debuter"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Chiens",
+      "3 actions : caresser, gronder, observer (vu dans un extrait officiel Netflix)"
+     ],
+     [
+      "Chats",
+      "caressables d'après des clips de joueurs (à tester)"
+     ],
+     [
+      "Piège",
+      "un chat dans une voiture volée peut t'attaquer (clip viral)"
+     ],
+     [
+      "Secret",
+      "un chien à lunettes arrive en jet-ski si tu es perdu en mer (rumeur de joueurs)"
+     ],
+     [
+      "Faune",
+      "plus de 170 espèces selon Beebom (estimation)"
+     ]
+    ]
+   },
+   "Ce guide rassemble ce que disent Beebom et Windows Central sur les animaux de Leonida. Rien de tout ça n'est une annonce officielle de Rockstar : ce qui vient de clips de joueurs est marqué « à tester ».",
+   {
+    "h2": "Comment caresser un chien dans GTA 6 ?"
+   },
+   "Approche-toi d'un chien : trois choix s'affichent en bas à droite, caresser, gronder ou observer. Beebom se base sur un extrait officiel diffusé sur Netflix, sans préciser de touche. Regarde l'invite à l'écran sur ta console.",
+   {
+    "h2": "Peut-on caresser les chats ?"
+   },
+   "Windows Central cite des clips de joueurs où l'on caresse des chats, par exemple celui d'une épicerie de quartier. Beebom, avant la sortie, ne pouvait pas le confirmer. C'est donc à tester chez toi.",
+   {
+    "h2": "Pourquoi ne faut-il pas voler une voiture avec un chat dedans ?"
+   },
+   "Dans un clip viral relayé par Windows Central, un joueur vole une voiture garée avec un chat à l'intérieur : le chat l'attaque et il doit le jeter par la fenêtre. Rumeur de joueurs, à tester.",
+   {
+    "h2": "Quel est le secret du chien en jet-ski ?"
+   },
+   "Windows Central raconte qu'en pleine mer, loin de la côte, après quelques instants, des aboiements se font entendre puis un chien à lunettes de soleil arrive en jet-ski pour te secourir et peut t'emmener sur une île. La distance exacte n'est pas donnée. Détails dans notre article sur le chien en jet-ski et le Bigfoot, et dans la page Easter eggs.",
+   {
+    "h2": "Peut-on adopter un animal ?"
+   },
+   "Selon Beebom, aucun système officiel d'adoption ou d'élevage n'est confirmé. Pour scanner les animaux que tu croises, lis notre guide du WAiNK.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Peut-on caresser tous les animaux ? Non, seuls certains le permettent d'après les sources.",
+   "Les animaux ont-ils un effet sur le jeu ? Beebom l'imagine, mais ce n'est pas confirmé.",
+   "Où voir le chien en jet-ski ? En pleine mer, loin de la côte (rumeur, à tester)."
+  ],
+  "sources": [
+   {
+    "t": "Beebom",
+    "u": "https://beebom.com/pet-dogs-and-cats-in-gta-6/"
+   },
+   {
+    "t": "Windows Central",
+    "u": "https://www.windowscentral.com/gaming/gta-6-players-are-ignoring-crime-to-jet-ski-with-dogs-and-redecorate-their-bedrooms-the-funniest-clips-so-far"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "guide-braquage-bijouterie-gta-6",
   "date": "2026-11-23T19:40:00+01:00",
   "cat": "guide",
