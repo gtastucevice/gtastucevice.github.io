@@ -43,3 +43,6 @@ Jamais de cinématique d'histoire (spoilers) ni de capture d'un autre créateur.
 - Accueil : Vico animé (SVG en ligne dans index.html, classes v-tail / v-arm / v-head / v-eyes / v-map) + bulle mot à mot.
 - Article : champ `"vico": {"type": "secret|astuce|verifier", "text": "..."}` -> encadré animé au défilement.
 - Animations dans motion.css / motion.js, seulement si le mouvement est autorisé (prefers-reduced-motion et bouton du site respectés).
+
+## Google Search Console
+Propriété https://gtastucevice.fr/ validée le 24/11/2026 (compte de Roméo) par le fichier `googlebecf404aa2a62f31.html` à la racine : NE JAMAIS LE SUPPRIMER. Sitemap soumis : sitemap.xml.
