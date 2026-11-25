@@ -1,5 +1,237 @@
 [
  {
+  "slug": "guide-voler-voiture-cloner-cle-gta-6",
+  "date": "2026-11-25T16:40:00+01:00",
+  "cat": "guide",
+  "title": "Comment voler une voiture dans GTA 6 : casser la vitre ou cloner la clé (et scanner avant)",
+  "chapo": "Dans GTA 6, certaines voitures proposent deux invites : casser la vitre ou cloner la clé. Selon NoobFeed, l'option de clonage, grisée en bas à droite de l'écran, est la plus discrète, et le scan WAiNK te dit si le véhicule est piégé.",
+  "img": "assets/rs_vicecity_gas_nuit.jpg",
+  "topics": [
+   "gta-6-police",
+   "gta-6-debuter"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "n'importe quelle voiture garée de Leonida (exemples cités : Grotti Carbonizzare, Pfister Comet S2)"
+     ],
+     [
+      "Invites",
+      "casser la vitre ou cloner la clé (option grisée en bas à droite)"
+     ],
+     [
+      "Avant de voler",
+      "scanner avec WAiNK : alarme, traceur, verrouillage"
+     ],
+     [
+      "Voiture de police",
+      "Bravado Buffalo State Trooper, si la policière te voit contrôler quelqu'un (à tester)"
+     ],
+     [
+      "À savoir",
+      "guide basé sur NoobFeed : à vérifier en jeu"
+     ]
+    ]
+   },
+   "Tu veux piquer une voiture sans déclencher l'alarme ni attirer la police ? Selon NoobFeed, le jeu te laisse le choix entre la manière brutale et la manière discrète. On a reformulé ses observations : ce sont celles d'un journaliste, pas les nôtres, donc à tester en jeu. Pour la partie recherche et étoiles, voir notre page Police.",
+   {
+    "h2": "Comment voler une voiture dans GTA 6 ?"
+   },
+   "Approche-toi d'un véhicule verrouillé : le jeu affiche deux invites. Tu peux casser la vitre (rapide, bruyant) ou cloner la clé (plus discret). C'est l'invite de clonage, grisée en bas à droite de l'écran, qu'il faut viser.",
+   {
+    "steps": [
+     {
+      "t": "Approche-toi de la portière : ",
+      "d": "deux invites apparaissent sur les voitures de luxe comme la Grotti Carbonizzare ou la Pfister Comet S2."
+     },
+     {
+      "t": "Choisis ton mode : ",
+      "d": "casser la vitre pour aller vite, cloner la clé pour rester discret."
+     },
+     {
+      "t": "Monte et pars : ",
+      "d": "évite de te faire voir par un policier, sinon la recherche se déclenche."
+     }
+    ]
+   },
+   {
+    "h2": "Comment savoir si une voiture a une alarme ou un traceur ?"
+   },
+   "Utilise l'application WAiNK de ton téléphone pour scanner le véhicule avant de le voler. NoobFeed cite l'exemple d'une van Burrito « Class A '99 », déverrouillée, sans alarme ni traceur : parfaite pour un premier essai. Tout sur le scan est dans notre guide WAiNK.",
+   {
+    "h2": "Peut-on voler une voiture de police ?"
+   },
+   "Oui, d'après NoobFeed : une Bravado Buffalo State Trooper peut être volée si une policière qui contrôle quelqu'un te voit. Le coffre des voitures de police permettrait aussi de récupérer armes, objets et outils, mais cette info vient d'un « initié » cité par le site : c'est une rumeur, à tester en jeu.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Cloner la clé est présenté comme la voie discrète, casser la vitre comme la voie rapide : à toi de choisir selon la situation.",
+   "Faut-il scanner avant de voler ? Ce n'est pas obligatoire, mais ça évite les mauvaises surprises (alarme, traceur).",
+   "La police réagit-elle toujours ? Si un agent te voit, la recherche monte : voir la page Police pour la semer."
+  ],
+  "sources": [
+   {
+    "t": "NoobFeed",
+    "u": "https://www.noobfeed.com/articles/10-hidden-gta-6-features-first-hours"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-25-salle-de-sport-jason-muscu-gta-6",
+  "date": "2026-11-25T16:45:00+01:00",
+  "cat": "astuce",
+  "title": "GTA 6 : la salle de sport du repaire de Jason, comment s'entraîner et ce que ça rapporte",
+  "chapo": "Dans le repaire de Jason, tu peux faire du développé couché, des squats et du soulevé de terre : maintiens L2 + R2. Selon NoobFeed, rater une série ne fait rien perdre, et Jason gagne 1 % de vie.",
+  "img": "assets/rs_vicecity_basket.jpg",
+  "topics": [
+   "gta-6-debuter"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "salle de sport du repaire de Jason"
+     ],
+     [
+      "Exercices",
+      "développé couché, squats, soulevé de terre"
+     ],
+     [
+      "Commandes",
+      "maintenir L2 + R2 ; squats : X pour remonter (manette PS5)"
+     ],
+     [
+      "Récompense",
+      "+1 % de vie pour Jason, même en cas d'échec de série (selon NoobFeed)"
+     ],
+     [
+      "À tester",
+      "valeurs relevées avant la sortie : vérifie en jeu"
+     ]
+    ]
+   },
+   "Jason a une vraie salle de sport chez lui, et le jeu ne te l'explique pas. D'après NoobFeed, chaque séance muscle un peu ton personnage. On n'a pas encore tout vérifié en jeu : prends les chiffres comme des estimations. Pour les autres astuces du jeu, voir notre page Bien débuter.",
+   {
+    "h2": "Comment s'entraîner dans la salle de sport de Jason ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Va au repaire de Jason : ",
+      "d": "la salle se trouve dans le repaire."
+     },
+     {
+      "t": "Choisis une machine : ",
+      "d": "développé couché, squats ou soulevé de terre."
+     },
+     {
+      "t": "Maintiens L2 et R2 : ",
+      "d": "c'est le geste de base pour le développé couché."
+     },
+     {
+      "t": "Pour les squats : ",
+      "d": "maintiens L2 et R2, puis appuie sur X pour remonter."
+     }
+    ]
+   },
+   {
+    "h2": "Que rapporte la muscu dans GTA 6 ?"
+   },
+   "Selon NoobFeed, Jason gagne 1 % de vie par séance, et rater une série (par exemple 6 répétitions sur 10) n'annule pas le gain. C'est lent, mais cumulatif.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Faut-il réussir toutes les répétitions ? Non, d'après NoobFeed, l'échec d'une série ne supprime pas le bonus.",
+   "Lucia peut-elle s'entraîner ? Le site ne le précise pas : à tester en jeu.",
+   "Les touches sont-elles les mêmes sur Xbox ? Probablement les équivalents (LT + RT), à vérifier."
+  ],
+  "sources": [
+   {
+    "t": "NoobFeed",
+    "u": "https://www.noobfeed.com/articles/10-hidden-gta-6-features-first-hours"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-25-menu-vehicule-feux-detresse-coffre-gta-6",
+  "date": "2026-11-25T16:50:00+01:00",
+  "cat": "astuce",
+  "title": "GTA 6 : le menu caché des véhicules (moteur, feux de détresse, coffre, vitres)",
+  "chapo": "Tous les véhicules de GTA 6 ont un menu de contrôle : couper et relancer le moteur, allumer les feux de détresse, ouvrir le coffre et baisser les vitres. C'est ce que rapporte NoobFeed, à vérifier en jeu.",
+  "img": "assets/rs_vicecity_tour_helico.jpg",
+  "topics": [
+   "gta-6-debuter"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "menu de contrôle commun à tous les véhicules"
+     ],
+     [
+      "Actions",
+      "moteur on/off, feux de détresse, coffre, vitres"
+     ],
+     [
+      "Feux de détresse",
+      "les deux feux arrière clignotent"
+     ],
+     [
+      "Source",
+      "NoobFeed (à tester en jeu)"
+     ]
+    ]
+   },
+   "Dans GTA 6, ta voiture fait plus que rouler. D'après NoobFeed, un menu de contrôle te laisse gérer plusieurs fonctions sans descendre. Pour d'autres gestes que le jeu n'explique pas, voir notre guide des raccourcis cachés.",
+   {
+    "h2": "Que peut-on faire avec le menu des véhicules dans GTA 6 ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Couper et relancer le moteur : ",
+      "d": "utile pour rester discret à l'arrêt."
+     },
+     {
+      "t": "Allumer les feux de détresse : ",
+      "d": "les deux feux arrière clignotent."
+     },
+     {
+      "t": "Ouvrir le coffre : ",
+      "d": "pour accéder à ce qu'il contient."
+     },
+     {
+      "t": "Baisser les vitres : ",
+      "d": "pratique pour une ambiance de ville ouverte."
+     }
+    ]
+   },
+   {
+    "h2": "Pourquoi couper le moteur ?"
+   },
+   "Rester immobile moteur coupé est plus crédible visuellement, et ça complète notre guide Police pour te faire oublier. Effet exact sur la police : à tester.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Le menu existe-t-il pour tous les véhicules ? Oui d'après NoobFeed, il est commun à tous.",
+   "Où trouver la touche exacte ? Elle varie selon la manette : regarde les invites à l'écran.",
+   "Est-ce une info officielle ? Non, c'est un relevé de presse, à confirmer."
+  ],
+  "sources": [
+   {
+    "t": "NoobFeed",
+    "u": "https://www.noobfeed.com/articles/10-hidden-gta-6-features-first-hours"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "guide-relation-jason-lucia-gta-6",
   "date": "2026-11-25T12:40:00+01:00",
   "cat": "guide",
@@ -363,7 +595,7 @@
   "cat": "guide",
   "title": "Raccourcis cachés GTA 6 : 20 interactions que le jeu n'explique pas (manette)",
   "chapo": "GTA 6 cache des dizaines de gestes jamais expliqués : se baisser en voiture, pousser un véhicule en panne, couper la radio, vendre le butin depuis le coffre… Selon Gameblog, une vingtaine de raccourcis manette changent vraiment la vie. Voici les boutons (PS5 / Xbox), classés par usage.",
-  "img": "assets/rs_vicecity_rue_fresques.jpg",
+  "img": "assets/rs_vicecity_tour_helico.jpg",
   "topics": [
    "gta-6-debuter",
    "gta-6-argent"
@@ -1839,7 +2071,7 @@
   "cat": "astuce",
   "title": "Radio secrète de Kodak Black dans GTA 6 : comment débloquer The Sniper of La Perle (4 affiches)",
   "chapo": "Pour débloquer la playlist cachée de Kodak Black dans GTA 6, il faut scanner 4 affiches avec ton téléphone : 3 dans le quartier de La Perle et 1 au Jack of Hearts, à Crosstown. Aucune mission à faire, tu peux t'en occuper dès que Vice City est ouverte.",
-  "img": "assets/rs_vicecity_rue_fresques.jpg",
+  "img": "assets/rs_vicecity_tour_helico.jpg",
   "body": [
    "Après The Vault, voici l'autre musique cachée de Leonida. Elle s'appelle The Sniper of La Perle et elle est animée par le rappeur de Floride Kodak Black, avec le producteur Michaël Brun aux manettes selon CULTR et AllHipHop. Au programme : 22 titres de musique haïtienne, du konpa au rap, avec des morceaux de Kodak Black, Wyclef Jean, Carimi, Barikad Crew ou Naïka. Selon Vice, tu ne la trouves pas sur la molette des radios tant que tu ne l'as pas débloquée.",
    "Comment faire : sors ton téléphone (flèche du haut), ouvre l'appli Waink et son scanner, vise l'affiche puis appuie sur R1 sur PS5 ou RB sur Xbox. Voici les 4 affiches à scanner, d'après Vice et CULTR.",
@@ -2835,7 +3067,7 @@
   "cat": "astuce",
   "title": "Comment retourner une voiture dans GTA 6 (et s'asseoir) : les 2 commandes cachées",
   "chapo": "Ta voiture est sur le toit ? Pas besoin de la laisser brûler : approche-toi, clique sur le stick gauche puis maintiens Carré (PS5) ou X (Xbox) pour la remettre sur ses roues. Et pour t'asseoir, maintiens Rond ou B.",
-  "img": "assets/rs_vicecity_rue_fresques.jpg",
+  "img": "assets/rs_vicecity_tour_helico.jpg",
   "body": [
    "GTA 6 ne t'explique pas tout, et deux gestes bien pratiques passent facilement sous le radar. Selon Kotaku, qui les a découverts un peu par hasard, ni l'un ni l'autre n'apparaît clairement dans les tutos du jeu.",
    {
