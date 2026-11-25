@@ -1,5 +1,263 @@
 [
  {
+  "slug": "guide-relation-jason-lucia-gta-6",
+  "date": "2026-11-25T12:40:00+01:00",
+  "cat": "guide",
+  "title": "GTA 6 : comment améliorer la relation entre Jason et Lucia (4 niveaux, actions et conséquences)",
+  "chapo": "Dans GTA 6, la relation de Jason et Lucia a 4 niveaux, de « Running on Empty » à « Hot Together ». Tu la fais monter en tenant la main, en répondant aux SMS, en dormant à la planque et en faisant braquages et sorties à deux ; elle ne peut jamais être rompue, mais elle influence des dialogues et une fin.",
+  "img": "assets/rs_jason_lucia_voiture.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-argent"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Niveaux",
+      "4 : Hot Together, Crazy In Love, Partners In Crime, Running on Empty (selon VGC)"
+     ],
+     [
+      "Où voir ton niveau",
+      "menu Jason et Lucia (pavé tactile sur PS5), puis onglet avec les gâchettes d'épaule"
+     ],
+     [
+      "Raccourci",
+      "maintenir la flèche droite : message rapide « check-in » (selon VGC)"
+     ],
+     [
+      "Rupture ?",
+      "impossible : au pire des cinématiques et moins d'options"
+     ],
+     [
+      "À tester",
+      "les noms et boutons varient entre les guides : vérifie en jeu"
+     ]
+    ]
+   },
+   "Tu te demandes si ta façon de jouer abîme le couple de Jason et Lucia ? Bonne nouvelle : le jeu t'avertit avant, rien n'est définitif et tout se rattrape avec de petites attentions. On a recoupé les guides de VGC et de Gameblog, reformulés ici, sans aucun spoiler de l'histoire. Pour les raccourcis manette en général, voir notre guide des raccourcis cachés.",
+   {
+    "h2": "Comment voir le niveau de relation de Jason et Lucia ?"
+   },
+   "Ouvre le menu consacré au duo avec le pavé tactile sur PS5, puis passe à l'onglet de la relation avec les boutons d'épaule (Bumpers), d'après VGC. Le niveau est affiché sur 4 : Hot Together (4/4), Crazy In Love (3/4), Partners In Crime (2/4) et Running on Empty (1/4). Gameblog les traduit par « À la vie, à la mort », « Follement amoureux », « Distant » et « À bout » ; les deux sites ne s'accordent pas à 100 % sur la correspondance, donc compare avec ce que tu vois à l'écran.",
+   {
+    "h2": "Comment faire monter la relation entre Jason et Lucia ?"
+   },
+   "Multiplie les gestes à deux, surtout ceux que le jeu propose à l'écran.",
+   {
+    "steps": [
+     {
+      "t": "Tenir la main : ",
+      "d": "en marchant, appuie sur R2 quand l'invite apparaît (VGC)."
+     },
+     {
+      "t": "Envoyer et répondre aux SMS : ",
+      "d": "réponds vite ; maintenir la flèche droite envoie un message rapide qui entretient le lien (VGC)."
+     },
+     {
+      "t": "Rentrer à la planque : ",
+      "d": "dormir côte à côte fait grimper la jauge (VGC)."
+     },
+     {
+      "t": "Activités à deux : ",
+      "d": "salle de sport, basket, billard (VGC) ; boîte de nuit, mini-golf et plongée (Gameblog)."
+     },
+     {
+      "t": "Braquages et poursuites : ",
+      "d": "réussir un coup ou échapper à la police ensemble compte aussi."
+     },
+     {
+      "t": "Petites attentions : ",
+      "d": "L2/LT en regardant ton partenaire, ou via le menu de changement de personnage avec la flèche droite (Gameblog)."
+     },
+     {
+      "t": "Discuter en voiture : ",
+      "d": "flèche haut (L2/LT si tu es passager), d'après Gameblog."
+     }
+    ]
+   },
+   "Pour les braquages, voir notre guide du braquage de bijouterie : le faire à deux est un bon moyen de gagner de l'argent et de la relation.",
+   {
+    "h2": "Que se passe-t-il si la relation baisse ?"
+   },
+   "Le jeu te prévient, mais ne te bloque jamais. Selon VGC, tu perds des dialogues et des options de mission, et une fin devient inaccessible ; au niveau le plus bas, des cinématiques spécifiques se déclenchent. Un passage scénarisé peut aussi faire baisser le niveau d'un cran, facile à rattraper. Le couple ne peut pas se séparer complètement.",
+   {
+    "h2": "Où se passent les scènes intimes ?"
+   },
+   "Seulement dans l'appartement commun, d'après Gameblog : une icône de deux cœurs entrelacés apparaît pendant une étreinte et il faut valider dans le temps imparti. Gameblog cite comme déclencheurs les petites attentions du matin ou du soir et rentrer vite chez toi après une poursuite à 5 étoiles ou plus. Il n'y a pas de prostituées ni d'option pour voir ailleurs ; seule une danse spéciale en club de strip-tease est possible.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Peut-on rompre avec Lucia ou Jason ? Non, le couple ne peut pas être rompu totalement, seulement refroidi.",
+   "La romance est-elle obligatoire ? Non, Rockstar la présente comme optionnelle, mais elle change certains dialogues et une fin.",
+   "Comment envoyer un message rapide ? Maintiens la flèche droite pour le « check-in » (VGC) ; à confirmer sur ta version."
+  ],
+  "sources": [
+   {
+    "t": "Video Games Chronicle",
+    "u": "https://www.videogameschronicle.com/guide/gta-6-jason-lucia-relationship-levels-explained-how-to-improve-jason-and-lucias-relationship/"
+   },
+   {
+    "t": "Gameblog",
+    "u": "https://gameblog.fr/jeu-video/ed/story/gta-6-romance-sexe-relation-guide-726951"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-coffres-codes-braquage-gta-6",
+  "date": "2026-11-25T12:45:00+01:00",
+  "cat": "guide",
+  "title": "Codes de coffres-forts dans GTA 6 : où les trouver et que faire sans code",
+  "chapo": "Dans GTA 6, les codes de coffre changent à chaque braquage : inutile de chercher une liste. Fouille les gardes neutralisés, les post-it et les écrans d'ordinateur, sinon crochète le coffre ou fais-le sauter aux explosifs. Un seul code fixe circule : 0420 pour la mission Lab Fees (à tester).",
+  "img": "assets/rs_jason_lucia_coffre.jpg",
+  "topics": [
+   "gta-6-argent",
+   "gta-6-police"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Codes",
+      "aléatoires, différents à chaque braquage (selon Playnews)"
+     ],
+     [
+      "Où chercher",
+      "gardes, post-it, écrans d'ordinateur, zone autour du coffre"
+     ],
+     [
+      "Sans code",
+      "crochetage, Snap Gun (cadenas), explosifs (bruyant)"
+     ],
+     [
+      "Code Lab Fees",
+      "0420 : une seule source (Ayther), à tester"
+     ],
+     [
+      "Mode Focus",
+      "clic sur les deux sticks pour repérer les objets interactifs"
+     ]
+    ]
+   },
+   "Tu as le coffre devant toi, l'alarme tourne et le code te manque ? Les codes de braquage sont générés au hasard, même dans un magasin déjà visité, donc les listes qui circulent ne servent à rien, selon Playnews. Voici où regarder et comment t'en passer. Pour la méthode complète, voir notre guide du braquage de bijouterie.",
+   {
+    "h2": "Où trouver le code d'un coffre dans GTA 6 ?"
+   },
+   "Cherche dans cet ordre :",
+   {
+    "steps": [
+     {
+      "t": "Sur les gardes neutralisés : ",
+      "d": "surtout dans les banques, fouille-les après les avoir maîtrisés."
+     },
+     {
+      "t": "Sur des post-it : ",
+      "d": "dans la pièce ou tout près du coffre."
+     },
+     {
+      "t": "Sur les écrans d'ordinateur : ",
+      "d": "bureaux et arrière-salles."
+     },
+     {
+      "t": "Autour du coffre : ",
+      "d": "active le mode Focus (clic sur les deux sticks) pour faire ressortir les éléments interactifs."
+     }
+    ]
+   },
+   {
+    "h2": "Que faire si tu ne trouves pas le code ?"
+   },
+   "Les petits coffres peuvent être crochetés. Les boîtes à cadenas s'ouvrent avec le Snap Gun, que tu obtiens en avançant dans l'histoire. Presque tous les coffres sautent aux explosifs, mais le bruit attire la police : prépare ta fuite avec notre guide pour semer les flics.",
+   {
+    "h2": "Dans quel ordre faire un braquage ?"
+   },
+   "Playnews conseille : maîtriser la foule, couper l'alarme (panneau mural blanc, souvent dans l'arrière-salle), trouver le code ou crocheter, puis détruire les preuves des caméras. Dans les grandes banques, une chambre forte ne s'ouvre brièvement qu'à l'arrivée du camion blindé. Les billets marqués (banques, prêteurs sur gage) sont traçables : à blanchir via un receleur, le brouilleur n'étant dispo qu'au chapitre 3.",
+   {
+    "h2": "Quel est le code de la mission Lab Fees ?"
+   },
+   "Ayther indique 0420 pour la porte du laboratoire. Il se trouve aussi sur un bloc-notes posé sur un bureau au fond à gauche du magasin : retourne-le (Carré sur PS5, X sur Xbox) pour lire le post-it jaune au verso. Autre méthode citée : menacer le vendeur, puis saisir la batte avec Triangle (Y). Une seule source pour l'instant : à tester en jeu.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Les codes de coffre sont-ils toujours les mêmes ? Non, ils changent à chaque braquage, sauf cas particulier comme Lab Fees (à confirmer).",
+   "Peut-on ouvrir un coffre sans code ? Oui, par crochetage, Snap Gun ou explosifs.",
+   "À quoi sert le mode Focus ? Il met en évidence les objets interactifs, comme les post-it, autour du coffre."
+  ],
+  "sources": [
+   {
+    "t": "Playnews",
+    "u": "https://www.playnews.gg/en/guides/gta-6-safe-codes-where-to-find-them-and-what-to-do-without-them"
+   },
+   {
+    "t": "Ayther",
+    "u": "https://ayther.fr/gta-6-code-laboratoire/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-25-mini-jeux-simplifies-option-cachee-gta-6",
+  "date": "2026-11-25T12:50:00+01:00",
+  "cat": "astuce",
+  "title": "GTA 6 : l'option « Mini-jeux simplifiés » pour réussir plus facilement le perçage de coffre",
+  "chapo": "Tu bloques sur le mini-jeu de perçage de coffre ? Active « Mini-jeux simplifiés » dans les paramètres : selon GTA Base, l'option rend ce mini-jeu plus facile, notamment dans la mission « Mot de sécurité ».",
+  "img": "assets/rs_vicecity_centre_nuit.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-argent"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "Paramètres du jeu, option « Mini-jeux simplifiés »"
+     ],
+     [
+      "Effet",
+      "facilite le mini-jeu de perçage (selon GTA Base)"
+     ],
+     [
+      "Mission",
+      "« Mot de sécurité », chapitre 3"
+     ],
+     [
+      "Astuce",
+      "la télécommande du coffre est dans le tiroir gauche du bureau"
+     ],
+     [
+      "À tester",
+      "chemin exact du menu non précisé par la source"
+     ]
+    ]
+   },
+   "Tu rates le mini-jeu de perçage et tu t'énerves ? Rockstar a prévu une option pour ça, que beaucoup de joueurs ne remarquent pas. D'après GTA Base, « Mini-jeux simplifiés » dans les paramètres adoucit le perçage de coffre. Autre aide à connaître dans la mission « Mot de sécurité » : le coffre s'ouvre avec une télécommande trouvée dans le tiroir à gauche du bureau de la maison. On n'a pas encore vérifié tout ça en jeu ; la source ne détaille pas le sous-menu exact, cherche donc dans les options. Pour les autres réglages, voir notre guide des réglages PS5.",
+   {
+    "h2": "Où activer « Mini-jeux simplifiés » dans GTA 6 ?"
+   },
+   "Ouvre les paramètres du jeu et cherche l'option « Mini-jeux simplifiés ». GTA Base précise qu'elle facilite le mini-jeu de perçage ; d'autres options d'accessibilité existent, comme le mode facile caché déjà repéré dans les options.",
+   {
+    "h2": "Comment réussir la mission « Mot de sécurité » ?"
+   },
+   "Elle se débloque après « Propriété de l'entreprise », en parlant à Nicole Park, et se situe au chapitre 3. Pendant l'entraînement, tu peux dire à Nicole que tu reviendras plus tard ; un échec à une étape la réinitialise. Récompenses citées : 1 500 $ dans le coffre du cabinet et un déverrouillage. La mission compte pour le 100 %.",
+   "Pour d'autres coffres, notre guide des codes de coffres-forts t'explique où chercher.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Où est la télécommande du coffre ? Dans le tiroir à gauche du bureau de la maison, selon GTA Base.",
+   "L'option change-t-elle les trophées ? On ne sait pas, à tester.",
+   "Peut-on faire la mission plus tard ? Oui, Nicole accepte que tu reviennes."
+  ],
+  "sources": [
+   {
+    "t": "GTA Base",
+    "u": "https://www.gtabase.com/fr/gta-6/missions/mot-de-securite"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "2026-11-25-conduite-automatique-illimitee-gta-6",
   "date": "2026-11-25T08:45:00+01:00",
   "cat": "astuce",
