@@ -118,5 +118,15 @@
   "x": 262,
   "y": 432,
   "link": "actus/2026-11-19-argent-debut-gta-6.html"
+ },
+ {
+  "id": "hydravions-southwind",
+  "cat": "activite",
+  "title": "Hydravions et hélico de Southwind",
+  "where": "Au sud-ouest de Key Lento, parking Sherwin Boatworks : des hydravions Mammoth Dodo et un Buckingham Maverick (PC Gamer, à tester).",
+  "zone": "keys",
+  "x": 190,
+  "y": 416,
+  "link": "actus/guide-avion-helicoptere-gta-6.html"
  }
 ]

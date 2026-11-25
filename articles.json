@@ -1,5 +1,304 @@
 [
  {
+  "slug": "2026-11-25-jeux-de-cartes-a-collectionner-gta-6",
+  "date": "2026-11-25T20:50:00+01:00",
+  "cat": "secret",
+  "title": "GTA 6 : les 13 jeux de cartes à collectionner (liste complète des séries)",
+  "chapo": "GTA 6 cache 13 séries de cartes à collectionner, de Vice City Narcos à ED Comics Universe, selon le guide de Push Square. On te donne la liste complète des séries ; les emplacements restent à trouver en jeu.",
+  "img": "assets/rs_keys_bar.jpg",
+  "topics": [
+   "gta-6-easter-eggs",
+   "gta-6-carte"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Combien",
+      "13 séries de cartes"
+     ],
+     [
+      "Où",
+      "emplacements non détaillés dans la source : à tester en jeu"
+     ],
+     [
+      "Utilité",
+      "objets à collectionner ; les trophées sont listés dans notre guide"
+     ],
+     [
+      "Source",
+      "guide Push Square, mis à jour le 24/11/2026"
+     ]
+    ]
+   },
+   "Tu croises des cartes à collectionner et tu te demandes combien il y en a ? Push Square recense 13 séries dans son guide de GTA 6. Il ne donne pas encore d'emplacement précis dans le texte qu'on a lu, donc on liste les noms, et on complète dès qu'on a des lieux sourcés. Pour le reste, voir notre page Easter eggs.",
+   {
+    "h2": "Quelles sont les 13 séries de cartes de GTA 6 ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Vice City Narcos",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "Liberty City Swingers",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "Los Santos Corkers",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "Los Santos Panic",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "Los Santos Pounders",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "Backyard Wrestling",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "Delights Dancers",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "Jack of Hearts Dancers",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "NINE1NINE",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "The Legends of Ratface",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "Right Wing: America's Hero",
+      "d": "(série de cartes)"
+     },
+     {
+      "t": "ED Comics Universe",
+      "d": "(série de cartes)"
+     }
+    ]
+   },
+   "Le guide annonce 13 séries mais n'en nomme clairement que celles ci-dessus à nos yeux : on vérifie le décompte exact. Estimation : une série manque encore à notre liste.",
+   {
+    "h2": "Où trouver les cartes à collectionner ?"
+   },
+   "Rien de précis pour l'instant. Garde les yeux ouverts dans les magasins et les lieux de collection, et regarde aussi notre carte interactive pour les autres collectibles. Si tu en trouves une, c'est un bon candidat pour la Chasse aux secrets.",
+   {
+    "h2": "Les cartes comptent-elles pour un trophée ?"
+   },
+   "Elles apparaissent dans la liste des collectibles ; notre guide des trophées détaille les 55 succès.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Combien de séries ? 13 selon Push Square.",
+   "Où les trouver ? Pas d'emplacement confirmé : à tester en jeu.",
+   "Y a-t-il un spoiler ? Non, ce sont seulement des noms de séries."
+  ],
+  "sources": [
+   {
+    "t": "Push Square",
+    "u": "https://www.pushsquare.com/guides/gta-6-guide"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-25-piloter-avion-gta-6-commandes",
+  "date": "2026-11-25T20:45:00+01:00",
+  "cat": "astuce",
+  "title": "Comment piloter un avion dans GTA 6 : décoller, atterrir et ne pas finir au fond de l'eau",
+  "chapo": "Pour décoller dans GTA 6, accélère à fond puis tire le manche ; le joystick gauche dirige, et deux boutons de gouvernail gèrent le lacet, d'après Metaforge. Garde un œil sur le train d'atterrissage et sauvegarde avant les longs vols.",
+  "img": "assets/rs_kalaga_helico_news.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-carte"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Décoller",
+      "accélérer à fond puis tirer le manche"
+     ],
+     [
+      "Diriger",
+      "joystick gauche"
+     ],
+     [
+      "Lacet",
+      "deux boutons de gouvernail (non nommés par la source)"
+     ],
+     [
+      "Descente",
+      "bouton de ralentissement ; train d'atterrissage à basculer"
+     ],
+     [
+      "Premier vol",
+      "après la mission « Gone Fishing » (Metaforge)"
+     ],
+     [
+      "Source",
+      "Metaforge : à tester en jeu"
+     ]
+    ]
+   },
+   "Premier vol dans Leonida ? Voici les bases relevées par Metaforge. On n'a pas encore tout testé nous-mêmes : les boutons exacts dépendent de ta manette, vérifie-les dans les options. Pour trouver un appareil, lis d'abord notre guide où trouver un avion et un hélicoptère.",
+   {
+    "h2": "Comment décoller en avion dans GTA 6 ?"
+   },
+   "Accélère à fond, garde l'avion droit, puis tire le manche vers toi quand la vitesse est suffisante. Un hydravion décolle depuis l'eau, pas besoin de piste.",
+   {
+    "h2": "Comment diriger et atterrir ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Dirige au joystick gauche : ",
+      "d": "c'est la commande principale."
+     },
+     {
+      "t": "Corrige au gouvernail : ",
+      "d": "les deux boutons de lacet servent à aligner l'appareil."
+     },
+     {
+      "t": "Ralentis en descente : ",
+      "d": "utilise le bouton de ralentissement avant de toucher le sol ou l'eau."
+     },
+     {
+      "t": "Sors le train : ",
+      "d": "sur les avions qui en ont, le train d'atterrissage se bascule."
+     }
+    ]
+   },
+   {
+    "h2": "Pourquoi voler est utile dans GTA 6 ?"
+   },
+   "La carte se dévoile zone par zone quand tu la survoles. Metaforge cite le succès « The Goodtime State » pour tout découvrir : voir notre guide des trophées.",
+   {
+    "h2": "Quelles erreurs éviter ?"
+   },
+   "Ne t'approche pas des jets de l'aéroport de Vice City : étoiles et chasseurs. Pense aussi à sauvegarder avant un long trajet : notre guide de la sauvegarde t'explique les 15 emplacements.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Faut-il une piste ? Pas pour un hydravion, qui part de l'eau.",
+   "Peut-on voler dès le début ? Après Gone Fishing, selon Metaforge.",
+   "Les commandes sont-elles les mêmes sur PS5 et Xbox ? Vérifie les noms de boutons dans les options de ta manette."
+  ],
+  "sources": [
+   {
+    "t": "Metaforge",
+    "u": "https://metaforge.app/gta-6/how-to-fly-a-plane-gta-6"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-avion-helicoptere-gta-6",
+  "date": "2026-11-25T20:40:00+01:00",
+  "cat": "guide",
+  "title": "Où trouver un avion et un hélicoptère dans GTA 6 : le premier hydravion et les hélicos de Vice City",
+  "chapo": "Selon PC Gamer, le moyen le plus rapide d'avoir un avion dans GTA 6 est de rejoindre Southwind, à environ 4 km au sud-ouest de la maison de Jason à Key Lento, où des hydravions Mammoth Dodo attendent près d'un petit hangar. Les hélicos, eux, se trouvent surtout sur les toits marqués H de Vice City.",
+  "img": "assets/rs_keys_aerien.jpg",
+  "topics": [
+   "gta-6-carte",
+   "gta-6-debuter"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où (avion)",
+      "Southwind, ~2,5 miles (4 km) au sud-ouest de la maison de Jason, parking Sherwin Boatworks / Chicki's Tiki Bar"
+     ],
+     [
+      "Avion",
+      "hydravions Mammoth Dodo, hangar côté eau (PC Gamer)"
+     ],
+     [
+      "Hélicoptère",
+      "Buckingham Maverick sur un quai voisin ; autres hélicos sur les toits « H » de Vice City (Metaforge)"
+     ],
+     [
+      "Quand",
+      "après la mission « Gone Fishing » (Metaforge)"
+     ],
+     [
+      "Attention",
+      "éviter l'aéroport de Vice City : étoiles de recherche et chasseurs"
+     ],
+     [
+      "Fiabilité",
+      "les sources divergent sur l'emplacement exact : à tester en jeu"
+     ]
+    ]
+   },
+   "Tu veux survoler Leonida sans attendre qu'une mission te donne un avion ? Plusieurs sites ont repéré où en prendre un dès les premières heures. Attention : ce sont les observations de journalistes, pas les nôtres, et elles ne concordent pas toutes. On les a reformulées et classées, à tester en jeu. Pour situer les lieux, voir notre carte interactive.",
+   {
+    "h2": "Où trouver un avion dans GTA 6 ?"
+   },
+   "Direction Southwind, un petit quartier au sud-ouest de Key Lento, tout près de la base militaire Mile Zero Air Station. Selon PC Gamer, il faut compter environ 2,5 miles (4 km) depuis la maison de Jason.",
+   {
+    "steps": [
+     {
+      "t": "Pars de la maison de Jason : ",
+      "d": "prends la route vers le sud-ouest dans Key Lento, puis passe par Abismo Key."
+     },
+     {
+      "t": "Suis la Sunbelt Highway (Route 1) : ",
+      "d": "elle te mène à l'ouest puis au nord jusqu'à Southwind ; deux longs ponts annoncent que tu es proche."
+     },
+     {
+      "t": "Tourne dans le parking : ",
+      "d": "à droite, au niveau du panneau Sherwin Boatworks (SBW) et de Chicki's Tiki Bar."
+     },
+     {
+      "t": "Regarde vers l'eau : ",
+      "d": "un petit hangar abrite en général quelques hydravions Mammoth Dodo, d'autres sont parfois amarrés au quai. Personne ne traîne là."
+     }
+    ]
+   },
+   {
+    "h2": "Où trouver un hélicoptère dans GTA 6 ?"
+   },
+   "PC Gamer indique un Buckingham Maverick sur un quai accessible depuis le parking de Southwind (porte ouverte vers l'est). Metaforge, de son côté, liste des hélicos sur les toits marqués H de Vice City (entre dans le hall, puis ascenseur), sur un toit d'hôtel d'Ocean Beach, à Flamingo Island et au nord d'Ambrosia.",
+   {
+    "h2": "Y a-t-il un autre avion près de la maison de Jason ?"
+   },
+   "Les sources se contredisent. Metaforge parle d'un avion sur la piste de Key Lento, près de la maison ; un site moins fiable évoque un biplan Bottcher Duster vers Boundary Road, à environ 1,4 km. On te conseille de commencer par Southwind, le mieux décrit, et de nous dire en commentaire ce que tu trouves.",
+   {
+    "h2": "Quels dangers quand on vole un avion ?"
+   },
+   "Évite les jets de l'aéroport international de Vice City : ça déclenche des étoiles de recherche et des chasseurs, selon Metaforge. Sauvegarde avant un long vol : on t'explique comment dans notre guide de la sauvegarde. Et pour la prise en main, lis notre article sur le pilotage.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Peut-on avoir un avion dès le début ? Selon Metaforge, le premier vol arrive après la mission Gone Fishing ; avant, rien n'est confirmé.",
+   "Faut-il payer ? Aucune des sources lues ne parle de prix.",
+   "Que gagne-t-on à voler partout ? La carte se dévoile par zones ; Metaforge cite le succès « The Goodtime State » : voir notre guide des trophées."
+  ],
+  "sources": [
+   {
+    "t": "PC Gamer",
+    "u": "https://www.pcgamer.com/games/grand-theft-auto/gta-6-first-plane-and-helicopter/"
+   },
+   {
+    "t": "Metaforge",
+    "u": "https://metaforge.app/gta-6/how-to-fly-a-plane-gta-6"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "guide-voler-voiture-cloner-cle-gta-6",
   "date": "2026-11-25T16:40:00+01:00",
   "cat": "guide",
