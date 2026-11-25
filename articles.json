@@ -1,5 +1,261 @@
 [
  {
+  "slug": "2026-11-25-conduite-automatique-illimitee-gta-6",
+  "date": "2026-11-25T08:45:00+01:00",
+  "cat": "astuce",
+  "title": "GTA 6 : comment activer la conduite automatique partout (et réduire les dégâts des véhicules)",
+  "chapo": "Dans GTA 6, la conduite automatique refuse de s'activer en situation risquée tant que tu ne changes pas un réglage : Paramètres > Jeu > Accessibilité, option « Conduite Automatique » sur « Non limitée ». Selon Gameblog, une autre option y réduit aussi les dégâts des véhicules.",
+  "img": "assets/rs_vicecity_car.jpg",
+  "topics": [
+   "gta-6-debuter"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "Paramètres > Jeu > Accessibilité"
+     ],
+     [
+      "Option 1",
+      "« Conduite Automatique » : à passer sur « Non limitée »"
+     ],
+     [
+      "Option 2",
+      "dégâts des véhicules réduits (à activer à la main)"
+     ],
+     [
+      "Lancer la conduite auto",
+      "flèche bas maintenue + Option, puis Rond (B) maintenu"
+     ],
+     [
+      "Attention",
+      "Gameblog prévient que ça peut gâcher un peu l'expérience"
+     ]
+    ]
+   },
+   "Tu as déjà essayé de lancer la conduite automatique en pleine poursuite, sans succès ? C'est voulu : par défaut, le jeu la bloque dans les situations risquées. D'après Gameblog, un réglage planqué dans l'accessibilité lève cette limite. On n'a pas encore testé tous les cas en jeu, donc prends ça comme un conseil à vérifier.",
+   {
+    "h2": "Comment activer la conduite automatique sans limite dans GTA 6 ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Ouvre les paramètres : ",
+      "d": "menu pause, puis Paramètres > Jeu > Accessibilité."
+     },
+     {
+      "t": "Cherche l'option « Conduite Automatique » : ",
+      "d": "par défaut, elle est limitée."
+     },
+     {
+      "t": "Passe-la sur « Non limitée » : ",
+      "d": "tu pourras l'activer même dans les situations risquées."
+     },
+     {
+      "t": "Lance-la en voiture : ",
+      "d": "maintiens la flèche du bas, appuie sur Option pour la caméra cinématique, puis maintiens Rond (B)."
+     }
+    ]
+   },
+   "La vitesse se règle et tu peux quitter la conduite automatique à tout moment. Elle ne se déclenche qu'avec la caméra cinématique.",
+   {
+    "h2": "Comment réduire les dégâts des véhicules ?"
+   },
+   "Toujours dans Paramètres > Jeu > Accessibilité, fais défiler : une option réduit les dégâts subis par tes véhicules. Ce n'est pas un code de triche, c'est un réglage officiel. Gameblog précise que ça peut nuire à l'expérience, à toi de voir.",
+   {
+    "h2": "Quels autres réglages changent la conduite ?"
+   },
+   "Toujours selon Gameblog, tu peux aussi agir sur la manette : Paramètres > Manette > Fonctionnalités de la manette, avec une zone inerte des joysticks autour de 6 ou 8 (attention, ça touche aussi les contrôles hors conduite). Sur PS5, garde activée la résistance des gâchettes adaptatives pour mieux doser l'accélération. Pour d'autres gestes cachés au volant, voir notre guide des raccourcis cachés, et pour les réglages PS5 notre guide dédié.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   {
+    "steps": [
+     {
+      "t": "La conduite automatique marche-t-elle pendant une poursuite ? ",
+      "d": "Seulement si tu l'as mise sur « Non limitée » (à tester en jeu)."
+     },
+     {
+      "t": "Est-ce un cheat ? ",
+      "d": "Non, c'est une option d'accessibilité officielle."
+     },
+     {
+      "t": "Où trouver les dégâts réduits ? ",
+      "d": "Paramètres > Jeu > Accessibilité, en faisant défiler."
+     }
+    ]
+   }
+  ],
+  "sources": [
+   {
+    "t": "Gameblog",
+    "u": "https://www.gameblog.fr/jeu-video/ed/astuces/gta-6-meilleures-options-conduite-guide-727090"
+   },
+   {
+    "t": "Gameblog (raccourcis cachés)",
+    "u": "https://www.gameblog.fr/jeu-video/ed/astuces/gta-6-guide-interaction-raccourcis-caches-727316"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-raccourcis-caches-gta-6",
+  "date": "2026-11-25T08:40:00+01:00",
+  "cat": "guide",
+  "title": "Raccourcis cachés GTA 6 : 20 interactions que le jeu n'explique pas (manette)",
+  "chapo": "GTA 6 cache des dizaines de gestes jamais expliqués : se baisser en voiture, pousser un véhicule en panne, couper la radio, vendre le butin depuis le coffre… Selon Gameblog, une vingtaine de raccourcis manette changent vraiment la vie. Voici les boutons (PS5 / Xbox), classés par usage.",
+  "img": "assets/rs_vicecity_rue_fresques.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-argent"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Quoi",
+      "20 raccourcis et interactions que le jeu n'explique pas"
+     ],
+     [
+      "Où",
+      "en jeu, à tout moment (voiture, bateau, à pied)"
+     ],
+     [
+      "Boutons",
+      "indiqués PS5 puis Xbox entre parenthèses"
+     ],
+     [
+      "À tester",
+      "on n'a pas encore tout vérifié en jeu : source Gameblog"
+     ]
+    ]
+   },
+   "Tu joues à GTA 6 depuis quelques jours et tu as l'impression de rater des trucs ? C'est normal : Rockstar a planqué beaucoup de gestes utiles, sans tutoriel. Gameblog en a recensé une vingtaine ; on les reprend ici, reformulés et rangés pour que tu les retrouves vite. Les boutons sont donnés pour la manette PS5, avec l'équivalent Xbox entre parenthèses. Rien de tout ça ne dévoile l'histoire. Pour les réglages de la manette, voir aussi notre guide des réglages PS5.",
+   {
+    "h2": "Quels raccourcis cachés en voiture et en bateau ?"
+   },
+   "Ce sont les plus utiles, surtout quand la police te colle aux roues.",
+   {
+    "steps": [
+     {
+      "t": "Vue première personne : ",
+      "d": "L2 (LT) + R3 (RS), à n'importe quel moment."
+     },
+     {
+      "t": "Se baisser dans la voiture : ",
+      "d": "Rond (B). Tu prends moins de balles en fusillade et tu peux te cacher de la police."
+     },
+     {
+      "t": "Regarder tes passagers : ",
+      "d": "R3 quand tu as quelqu'un à bord. La conduite passe en automatique le temps du regard."
+     },
+     {
+      "t": "Ouvrir la portière en roulant : ",
+      "d": "Carré (X)."
+     },
+     {
+      "t": "Descendre en laissant le moteur tourner : ",
+      "d": "appuie deux fois sur Triangle (Y) en sortant."
+     },
+     {
+      "t": "Pousser un véhicule en panne ou un bateau : ",
+      "d": "place-toi devant ou derrière, pousse le stick gauche et appuie sur Carré (X)."
+     },
+     {
+      "t": "Retourner une voiture après un tonneau : ",
+      "d": "pousse le stick vers le flanc du véhicule et appuie sur Carré (X)."
+     },
+     {
+      "t": "Se balader sur un bateau en pilotage automatique : ",
+      "d": "deux appuis rapides sur Triangle (Y) pour quitter le poste de pilotage."
+     },
+     {
+      "t": "Vendre le butin sans vider les sacs : ",
+      "d": "gare-toi à portée du receleur et vends directement depuis le coffre."
+     }
+    ]
+   },
+   {
+    "h2": "Comment utiliser la conduite automatique ?"
+   },
+   "En voiture, maintiens la flèche du bas puis appuie sur Option : la caméra cinématique se lance. Maintiens ensuite Rond (B) pour que la voiture roule toute seule. Tu peux la quitter à tout moment. Par défaut, elle refuse de s'activer dans les situations risquées ; un réglage permet de lever cette limite, tout est détaillé dans notre article sur la conduite automatique.",
+   {
+    "h2": "Quels raccourcis pour la vie de tous les jours ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Clignotants : ",
+      "d": "flèche gauche ou droite."
+     },
+     {
+      "t": "Phares : ",
+      "d": "Rond (B) en conduisant."
+     },
+     {
+      "t": "Couper ou relancer la radio : ",
+      "d": "deux appuis rapides sur la flèche gauche."
+     },
+     {
+      "t": "Menu de la voiture : ",
+      "d": "flèche gauche, puis stick droit vers le haut."
+     },
+     {
+      "t": "S'asseoir par terre : ",
+      "d": "maintiens Rond (B). La pose change près d'un mur, d'un poteau ou d'une voiture."
+     },
+     {
+      "t": "S'appuyer sur une rampe : ",
+      "d": "clic sur L3, près d'une rampe."
+     },
+     {
+      "t": "Changer la façon de porter un chapeau ou une casquette : ",
+      "d": "L1 + croix directionnelle."
+     },
+     {
+      "t": "Changer la main qui tient la nourriture ou la boisson : ",
+      "d": "flèche gauche ou droite. Tu peux même tirer en mangeant."
+     },
+     {
+      "t": "Insulter les passants : ",
+      "d": "L2 (LT) + R1 (RB), même en voiture. En conduisant, R3 suffit."
+     }
+    ]
+   },
+   {
+    "h2": "Pourquoi ces raccourcis valent le coup ?"
+   },
+   "Trois d'entre eux changent vraiment la partie : se baisser en voiture pendant une poursuite, pousser un véhicule en panne au lieu de payer un remorquage, et vendre le butin depuis le coffre pour gagner du temps après un braquage. Pour l'argent, retrouve nos méthodes dans la page Argent du site.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   {
+    "steps": [
+     {
+      "t": "Ces raccourcis marchent-ils sur Xbox ? ",
+      "d": "Oui, avec les boutons équivalents indiqués entre parenthèses (Rond = B, Carré = X, Triangle = Y)."
+     },
+     {
+      "t": "Faut-il avoir avancé dans l'histoire ? ",
+      "d": "Selon Gameblog, ce sont des interactions de base disponibles en jeu libre ; à vérifier en jeu pour les rares cas dépendant du chapitre."
+     },
+     {
+      "t": "Peut-on changer les boutons ? ",
+      "d": "Les réglages de manette sont dans les paramètres ; notre guide des réglages PS5 explique les plus utiles."
+     }
+    ]
+   }
+  ],
+  "sources": [
+   {
+    "t": "Gameblog",
+    "u": "https://www.gameblog.fr/jeu-video/ed/astuces/gta-6-guide-interaction-raccourcis-caches-727316"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "2026-11-24-bug-missing-persons-blocage-lucia-gta-6",
   "date": "2026-11-24T19:40:00+01:00",
   "cat": "astuce",
