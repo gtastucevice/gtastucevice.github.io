@@ -1,5 +1,248 @@
 [
  {
+  "slug": "2026-11-26-portail-vice-city-2002-tommy-chemise-velo-gta-6",
+  "date": "2026-11-26T12:40:00+01:00",
+  "cat": "secret",
+  "title": "GTA 6 : le portail secret vers Vice City 2002 et les cadeaux de Tommy Vercetti (comment le déclencher)",
+  "chapo": "Un joueur affirme avoir trouvé un portail caché qui renvoie dans la boîte de nuit de Vice City (2002) et offre la chemise et le vélo de Tommy Vercetti. Le chemin est long (12 sous-stations, code « Life is Passing Me By », centrale LPL de nuit), et plusieurs joueurs disent que le portail n'apparaît pas chez eux : à tester.",
+  "img": "assets/rs_vicecity_skyline_nuit.jpg",
+  "topics": [
+   "gta-6-easter-eggs",
+   "gta-6-carte"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "Radio tower Badger R&D (Key Lento), 12 sous-stations LPL, puis réacteur 2 de la centrale LPL Turtle Head"
+     ],
+     [
+      "Quand",
+      "Portail visible entre 19h et 6h du matin, après un SMS"
+     ],
+     [
+      "Récompense",
+      "Chemise classique et vélo de Tommy Vercetti (selon Pure Xbox)"
+     ],
+     [
+      "Condition",
+      "12 sous-stations sans voyage rapide, boutons dans le bon ordre"
+     ],
+     [
+      "Statut",
+      "À tester : plusieurs joueurs disent que le portail ne s'affiche pas"
+     ]
+    ]
+   },
+   "Un nouveau secret fait le tour de la communauté : un portail qui te ramène dans une boîte de nuit inspirée de Vice City sur PS2, avec deux cadeaux de Tommy Vercetti à la clé. Selon Pure Xbox (24/11), c'est l'easter egg le plus spectaculaire trouvé jusqu'ici. Il a été repéré par le joueur Memelo, qui a publié sa vidéo sur X le 23/11. On te résume le parcours, sans rien d'autre que ce que rapportent les médias : on ne l'a pas refait en jeu.",
+   {
+    "h2": "Comment déclencher le portail de Vice City 2002 ?"
+   },
+   "Il faut enchaîner trois étapes, d'après Pure Xbox qui renvoie vers une vidéo de Dan Allen Gaming pour l'ordre exact des boutons.",
+   {
+    "steps": [
+     {
+      "t": "Key Lento : ",
+      "d": "à la radio tower Badger R&D, actionne l'interrupteur d'alimentation puis appuie sur le bouton pour faire apparaître le logo Malibu sur la télé."
+     },
+     {
+      "t": "12 sous-stations LPL : ",
+      "d": "visite-les sans voyage rapide et appuie sur les boutons dans le bon ordre à chacune. Les lettres extérieures des 12 stations, mises bout à bout, forment « Life is Passing Me By », un code de triche de l'ancien Vice City."
+     },
+     {
+      "t": "Centrale LPL Turtle Head : ",
+      "d": "après avoir reçu un SMS, va au réacteur 2 entre 19h et 6h du matin : le portail doit y apparaître."
+     }
+    ]
+   },
+   {
+    "h2": "Qu'est-ce qu'on gagne en traversant le portail ?"
+   },
+   "Une fois sorti, tu reçois deux objets de Tommy Vercetti : sa chemise classique et son vélo, tels qu'ils étaient dans le jeu de 2002. Le portail te renvoie dans un décor années 80 de boîte de nuit.",
+   {
+    "h2": "Est-ce que ça marche pour tout le monde ?"
+   },
+   "Pas sûr. Plusieurs joueurs disent que le portail n'apparaît pas chez eux, sans cause identifiée. Les images montrent surtout Jason, et un joueur affirme que ça marche aussi avec Lucia, à condition de jouer seul. Considère donc ce secret comme « à tester ». Si tu l'as fait, tu peux nous dire ce qui a débloqué le portail.",
+   {
+    "h2": "Où trouver d'autres secrets du même genre ?"
+   },
+   "On les réunit tous, avec leur statut (confirmé, rumeur, à tester), dans notre page Easter eggs et la carte interactive. Dans le même esprit, voir aussi nos articles sur les jeux vidéo cachés jouables et la radio secrète The Vault.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Faut-il tricher pour déclencher le portail ? Non, le « code » est formé par les lettres des 12 sous-stations, tu n'entres rien à la manette hors des boutons des stations.",
+   "Peut-on y aller de jour ? Le portail n'apparaît qu'entre 19h et 6h, selon Pure Xbox.",
+   "Y a-t-il un spoiler d'histoire ? Non, l'easter egg ne touche pas à l'histoire d'après la source."
+  ],
+  "sources": [
+   {
+    "t": "Pure Xbox",
+    "u": "https://www.purexbox.com/news/2026/11/gta-6s-most-spectacular-easter-egg-so-far-has-just-been-discovered"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-26-voiture-coil-raiden-autopilote-police-gta-6",
+  "date": "2026-11-26T12:45:00+01:00",
+  "cat": "secret",
+  "title": "GTA 6 : la Coil Raiden, la voiture « Tesla » qui te livre à la police si tu essaies de la voler",
+  "chapo": "La Coil Raiden, voiture inspirée de la Tesla Model S, serait plus dure à voler que les autres : selon une vidéo relayée par Supercar Blondie (26/11), elle prend le volant seule, t'emmène au commissariat et verrouille ses portes. Lieu et méthode précis restent inconnus : à tester.",
+  "img": "assets/rs_police_pont.jpg",
+  "topics": [
+   "gta-6-police",
+   "gta-6-easter-eggs"
+  ],
+  "body": [
+   "Une voiture qui conduit toute seule jusqu'au commissariat : c'est la blague du jour chez les joueurs. D'après Supercar Blondie, un joueur (@ycchong188 sur X) a publié le 22/11 puis le 23/11 deux vidéos où il tente de voler une Coil Raiden. On ne l'a pas testé en jeu, voici ce qui est rapporté.",
+   {
+    "h2": "Que se passe-t-il si tu voles une Coil Raiden dans GTA 6 ?"
+   },
+   "La voiture déclenche une sorte d'autopilote et conduit le personnage directement au commissariat, où les policiers le plaquent au sol. Dans la seconde vidéo, elle appelle elle-même la police, ses portes se verrouillent et le seul moyen de s'échapper est de sauter par une fenêtre.",
+   {
+    "h2": "Pourquoi la Coil Raiden est-elle différente ?"
+   },
+   "Le jeu utilise des marques fictives, et la Raiden est généralement vue comme un clin d'œil à la Tesla Model S de 2012, sans confirmation de Rockstar. Supercar Blondie la dit plus difficile à voler que les autres véhicules.",
+   {
+    "h2": "Où trouver une Coil Raiden et comment la voler sans se faire piéger ?"
+   },
+   "L'article ne donne ni emplacement ni méthode : c'est à tester. Pour les vols classiques, suis notre guide pour voler une voiture (casser la vitre ou cloner la clé). Et si tu finis avec les flics aux trousses, notre guide pour semer la police te sera utile.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "La Coil Raiden est-elle une vraie Tesla ? Non, c'est un modèle fictif, vu comme inspiré de la Tesla Model S (non confirmé).",
+   "Peut-on échapper à l'autopilote ? Selon la vidéo, seulement en sautant par une fenêtre quand les portes sont verrouillées.",
+   "Est-ce un bug ? Rien ne le dit : ça ressemble à un comportement voulu, à confirmer."
+  ],
+  "sources": [
+   {
+    "t": "Supercar Blondie",
+    "u": "https://supercarblondie.com/gta-6-tesla-inspired-car-stealing-coil-raiden/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-tous-les-collectibles-gta-6",
+  "date": "2026-11-26T12:50:00+01:00",
+  "cat": "guide",
+  "title": "Tous les collectibles de GTA 6 : la liste des 25 types à chercher et où les suivre",
+  "chapo": "GTA 6 cache des dizaines de collectibles : 18 séries de cartes, repères et sculptures WAiNK, panneaux Peewee's, tags No Flusher, magazines, méditations… Selon Push Square, ils se suivent dans le menu Progression > Collections.",
+  "img": "assets/rs_vicecity_towers.jpg",
+  "topics": [
+   "gta-6-easter-eggs",
+   "gta-6-carte"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Suivi",
+      "Pavé tactile > Progression > Collections (cartes)"
+     ],
+     [
+      "Cartes",
+      "18 séries, 480 cartes, revente chez les prêteurs sur gages"
+     ],
+     [
+      "Autres",
+      "WAiNK, panneaux, tags, magazines, livres, méditations, flamants, paniers, cibles de chasse"
+     ],
+     [
+      "Source",
+      "Hub Push Square, mis à jour le 25/11, guide encore en cours"
+     ],
+     [
+      "Complétion",
+      "Cartes vendues toujours comptées pour le 100 %"
+     ]
+    ]
+   },
+   "Tu veux savoir tout ce qu'il y a à collectionner dans GTA 6 avant d'attaquer le 100 % ? Voici la liste des types de collectibles recensés par Push Square (hub mis à jour le 25/11, guide encore en cours de rédaction), avec ce que l'on sait déjà. Les emplacements détaillés viennent au fil de nos guides.",
+   {
+    "h2": "Quels sont les collectibles de GTA 6 ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Cartes à collectionner : ",
+      "d": "18 séries, 480 cartes, voir notre guide des cartes."
+     },
+     {
+      "t": "WAiNK : ",
+      "d": "repères, curiosités et sculptures à scanner, voir notre guide du scanner WAiNK."
+     },
+     {
+      "t": "Panneaux Peewee's : ",
+      "d": "avec un puzzle au grand prix."
+     },
+     {
+      "t": "Tags No Flusher : ",
+      "d": "des graffitis à repérer."
+     },
+     {
+      "t": "Magazines, livres et BD : ",
+      "d": "plus des échanges de livres."
+     },
+     {
+      "t": "Méditations : ",
+      "d": "des lieux où méditer."
+     },
+     {
+      "t": "Flamants cocaïne : ",
+      "d": "à trouver dans la ville."
+     },
+     {
+      "t": "Paniers de basket : ",
+      "d": "un guide dédié liste les emplacements."
+     },
+     {
+      "t": "Cibles de chasse de Bret : ",
+      "d": "à chercher à travers Leonida."
+     },
+     {
+      "t": "Trésors et découvertes sous-marines : ",
+      "d": "voir notre guide des trésors de Kenton."
+     },
+     {
+      "t": "Playlists uniques et chansons secrètes : ",
+      "d": "liées à la radio."
+     },
+     {
+      "t": "Véhicules de Randy et dépôts de Moses : ",
+      "d": "voir notre liste de Randy."
+     }
+    ]
+   },
+   {
+    "h2": "Comment suivre ta progression ?"
+   },
+   "Ouvre le pavé tactile puis Progression > Collections pour les cartes. Pour savoir où vendre, va dans Exploration > Collectionneurs > Pawn Shops. Les cartes non vendues sont dans la caisse en bois de ton appartement, et les cartes vendues restent comptées pour le 100 %.",
+   {
+    "h2": "Comment ne rien rater ?"
+   },
+   "Une carte standard a un emplacement fixe, mais certaines peuvent être manquées. D'autres sont aléatoires, dans des conteneurs jaunes, non listées (à tester pour les cartes brillantes). Garde un œil sur la carte interactive et sur notre page Easter eggs.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Combien y a-t-il de cartes ? 480, en 18 séries, selon Push Square.",
+   "Où vendre les cartes ? Chez les prêteurs sur gages, repérables dans le menu Exploration.",
+   "La liste est-elle complète ? Non, Push Square indique que son guide est en cours : on la met à jour."
+  ],
+  "sources": [
+   {
+    "t": "Push Square",
+    "u": "https://www.pushsquare.com/guides/gta-6-guide"
+   },
+   {
+    "t": "Push Square (cartes)",
+    "u": "https://www.pushsquare.com/guides/gta-6-collectible-card-locations"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "guide-cartes-a-collectionner-gta-6",
   "date": "2026-11-26T08:40:00+01:00",
   "cat": "guide",
