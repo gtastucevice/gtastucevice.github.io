@@ -1,5 +1,502 @@
 [
  {
+  "slug": "guide-activites-secondaires-gta-6",
+  "date": "2026-11-26T17:15:00+01:00",
+  "cat": "guide",
+  "title": "Toutes les activités secondaires de GTA 6 : la liste complète (et ce qui compte pour le 100 %)",
+  "chapo": "GTA 6 regorge d'activités hors missions : stand de tir, billard, mini-golf, 100 paniers de basket, pêche, plongée, 40 courses, 397 cascades, drones, chasse, méditation, cartes à collectionner… Voici la liste complète, sans spoiler, avec les seuils à atteindre pour le 100 %.",
+  "img": "assets/rs_vicecity_basket.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-carte"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Loisirs",
+      "tir, billard, mini-golf, basket, pêche, plongée, méditation, jeux vidéo"
+     ],
+     [
+      "Défis",
+      "40 courses, 13 Race Challenges, 397 cascades, 42 épreuves de drone, 80 challenges"
+     ],
+     [
+      "Absents",
+      "pas de fléchettes ni de bowling"
+     ],
+     [
+      "100 %",
+      "pas besoin de tout finir : des seuils suffisent (GTABase)"
+     ],
+     [
+      "Ratable ?",
+      "non, tout reste faisable après l'histoire (GTABase)"
+     ]
+    ]
+   },
+   "Tu as fini ta mission et tu veux souffler ? Leonida a de quoi t'occuper des dizaines d'heures. On a croisé les checklists de PowerPyx, GTABase et Gameblog. Les chiffres sont ceux de ces sources ; on n'a pas encore tout vérifié nous-mêmes.",
+   {
+    "h2": "Quelles sont les activités de loisirs dans GTA 6 ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Stand de tir : ",
+      "d": "2 stands (Griffin et Rodgers Ranch), entrée à 5 $, médailles bronze, argent et or."
+     },
+     {
+      "t": "Billard, mini-golf, basket : ",
+      "d": "des adversaires au billard dans les bars, 3 parcours de mini-golf, et 100 paniers de basket éparpillés sur la carte."
+     },
+     {
+      "t": "Pêche : ",
+      "d": "la canne est dans l'onglet Équipement de la roue d'armes ; les leurres s'achètent chez Ammu-Nation ou Chuck's Tackle & Shot. Tout est dans notre guide de la pêche."
+     },
+     {
+      "t": "Plongée : ",
+      "d": "33 découvertes sous-marines, plus les trésors de Kenton au détecteur de métaux (voir notre guide des épaves)."
+     },
+     {
+      "t": "Méditation : ",
+      "d": "18 spots avec un petit mini-jeu."
+     },
+     {
+      "t": "Jeux vidéo : ",
+      "d": "des jeux jouables sur la télé de la planque et une borne d'arcade."
+     },
+     {
+      "t": "Salle de sport : ",
+      "d": "à la planque de Key Lento ou en salle avec abonnement, pour la force et l'endurance."
+     },
+     {
+      "t": "Observation des animaux : ",
+      "d": "255 espèces à repérer aux jumelles, sans chasser."
+     }
+    ]
+   },
+   "Pas de fléchettes ni de bowling en revanche : Rockstar a préféré ne pas les faire plutôt que de les faire mal, d'après une interview de Rob Nelson (Rockstar North) reprise par GGRecon.",
+   {
+    "h2": "Quels défis et courses peut-on faire ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Courses : ",
+      "d": "40 courses uniques (icônes bleues visibles quand tu t'approches) et 13 Race Challenges contre la montre ou au score."
+     },
+     {
+      "t": "Drones : ",
+      "d": "14 lieux de contre-la-montre avec 3 épreuves chacun ; bats le temps des deux premières pour débloquer la troisième."
+     },
+     {
+      "t": "Cascades : ",
+      "d": "397 au total : sauts, passages sous les ponts, vols en lame de couteau, base jump."
+     },
+     {
+      "t": "Challenges : ",
+      "d": "80 défis répartis en 8 catégories, dispos dès le début."
+     },
+     {
+      "t": "Chasse de Bret : ",
+      "d": "15 séries de cibles réservées à Jason ; un tir propre rapporte plus, et le fusil de Bret est à la clé."
+     }
+    ]
+   },
+   {
+    "h2": "Que faut-il collectionner ?"
+   },
+   "Les 480 cartes à collectionner (18 séries), 108 lieux à scanner avec WAiNK, 34 lectures (magazines, livres, BD), 125 flamants à détruire, les 7 séries de trésors de Kenton, et des véhicules, armes et animaux à découvrir. Notre guide de tous les collectibles et celui des cartes à collectionner donnent le détail.",
+   {
+    "h2": "Qu'est-ce qui compte pour le 100 % ?"
+   },
+   "Selon GTABase, l'histoire compte pour 50 %, les tâches optionnelles pour 27 %, l'exploration et les activités pour 20 % et les découvertes pour 3 %. Bonne nouvelle : pas besoin de tout finir. Il suffit par exemple de 90 paniers sur 100, 300 cascades sur 397, 15 séries de cartes sur 18, 30 courses, 15 méditations ou 100 flamants. Gameblog précise que le menu du 100 % ne s'ouvre qu'après l'histoire.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Peut-on jouer aux fléchettes ou au bowling ? Non, aucun des deux n'est dans le jeu.",
+   "Faut-il tout finir pour le 100 % ? Non, des seuils suffisent pour chaque activité.",
+   "Peut-on rater une activité ? Non d'après GTABase : tout reste faisable en mode libre après l'histoire."
+  ],
+  "sources": [
+   {
+    "t": "PowerPyx : GTA 6 100% Completion Checklist",
+    "u": "https://www.powerpyx.com/gta-6-100-completion-checklist/"
+   },
+   {
+    "t": "GTABase : 100% Completion Guide",
+    "u": "https://gtabase.com/articles/gta-6/gta-6-100-completion-guide-interactive-checklist"
+   },
+   {
+    "t": "Gameblog : défis 100 %, liste complète",
+    "u": "https://www.gameblog.fr/jeu-video/ed/astuces/gta-6-defis-100-liste-complete-726869"
+   },
+   {
+    "t": "GGRecon : pourquoi pas de fléchettes",
+    "u": "https://www.ggrecon.com/articles/gta-6-no-darts-rockstar-explains/"
+   },
+   {
+    "t": "Shacknews : How to start fishing in GTA 6",
+    "u": "https://www.shacknews.com/article/151389/how-to-go-fishing-gta6"
+   },
+   {
+    "t": "Shacknews : How to work out in GTA 6",
+    "u": "https://www.shacknews.com/article/151398/working-out-gta6"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-personnalisation-tenues-coiffeur-tatouages-tuning-gta-6",
+  "date": "2026-11-26T17:10:00+01:00",
+  "cat": "guide",
+  "title": "Personnalisation dans GTA 6 : tenues, coiffeur, tatouages et tuning, où aller",
+  "chapo": "Dans GTA 6, tu changes de tenue dans ta planque (ou depuis le coffre de ta voiture), de coupe dans l'un des 18 salons, et de tatouages dans 11 studios. Côté voitures, 14 ateliers spécialisés gèrent le tuning. Bonus utile : changer de tenue aide à semer la police.",
+  "img": "assets/rs_vicecity_rue_fresques.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-police"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Vêtements",
+      "67 boutiques (PowerPyx), garde-robe dans chaque planque"
+     ],
+     [
+      "Coiffure",
+      "18 salons ; barbe pour Jason, maquillage et ongles pour Lucia"
+     ],
+     [
+      "Tatouages",
+      "11 studios, ouverts à Jason et Lucia"
+     ],
+     [
+      "Tuning",
+      "14 ateliers, chacun spécialisé (muscle, luxe, motos, 4x4…)"
+     ],
+     [
+      "Prix",
+      "aucun tarif publié pour l'instant"
+     ]
+    ]
+   },
+   "Le look de Jason et Lucia ne sert pas qu'à frimer : la police reconnaît ta tenue. On a rassemblé où tout se passe, d'après PowerPyx, VGC, GTABase, Shacknews et Insider Gaming. Les prix ne sont publiés nulle part pour l'instant ; on complétera après nos tests.",
+   {
+    "h2": "Où acheter des vêtements et changer de tenue ?"
+   },
+   "PowerPyx recense 67 boutiques de vêtements. Pour du casual, vise Slinger (6 adresses), Urban Legendz ou Drip Drops ; pour le sport, Alpha Sports ou Endzone ; pour une tenue habillée, Nola ou Ferruccio Tucci ; et pour pas cher, les friperies comme Hamlet Thrift ou Bargain World. Les boutiques d'une même enseigne vendent en général les mêmes articles. Pour te changer, passe par la garde-robe de ta planque. Astuce de VGC : enregistre des tenues dans le coffre de ta voiture depuis le menu de la planque, tu pourras ensuite te changer n'importe où depuis le coffre.",
+   {
+    "h2": "Changer de tenue aide-t-il à semer la police ?"
+   },
+   "Oui. Quand une icône « tenue reconnue » s'affiche, la police te repère à tes vêtements : te changer la fait disparaître, et changer d'accessoires ou de coiffure efface aussi la reconnaissance de ton apparence (GTABase). Change-toi hors de vue des policiers. Toutes les autres méthodes sont dans notre guide pour semer les flics.",
+   {
+    "h2": "Où trouver le coiffeur et les tatoueurs ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Coiffure : ",
+      "d": "18 salons, dont Kurt's Barber Shop, Salon Pérez, Crosstown Cutz ou Clip & Fade. Tous ont les coupes de base, certains ont des coupes « signature ». Jason y règle aussi sa barbe et sa couleur de cheveux."
+     },
+     {
+      "t": "Beauté : ",
+      "d": "Lucia a accès au maquillage et aux ongles dans les salons de beauté (icône de lèvres sur la carte)."
+     },
+     {
+      "t": "Tatouages : ",
+      "d": "11 studios, chacun avec son style, comme The Inked Mermaid, Layin' Ink ou Dominion Ink (style anime). Jason et Lucia peuvent tous les deux s'y faire tatouer."
+     },
+     {
+      "t": "Physique : ",
+      "d": "la salle de sport fait évoluer force, cardio et concentration, et le poids dépend de ce que tu manges (Shacknews, Insider Gaming). Voir notre article sur la salle de sport de Jason."
+     }
+    ]
+   },
+   {
+    "h2": "Où faire le tuning de sa voiture ?"
+   },
+   "Il y a 14 ateliers, chacun spécialisé selon PowerPyx : Capri Classic pour les muscle cars, Euroform Automotive pour le luxe, Vice Auto Customs pour les voitures japonaises façon tuner, Lowballers Customs pour les lowriders, Vice Vinyl pour les covering et livrées, Whisler Motorsport pour la course, Wasteland Off-Road pour les 4x4, et plusieurs ateliers moto (Two Wheel Fury, Dirt Merchants, Ledford). Au programme : performances, jantes, intérieur et livrées, selon l'atelier. Pour les armes, les accessoires (chargeurs, optiques, silencieux…) se montent chez Ammu-Nation (Insider Gaming).",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Comment changer de tenue en mission ? Enregistre d'abord des tenues dans le coffre de ta voiture depuis ta planque, puis change-toi depuis le coffre.",
+   "Jason et Lucia ont-ils les mêmes options ? Presque : la barbe est pour Jason, le maquillage et les ongles pour Lucia ; tatouages et salle de sport sont communs.",
+   "Faut-il l'édition Ultimate pour personnaliser ? Non. Elle ajoute seulement quelques boutiques exclusives (Stock 305, Sara's Unisex Salon, Electric Fang, Rideout Customs, One-Eyed Willie's)."
+  ],
+  "sources": [
+   {
+    "t": "PowerPyx : All Clothing Stores",
+    "u": "https://www.powerpyx.com/?p=371144"
+   },
+   {
+    "t": "PowerPyx : All Hair & Beauty Salons",
+    "u": "https://www.powerpyx.com/?p=371146"
+   },
+   {
+    "t": "PowerPyx : All Tattoo Studios",
+    "u": "https://www.powerpyx.com/?p=371147"
+   },
+   {
+    "t": "PowerPyx : All Mod Shops",
+    "u": "https://www.powerpyx.com/gta-6-all-mod-shops/"
+   },
+   {
+    "t": "VGC : How to change clothes in GTA 6",
+    "u": "https://www.videogameschronicle.com/guide/how-to-change-clothes-in-gta-6/"
+   },
+   {
+    "t": "GTABase : Wanted Level Explained",
+    "u": "https://www.gtabase.com/articles/gta-6/gta-6-wanted-level-explained-police-system-guide"
+   },
+   {
+    "t": "Shacknews : How to work out in GTA 6",
+    "u": "https://www.shacknews.com/article/151398/working-out-gta6"
+   },
+   {
+    "t": "Insider Gaming : How fitness works",
+    "u": "https://insider-gaming.com/how-fitness-works-gta-6-strength-cardio-focus/"
+   },
+   {
+    "t": "Insider Gaming : full weapons guide",
+    "u": "https://insider-gaming.com/gta-6-full-weapons-guide-types-and-how-to-buy/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-voitures-plus-rapides-gta-6",
+  "date": "2026-11-26T17:05:00+01:00",
+  "cat": "guide",
+  "title": "Les voitures les plus rapides de GTA 6 : le classement provisoire et où les trouver",
+  "chapo": "Aucune vitesse de pointe en km/h n'a encore été mesurée dans GTA 6. D'après les notes de vitesse de GTABase, la plus rapide est pour l'instant la Thrax d'Andrew Node (9,2/10), devant les Progen Emerus (8,9/10). Voici le top 7 provisoire et où trouver chaque voiture.",
+  "img": "assets/rs_vicecity_meeting_voitures.jpg",
+  "topics": [
+   "gta-6-carte",
+   "gta-6-argent"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "N° 1 provisoire",
+      "Truffade Thrax d'Andrew Node, 9,2/10 en vitesse (GTABase)"
+     ],
+     [
+      "Attention",
+      "notes sur 10, pas des km/h : le classement n'est pas encore définitif"
+     ],
+     [
+      "Pour la garder",
+      "l'enregistrer chez Moses (sans traceur) ou au Pay 'n' Spray (traceur)"
+     ],
+     [
+      "Où l'améliorer",
+      "Whisler Motorsport pour les voitures de course (PowerPyx)"
+     ]
+    ]
+   },
+   "Méfie-toi des classements qui circulent : certains reprennent tout simplement les vitesses de GTA 5. Au 26 novembre, la seule source qui teste les voitures du jeu, GTABase, donne des notes de vitesse sur 10 et précise que son classement n'est pas encore final. C'est ce classement qu'on reprend, avec les emplacements de ses fiches. On le mettra à jour dès que de vraies mesures sortiront.",
+   {
+    "h2": "Quelle est la voiture la plus rapide de GTA 6 ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "1. Truffade Thrax d'Andrew Node (9,2) : ",
+      "d": "dans le garage d'un manoir de Savile Circle, au sud de Starfish Island (Vice Beach). Tu l'obtiens en terminant la quête annexe « No Flusher » (une vingtaine de minutes, 10 tags à scanner avec l'appli WAiNK). L'enregistrer au Pay 'n' Spray coûte 70 000 $ selon GTABase."
+     },
+     {
+      "t": "2. Progen Honeycomb Emerus (8,9) : ",
+      "d": "chez Dolos Exotic Car Rental."
+     },
+     {
+      "t": "3. Progen Black Widow Emerus (8,9) : ",
+      "d": "dans un conteneur du port de Vice City."
+     },
+     {
+      "t": "4. Progen Seaspray Emerus (8,9) : ",
+      "d": "dans un garage à Capri. Prix indiqué : 59 900 $."
+     },
+     {
+      "t": "5. Truffade Thrax (8,7) : ",
+      "d": "prix indiqué 100 000 $. Elle n'apparaît pas à tous les coups : GTABase conseille de sauvegarder puis recharger si elle n'est pas là."
+     },
+     {
+      "t": "6. Grotti Status RSX (8,7) : ",
+      "d": "vue au Gellhorn International Raceway."
+     },
+     {
+      "t": "7. Pegassi Dante's Vitello (8,6) : ",
+      "d": "au manoir de Dante Fresh, sur Starfish Island."
+     }
+    ]
+   },
+   "Toutes ces voitures (sauf celle d'Andrew Node, d'après sa fiche) ont une sécurité avancée : il te faut le cloneur de clés. Les emplacements et prix viennent d'une seule source (les fiches GTABase), on n'a pas encore pu tout vérifier en jeu.",
+   {
+    "h2": "Pourquoi les classements ne sont-ils pas tous d'accord ?"
+   },
+   "GTABase utilise plusieurs notes. Dans sa liste des supercars classée par note de route (le « Road Rating »), c'est la Pegassi Dante's Vitello qui passe en tête, devant les Emerus, et la Thrax d'Andrew Node recule à la 7e place. L'appli WAiNK du jeu affiche aussi sa propre note de vitesse, sur une autre échelle. Bref : la plus rapide en ligne droite n'est pas forcément la meilleure sur route.",
+   {
+    "h2": "Comment garder et améliorer sa voiture rapide ?"
+   },
+   "Une voiture volée ne t'appartient que si tu l'enregistres. Les voitures sans traceur s'enregistrent au garage de Moses dès le chapitre 2 (la première fois est gratuite selon KeenGamer). Celles qui ont un traceur standard passent au Pay 'n' Spray à partir du chapitre 3. Les supercars à traceur avancé demandent d'avancer plus loin. Pour les améliorer, il existe 14 ateliers, chacun spécialisé : Whisler Motorsport, dans le comté de Kelly, s'occupe des voitures de course (PowerPyx). Si ta voiture est détruite ou à la fourrière, l'appli ScooterBros te la fait livrer (service payant).",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Quelle est la voiture la plus rapide de GTA 6 ? Pas encore tranché officiellement. En note de vitesse GTABase, c'est la Thrax d'Andrew Node (9,2/10).",
+   "Peut-on garder une supercar volée ? Oui, à condition de l'enregistrer : chez Moses ou au Pay 'n' Spray selon son traceur.",
+   "Où modifier sa voiture ? Dans l'un des 14 ateliers, repérés sur la carte par une icône de voiture orange."
+  ],
+  "sources": [
+   {
+    "t": "GTABase : classement des voitures les plus rapides",
+    "u": "https://www.gtabase.com/fr/articles/gta-6/classement-des-voitures-les-plus-rapides-de-gta-6-par-vitesse-de-pointe"
+   },
+   {
+    "t": "GTABase : Best Super Cars",
+    "u": "https://www.gtabase.com/gta-6/vehicles/best-super-cars/"
+   },
+   {
+    "t": "GTABase : Andrew Node's Thrax",
+    "u": "https://www.gtabase.com/gta-6/vehicles/andrew-nodes-thrax"
+   },
+   {
+    "t": "egamers.io : Fastest cars in GTA 6",
+    "u": "https://egamers.io/fastest-cars-in-gta-6-supercar-contenders-and-where-guides-say-to-find-them/"
+   },
+   {
+    "t": "PowerPyx : All Mod Shops",
+    "u": "https://www.powerpyx.com/gta-6-all-mod-shops/"
+   },
+   {
+    "t": "KeenGamer : How to Register Personal Cars",
+    "u": "https://www.keengamer.com/articles/guides/gta-vi-how-to-register-personal-cars-and-vehicles/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "guide-gagner-argent-rapidement-gta-6",
+  "date": "2026-11-26T17:00:00+01:00",
+  "cat": "guide",
+  "title": "Comment gagner de l'argent rapidement dans GTA 6 : les 8 méthodes classées (sans glitch)",
+  "chapo": "Pour gagner de l'argent vite dans GTA 6, vise les coffres de banques (jusqu'à environ 200 000 $ selon Gamewave et PowerPyx), les supercars de la liste de Randy (30 000 $ et plus chacune) et les bijouteries (10 000 à 25 000 $). En début de partie, fouille les planques de gangs et revends des voitures à Moses.",
+  "img": "assets/rs_jason_lucia_coffre.jpg",
+  "topics": [
+   "gta-6-argent",
+   "gta-6-debuter"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Le plus rentable",
+      "coffres de banques, jusqu'à environ 200 000 $ (Gamewave, PowerPyx, Insider Gaming)"
+     ],
+     [
+      "Le plus régulier",
+      "supercars pour Randy, 30 000 $ et plus par voiture intacte"
+     ],
+     [
+      "En début de partie",
+      "planques de gangs (masque jaune sur la carte) et voitures pour Moses"
+     ],
+     [
+      "Le piège",
+      "garder trop de liquide sur toi : plafond de 20 000 $, perdu en partie si tu meurs ou te fais arrêter"
+     ],
+     [
+      "Montants",
+      "estimations des sources, ça peut varier selon ta partie"
+     ]
+    ]
+   },
+   "Les missions de l'histoire paient peu : le vrai cash de Leonida est ailleurs. On a croisé les guides de PowerPyx, Gamewave, Actugaming, GTABase, Insider Gaming et du Journal du Geek pour classer les méthodes, de la plus rentable à la plus modeste. Aucun glitch ni code de triche ici, que des activités normales du jeu. On précise à chaque fois quand la méthode se débloque, sans rien te spoiler de l'histoire.",
+   {
+    "h2": "Quelles sont les meilleures méthodes pour gagner de l'argent dans GTA 6 ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "1. Les coffres de banques : ",
+      "d": "c'est le jackpot, jusqu'à environ 200 000 $ (205 000 $ selon PowerPyx) pour quelques minutes d'action, plus de 20 000 $ dans les petites agences selon Gamewave. Ça s'ouvre tard, vers la fin du chapitre 4, via une quête optionnelle. Tu repères une banque en suivant un fourgon de fonds ou en achetant un tuyau à Yasmani (10 000 $ selon PowerPyx). Attends-toi à 4 étoiles tout de suite : prévois une moto rapide et un véhicule de rechange."
+     },
+     {
+      "t": "2. Les supercars de Randy : ",
+      "d": "une liste de 18 voitures de luxe à livrer, à partir du milieu du chapitre 3, avec le cloneur de clés. Chaque voiture rapporte 30 000 $ ou plus si elle arrive en parfait état. Un SMS à Randy te donne des emplacements. Notre guide de la liste de Randy détaille tout."
+     },
+     {
+      "t": "3. Les bijouteries : ",
+      "d": "10 000 à 25 000 $ par casse selon les sources, dès le chapitre 3. Repère les accès et la sécurité avant, et vide aussi le coffre de l'arrière-boutique si ta fuite le permet. Méthode complète dans notre guide du braquage de bijouterie."
+     },
+     {
+      "t": "4. Les planques de gangs : ",
+      "d": "39 repaires marqués d'un masque jaune, dès le début selon PowerPyx. Tu y trouves du liquide, de la marchandise à revendre et parfois des armes ou des véhicules uniques. Aucune source ne chiffre le gain, mais le Journal du Geek les présente comme la meilleure source d'argent en début de partie."
+     },
+     {
+      "t": "5. Les voitures avec traceur au Pay 'n' Spray : ",
+      "d": "environ 4 000 $ ou plus par voiture, avec un bonus si la carrosserie est propre, à partir du début du chapitre 3. Scanne la voiture avec l'appli WAiNK pour voir ce qu'elle vaut avant de la voler."
+     },
+     {
+      "t": "6. Les voitures sans traceur pour Moses : ",
+      "d": "un peu plus de 1 000 $ par voiture, dès le chapitre 2. Vise les camionnettes (Gamewave cite les vans Weazel News). Compte environ 2 minutes entre deux ventes et évite de voler près de ton garage (PowerPyx)."
+     },
+     {
+      "t": "7. Les courses clandestines : ",
+      "d": "40 courses, mais l'inscription et la location du véhicule sont payantes : tu n'y gagnes que si tu gagnes la course."
+     },
+     {
+      "t": "8. Les petits à-côtés : ",
+      "d": "chasse (les alligators seraient la prise la plus rentable selon Actugaming), trésors de Kenton en plongée, et tout au début l'activité « Bruits suspects » au Three Sheets Liquor, qui rapporterait 2 284 $ au total (Actugaming, à tester en jeu)."
+     }
+    ]
+   },
+   {
+    "h2": "Quelles erreurs éviter pour ne pas perdre son argent ?"
+   },
+   "Ne te promène pas avec une grosse liasse : le liquide est plafonné à 20 000 $ par personnage et tu en perds tout ou partie si tu meurs ou te fais arrêter (GTABase, Actugaming). Avant une action risquée, dépose ton argent sur BuckMe à un distributeur. Évite aussi de braquer les passants et les petites boutiques : ça rapporte peu et la police arrive vite. Enfin, ne vends pas tout ton butin au même receleur : chacun paie différemment selon le type de marchandise (Actugaming).",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Quelle est la meilleure méthode au début du jeu ? Les planques de gangs, puis les voitures pour Moses dès le chapitre 2. Les gros gains arrivent à partir du chapitre 3 avec Randy et les bijouteries.",
+   "Combien rapporte un braquage de banque ? Jusqu'à environ 200 000 $ pour une grande banque selon Gamewave et Insider Gaming, plus de 20 000 $ pour une petite agence.",
+   "Existe-t-il un glitch d'argent ? On n'en publie pas : ça peut corrompre ta sauvegarde et Rockstar les corrige vite. Les méthodes ci-dessus suffisent largement."
+  ],
+  "sources": [
+   {
+    "t": "PowerPyx : GTA 6 Money Guide",
+    "u": "https://www.powerpyx.com/?p=370489"
+   },
+   {
+    "t": "Gamewave : comment gagner de l'argent rapidement",
+    "u": "https://gamewave.fr/gta-6/gta-6-comment-gagner-de-l-argent-rapidement/"
+   },
+   {
+    "t": "Actugaming : gagner rapidement de l'argent",
+    "u": "https://www.actugaming.net/?p=834144"
+   },
+   {
+    "t": "Actugaming : plus de 2 000 $ au début du jeu",
+    "u": "https://www.actugaming.net/?p=834120"
+   },
+   {
+    "t": "GTABase : How To Make Money In GTA 6",
+    "u": "https://www.gtabase.com/articles/gta-6/how-to-make-money-in-gta-6-full-money-making-guide"
+   },
+   {
+    "t": "Journal du Geek : se faire de l'argent facilement",
+    "u": "https://www.journaldugeek.com/2026/11/19/gta-6-comment-se-faire-de-largent-le-plus-facilement-possible/"
+   },
+   {
+    "t": "Insider Gaming : GTA 6 Money-Making Guide",
+    "u": "https://insider-gaming.com/gta-6-money-making/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "2026-11-26-portail-vice-city-2002-tommy-chemise-velo-gta-6",
   "date": "2026-11-26T12:40:00+01:00",
   "cat": "secret",
