@@ -1,5 +1,143 @@
 [
  {
+  "slug": "2026-11-26-sondage-joueurs-gta-6-note-chats-pnj",
+  "date": "2026-11-26T20:40:00+01:00",
+  "cat": "actu",
+  "title": "GTA 6 : un sondage de 303 joueurs donne 8,4/10, et 9 % ont déjà frappé un chat par accident",
+  "chapo": "Selon une enquête relayée aujourd'hui par Big N, les joueurs notent GTA 6 8,4/10 en moyenne. Leurs critiques : rythme lent, cinématiques longues, recherche policière difficile. Et 9 % avouent avoir frappé un chat sans le vouloir.",
+  "img": "assets/rs_jason_lucia_03.jpg",
+  "topics": [
+   "gta-6-debuter"
+  ],
+  "body": [
+   "Une petite enquête fait parler les joueurs ce 26 novembre. Elle vient de Games User Research, supervisée par Steve Bromley, et porte sur 303 joueurs de GTA 6 (panel britannique et américain, au moins deux heures de jeu). Attention : l'échantillon est réduit, c'est l'article de Big N lui-même qui le dit, et la méthode n'est pas détaillée. Prends ces chiffres comme une photo, pas comme une vérité.",
+   {
+    "h2": "Quelle note les joueurs donnent-ils à GTA 6 ?"
+   },
+   "8,4 sur 10 en moyenne, selon cette enquête. Les points forts cités : la narration (42 %), le monde ouvert crédible (38 %) et la liberté d'exploration (35 %).",
+   {
+    "h2": "Qu'est-ce qui agace les joueurs ?"
+   },
+   "Trois reproches reviennent : le rythme lent et les cinématiques longues (28 %), les vols de voitures et la recherche policière jugés difficiles (19 %) et les problèmes techniques (18 %). Par ailleurs, 14 % disent s'être sentis perdus ou bloqués à un moment. Si tu fais partie des bloqués, notre guide pour bien débuter et celui pour semer la police devraient t'aider.",
+   {
+    "h2": "Les chats et les PNJ, c'est vrai que ça arrive ?"
+   },
+   "Toujours selon l'enquête, 9 % des joueurs ont frappé un chat par accident et 61 % ont vécu la même chose avec des passants humains. Au passage, 41 % disent vouloir améliorer leur quotidien après le jeu, dont 30 % en offrant des fleurs. Le chapeau de Big N est ambigu sur ce 30 % : on te le donne avec prudence.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Le sondage est-il représentatif ? Non, 303 joueurs seulement et un panel anglo-saxon, c'est une indication.",
+   "Où lire la source ? Chez Big N, qui cite Games User Research.",
+   "Peut-on éviter de frapper un chat ? Prends ton temps près des animaux : on te raconte comment les caresser dans notre guide des animaux."
+  ],
+  "sources": [
+   {
+    "t": "Big N",
+    "u": "https://big-n.fr/actualites/70400-gta-6-30-pourcent-joueurs-fleurs-9-pourcent-chats-accident/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-26-683-millions-heures-gta-6-playstation-par-joueur",
+  "date": "2026-11-26T20:45:00+01:00",
+  "cat": "actu",
+  "title": "GTA 6 : 683 millions d'heures jouées en 4 jours sur PlayStation, ça fait combien par joueur ?",
+  "chapo": "Sony dit que plus de 39 millions de joueurs ont cumulé 683 millions d'heures sur GTA 6 en quatre jours. Ça fait environ 17,4 heures par joueur (notre calcul, une estimation).",
+  "img": "assets/rs_vice_city_15.jpg",
+  "topics": [
+   "gta-6-debuter"
+  ],
+  "body": [
+   "Sony a sorti ses chiffres du lancement, repris par Begeek le 26 novembre : plus de 39 millions de joueurs uniques sur PlayStation et 683 millions d'heures jouées jusqu'au 22 novembre. Sony revendique le plus gros lancement de l'histoire de PlayStation, avec Tim Turi comme porte-parole. Ce sont des déclarations de l'éditeur, pas des chiffres vérifiés de façon indépendante.",
+   {
+    "h2": "Combien d'heures par joueur en moyenne ?"
+   },
+   "En divisant 683 millions par 39 millions, on tombe sur environ 17,4 heures par joueur en quatre jours. C'est notre calcul, donc une estimation : la vraie répartition est sûrement très inégale, entre ceux qui ont fini en un week-end et ceux qui ont à peine commencé.",
+   {
+    "h2": "Et la part des nouvelles PS5 ?"
+   },
+   "Begeek avance que 70 % des PS5 neuves connectées ont lancé GTA 6 en premier. L'article ne précise pas l'origine exacte de ce chiffre et Sony ne donne pas la part de PS5 Pro : à prendre avec des pincettes.",
+   {
+    "h2": "Et côté ventes ?"
+   },
+   "Take-Two annonce 3,79 milliards de dollars de ventes en magasin le jour de sortie. On avait déjà détaillé ce chiffre dans notre article sur les 3,79 milliards. Pour savoir ce que tu peux faire de tes heures, voir notre guide pour bien débuter.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Combien de temps faut-il pour tout voir ? Les médias parlent d'une bonne centaine d'heures, selon Journal du Geek.",
+   "Ces chiffres incluent-ils Xbox ? Non, ils ne concernent que PlayStation d'après Sony.",
+   "Qui a publié les chiffres ? Sony, relayé par Begeek."
+  ],
+  "sources": [
+   {
+    "t": "Begeek",
+    "u": "https://www.begeek.fr/gta-6-pulverise-tous-les-records-de-playstation-443320"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-26-lavabos-effacer-sang-tenues-gta-6",
+  "date": "2026-11-26T20:50:00+01:00",
+  "cat": "astuce",
+  "title": "GTA 6 : à quoi servent les lavabos ? Effacer le sang de tes vêtements et regagner de la concentration",
+  "chapo": "Dans GTA 6, un lavabo permet de te laver : il restaure ta Concentration et efface les traces de sang, d'après le guide débutants d'ActuGaming. Un détail que le jeu n'explique pas, à tester chez toi.",
+  "img": "assets/rs_leonida_keys_03.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-police"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "Les lavabos des toilettes et salles de bain (bars, stations, planques)"
+     ],
+     [
+      "Effet",
+      "Restaure la Concentration et efface les traces de sang"
+     ],
+     [
+      "Bonus",
+      "Un café booste Concentration et endurance"
+     ],
+     [
+      "Source",
+      "ActuGaming (une seule source, à tester en jeu)"
+     ]
+    ]
+   },
+   "Quand tout le monde parle de flingues et de voitures, ce petit réflexe passe inaperçu. Le guide débutants d'ActuGaming, écrit par un joueur qui annonce près de 200 heures, le range dans les conseils de base : te laver, boire et manger.",
+   {
+    "h2": "Comment effacer le sang sur Jason et Lucia ?"
+   },
+   "Approche-toi d'un lavabo et utilise-le : selon la source, tu te laves, ta Concentration remonte et les traces de sang disparaissent. Pratique après une fusillade, avant de croiser des passants ou la police. On n'a pas testé en jeu, donc dis-nous en commentaire si ça marche pour toi.",
+   {
+    "h2": "Comment recharger sa Concentration sans animaux ?"
+   },
+   "Le café donne un coup de boost à la Concentration et à l'endurance, toujours selon ActuGaming. Pour les autres moyens (caresser les animaux, soins), voir notre guide pour se soigner.",
+   {
+    "h2": "Et si la police est déjà sur mon dos ?"
+   },
+   "Le même guide conseille d'enregistrer plusieurs tenues dans le coffre de ta voiture pour changer vite face à la nouvelle recherche policière. Tout le détail est dans notre guide pour semer la police.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Les lavabos sont-ils partout ? On n'a pas de liste officielle : cherche dans les toilettes de bars et de stations (à tester).",
+   "Se laver compte-t-il pour un défi ? Aucune info à ce sujet.",
+   "Faut-il être seul ? Non précisé par la source."
+  ],
+  "sources": [
+   {
+    "t": "ActuGaming",
+    "u": "https://www.actugaming.net/gta-6-guide-debutant-conseils-834089/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "guide-defis-gta-6",
   "date": "2026-11-26T16:30:00+01:00",
   "cat": "guide",
