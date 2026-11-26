@@ -128,5 +128,25 @@
   "x": 190,
   "y": 416,
   "link": "actus/guide-avion-helicoptere-gta-6.html"
+ },
+ {
+  "id": "kitty-litter-little-cuba",
+  "cat": "activite",
+  "title": "Kitty Litter Labs (Vice City)",
+  "where": "7 labos à Balsero, Salton, Crosstown, Rockridge et Little Cuba : tire sur une bonbonne de propane.",
+  "zone": "vice-city",
+  "x": 318,
+  "y": 330,
+  "link": "actus/guide-kitty-litter-labs-gta-6.html"
+ },
+ {
+  "id": "burg-1-coffre",
+  "cat": "plongee",
+  "title": "Plateforme BURG #1 (coffre code 80085)",
+  "where": "À l'ouest de Mile Zero Air Station : plonge sous la plateforme jaune (Push Square).",
+  "zone": "keys",
+  "x": 274,
+  "y": 424,
+  "link": "actus/guide-tresors-kenton-epaves-plongee-gta-6.html"
  }
 ]
