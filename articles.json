@@ -1,5 +1,305 @@
 [
  {
+  "slug": "guide-defis-gta-6",
+  "date": "2026-11-26T16:30:00+01:00",
+  "cat": "guide",
+  "title": "Défis GTA 6 : la liste des 80 défis, comment les voir et lesquels faire en premier",
+  "chapo": "GTA 6 compte 80 défis répartis en 8 catégories de 10, consultables dans le menu Progression > Défis dès le début de la partie. Selon Dexerto, il en faut 70 pour le 100 % : voici les plus utiles, avec leurs conditions exactes.",
+  "img": "assets/rs_vice_city_27.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-carte"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "Menu Progression > section Défis"
+     ],
+     [
+      "Combien",
+      "80 défis, 8 catégories de 10 (selon Dexerto)"
+     ],
+     [
+      "Quand",
+      "dès le début, dans n'importe quel ordre"
+     ],
+     [
+      "Pour le 100 %",
+      "70 défis sur 80 (à confirmer en jeu)"
+     ],
+     [
+      "Récompenses",
+      "non précisées par la source : à tester"
+     ]
+    ]
+   },
+   "Les défis sont les objectifs que le jeu ne te met pas sous le nez : tuer 5 ennemis au corps à corps, flâner sur 41 héliports, trouver 11 épaves… Selon Dexerto, ils sont tous accessibles dès le départ. Je n'ai pas encore tout vérifié en jeu : les conditions viennent de leur liste, et les récompenses ne sont pas détaillées. Pour avancer en même temps sur les trophées, regarde aussi notre guide des trophées et succès.",
+   {
+    "h2": "Où voir les défis dans GTA 6 ?"
+   },
+   "Ouvre le menu Progression puis la section Défis. Tu y vois les objectifs de chaque catégorie et ceux déjà validés. Aucun ordre n'est imposé.",
+   {
+    "h2": "Quelles sont les 8 catégories de défis ?"
+   },
+   "Combat, Crime, Exploration, Fitness, Commerces, Sports, Survie et Véhicules, avec 10 défis chacune. Les sections Sports, Survie et Véhicules sont décrites d'après un résumé de la source : vérifie les chiffres en jeu.",
+   {
+    "h2": "Quels défis de combat et de crime faire en premier ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Éliminations rapides : ",
+      "d": "3 ennemis en moins de 30 secondes."
+     },
+     {
+      "t": "Combat explosif : ",
+      "d": "3 ennemis avec un même explosif."
+     },
+     {
+      "t": "Rackets : ",
+      "d": "détrousser 5 piétons."
+     },
+     {
+      "t": "Braquages : ",
+      "d": "3 boutiques en une journée, sans mourir ni être arrêté (voir notre guide du braquage de bijouterie et celui de la police)."
+     },
+     {
+      "t": "Vols de voiture : ",
+      "d": "3 car-jackings puis les livrer à un Pay 'n' Spray dans la même journée."
+     },
+     {
+      "t": "Pro du vol de voiture : ",
+      "d": "gagner 100 000 $ en revendant des véhicules volés à un receleur ou à un Pay 'n' Spray."
+     }
+    ]
+   },
+   {
+    "h2": "Quels sont les défis d'exploration (et les plus longs) ?"
+   },
+   "Les plus longs : trouver les 85 trésors sous-marins, les 11 épaves « trou noir » de l'océan, découvrir 100 animaux, 100 véhicules et 100 armes pour l'Encyclopédie, et survoler les 41 héliports de Vice City et Vice Beach en moins de 10 minutes à 30,5 m ou moins. Pour les épaves, commence par notre guide des trésors de Kenton et de la plongée.",
+   {
+    "h2": "Quels sont les défis de fitness et de commerces ?"
+   },
+   "Fitness : t'inscrire dans une salle, marcher 8 km, pédaler 24 km, nager 4,9 km en une journée, et atteindre le niveau 4 de muscu puis de cardio avec Jason et Lucia, 5 jours d'affilée. Commerces : 5 modifications dans un atelier de tuning, plus de 5 000 $ de vêtements, plus de 20 000 $ en une visite chez le tuner ou plus de 50 000 $ chez Ammu-Nation (voir notre guide de la personnalisation).",
+   {
+    "h2": "Combien de défis faut-il pour le 100 % ?"
+   },
+   "D'après la source, 70 sur 80, et le trophée « Une dernière chose » demanderait 50 défis. Ces deux chiffres sont à confirmer dans ta liste de trophées.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   {
+    "h2": "Y a-t-il une récompense pour chaque défi ?"
+   },
+   "La source n'en cite aucune : à tester en jeu.",
+   {
+    "h2": "Faut-il finir l'histoire pour les défis ?"
+   },
+   "Non, ils sont disponibles dès le début d'après Dexerto.",
+   {
+    "h2": "Peut-on rater un défi ?"
+   },
+   "Ceux à durée limitée (« en une journée », « en moins de 20 min ») se retentent : à confirmer."
+  ],
+  "sources": [
+   {
+    "t": "Dexerto FR – défis de GTA 6",
+    "u": "https://www.dexerto.fr/gta/defis-gta-6-1664403/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-26-defis-exploration-heliports-epaves-gratte-ciels-gta-6",
+  "date": "2026-11-26T16:35:00+01:00",
+  "cat": "secret",
+  "title": "GTA 6 : 41 héliports, 11 épaves trou noir, 5 gratte-ciels… les défis d'exploration que personne ne t'explique",
+  "chapo": "La liste des défis cache des objectifs d'exploration précis : monter sur les 5 plus hauts gratte-ciels de Vice-Dale County, survoler 41 héliports en 10 minutes ou trouver 11 épaves « trou noir ». Voici ce qu'ils demandent, d'après Dexerto.",
+  "img": "assets/rs_leonida_keys_07.jpg",
+  "topics": [
+   "gta-6-carte",
+   "gta-6-easter-eggs"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "Menu Progression > Défis > Exploration"
+     ],
+     [
+      "Gratte-ciels",
+      "sommet des 5 plus hauts de Vice-Dale County"
+     ],
+     [
+      "Héliports",
+      "41 à Vice City et Vice Beach, à 30,5 m max, en moins de 10 min"
+     ],
+     [
+      "Épaves",
+      "11 épaves « trou noir » dans l'océan"
+     ],
+     [
+      "Trésors",
+      "85 trésors sous-marins ; 25 sites étranges au fond de l'eau"
+     ]
+    ]
+   },
+   "Dans la catégorie Exploration, Dexerto liste dix défis qui servent presque de carte au trésor. Je ne les ai pas faits en jeu : les chiffres sont ceux de la source, et les lieux exacts restent à trouver. Ouvre la carte interactive du site pour repérer les zones, et notre guide de la plongée pour les épaves.",
+   {
+    "h2": "Comment réussir le défi des héliports ?"
+   },
+   "Il faut survoler à 30,5 m ou moins les 41 héliports de Vice City et Vice Beach en moins de 10 minutes. Un hélicoptère rapide est indispensable : prépare ton trajet avant de lancer le chrono. Notre guide des avions et hélicoptères t'explique où en trouver un.",
+   {
+    "h2": "Comment atteindre le sommet des gratte-ciels ?"
+   },
+   "Le défi demande d'atteindre le sommet des 5 plus hauts gratte-ciels de Vice-Dale County. La source ne les nomme pas : à tester.",
+   {
+    "h2": "Où trouver les épaves trou noir et les trésors sous-marins ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Épaves trou noir : ",
+      "d": "11 à trouver dans l'océan."
+     },
+     {
+      "t": "Trésors sous-marins : ",
+      "d": "85 au total."
+     },
+     {
+      "t": "Découvertes sous-marines : ",
+      "d": "25 sites étranges à localiser et explorer."
+     },
+     {
+      "t": "Cartes à collectionner : ",
+      "d": "3 cartes dans chacun des 5 comtés (voir notre guide des cartes)."
+     }
+    ]
+   },
+   {
+    "h2": "Quels autres défis d'exploration existent ?"
+   },
+   "Scanner 4 points d'intérêt avec WAiNK (notre guide WAiNK), faire 1,6 km en train dans chacun des 5 comtés en une journée sans passer le trajet, et un road trip qui relie toutes les villes de Leonida sans quitter le véhicule (sauf pour le plein).",
+   {
+    "h2": "Questions fréquentes"
+   },
+   {
+    "h2": "Y a-t-il une récompense ?"
+   },
+   "Non précisée par la source : à tester.",
+   {
+    "h2": "Faut-il attendre un chapitre précis ?"
+   },
+   "Selon Dexerto, les défis sont accessibles dès le début.",
+   {
+    "h2": "Où voir ma progression ?"
+   },
+   "Dans Progression > Défis."
+  ],
+  "sources": [
+   {
+    "t": "Dexerto FR – défis de GTA 6",
+    "u": "https://www.dexerto.fr/gta/defis-gta-6-1664403/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
+  "slug": "2026-11-26-defis-sports-golf-basket-billard-gta-6",
+  "date": "2026-11-26T16:40:00+01:00",
+  "cat": "astuce",
+  "title": "GTA 6 : défis golf, basket et billard, ce qu'il faut réussir (100 paniers, 18 trous, bille 8 à la casse)",
+  "chapo": "Les défis Sports de GTA 6 demandent par exemple de marquer dans les 100 paniers de Leonida, de finir 18 trous de golf à -3 ou de gagner au billard en empochant la bille 8 à la casse. Ces conditions viennent d'un résumé de Dexerto : à vérifier en jeu.",
+  "img": "assets/rs_vice_city_03.jpg",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-easter-eggs"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "Menu Progression > Défis > Sports"
+     ],
+     [
+      "Golf",
+      "King Gator ou Frontier Adventure Golf, 18 trous en moins de 30 min à -3"
+     ],
+     [
+      "Basket",
+      "10 tirs de suite en 2 min ; 100 paniers dans tout Leonida"
+     ],
+     [
+      "Billard",
+      "3 salles différentes en une journée"
+     ],
+     [
+      "Statut",
+      "d'après un résumé de Dexerto : à tester en jeu"
+     ]
+    ]
+   },
+   "Si tu cherches ce que font les joueurs qui traînent sur les terrains de basket, voici les défis Sports. Je n'ai pas testé : tout vient d'un résumé de la liste de Dexerto, donc à confirmer. Pour le reste, regarde notre liste des activités secondaires et le guide des défis.",
+   {
+    "h2": "Comment réussir les défis de golf ?"
+   },
+   "Novice : 18 trous à King Gator ou Frontier Adventure Golf en moins de 30 minutes, avec un score de -3 ou mieux. Pro : 18 trous en une journée en finissant chaque parcours au par ou mieux.",
+   {
+    "h2": "Comment réussir les défis de basket ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Novice : ",
+      "d": "marquer dans 3 paniers différents en une journée."
+     },
+     {
+      "t": "Série : ",
+      "d": "10 tirs réussis d'affilée en moins de 2 minutes."
+     },
+     {
+      "t": "Tournée : ",
+      "d": "un panier dans chaque comté."
+     },
+     {
+      "t": "Pro : ",
+      "d": "marquer dans les 100 paniers de Leonida."
+     }
+    ]
+   },
+   {
+    "h2": "Comment réussir les défis de billard ?"
+   },
+   "Série : gagner une partie dans 3 salles différentes en une journée sans perdre ni abandonner. Trois bandes : la blanche touche 3 bandes avant de rentrer une bille. Cassage : empocher la bille 8 dès la casse. Double trou en un (golf) : deux trous en un d'affilée sur une même partie.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   {
+    "h2": "Où trouver les terrains de basket ?"
+   },
+   "Il y en a 100 à Leonida selon la source ; regarde la carte interactive.",
+   {
+    "h2": "Faut-il finir l'histoire ?"
+   },
+   "Non, les défis sont accessibles dès le début selon Dexerto.",
+   {
+    "h2": "Y a-t-il une récompense ?"
+   },
+   "Non précisée : à tester."
+  ],
+  "sources": [
+   {
+    "t": "Dexerto FR – défis de GTA 6",
+    "u": "https://www.dexerto.fr/gta/defis-gta-6-1664403/"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "guide-activites-secondaires-gta-6",
   "date": "2026-11-26T17:15:00+01:00",
   "cat": "guide",
