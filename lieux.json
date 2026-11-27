@@ -148,5 +148,15 @@
   "x": 274,
   "y": 424,
   "link": "actus/guide-tresors-kenton-epaves-plongee-gta-6.html"
+ },
+ {
+  "id": "hotel-marbelle",
+  "cat": "activite",
+  "title": "Hôtel Marbelle (coffre à code)",
+  "where": "Crosstown : entre par la porte arrière, monte au toit, lis la note (à tester).",
+  "zone": "vice-city",
+  "x": 332,
+  "y": 344,
+  "link": "actus/2026-11-27-hotel-marbelle-crosstown-coffre-brouillard-gta-6.html"
  }
 ]
