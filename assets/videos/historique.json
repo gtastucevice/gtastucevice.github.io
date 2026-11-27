@@ -1,121 +1,127 @@
 [
- {
-  "date": "2026-11-20",
-  "slug": "annonce-site",
-  "theme": "annonce du site"
- },
- {
-  "date": "2026-11-20",
-  "slug": "2026-11-20-top4-reglages-caches-gta6",
-  "theme": "top 4 réglages cachés",
-  "music": "the_mountain-sport-football-496555.mp3"
- },
- {
-  "date": "2026-11-21",
-  "slug": "2026-11-21-tuto-argent-perroquet-gta6",
-  "theme": "tuto argent caché du perroquet",
-  "music": "crab_audio-comedy-351810.mp3"
- },
- {
-  "date": "2026-11-22",
-  "slug": "2026-11-22-tuto-semer-police-gta6",
-  "theme": "tuto semer la police",
-  "music": "jonasblakewood-background-music-618629.mp3"
- },
- {
-  "date": "2026-11-23",
-  "slug": "2026-11-23-top3-commandes-cachees-gta6",
-  "theme": "top 3 commandes cachées",
-  "music": "the_mountain-sport-football-496555.mp3"
- },
- {
-  "date": "2026-11-20",
-  "slug": "2026-11-20-matos-gta6",
-  "theme": "page Le matos (SSD PS5, casque, manette)",
-  "music": "jonasblakewood-background-music-618629.mp3"
- },
- {
-  "date": "2026-11-22",
-  "slug": "2026-11-22-jeux-caches-gta6",
-  "theme": "jeux vidéo jouables dans GTA 6 (gameplay)",
-  "music": "the_mountain-sport-football-496555.mp3"
- },
- {
-  "date": "2026-11-23",
-  "slug": "2026-11-23-top5-trucs-a-tester-gta6",
-  "theme": "top 5 trucs à tester (gameplay)",
-  "music": "jonasblakewood-background-music-618629.mp3"
- },
- {
-  "date": "2026-11-24",
-  "slug": "2026-11-24-hydravion-coucher-soleil-gta6",
-  "theme": "ambiance hydravion coucher de soleil (gameplay, sans voix)",
-  "music": "jonasblakewood-background-music-618629.mp3"
- },
- {
-  "date": "2026-11-21",
-  "slug": "2026-11-21-secret-crabe-geant-gta6",
-  "theme": "secret du crabe géant (Grassrivers)",
-  "music": "the_mountain-sport-football-496555.mp3"
- },
- {
-  "date": "2026-11-22",
-  "slug": "2026-11-22-top5-a-faire-week-end-gta6",
-  "theme": "top 5 à faire ce week-end (pêche, oiseaux, radio The Vault, chien jet-ski, œuf antenne)",
-  "music": "jonasblakewood-background-music-618629.mp3"
- },
- {
-  "date": "2026-11-23",
-  "slug": "2026-11-23-top4-peche-gta6",
-  "theme": "top 4 pêche (gameplay rush 22/11, voix)",
-  "music": "jonasblakewood-background-music-618629.mp3"
- },
- {
-  "date": "2026-11-24",
-  "slug": "2026-11-24-top3-secrets-sous-eau-gta6",
-  "theme": "top 3 secrets sous l'eau / plongée (gameplay, voix)",
-  "music": "tunetank-emotional-classical-484234.mp3"
- },
- {
-  "date": "2026-11-26",
-  "slug": "2026-11-26-journee-en-mer-gta6-v2",
-  "theme": "ambiance journée en mer (gameplay rush 22/11, sans voix)",
-  "music": "tunetank-emotional-classical-484234.mp3"
- },
- {
-  "date": "2026-11-23",
-  "slug": "2026-11-23-top5-reflexes-survie-gta6",
-  "theme": "top 5 réflexes de survie (Zombix, BuckMe, station-service, manger en conduisant, caresser chiens)",
-  "music": "the_mountain-sport-football-496555.mp3"
- },
- {
-  "date": "2026-11-24",
-  "slug": "2026-11-24-top4-secrets-absurdes-bigfoot-gta6",
-  "theme": "top 4 secrets absurdes (chat qui attaque, Hulk fraises, OVNI, Bigfoot)",
-  "music": "crab_audio-comedy-351810.mp3"
- },
- {
-  "date": "2026-11-25",
-  "slug": "2026-11-25-cambriolage-villa-supercar-gta6",
-  "theme": "gameplay Roméo : cambriolage de villa, vol de supercar, mort (rush du 24/11)",
-  "music": "the_mountain-sport-football-496555.mp3"
- },
- {
-  "date": "2026-11-27",
-  "slug": "2026-11-27-top3-telephone-banque-gta6",
-  "theme": "gameplay Roméo : top 3 téléphone / appli BuckMe (compte, épargne, virement)",
-  "music": "the_mountain-sport-football-496555.mp3"
- },
- {
-  "date": "2026-11-25",
-  "slug": "2026-11-25-top4-ce-qui-fait-parler-gta6",
-  "theme": "top 4 ce qui fait parler (patch 01.002.002, bug Lucia, options faciles, 45 millions) – voix",
-  "music": "jonasblakewood-background-music-618629.mp3"
- },
- {
-  "date": "2026-11-26",
-  "slug": "2026-11-26-top4-police-cachee-gta6",
-  "theme": "ce que Rockstar a caché dans la police (6 étoiles, mémoire, séparer Jason/Lucia, Coil Raiden à tester) – voix",
-  "music": "the_mountain-sport-football-496555.mp3"
- }
+  {
+    "date": "2026-11-20",
+    "slug": "annonce-site",
+    "theme": "annonce du site"
+  },
+  {
+    "date": "2026-11-20",
+    "slug": "2026-11-20-top4-reglages-caches-gta6",
+    "theme": "top 4 réglages cachés",
+    "music": "the_mountain-sport-football-496555.mp3"
+  },
+  {
+    "date": "2026-11-21",
+    "slug": "2026-11-21-tuto-argent-perroquet-gta6",
+    "theme": "tuto argent caché du perroquet",
+    "music": "crab_audio-comedy-351810.mp3"
+  },
+  {
+    "date": "2026-11-22",
+    "slug": "2026-11-22-tuto-semer-police-gta6",
+    "theme": "tuto semer la police",
+    "music": "jonasblakewood-background-music-618629.mp3"
+  },
+  {
+    "date": "2026-11-23",
+    "slug": "2026-11-23-top3-commandes-cachees-gta6",
+    "theme": "top 3 commandes cachées",
+    "music": "the_mountain-sport-football-496555.mp3"
+  },
+  {
+    "date": "2026-11-20",
+    "slug": "2026-11-20-matos-gta6",
+    "theme": "page Le matos (SSD PS5, casque, manette)",
+    "music": "jonasblakewood-background-music-618629.mp3"
+  },
+  {
+    "date": "2026-11-22",
+    "slug": "2026-11-22-jeux-caches-gta6",
+    "theme": "jeux vidéo jouables dans GTA 6 (gameplay)",
+    "music": "the_mountain-sport-football-496555.mp3"
+  },
+  {
+    "date": "2026-11-23",
+    "slug": "2026-11-23-top5-trucs-a-tester-gta6",
+    "theme": "top 5 trucs à tester (gameplay)",
+    "music": "jonasblakewood-background-music-618629.mp3"
+  },
+  {
+    "date": "2026-11-24",
+    "slug": "2026-11-24-hydravion-coucher-soleil-gta6",
+    "theme": "ambiance hydravion coucher de soleil (gameplay, sans voix)",
+    "music": "jonasblakewood-background-music-618629.mp3"
+  },
+  {
+    "date": "2026-11-21",
+    "slug": "2026-11-21-secret-crabe-geant-gta6",
+    "theme": "secret du crabe géant (Grassrivers)",
+    "music": "the_mountain-sport-football-496555.mp3"
+  },
+  {
+    "date": "2026-11-22",
+    "slug": "2026-11-22-top5-a-faire-week-end-gta6",
+    "theme": "top 5 à faire ce week-end (pêche, oiseaux, radio The Vault, chien jet-ski, œuf antenne)",
+    "music": "jonasblakewood-background-music-618629.mp3"
+  },
+  {
+    "date": "2026-11-23",
+    "slug": "2026-11-23-top4-peche-gta6",
+    "theme": "top 4 pêche (gameplay rush 22/11, voix)",
+    "music": "jonasblakewood-background-music-618629.mp3"
+  },
+  {
+    "date": "2026-11-24",
+    "slug": "2026-11-24-top3-secrets-sous-eau-gta6",
+    "theme": "top 3 secrets sous l'eau / plongée (gameplay, voix)",
+    "music": "tunetank-emotional-classical-484234.mp3"
+  },
+  {
+    "date": "2026-11-26",
+    "slug": "2026-11-26-journee-en-mer-gta6-v2",
+    "theme": "ambiance journée en mer (gameplay rush 22/11, sans voix)",
+    "music": "tunetank-emotional-classical-484234.mp3"
+  },
+  {
+    "date": "2026-11-23",
+    "slug": "2026-11-23-top5-reflexes-survie-gta6",
+    "theme": "top 5 réflexes de survie (Zombix, BuckMe, station-service, manger en conduisant, caresser chiens)",
+    "music": "the_mountain-sport-football-496555.mp3"
+  },
+  {
+    "date": "2026-11-24",
+    "slug": "2026-11-24-top4-secrets-absurdes-bigfoot-gta6",
+    "theme": "top 4 secrets absurdes (chat qui attaque, Hulk fraises, OVNI, Bigfoot)",
+    "music": "crab_audio-comedy-351810.mp3"
+  },
+  {
+    "date": "2026-11-25",
+    "slug": "2026-11-25-cambriolage-villa-supercar-gta6",
+    "theme": "gameplay Roméo : cambriolage de villa, vol de supercar, mort (rush du 24/11)",
+    "music": "the_mountain-sport-football-496555.mp3"
+  },
+  {
+    "date": "2026-11-27",
+    "slug": "2026-11-27-top3-telephone-banque-gta6",
+    "theme": "gameplay Roméo : top 3 téléphone / appli BuckMe (compte, épargne, virement)",
+    "music": "the_mountain-sport-football-496555.mp3"
+  },
+  {
+    "date": "2026-11-25",
+    "slug": "2026-11-25-top4-ce-qui-fait-parler-gta6",
+    "theme": "top 4 ce qui fait parler (patch 01.002.002, bug Lucia, options faciles, 45 millions) – voix",
+    "music": "jonasblakewood-background-music-618629.mp3"
+  },
+  {
+    "date": "2026-11-26",
+    "slug": "2026-11-26-top4-police-cachee-gta6",
+    "theme": "ce que Rockstar a caché dans la police (6 étoiles, mémoire, séparer Jason/Lucia, Coil Raiden à tester) – voix",
+    "music": "the_mountain-sport-football-496555.mp3"
+  },
+  {
+    "date": "2026-11-27",
+    "slug": "2026-11-27-top4-cadeaux-fan-gta6",
+    "theme": "top 4 cadeaux fan GTA 6 (pas de disque dans la boîte, station de charge, SSD, carte cadeau, DualSense Vice City) – voix",
+    "music": "crab_audio-comedy-351810.mp3"
+  }
 ]
