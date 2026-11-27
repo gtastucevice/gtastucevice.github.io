@@ -158,5 +158,25 @@
   "x": 332,
   "y": 344,
   "link": "actus/2026-11-27-hotel-marbelle-crosstown-coffre-brouillard-gta-6.html"
+ },
+ {
+  "id": "base-mile-zero-rhino",
+  "cat": "activite",
+  "title": "Base de Mile Zero : le char Rhino",
+  "where": "Base militaire au sud-ouest, hangars du sud. Saut-tremplin à l'entrée sud-est. Recherche très forte.",
+  "zone": "keys",
+  "x": 266,
+  "y": 392,
+  "link": "actus/guide-tank-gta-6.html"
+ },
+ {
+  "id": "bunker-ridgway",
+  "cat": "activite",
+  "title": "Bunker du char Ridgway (à tester)",
+  "where": "Trappe cachée dans la forêt de Big Pine, au nord-ouest de Grassrivers.",
+  "zone": "grassrivers",
+  "x": 186,
+  "y": 288,
+  "link": "actus/guide-tank-gta-6.html"
  }
 ]
