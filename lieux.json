@@ -178,5 +178,25 @@
   "x": 186,
   "y": 288,
   "link": "actus/guide-tank-gta-6.html"
+ },
+ {
+  "id": "arme-hobo-hamlet",
+  "cat": "arme",
+  "title": "Marabunta Grande Hobo (fusil à pompe)",
+  "where": "Bâtiment industriel au sud de Hamlet : fouille toutes les pièces.",
+  "zone": "grassrivers",
+  "x": 190,
+  "y": 314,
+  "link": "actus/guide-armes-uniques-gta-6.html"
+ },
+ {
+  "id": "arme-hunters-laird",
+  "cat": "arme",
+  "title": "Hunter's Laird 350 (sniper)",
+  "where": "Rencontre au bord de la route près de Hamlet : conduis le chasseur blessé à l'hôpital.",
+  "zone": "grassrivers",
+  "x": 196,
+  "y": 300,
+  "link": "actus/guide-armes-uniques-gta-6.html"
  }
 ]

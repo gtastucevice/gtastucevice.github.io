@@ -1,5 +1,93 @@
 [
  {
+  "slug": "2026-11-28-mission-secrete-enfer-satan-port-gellhorn-gta-6",
+  "date": "2026-11-28T08:50:00+01:00",
+  "cat": "secret",
+  "title": "GTA 6 : comment accéder à la mission secrète de l'Enfer (Satan) à Port Gellhorn",
+  "chapo": "Une maison de Port Gellhorn cache une mission secrète qui t'envoie « en Enfer » : il faut y aller la nuit et parler aux métalleux du garage. Voici le chemin, les récompenses annoncées et les pièges, sur la base d'un seul guide pour l'instant.",
+  "img": "assets/rs_port_gellhorn_01.jpg",
+  "topics": [
+   "gta-6-easter-eggs",
+   "gta-6-carte"
+  ],
+  "body": [
+   {
+    "retenir": [
+     [
+      "Où",
+      "Port Gellhorn (comté de Kelly), maison « Circles of Hell House », au nord du Stash House Illegal Operation"
+     ],
+     [
+      "Quand",
+      "de nuit, certains joueurs conseillent entre minuit et 4 h ; garage fermé = reviens plus tard"
+     ],
+     [
+      "Accès",
+      "parler aux deux métalleux du garage, répliques « Having Fun? » puis « It's Good », monter dans la camionnette"
+     ],
+     [
+      "Récompenses annoncées",
+      "fusil unique Hellspawn Comshot 12, haut « Circles of Hell », motif de tatouage, bonus de santé max (ampleur non vérifiée)"
+     ],
+     [
+      "Fiabilité",
+      "1 seule source (GamingBible) : à tester en jeu, on ne l'a pas faite nous-mêmes"
+     ]
+    ]
+   },
+   "Tu cherches une mission cachée qui ne figure dans aucun menu ? Celle-ci se déclenche sans avoir fini l'histoire, d'après le guide qui la décrit. Elle commence dans une maison de Port Gellhorn et finit dans un campement de satanistes, d'où tu bascules en Enfer. Attention : on n'a pas encore pu la vérifier nous-mêmes et elle n'est documentée que par un seul média, donc prends les détails ci-dessous comme « à tester ». On ne dévoile rien de l'histoire principale.",
+   {
+    "h2": "Où se trouve la maison « Circles of Hell House » ?"
+   },
+   "Dans le nord de Port Gellhorn, dans le comté de Kelly : une maison dont le garage est ouvert, au nord du lieu appelé Stash House Illegal Operation. Si le garage est fermé, c'est que tu n'es pas au bon moment : la mission se joue la nuit. GamingBible cite des joueurs qui conseillent la tranche minuit-4 h, ce qui reste une indication de joueurs, pas un horaire officiel.",
+   {
+    "h2": "Comment déclencher la mission de l'Enfer ?"
+   },
+   {
+    "steps": [
+     {
+      "t": "Va au garage ouvert : ",
+      "d": "deux métalleux s'y trouvent, dont un nommé Beelzebub."
+     },
+     {
+      "t": "Parle-leur : ",
+      "d": "choisis la réplique « Having Fun? » puis « It's Good »."
+     },
+     {
+      "t": "Suis-les : ",
+      "d": "une camionnette arrive, monte à l'arrière avec eux."
+     },
+     {
+      "t": "Regarde le feu : ",
+      "d": "au campement, maintiens la gâchette gauche (L2 sur PS5, LT sur Xbox) pour fixer les flammes : tu es envoyé en Enfer."
+     }
+    ]
+   },
+   {
+    "h2": "Comment battre Satan et que gagne-t-on ?"
+   },
+   "Tu arrives avec un fusil à pompe et traverses des vagues de démons jusqu'à une arène. Quand la barre de vie de Satan est noire, il est invulnérable ; elle devient rouge quand tu peux le toucher. Il invoque des ennemis explosifs et des animaux : les abattre le rend vulnérable. Une seconde phase se joue à mains nues, puis un dernier échange au fusil. Si tu meurs, tu te réveilles au campement : approche du grand trône et mange la nourriture posée dessus pour retourner en Enfer.",
+   "Récompenses annoncées : le Hellspawn Comshot 12 (fusil à pompe unique, à prendre près du trône avant de partir), le haut « Circles of Hell », un motif de tatouage exclusif et une hausse permanente de la santé maximale. Ce dernier point est répété par plusieurs guides mais personne n'a vérifié de chiffre, donc on le note « à tester ».",
+   {
+    "h2": "Notre conseil"
+   },
+   "Notre conseil : fais une sauvegarde manuelle avant d'entrer dans la camionnette, prévois plusieurs essais, et ne quitte pas la zone du trône sans avoir ramassé le fusil. Si tu y vas, dis-nous en commentaire sur nos réseaux ce qui diffère de ce guide, on mettra la page à jour. Pour d'autres armes gratuites, voir notre guide des armes uniques ; pour les autres secrets, la page Easter eggs.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Faut-il avoir fini l'histoire pour faire la mission de l'Enfer ? Non d'après le guide, elle devient jouable dès que Port Gellhorn est accessible, au chapitre 2.",
+   "À quelle heure y aller ? De nuit ; des joueurs citent minuit à 4 h, et si le garage est fermé il faut revenir plus tard.",
+   "Que se passe-t-il si je meurs en Enfer ? Tu reviens au campement : mange la nourriture sur le grand trône pour y retourner."
+  ],
+  "sources": [
+   {
+    "t": "GamingBible",
+    "u": "https://www.gamingbible.com/news/gta-6-secret-hell-mission-satan-location-rewards-623661-20261123"
+   }
+  ],
+  "credit": "Image : Rockstar Games (capture officielle)"
+ },
+ {
   "slug": "guide-tank-gta-6",
   "date": "2026-11-27T18:40:00+01:00",
   "cat": "guide",
@@ -4558,95 +4646,156 @@
   "slug": "guide-armes-uniques-gta-6",
   "date": "2026-11-21T10:30:00+01:00",
   "cat": "guide",
-  "title": "Armes uniques GTA 6 : où trouver les meilleures armes gratuites dès le début",
-  "chapo": "Pas besoin de vider ton compte à l'Ammu-Nation : GTA 6 cache une douzaine d'armes uniques gratuites dans Leonida, la plupart accessibles dès le chapitre 1. Revolvers, fusils de sniper, SMG militaire, lance-roquettes… voici où les récupérer, d'après le guide de KeenGamer.",
+  "title": "Armes uniques GTA 6 : où trouver toutes les armes gratuites et dans quel ordre les prendre",
+  "chapo": "GTA 6 cache une quinzaine d'armes uniques gratuites, gardées pour de bon une fois récupérées. Voici où les trouver, celles qu'il faut prendre en premier et les deux ou trois pièges qui peuvent te les faire rater.",
   "img": "assets/rs_grassrivers_hydroglisseur.jpg",
   "body": [
-   "Au début de GTA 6, l'argent est rare et les armes de l'Ammu-Nation coûtent cher. Bonne nouvelle : Rockstar a semé dans la carte des versions uniques d'armes, souvent plus jolies ou mieux équipées que les modèles du commerce, et gratuites. Le site KeenGamer en a recensé une bonne douzaine. Ce guide reprend leurs emplacements sans rien dévoiler de l'histoire.",
-   "Point important selon KeenGamer : une fois récupérée, une arme unique reste débloquée pour de bon. Si tu la perds, tu peux la reprendre dans le casier à armes de n'importe quel Ammu-Nation.",
    {
-    "h2": "Les armes des marais (Pelican Valley et Hamlet)"
+    "retenir": [
+     [
+      "Combien",
+      "une quinzaine d'armes uniques recensées (liste non exhaustive)"
+     ],
+     [
+      "Prix",
+      "gratuites : elles sont à ramasser ou à gagner, pas à acheter"
+     ],
+     [
+      "Si tu les perds",
+      "tu les reprends dans le casier d'un Ammu-Nation (accessoires fixes, non modifiables)"
+     ],
+     [
+      "Partage",
+      "les armes uniques sont communes à Jason et Lucia"
+     ],
+     [
+      "Pièges",
+      "Donnie's H&L .38 (mission Don Gone), fouille complète des pièces, plongée pour la KZ-59"
+     ],
+     [
+      "Notre avis",
+      "commence par le sud de Hamlet et les Permit Keys : peu de risques, gros gain"
+     ]
+    ]
    },
+   "Au début de GTA 6, l'argent manque et les armes de l'Ammu-Nation coûtent cher. Rockstar a donc semé des versions uniques d'armes dans Leonida, gratuites et conservées une fois ramassées. Cette page croise trois guides de référence (KeenGamer, GamesFuze, NoobFeed) : quand ils sont d'accord, on te donne l'emplacement tel quel ; quand un seul le dit ou qu'ils se contredisent, on te le signale. On n'a pas encore tout refait en jeu : ce qui n'est pas vérifié par nous est marqué comme tel. Aucun spoiler d'histoire ici.",
+   {
+    "h2": "Quelles sont les armes uniques de GTA 6 et où les trouver ?"
+   },
+   "Voici le tableau de synthèse. Les emplacements « confirmés par 2 sources » sont ceux que les guides décrivent de la même façon ; « 1 source » veut dire qu'on n'a qu'un guide pour l'instant.",
    {
     "steps": [
      {
-      "t": "Swamp Bait Akulus (revolver) et Cruel Huntsman's SM-69 (sniper) : ",
-      "d": "les deux sont dans la même cabane en ruine au milieu des marais de Pelican Valley. Vas-y en bateau dès le chapitre 1. Des munitions de sniper traînent aussi dans la cabane."
-     },
-     {
       "t": "Marabunta Grande Hobo (fusil à pompe) : ",
-      "d": "dans une mallette à armes, à l'intérieur d'un entrepôt industriel au sud de Hamlet, près de l'autoroute. Il y a aussi de l'argent à ramasser à côté."
+      "d": "dans un bâtiment industriel de stockage au sud de Hamlet, dans une mallette. Tu entends un cri en t'approchant. Fouille toutes les pièces : partir trop tôt est le piège classique. Confirmé par 3 sources."
      },
      {
       "t": "Hunter's Laird 350 (sniper) : ",
-      "d": "c'est la récompense d'une rencontre au bord de la route, au sud de Hamlet. Des chasseurs ont un blessé : emmène-le à l'entrée des urgences d'un hôpital. Pas de combat, et tu gagnes en plus 3 % de Focus."
-     }
-    ]
-   },
-   {
-    "h2": "Le Crabshack VF5 : la SMG militaire cachée derrière une énigme"
-   },
-   "C'est la plus fun à récupérer. Direction un avant-poste de recherche sur les crabes, abandonné, au sud-ouest de Pelican Valley (dès le chapitre 1). Allume le boîtier électrique dehors, puis va sur l'ordinateur et tape le mot de passe CLEAVES. Prépare-toi : un crabe géant attaque, il faut s'en sortir avec les touches affichées à l'écran.",
-   "Ensuite, ouvre le coffre avec la combinaison 0072 (il contient aussi du cash), puis tape 0212 sur le digicode du bâtiment fermé au bout de la passerelle. La VF5 t'y attend.",
-   {
-    "h2": "Les armes des Keys"
-   },
-   {
-    "steps": [
+      "d": "rencontre au bord de la route près de Hamlet : deux chasseurs dont un blessé. Tu peux les tuer pour prendre l'arme, ou conduire le blessé à l'hôpital (l'option propre, elle rapporte en plus 3 % de Focus selon KeenGamer). Confirmé par 3 sources, mais NoobFeed place aussi cette arme dans un motel, ce qui semble une erreur de titre."
+     },
+     {
+      "t": "Kingfisher W-22 (carabine à lunette et silencieux) : ",
+      "d": "dans une caisse posée sur un bureau, dans le bâtiment le plus proche de l'eau du Kingfisher Compound (Wetman Bay, Grassrivers). L'occasion s'ouvre après le signalement de Donnie. Arrive en bateau et neutralise les gardes du quai. Confirmé par 3 sources."
+     },
+     {
+      "t": "Kingfisher's Laird 350 (sniper) : ",
+      "d": "motel délabré au sud de Hamlet, avec des cris et un tigre à l'intérieur ; fouille la chambre après avoir géré le danger. 1 source (GamesFuze), à vérifier."
+     },
      {
       "t": "Assassin Nipper .38 (pistolet) : ",
-      "d": "sur l'épave d'un bateau espion, à la pointe sud de l'île la plus au sud-est des Permit Keys, à l'est de la base aérienne Mile Zero. Ouvre la trappe au milieu du pont. Tu y trouveras aussi une curiosité WAiNK et une vieille note."
+      "d": "sur l'épave d'un navire espion, pointe sud de l'île la plus au sud-est des Permit Keys, trappe au milieu du pont ; une curiosité WAiNK et une vieille note sont tout près. Confirmé par 3 sources."
      },
      {
       "t": "Smuggler Gorse 425 (fusil à pompe) : ",
-      "d": "posé sur le sable, à côté d'un bateau de contrebandiers échoué et penché, sur l'île la plus au nord des Permit Keys."
+      "d": "près d'un bateau de contrebandiers échoué, sur l'île la plus au nord des Permit Keys. Confirmé par 3 sources. Attention : ce n'est pas la même île que le Nipper."
      },
      {
       "t": "Drug Mule KZ-59 (fusil d'assaut) : ",
-      "d": "sous l'eau, à côté d'un hors-bord coulé au large de la côte nord des Riquezas Keys. Repère les paquets qui flottent en surface, et garde du souffle pour plonger."
+      "d": "sous l'eau, à côté d'un hors-bord coulé au large de la côte nord des Riquezas Keys ; repère les paquets qui flottent. 1 source (KeenGamer)."
      },
      {
-      "t": "Unpacked Comshot 12 : ",
-      "d": "KeenGamer la place au nord-ouest de Key Lento et la conseille en tout premier pour le combat rapproché, mais sans donner l'emplacement exact. À chercher en jeu."
-     }
-    ]
-   },
-   {
-    "h2": "Mariana County et Vice City"
-   },
-   {
-    "steps": [
+      "t": "Swamp Bait Akulus (revolver) et Cruel Huntsman's SM-69 (sniper) : ",
+      "d": "dans la même cabane en ruine, au milieu des marais de Pelican Valley, accessible en bateau. 1 source (KeenGamer)."
+     },
      {
-      "t": "Kingfishers W-22 (fusil avec lunette et silencieux) : ",
-      "d": "dans une mallette, dans le bâtiment au bord de l'eau du camp de pêche des Kingfishers, à Wetman Bay. C'est une opportunité de vol qui s'ouvre tôt dans l'histoire : il faudra neutraliser des gardes armés."
+      "t": "Crabshack VF5 (SMG militaire) : ",
+      "d": "avant-poste abandonné de recherche sur les crabes, sud-ouest de Pelican Valley : allume le boîtier électrique, tape CLEAVES sur l'ordinateur, survis au crabe géant, puis coffre 0072 et digicode 0212. 1 source (KeenGamer) : les codes sont à tester en jeu."
      },
      {
       "t": "Turnt Nipper .38 (pistolet) : ",
-      "d": "coincé dans l'épave d'un paramoteur accroché à un pin, sur la côte de Bobcat Bight (Capri Island). Tire dans les câbles pour le faire tomber."
+      "d": "dans l'épave d'un paramoteur accroché à un pin, côte de Bobcat Bight (Capri Island) ; tire dans les câbles pour le faire tomber. 1 source (KeenGamer)."
      },
      {
-      "t": "Conspiracist Type 9 (pistolet-mitrailleur) et Hauners H-AT (lance-roquettes, 4 roquettes) : ",
-      "d": "dans un bunker souterrain caché sous un camping-car, à la casse de Balsero, au sud-ouest du stand de tir Griffin. Accessible après la mission « Building a Life » du chapitre 1. Grenades et matériel en bonus."
+      "t": "Conspiracist Type 9 (SMG) et Hauners H-AT (lance-roquettes, 4 roquettes) : ",
+      "d": "bunker caché sous un camping-car, à la casse de Balsero, après la mission « Building a Life » du chapitre 1. 1 source (KeenGamer). NoobFeed parle d'un « Type 9 SMG » dans un entrepôt de South Vice Dale, avec aussi un Duke 556 et un Kalinga 50 : on ignore si c'est la même arme, à clarifier."
+     },
+     {
+      "t": "Unpacked Comshot 12 : ",
+      "d": "placé au nord-ouest de Key Lento par KeenGamer, sans emplacement exact. À chercher en jeu."
      }
     ]
    },
    {
-    "h2": "Les armes liées aux missions (attention à ne pas les rater)"
+    "h2": "Quelles armes uniques sont liées à une mission (et peuvent être ratées) ?"
    },
-   "Donnie's H&L .38 (revolver) : il est dans le coffre de la Dinka Blista de Donnie, pendant la mission « Don Gone » du chapitre 1. Si tu détruis la voiture avant de l'ouvrir, il est perdu pour de bon. Fais une sauvegarde manuelle avant la mission.",
-   "Killtelligence SM-69 (sniper de chasse) : offert par Bret Vogel pendant la série de quêtes de chasse du chapitre 2, qui commence avec la mission « Veteran Hunted » dans le comté de Lummox.",
+   "Donnie's H&L .38 (revolver) : il est dans le coffre de la Dinka Blista de Donnie pendant la mission « Don Gone ». Deux guides (KeenGamer et GamesFuze) disent la même chose : ouvre le coffre avant de détruire la voiture, sinon l'arme est perdue pour de bon. Fais une sauvegarde manuelle juste avant.",
+   "Killtelligence SM-69 (sniper de chasse) : offert par Bret Vogel dans la série de quêtes de chasse du chapitre 2, qui commence avec « Veteran Hunted » dans le comté de Lummox (1 source, KeenGamer).",
    {
-    "h2": "Dans quel ordre les récupérer ?"
+    "h2": "Par quelle arme commencer ? Notre conseil"
    },
-   "KeenGamer conseille de commencer par le Comshot 12 à Key Lento, puis les deux armes de la cabane de Pelican Valley, la VF5 du Crabshack et enfin le bunker de Balsero pour le lance-roquettes. Avec ça, tu as de quoi gérer quasiment toutes les situations du début de partie sans dépenser un dollar. Ce guide se base sur une seule source publiée juste après la sortie : on le mettra à jour après vérification en jeu."
+   "Notre conseil : fais d'abord le sud de Hamlet (Hobo + Hunter's Laird + motel) puis les deux îles des Permit Keys en bateau. Ce sont les armes les mieux documentées, sans énigme ni chapitre à attendre. Ensuite seulement, pars sur les cas à une seule source (Pelican Valley, Crabshack, Balsero), en gardant en tête que les codes viennent d'un seul guide. KeenGamer recommande de démarrer par le Comshot 12 à Key Lento ; comme son emplacement n'est pas précis, on le déconseille pour un premier run.",
+   {
+    "steps": [
+     {
+      "t": "1. Sud de Hamlet : ",
+      "d": "Hobo, Hunter's Laird 350, motel. Environ 30 à 45 minutes en tout (estimation), sans énigme."
+     },
+     {
+      "t": "2. Permit Keys en bateau : ",
+      "d": "Assassin Nipper puis Smuggler Gorse, deux îles distinctes (estimation : 20 minutes)."
+     },
+     {
+      "t": "3. Kingfisher Compound : ",
+      "d": "dès que Donnie ouvre l'occasion, entre par l'eau."
+     },
+     {
+      "t": "4. Les cas à une source : ",
+      "d": "Pelican Valley, Crabshack VF5, Turnt Nipper, Balsero, KZ-59 sous l'eau."
+     }
+    ]
+   },
+   {
+    "h2": "Quelles erreurs éviter ?"
+   },
+   "Ne quitte pas un bâtiment après la première caisse trouvée : les guides insistent pour fouiller toutes les pièces et les corps. Ne détruis pas la voiture de Donnie avant d'avoir pris le revolver. Ne confonds pas les deux îles des Permit Keys. Et pour les armes sous l'eau, prévois du souffle : on n'a pas encore testé la plongée à la KZ-59 nous-mêmes.",
+   "Pour les plongées et épaves en général, voir notre guide des trésors de Kenton et des épaves ; pour les coffres à code, notre guide des coffres et codes de braquage.",
+   {
+    "h2": "Questions fréquentes"
+   },
+   "Les armes uniques sont-elles gratuites ? Oui, elles se ramassent ou se gagnent en mission, sans achat.",
+   "Que faire si je perds une arme unique ? Tu peux la récupérer dans le casier d'un Ammu-Nation, accessoires fixes compris.",
+   "Jason et Lucia partagent-ils les armes uniques ? Oui, d'après GamesFuze, elles sont communes aux deux personnages."
   ],
   "sources": [
    {
     "t": "KeenGamer",
     "u": "https://www.keengamer.com/articles/guides/gta-6-best-early-game-unique-weapon-locations/"
+   },
+   {
+    "t": "GamesFuze",
+    "u": "https://gamesfuze.com/guides/how-to-get-legendary-weapons-in-gta-6-early/"
+   },
+   {
+    "t": "NoobFeed",
+    "u": "https://www.noobfeed.com/articles/gta-6-early-game-guns"
    }
   ],
-  "credit": "Image : Rockstar Games (capture officielle)"
+  "credit": "Image : Rockstar Games (capture officielle)",
+  "topics": [
+   "gta-6-debuter",
+   "gta-6-carte"
+  ],
+  "updated": "2026-11-28T08:45:00+01:00"
  },
  {
   "slug": "2026-11-21-observer-oiseaux-jumelles-gta-6",
